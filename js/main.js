@@ -32,10 +32,7 @@ navDropdown.addEventListener("change", (event) => {
       break;
 
         case "recipes":
-            content.innerHTML = `
-            <h2>Recipe Guide</h2>
-            <p>Find recipes that use your stored food items. Coming soon!</p>
-            `;
+            loadRecipesFeature();
             break;
 
         case "budget":

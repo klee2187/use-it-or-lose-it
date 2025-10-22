@@ -1,0 +1,32 @@
+#recipeSearch {
+    padding: 0.5rem;
+    width: 60%;
+    max-width: 400px;
+    margin: 1rem auto;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    display: block;
+}
+
+.recipe-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.recipe-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 280px;
+    padding: 1rem;
+    text-align: left;
+    transition: transform 0.2s ease;
+}
+
+.recipe-card:hover {
+    transform: scale(1.03);
+}
