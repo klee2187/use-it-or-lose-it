@@ -1,0 +1,96 @@
+/* General */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f1;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #7cb342;
+    color: white;
+    padding: 1rem;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+nav select {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+}
+
+/* Intro */
+.intro {
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+.mascot {
+    width: 150px;
+    animation: wave 3s infinite;
+}
+
+/* Mascot Animation */
+@keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(10deg); }
+}
+
+/* Footer */
+footer {
+    background-color: #7cb342;
+    color: white;
+    padding: 1rem;
+    margin-top: 3rem;
+}
+
+/* Inventory Tracker */
+form {
+    margin: 1rem 0;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+form input, form button {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    background-color: #7cb342;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #689f38;
+}
+
+table {
+    width: 90%;
+    margin: 1rem auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th, td {
+    border-bottom: 1px solid #ccc;
+    padding: 0.5rem;
+}
+
+.expiring {
+    color: red;
+    font-weight: bold;
+}
