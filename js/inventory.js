@@ -1,51 +1,45 @@
 function loadInventoryFeature() {
+    const content = document.getElementById("content");
+
+    content.innerHTML = `
+        <h2>Inventory</h2>
+        <form id="inventoryForm">
+            <input type="text" id="itemName" placeholder="Item name" required />
+            <input type="number" id="itemQty" placeholder="Quantity" min="1" required />
+            <button type="submit">Add Item</button>
+        </form>
+        <ul id="inventoryList" class="inventory-list"></ul>
+    `;
+
     const form = document.getElementById("inventoryForm");
     const list = document.getElementById("inventoryList");
-
     let inventory = JSON.parse(localStorage.getItem("inventory")) || [];
-    renderInventory();
+
+    function renderList() {
+        list.innerHTML = "";
+        if (inventory.length === 0) {
+            list.innerHTML = "<li>No items in storage.</li>";
+            return;
+        }
+
+        inventory.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = `${item.name} - ${item.quantity}`;
+            list.appendChild(li);
+        });
+    }
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-
-        const name = document.getElementById("itemName").ariaValueMax.trim();
+        const name = document.getElementById("itemName").value.trim();
         const qty = parseInt(document.getElementById("itemQty").value);
-        const exp = document.getElementById("itemExp").value;
+        if (!name || isNaN(qty)) return;
 
-        if (!name || !exp) return;
-
-        const newItem = { id: Date.now(), name, qty, exp };
-        inventory.push(newItem);
+        inventory.push({ name, quantity: qty });
         localStorage.setItem("inventory", JSON.stringify(inventory));
-        renderInventory();
-        form.reset();
-    });
-function renderInventory() {
-    list.innerHTML = "";
-    const today = new Date();
-
-    inventory.forEach(item => {
-        const expDate = new Date(item.exp);
-        const daysLeft = Math.ceil((expDate - today) / (1000 * 60 * 60 * 24));
-
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${item.name}</td>
-            <td>${item.qty}</td>
-            <td class="${daysLeft <= 3 ? 'expiring' : ''}">
-                ${item.exp} ${daysLeft <= 3 ? '(Expiring soon!' : ''}
-                </td>
-        `;
-        list.appendChild(row);
+        renderList();
+        form.rest();
     });
 
-    document.querySelectorAll(".deleteBtn").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            const id = Number(e.target.getAttribute("data-id"));
-            inventory = inventory.filter(i => i.id !== id);
-            localStorage.setItem("inventory", JSON.stringify(inventory));
-            renderInventory();
-        });
-    });
-}
+    renderList();
 }
