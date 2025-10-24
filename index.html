@@ -10,12 +10,13 @@
 <body>
     <header>
         <h1>Use It or Lose It</h1>
-        <nav>
-            <ul id="navbar">
-                <li><a href="#" data-page="home" class="active">Home</a></li>
-                <li><a href="#" data-page="inventory">Inventory</a></li>
-                <li><a href="#" data-page="recipes">Recipes</a></li>
-                <li><a href="#" data-page="budget">Budget</a></li>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="inventory.html">Inventory</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
             </ul>
         </nav>
     </header>
@@ -27,6 +28,11 @@
             <p id="mascotSpeech">Hey there! Let's keep your food fresh and organized </p> 
         </div>
      </section>
+     <!-- Mascot Notification Pop-up -->
+      <div id="mascotNotification" class="notification hidden">
+        <img src="images/mascot.png" alt="Mascot" class="notif-mascot">
+        <div class="notif-message"></div>
+      </div> 
     
     <main id="content">
         <h2>Welcome to Use It or Lose It!</h2>

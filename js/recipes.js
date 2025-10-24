@@ -49,5 +49,15 @@ async function loadRecipesFeature() {
             container.innerHTML = "<p>No recipes found.</p>";
             return;
         }
+
+        list.forEach(recipe => {
+            const card = document.createElement("div");
+            card.innerHTML.add("recipe-card");
+            card.innerHTML = `
+                <h3>${recipe.name}</h3>
+                <p><strong>Ingredients:</strong> ${recipe.ingredients.join("", )}</p>
+                `;
+                container.appendChild(card);
+        });
     }
 }
