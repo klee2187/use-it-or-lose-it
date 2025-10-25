@@ -1,34 +1,53 @@
-form input, form button {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+@import url('style.css');
+
+form {
+    margin: 1rem 0;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-form button {
+input, select {
+    padding: 0.5rem;
+    border: 1px solid #c5e1a5;
+    border-radius: 5px;
+}
+
+button {
     background-color: #7cb342;
     color: white;
     border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
     cursor: pointer;
+    transition: backgroud-color 0.3s ease;
 }
 
-form button:hover {
-    background-color: #689f38;
+button:hover {
+    background-color: #558b2f;
 }
 
 table {
-    width: 90%;
     margin: 1rem auto;
     border-collapse: collapse;
-    text-align: center;
+    width: 80%;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
 }
 
-th, td {
-    border-bottom: 1px solid #ccc;
-    padding: 0.5rem;
+th {
+    background-color: #7cb342;
+    color: white;
+    padding: 0.75rem;
 }
 
-.expiring {
-    color: red;
-    font-weight: bold;
+td {
+    border-bottom: 1px solid #c5e1a5;
+    padding: 0.75rem;
+}
+
+tr:nth-child(even) {
+    background-color: #f4f6f1;
 }
