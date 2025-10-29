@@ -1,8 +1,419 @@
-[
-    {
+[{
+    "Recipes":[{
         "id": 1,
-        "name": "Canned Chili Dinner",
-        "ingredients": ["canned beans", "tomate paste", "spices"],
-        "instructions": "Combine ingredients and heat. Serve with cornbread."
-    }
-]
+        "name": "Cheesy Chile Relleno Casserole",
+        "prepTime": "15 miutes",
+        "cookTime": "50 minutes",
+        "additionalTime": "5 minutes",
+        "totalTime": "1 hour 10 minutes",
+        "course": "Breakfast",
+        "cuisine": "Mexican",
+        "servings": 12,
+        "servingSize": "1 piece",
+        "calories": "209 kcal",
+        "ingredients": [
+            "16 oz Colby Jack Cheese", 
+            "12 canned whole green chiles, drained", 
+            "2 eggs", "3 Tablespoons flour", 
+            "12 ounces canned evaporated milk", 
+            "8 ounces canned tomato sauce"
+        ],
+        "instructions": [
+            "2. Preheat your oven to 350 degrees.",
+            "Slice Colby Jack cheese into even pieces.",
+            "Place a layer of 6 whole green chiles on the bottom of a greased 9×13 baking dish.",
+            "Top the chiles with a layer of the cheese slices. Then add 6 more chiles on top of the cheese slices and finish with the remaining cheese.",
+            "Beat together eggs, flour, and evaporated milk. Pour the mixture over the layers of cheese and chiles.",
+            "Cover the pan with foil and bake for 25 minutes at 350 degrees.",
+            "Remove the pan from the oven and pour tomato sauce evenly over the top of the casserole.",
+            "Return to the oven uncovered to bake for another 20-25 minutes.",
+            "Allow the casserole to rest for 5 minutes to firm up, then serve."
+        ],
+        "substitutions": [
+            "Banana Peppers, Poblano Pepper, Bell Pepper, Jalapeno Pepper for Green Chiles",
+            "Tomato paste (1 part paste to 1 part water), canned tomatoes (1:1), tomato soup (remove 1/4 cup liquid for every 10.75 ounce can), spaghetti sauce (1:1) for tomato sauce",
+            "Powdered milk (mix 1 1/2 cups with 1 1/4 cups water), half and half (1:1), dairy free milks (1:1) for evaporated milk",
+            "Mashed/pureed avacado (1/4 cup per egg), commercial egg replacements (follow package instructions), pureed silken tofu (1/4 cup per egg), baking soda (1 teaspoon) and vinegar (1 tablespoon), plain yogurt (1/4 cup) for eggs"
+        ],
+        "creator": "The Ashcroft Family Table https://www.ashcroftfamilytable.com/chile-relleno-casserole/"  
+    },
+    {
+        "id": 2,
+        "name": "Banana Smoothie with Ice",
+        "prepTime": "5 minutes",
+        "totalTime": "5 minutes",
+        "course": "Breakfast",
+        "cuisine":"American",
+        "servings": 4,
+        "servingSize": "",
+        "calories": "281 kcal",
+        "ingredients": [
+            "4-5 ice cubes",
+            "2 cups vanilla yogurt",
+            "2 ripe medium bananas, broken in pieces",
+            "1/2 cup packed brown sugar", 
+            "1/2 cup milk",
+            "1/2 teaspoon vanilla",
+            "Dash ground nutmeg"
+        ],
+        "instructions": [
+            "1. Crush 4-5 ice cubes in a blender.",
+            "2. Add yogurt, bananas, brown sugar, milk, and vanilla to the blender, cover, and blend on high until well combined.",
+            "3. Pour into glasses and finish with a ground nutmeg."
+        ],
+        "substitutions": [
+            "Honey (1/2 cup) for brown sugar",
+            "Ice cream (2 scoops) and milk (for thinning to desired consistency) for yogurt"
+        ],
+        "variations": [
+            "Add peanut butter and oats for more protein."
+        ],
+        "creator":"The Ashcroft Family Table https://www.ashcroftfamilytable.com/chile-relleno-casserole/"
+    },
+    {
+        "id": 3,
+        "name": "Fluffy Blueberry Muffins from Scratch",
+        "prepTime": "10 minutes",
+        "cookTime": "24 minutes",
+        "additionalTime": "5 minutes",
+        "totalTime": "39 minutes",
+        "course": "Breakfast",
+        "cuisine": "American",
+        "servings": 12,
+        "servingSize": "1 muffin",
+        "calories": "220 kcal",
+        "ingredients": [
+            "1/2 cup butter, room temperature",
+            "3/4 cup sugar",
+            "2 eggs, room temperature",
+            "2 cups flour",
+            "1/2 teaspoon salt",
+            "2 teaspoons baking powder",
+            "1/2 cup milk, room temperature",
+            "1 1/2 cups blueberries, washed and dried"
+        ],
+        "instructions": [
+            "1. Preheat the oven to 375 degrees.",
+            "2. Cream butter and sugar together with an electric mixer until combined.",
+            "3. Add eggs to the sugar mixture one at a time, beating well after each addition.",
+            "4. Sift together flour, salt, and baking powder in a medium mixing bowl.",
+            "5. Add the flour mixture and milk to the sugar mixture a little at a time, alternating between the flour and the milk. Mix until just combined.",
+            "6. Gently fold in blueberries.",
+            "7. Add 1/4 cup of batter to a muffin tin with liners. Bake the muffins at 375 degrees for 24-26 minutes, or until golden brown and a toothpick inserted comes out clean.",
+            "8. Carefully remove muffins from the tin and place on baking rack. Allow muffins to cool for 5 minutes before eating."
+        ],
+        "substitutions": [
+            "Ghee (1:1); coconut oil (1:1), olive oil (3/4 of the amount of called for butter), margarine (1:1), pureed banana, avacado, pumpkin (1:1), applesauce (1:1) for butter",
+            "Pureed avacado, banana, pumpkin (1/4 cup per egg), apple sauce (1:1), commercial egg replacements (follow package instructions), pureed silken tofu (1/4 cup per egg), baking soda (1 teaspoon) and vinegar (1 tablespoon), plain yogurt (1/4 cup) for eggs"
+        ],
+        "creator":"The Ashcroft Family Table https://www.ashcroftfamilytable.com/chile-relleno-casserole/"
+    },
+    {
+        "id": 4,
+        "name": "Easy German Oven Pancakes",
+        "prepTime": "10 minutes",
+        "cookTime": "20 minutes",
+        "totalTime": "30 minutes",
+        "course": "Breakfast",
+        "cuisine": "American",
+        "servings": 8,
+        "servingSize": "1 piece",
+        "calories": "174 kcal",
+        "ingredients": [
+            "1/4 cup butter",
+            "6 eggs",
+            "1 cup milk",
+            "1 cup flour",
+            "1/4 teaspoon salt",
+            "1/4 teaspoon cinnamon",
+            "1/2 teaspoon vanilla"
+        ],
+        "instructions": [
+            "1. Preheat oven to 400 degrees.",
+            "2. Add butter to a 9 x 13 baking dish and then place dish in the oven to melt the butter. Remove the pan as soon as the butter has melted.",
+            "3. While the butter is melting, blend eggs, milk, flour, salt, cinnamon, and vanilla in a blender until well combined.",
+            "4. Carefully pour the batter into the buttered pan.",
+            "5. Bake for 20 minutes or until golden brown."
+        ],
+        "creator": "The Ashcroft Family Table https://www.ashcroftfamilytable.com/chile-relleno-casserole/"
+    },
+    {
+        "id": 5,
+        "name": "The Easiest Braided Raspberry Pastry",
+        "prepTime":"15 miutes",
+        "cookTime": "15 minutes",
+        "totalTime": "30 minutes",
+        "course": "Breakfast",
+        "cuisine": "American",
+        "servings": 10,
+        "servingSize": "1 piece",
+        "calories": "235 kcal",
+        "ingredients": {
+            "pastry":[
+                "4 ounces cream cheese, cold",
+                "4 tablespoons butter, cold",
+                "2 cups pancake mix",
+                "1/4 cup milk",
+                "1/2 cup jam"
+            ],
+            "glaze": [
+                "1 cup powdered sugar",
+                "1 tablespoon milk",
+                "1/2 teaspoon vanilla"
+            ]
+        },
+        "instructions": [
+            "1. Preheat oven to 425 degrees and grease a half sheet pan or line with parchment paper.",
+            "2. In a large bowl, cut cream cheese and cold butter into pancake mix with a pastry cutter (or sturdy fork) until the mixture resembles crumbs.", 
+            "3. Add 1/4 cup milk to the dry mixture (or enough to make a dough). Mix the dough with a wooden spoon or your hands until well combined.",
+            "4. Knead the dough on a floured surface until smooth (about 2-3 minutes) and roll out to a rectangle the size of the pan. Carefully transfer the dough to the greased baking sheet.",
+            "5. Spread the jam down the center of the pastry and cut 11-13 thin diagonal strips on the bare pastry with a paring knife.",
+            "6. Fold the pieces over the jam and each other alternating sides and starting at the top.",
+            "7. Bake for 12-15 minutes at 425 degrees until the pastry is golden brown and jam is bubbling.",
+            "8. While the pastry is baking, whisk together powdered sugar, 1 tablespoon milk, and vanilla in a small bowl. Remove the pastry from the oven and allow it to cool for 5 minutes.",
+            "9. Drizzle the glaze onto the warm pastry with the whisk."
+        ],
+        "substitutions": [
+            "Bisquick (1:1) for pancake mix",
+            "Margarine (1:1) for butter",
+            "Any other flavor jam (1:1) for raspberry jam"
+        ],
+        "creator":"The Ashcroft Family Table https://www.ashcroftfamilytable.com/chile-relleno-casserole/"
+    },
+    {
+        "id": 6,
+        "name": "4-Ingredient Pumpkin Pancakes With Pancake Mix",
+        "prepTime":"5 minutes",
+        "cookTime": "20 minutes",
+        "totalTime": "25 minutes",
+        "course": "Breakfast",
+        "cuisine": "American",
+        "servings": 20,
+        "servingSize": "1 pancake",
+        "calories": "108 kcal",
+        "ingredients": [
+            "3 cups buttermilk pancake mix",
+            "3 cups cold water",
+            "1 cup pumpkin puree",
+            "2 teaspoons pumpkin pie spice"
+        ],
+        "instructions": [
+            "1. In a medium bowl, whisk all ingredients until just blended. Do not over mix; batter should be lumpy.",
+            "2. Heat griddle over medium-low heat. Once heated spray with cooking spray or butter.",
+            "3. Pour pancake batter onto the griddle using 1/2 cup measuring cup or ladle.",
+            "4. Cook for 2 minutes or until bubbles appear.",
+            "5. Turn pancakes over and cook for 2 minutes longer or until the other side is done."
+        ],
+        "substitutions": [
+            "Cinnamon (1 1/2 teaspoons) and ginger (1/2 teaspoon for pumpkin pie spice",
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Healthy Crustless Broccoli and Ham Quiche",
+        "prepTime": "10 minutes",
+        "cookTime": "30 minutes",
+        "totalTime": "40 minutes",
+        "course": "Breakfast",
+        "cuisine": "American",
+        "servings": 8,
+        "servingSize":"1 piece",
+        "calories": "362 kcal",
+        "ingredients": [
+            "1 cup ham, cooked and cubed into small pieces",
+            "1/2 cup chopped onion",
+            "1 cup mayonnaise",
+            "4 tablespoons flour",
+            "4 eggs",
+            "1 cup milk",
+            "1 cup broccoli, cooked and chopped",
+            "1 cup grated cheddar cheese"
+        ],
+        "instructions": [
+            "1. Bake for 12-15 minutes at 425 degrees until the pastry is golden brown and jam is bubbling.", 
+            "2.Saute the ham pieces and onion in a small frying pan until the ham and onions have browned.",
+            "3.Combine mayonnaise, flour, eggs, and milk in a medium bowl. Mix well.",
+            "4. Place broccoli, ham, onion, and half the cheese in the bottom of a greased 9 inch pie dish. Pour the egg mixture on top.",
+            "5. Sprinkle the rest of the cheese evenly over the quiche.",
+            "6. Bake at 350 degrees for 35-45 minutes, until the center is almost set (slightly jiggly). Allow to cool for 15 minutes before serving."
+        ],
+        "substitutions": [
+            "Half and half (1:1), evaporated milk (1:1) for milk",
+            "Low-fat mayonnaise (1:1), greek yogurt (1:1), egg (1), aioli (1:1), sour cream (1:1), avacado (1:1), hummus (1:1), white bean dip (1:1) for mayonnaise",
+            "Chicken, shrimp, tuna, crab, or spam for ham",
+            "Onion powder/dried minced onion (1 teaspoon) for onion",
+            "Any other cheese of choice (1:1), nutritional yeast, cashew cheese, commercial vegan cheddar for cheddar cheese",
+            "Veggie of choice for broccoli"
+        ]
+    },
+    {
+        "id": 8,
+        "name": "The Best Monte Cristo Sliders",
+        "prepTime":"15 miutes",
+        "cookTime":"30 minutes",
+        "totalTime": "45 minutes",
+        "course": "Lunch",
+        "cuisine": "American",
+        "servings": 12,
+        "servingSize": "1 slider",
+        "calories": "255 kcal",
+        "ingredients": [
+            "12 Hawaiian dinner rolls, grouped together",
+            "1/4 cup mayonnaise",
+            "1 Tablespoon Dijon mustard",
+            "10 slices Swiss cheese, divided",
+            "12 pieces thinly sliced ham, about 6 ounces",
+            "12 pieces thinly sliced turkey, about 6 ounces",
+            "1/4cup butter, melted, but slightly cooled",
+            "2 eggs",
+            "powdered sugar, for dusting",
+            "warmed raspberry jam, for serving"
+        ],
+        "instructions": [
+            "1. Preheat oven to 350 degrees and place a piece of parchment paper in a 9×13 rectangle baking dish.",
+            "2. Cut the group of Hawaiian dinner rolls in half using a serrated knife so the tops are separated from the bottoms. Do not break the rolls apart into individual servings. You should have 2 large pieces of bread when you're done.",
+            "3. Mix mayonnaise and Dijon mustard together in a small bowl. Spread evenly over the top piece of bread.",
+            "4. Place 5 pieces of Swiss cheese on the bottom piece of bread, cutting one of the pieces in half to fit.",
+            "5. Layer sliced ham and sliced turkey on top of the Swiss cheese.",
+            "6. Top the meat with another 5 pieces of Swiss cheese, cutting one of the pieces in half to fit.",
+            "7. Place the tops of the rolls on the meat and cheese and carefully place all of the sliders in the baking dish.",
+            "8. Mix melted butter and eggs together in a small bowl. Brush the egg mixture over the rolls, making sure to get all of the tops coated.",
+            "9. Cover the baking pan with foil, tenting it so it doesn't touch the tops of the rolls, and bake at 350 degrees for 15 minutes.",
+            "10. After 15 minutes, carefully remove the foil and re-brush the rolls with any egg mixture that has fallen off the sides. Bake uncovered for another 10-15 minutes until the rolls are golden brown and the egg mixture is cooked.",
+            "11. Allow the rolls to cool slightly and then dust with powdered sugar. Use a metal spatula to cut the sliders apart and serve with warmed raspberry jam."
+        ],
+        "substitutions": [
+            "Any pre-packaged dinner rolls, homemade rolls, off brand hawaiian rolls for King's Hawaiian Dinner Rolls"
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Pumpkin Chocolate Chip Skillet Pancake",
+        "prepTime": "5 minutes",
+        "cookTime": "30 minutes",
+        "totalTime": "35 minutes",
+        "course": "Breakfast",
+        "cuisine": "American",
+        "servings": 10,
+        "servingSize": "1 piece",
+        "calories": "271 kcal",
+        "ingredients": {
+            "pancake": [
+                "2 cups pancake mix",
+                "1/2 cup pumpkin puree",
+                "1 teaspoon pumpkin pie spice",
+                "1 teaspoon vanilla",
+                "1 1/4 cup milk",
+                "1/2 cup chocolate chips",
+                "additional pumpkin pie spice and cinnamon sticks, if desired"
+            ],
+            "cream": [
+                "4 ounces cream cheese, cold",
+                "1 cup heavy whipping cream",
+                "1/2 cup powdered sugar",
+                "1/2 teaspoon vanilla"
+            ]
+        },
+        "instructions": [
+            "1. Preheat oven to 350 degrees.",
+            "2. Add pancake mix, pumpkin puree, pumpkin pie spice, vanilla, and milk to a medium mixing bowl. Gently whisk until just combined. Do not overmix.",
+            "3. Pour the pancake batter into a lightly greased 10-inch cast iron skillet and top with chocolate chips. Bake for 25-30 minutes or until a toothpick inserted into the middle of the pancake comes out clean.",
+            "4. While the pancake is cooking, beat cream cheese for 2-3 minutes in a chilled medium mixing bowl until smooth.",
+            "5. Slowly add the heavy whipping cream until it's all combined with the cream cheese.",
+            "6. Continue beating on medium-high speed until soft peaks form.",
+            "7. Add powdered sugar and vanilla extract to the whipped cream and beat on medium-high speed until stiff peaks form (about 5-10 minutes). Refrigerate until ready to serve.",
+            "8. Slice the skillet pancake and serve with the cream cheese whipped cream and a dusting of pumpkin pie spice and a cinnamon stick, if desired"
+        ],
+        "substitutions": [
+            "Water (1:1), non-dairy milk (1:1), evaporated milk (1:1) for milk",
+            "Cinnamon (3/4 teaspoon + ginger, allspice, cloves, or nutmeg (1/4 teaspoon; cinnamon (1/2 teaspoon) + 2 of these spices: ginger, allspice, cloves, or nutmeg (1/4 teaspoon)",
+            "Any flavor or size chocolate chips you want"
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Butterscotch Overnight Sticky Buns",
+        "prepTime": "10 minutes",
+        "cookTime":"30 minutes",
+        "additionalTime": "8 hours",
+        "totalTime": "8 hours 40 minutes",
+        "course": "Breakfast",
+        "cuisine": "American",
+        "servings": 16,
+        "servingSize": "1 bun",
+        "calories": "235 kcal",
+        "ingredients": [
+            "16-18 frozen rolls, or 8 large rolls cut in half",
+            "1/2 cup pecan halves, or 1/4 cup chopped pecans",
+            "3.5 ounces butterscotch pudding and pie filling , not instant",
+            "3/4 cup brown sugar",
+            "1 teaspoon cinnamon",
+            "1/2 cup melted butter"
+        ],
+        "instructions": [
+            "1. Grease a round 9-inch cake pan.",
+            "2. Spread pecan halves in the pan so the rounded sides are down.",
+            "3. Drop the rolls in the pan to form a single layer.",
+            "4. Blend butterscotch pudding, brown sugar, and cinnamon in a small bowl.",
+            "5. Sprinkle the mixture over the rolls.",
+            "6. Pour melted butter over the rolls.",
+            "7. Cover the pan with plastic wrap and refrigerate overnight.",
+            "8. When ready to cook, remove the plastic wrap, preheat your oven to 350 degrees.",
+            "9. Bake for 30 minutes or until sugar is well dissolved and bubbly. Check the rolls after 15 minutes and cover the top with foil if they are browning.",
+            "10. To serve, turn the sticky buns onto a large plate that will catch the syrup."
+        ],
+        "substitutions": [
+            "Any frozen rolls",
+            "Chopped pecans for wholw pecans"
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Cherry Chocolate Chip Muffins",
+        "prepTime": "10 minutes",
+        "cookTime": "18 minutes",
+        "additionalTime": "10 minutes",
+        "totalTime": "38 minutes",
+        "course": "Breakfast",
+        "cuisine": "American",
+        "servings": 12,
+        "servingSize": "1 regular or 2 mini",
+        "calories": "237 kcal",
+        "ingredients": {
+            "muffins": [
+                "1 egg",
+                "1/2 cup milk",
+                "1/4 cup avocado oil",
+                "1 1/2 cups flour",
+                "1/2 cup granulated sugar",
+                "2 teaspoons baking powder",
+                "1/2 teaspoon salt",
+                "10 ounces maraschino cherries",
+                "3/4 cup miniature chocolate chips"
+            ],
+            "glaze": [
+                "1 cup powdered sugar",
+                "2-3 tablespoons reserved cherry juice"
+            ]
+        },
+        "instructions": [
+            "1. Preheat your oven to 375 degrees.",
+            "2. Whisk egg, milk, and vegetable oil together in a medium mixing bowl.",
+            "3. Stir flour, granulated sugar, baking powder, and salt into the wet ingredients just until moist.",
+            "4. Drain the jar of maraschino cherries, saving 3 tablespoons of the juice.",
+            "5. Chop the cherries into quarters and fold them into the batter along with chocolate chips.",
+            "6. Lightly grease a muffin tin and use a 1/4 measuring cup to add batter to each cup.",
+            "7. Bake the muffins for 18 minutes or until a toothpick inserted into the center of a muffin comes out clean.",
+            "8. Allow the muffins to cool for 10 minutes and then move from the pan to a wire rack.",
+            "9. Combine powdered sugar and reserved cherry juice to make the glaze. Start with 1 tablespoon of juice at a time until you reach the desired consistency.",
+            "10. Drizzle the glaze over the cooled muffins using a spoon or fork."
+        ],
+        "substitutions": [
+            "Frozen whole cherries or fresh cherries for maraschino cherries",
+            "Regular sized chocolate chips for mini chocolate chips"
+        ],
+        "variations": [
+            "Add half a cup of chopped pecans or walnuts if you want to add nuts"
+        ]
+    }]
+}]
