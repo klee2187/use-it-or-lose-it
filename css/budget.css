@@ -1,0 +1,45 @@
+@import url('style.css');
+
+form {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+input {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #c5e1a5;
+}
+
+button {
+    background-color: #7cb342;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3 ease;
+}
+
+button:hover {
+    background-color: #558b2f;
+}
+
+#budget-summary {
+    margin-top: 2rem;
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgb(0,0,0,0.1);
+}
+
+.alert {
+    background-color: #fdd835;
+    color: #2b5d34;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin-top: 1rem;
+}

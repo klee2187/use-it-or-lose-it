@@ -8,39 +8,99 @@ body {
     text-align: center;
 }
 
+/* Header and Nav */
 header {
     background-color: #7cb342;
     color: white;
     padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
-nav select {
-    margin-top: 1rem;
-    padding: 0.5rem;
-    font-size: 1rem;
-    border-radius: 6px;
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background-color: #7cb342;
 }
 
-/* Intro */
-.intro {
-    margin: 2rem auto;
-    max-width: 600px;
+nav li {
+    margin: 0;
 }
 
-.mascot {
-    width: 150px;
-    animation: wave 3s infinite;
+nav a {
+    display: block;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: backgroud-color 0.3s ease;
 }
 
-/* Mascot Animation */
+nav a:hover {
+    background-color: #558b2f;
+}
+
+nav a.active {
+    font-weight: bold;
+    border-bottom: 3px solid #fdd835;
+}
+
+/* Mascot Section */
+#mascot-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #c5e1a5;
+    box-shadow: inset 0 -2px 5px rgba(0,0,0,0.05);
+    background-color: #ffffff;
+}
+
+#mascot {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#mascotImg {
+    width: 80px;
+    height: 80px;
+    animation: wave 2.5s infinite ease-in-out;
+    transform-origin: bottom right;
+}
+
+#mascotSpeech {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 0.5rem 1 rem;
+    max-width: 300px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-style: italic;
+    color: #2b5d34;
+    border: 1px solid #c5e1a5;
+}
+
+/* Wave animation */
 @keyframes wave {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(10deg); }
+    0% { transform: rotate(0deg); }
+    20% { transform: rotate(15deg); }
+    40% { transform: rotate(-10deg); }
+    60% { transform: rotate(10deg); }
+    80% { transform: rotate(-5deg) ;}
+    100% { transform: rotate(0deg); }
+}
+
+/* Main Content */
+main {
+    padding: 2rem;
+    min-height: 70vh;
 }
 
 /* Footer */
@@ -48,49 +108,7 @@ footer {
     background-color: #7cb342;
     color: white;
     padding: 1rem;
-    margin-top: 3rem;
-}
-
-/* Inventory Tracker */
-form {
-    margin: 1rem 0;
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-form input, form button {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
-
-form button {
-    background-color: #7cb342;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-form button:hover {
-    background-color: #689f38;
-}
-
-table {
-    width: 90%;
-    margin: 1rem auto;
-    border-collapse: collapse;
     text-align: center;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
 }
 
-th, td {
-    border-bottom: 1px solid #ccc;
-    padding: 0.5rem;
-}
-
-.expiring {
-    color: red;
-    font-weight: bold;
-}

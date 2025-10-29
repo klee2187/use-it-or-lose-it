@@ -1,0 +1,53 @@
+@import url('style.css');
+
+form {
+    margin: 1rem 0;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+input, select {
+    padding: 0.5rem;
+    border: 1px solid #c5e1a5;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #7cb342;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: backgroud-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #558b2f;
+}
+
+table {
+    margin: 1rem auto;
+    border-collapse: collapse;
+    width: 80%;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+th {
+    background-color: #7cb342;
+    color: white;
+    padding: 0.75rem;
+}
+
+td {
+    border-bottom: 1px solid #c5e1a5;
+    padding: 0.75rem;
+}
+
+tr:nth-child(even) {
+    background-color: #f4f6f1;
+}

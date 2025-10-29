@@ -5,41 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Use It or Lose It</title>
     <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/main.js"></script>
 </head>
 <body>
     <header>
-        <nav>
-            <select id="navDropdown">
-                <option value="">Navigate to...</option>
-                <option value="inventory">Inventory Tracker</option>
-                <option value="recipes">Recipe Guide</option>
-                <option value="budget">Budget Calculator</option>
-                <option value="goals">Food Storage Goals</option>
-                <option value="calendar">Calendar</option>
-            </select>
+        <h1>Use It or Lose It</h1>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="inventory.html">Inventory</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+            </ul>
         </nav>
     </header>
+
+    <!-- Mascot Section-->
+     <section id="mascot-section">
+        <div id="mascot">
+            <img src="images/mascot.png" alt="Use It or Lose It Mascot" id="mascotImg">
+            <p id="mascotSpeech">Hey there! Let's keep your food fresh and organized </p> 
+        </div>
+     </section>
+
+     <!-- Mascot Notification Pop-up -->
+      <div id="mascotNotification" class="notification hidden">
+        <img src="images/mascot.png" alt="Mascot" class="notif-mascot">
+        <div class="notif-message"></div>
+      </div> 
     
     <main>
-       <section class="intro">
-        <img src="images/mascot" alt="Mascot" class="mascot">
-        <h2>Welcome to your Food Storage Tracker</h2>
-        <p>
-            Keep track of your food inventory, find recipes, and build up your food storage.
-        </p>
-       </section>
-
-       <section id="content">
-        <p>Select a feature from the dropdown above to get started.</p>
-       </section>
+        <h2>Welcome to Use It or Lose It!</h2>
+        <p>Track your food storage, set your budget, and never let your food go to waste.</p>
     </main>
 
     <footer>
         <p>&copy; 2025 Use It or Lose It | Created by Kristen Lee & Jacquelyn Kulmus</p>
     </footer>
-
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
-    <script src="js/inventory.js"></script>
+    
 </body>
 </html>
