@@ -1,44 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipes | Use It or Lose It</title>
-    <link rel="stylesheet" href="css/recipe.css">
-    <script defer src="js/recipes.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipes - Use It or Lose It</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/recipes.css" />
 </head>
 <body>
     <header>
         <h1>Use It or Lose It</h1>
-        <nav class="navbar">
+        <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="inventory.html">Inventory</a></li>
                 <li><a href="recipes.html" class="active">Recipes</a></li>
                 <li><a href="budget.html">Budget</a></li>
+                <li><a href="profile.html">Profile</a></li>
                 <li><a href="calendar.html">Calendar</a></li>
             </ul>
         </nav>
     </header>
-
     <section id="mascot-section">
-        <div id="mascot">
-            <img src="images/mascot.png" alt="Use It or Lose It Mascot" id="mascotImg">
-            <p id="mascotSpeech">Let's cook something tasty from your pantry</p>
+        <div id="mascot-wrapper">
+            <img src="images/mascot.jpg" alt="Mascot" id="mascotImg" class="mascot">
+            <div class="speech-bubble">
+                🍽️ Time to cook! Search by ingredients you need to use up!
+            </div>
         </div>
     </section>
-
     <main>
-        <h2>Find Recipes</h2>
-        <div id="recipe-search">
-            <input type="text" id="searchInput" placeholder="Search for a recipe...">
-            <button id="searchBtn">Search></button>
-        </div>
-        <div id="recipe-results"></div>
-    </main>
+        <section class="recipes-box">
+            <h2>Random Recipe Idea</h2>
+            <div id="randomRecipe" class="recipe-card">
+                Loading random recipe...
+            </div>
+            <button id="newRandomBtn">Show Another Recipe</button>
+        </section>
+        <section class="recipes-box">
+            <h2>All Recipes</h2>
+            <div class="recipe-search">
+                <input type="text" id="searchInput" placeholder="Search by name or ingredient...">
+            </div>
+            <div class="recipe-filter">
+                <select id="typeFilter">
+                    <option value="all">All Types</option>
+                </select>
+            </div>
+            <div id="recipesList" class="recipes-container">
 
+            </div>
+        </section>
+        <section class="recipes-box">
+            <h2>❤️ Favorite Recipes</h2>
+            <div id="favoriteRecipes" class="recipes-container">
+                <p>Your favorite recipes will appear here.</p>
+            </div>
+        </section>
+    </main>
     <footer>
         <p>&copy; 2025 Use It or Lose It</p>
     </footer>
+    <script src="js/recipes.js"></script>
 </body>
 </html>
