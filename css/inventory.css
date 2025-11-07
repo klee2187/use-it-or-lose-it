@@ -1,53 +1,112 @@
-@import url('style.css');
+/* Inventory Box Container */
+.inventory-box {
+    background-color: var(--white);
+    border: 2px solid var(--light-green);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 700px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    text-align: left;
+}
 
-form {
-    margin: 1rem 0;
+.inventory-box h2, .inventory-box h3 {
+    text-align: center;
+}
+
+/* Inventory Form */
+.inventory-box form .form-group {
+    margin-bottom: 15px;
     display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
 }
 
-input, select {
-    padding: 0.5rem;
-    border: 1px solid #c5e1a5;
+.inventory-box form label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.inventory-box form input,
+.inventory-box form select {
+    padding: 8px 10px;
     border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
 }
 
-button {
-    background-color: #7cb342;
-    color: white;
+.inventory-box form button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: var(--green);
+    color: var(--white);
+    font-weight: bold;
     border: none;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
     cursor: pointer;
-    transition: backgroud-color 0.3s ease;
+    transition: background 0.3s ease;
 }
 
-button:hover {
-    background-color: #558b2f;
+.inventory-box form button:hover {
+    background-color: var(--dark-green);
 }
 
-table {
-    margin: 1rem auto;
-    border-collapse: collapse;
-    width: 80%;
-    background: #ffffff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-radius: 8px;
+/* Inventory List */
+#inventoryList {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
 }
 
-th {
-    background-color: #7cb342;
+#inventoryList li {
+    background-color: var(--light-green);
+    border: 2px solid var(--green);
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    font-weight: 500;
+    transition: transform 0.2s ease;
+}
+
+#inventoryList li:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+
+/* Color-coded by food type */
+#inventoryList li[data-location="pantry"] {
+    background-color: #e0f7fa;
+    border-color: #00acc1;
+}
+
+#inventoryList li[data-location="fridge"] {
+    background-color: #e8f5e9;
+    border-color: #43a047;
+}
+
+#inventoryList li[data-location="freezer"] {
+    background-color: #e1f5fe;
+    border-color: #0288d1;
+}
+
+/* Delete button for inventory items */
+.delete-btn {
+    background-color: #ff5252;
+    border: none;
     color: white;
-    padding: 0.75rem;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
 }
 
-td {
-    border-bottom: 1px solid #c5e1a5;
-    padding: 0.75rem;
-}
-
-tr:nth-child(even) {
-    background-color: #f4f6f1;
+.delete-btn:hover {
+    background-color: #e53935;
 }
