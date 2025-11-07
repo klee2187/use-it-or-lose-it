@@ -1,59 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory | Use It or Lose It</title>
-    <link rel="stylesheet" href="css/inventory.css">
-    <script defer src="js/inventory.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory - Use It or Lose It</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/inventory.css" />
 </head>
 <body>
     <header>
-    <h1>Use It or Lose It</h1>
-    <nav class="navbar">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="inventory.html" class="active">Inventory</a></li>
-        <li><a href="recipes.html">Recipes</a></li>
-        <li><a href="budget.html">Budget</a></li>
-        <li><a href="calendar.html">Calendar</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Mascot Section -->
-   <section id="mascot-section">
-    <div id="mascot">
-        <img src="images/mascot.png" alt="Use It or Lose It Mascot" id="mascotImg">
-        <p id="mascotSpeech">Let's keep track of your pantry</p>
-    </div>
-   </section>
-
-   <main>
-    <h2>Inventory Tracker</h2>
-    <form id="inventoryForm">
-        <input type="text" id="itemName" placeholder="Item name" required>
-        <input type="number" id="itemQty" placeholder="Quantity" min="1" required>
-        <input type="date" id="itemExp" required>
-        <button type="submit">Add Item</button>
-    </form>
-
-    <table id="inventoryTable">
-        <thead>
-            <tr>
-                <th>Item</th>
-                <th>Quantity</th>
-                <th>Expiration Date</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-   </main>
-
-   <footer>
-    <p> &copy; 2025 Use It or Lose It</p>
-   </footer>
-
+        <h1>Use It or Lose It</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="inventory.html" class="active">Inventory</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="mascot-section">
+        <div id="mascot-wrapper">
+            <img src="images/mascot.jpg" alt="Mascot" id="mascotImg" class="mascot">
+            <div class="speech-bubble">
+                📦 **Keep track!** Every item counts toward your goal!
+            </div>
+        </div>
+    </section>
+    <main>
+        <section class="inventory-box">
+            <h2>Add New Item</h2>
+            <form id="inventoryForm">
+                <div class="form-group">
+                    <label for="itemName">Item Name</label>
+                    <input type="text" id="itemName" required />
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" min="1" required />
+                </div>
+                <div class="form-group">
+                    <label for="expiration">Expiration Date</label>
+                    <input type="date" id="expiration" required /> 
+                </div>
+                <div class="form-group">
+                    <label for="itemType">Storage Location</label>
+                    <select id="itemType" required>
+                        <option value="fridge">Fridge</option>
+                        <option value="freezer">Freezer</option>
+                        <option value="pantry">Pantry</option>
+                    </select>
+                </div>
+                <button type="submit">Add Item</button>
+            </form>
+        </section>
+        <section class="inventory-box">
+            <h2>Current Inventory</h2>
+            <ul id="inventoryList">
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Use It or Lose It</p>
+    </footer>
+    <script src="js/inventory.js"></script>
 </body>
 </html>
