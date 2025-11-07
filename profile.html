@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile - Use It or Lose It</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/profile.css" />
+</head>
+<body>
+    <header>
+        <h1>Use It or Lose It</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="inventory.html">Inventory</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="profile.html" class="active">Profile</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="mascot-section">
+        <div id="mascot-wrapper">
+            <img src="images/mascot.jpg" alt="Mascot" id="mascotImg" class="mascot">
+            <div class="speech-bubble">
+                Tell me about yourself!
+            </div>
+        </div>
+    </section>
+    <main>
+        <section class="profile-section">
+            <h2>Update Profile</h2>
+            <form id="profileForm">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" required />
+                <label for="email">Email</label>
+                <input type="email" id="email" required />
+                <label for="householdSize">Household Size</label>
+                <input type="number" id="householdSize" min="1" required /> 
+                <label for="foodGoal">Food Waste Goal (%)</label> 
+                <input type="number" id="foodGoal" min="0" max="100" required />
+                <button type="submit">Save Profile</button>
+            </form>
+        </section>
+        <section class="profile-section hidden" id="profileDisplay">
+            <h2>Current Profile</h2>
+            <p><strong>Name:</strong> <span id="displayName"></span></p>
+            <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+            <p><strong>Household Size:</strong> <span id="displayHousehold"></span></p> 
+            <p><strong>Waste Goal:</strong> <span id="displayGoal"></span>%</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Use It or Lose It</p>
+    </footer>
+    <script src="js/profile.js"></script>
+</body>
+</html>
