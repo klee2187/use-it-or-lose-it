@@ -2,6 +2,7 @@
     "Recipes":[{
         "id": 1,
         "name": "Cheesy Chile Relleno Casserole",
+        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/10/chile-relleno-casserole-recipe.jpg",
         "prepTime": "15 miutes",
         "cookTime": "50 minutes",
         "additionalTime": "5 minutes",
@@ -40,6 +41,7 @@
     {
         "id": 2,
         "name": "Banana Smoothie with Ice",
+        "image": "data/images/banana-smoothie-with-ice.jpg",
         "prepTime": "5 minutes",
         "totalTime": "5 minutes",
         "course": "Breakfast",
