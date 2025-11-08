@@ -1,48 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Use It or Lose It</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script defer src="js/main.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Use It or Lose It</title>
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
     <header>
         <h1>Use It or Lose It</h1>
-        <nav class="navbar">
+        <nav>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="inventory.html">Inventory</a></li>
                 <li><a href="recipes.html">Recipes</a></li>
                 <li><a href="budget.html">Budget</a></li>
+                <li><a href="profile.html">Profile</a></li>
                 <li><a href="calendar.html">Calendar</a></li>
             </ul>
         </nav>
     </header>
-
-    <!-- Mascot Section-->
-     <section id="mascot-section">
-        <div id="mascot">
-            <img src="images/mascot.png" alt="Use It or Lose It Mascot" id="mascotImg">
-            <p id="mascotSpeech">Hey there! Let's keep your food fresh and organized </p> 
+    <section id="mascot-section">
+        <div id="mascot-wrapper">
+            <img src="images/temp mascot.jpg" alt="Mascot" id="mascotImg" class="mascot">
+            <div id="mascotSpeech" class="speech-bubble">
+                Hey there! Let's keep your food fresh and organized
+            </div>
         </div>
-     </section>
-
-     <!-- Mascot Notification Pop-up -->
-      <div id="mascotNotification" class="notification hidden">
-        <img src="images/mascot.png" alt="Mascot" class="notif-mascot">
-        <div class="notif-message"></div>
-      </div> 
-    
+    </section>
     <main>
-        <h2>Welcome to Use It or Lose It!</h2>
-        <p>Track your food storage, set your budget, and never let your food go to waste.</p>
+        <div class="centered-container">
+            <h2>Welcome to Use It or Lose It. Your Waste Reducing App!</h2>
+            <div id="alertSection" class="alert hidden">
+                <div id="alertMessage"></div>
+            </div>
+            <section class="tip-section">
+                <h2>💡 Recipe Highlight</h2>
+                <div class="tip-card" id="tipContent">
+                    Error loading recipe highlight.
+                </div>
+            </section>
+            <section class="features">
+                <h3>Quick Links</h3>
+                <div class="feature-card-container">
+                    <div class="feature-card"><a href="inventory.html">Manage Inventory</a></div>
+                    <div class="feature-card"><a href="calendar.html">Check Expirations</a></div>
+                </div>
+            </section>
+        </div>
     </main>
-
-    <footer>
-        <p>&copy; 2025 Use It or Lose It | Created by Kristen Lee & Jacquelyn Kulmus</p>
-    </footer>
     
+    <footer>
+        <p>&copy; 2025 Use It or Lose It</p>
+    </footer>
+    <script src="js/tip.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>

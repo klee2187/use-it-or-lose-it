@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calendar | Use It or Lose It</title>
+    <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/calendar.css">
     <script defer src="js/calendar.js"></script>
 </head>
 <body>
     <header>
         <h1>Use It or Lose It</h1>
-        <nav class="navbar">
+        <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="inventory.html">Inventory</a></li>
                 <li><a href="recipes.html">Recipes</a></li>
                 <li><a href="budget.html">Budget</a></li>
+                <li><a href="profile.html">Profile</a></li>
                 <li><a href="calendar.html" class="active">Calendar</a></li>
             </ul>
         </nav>
     </header>
-
+    
     <section id="mascot-section">
-        <div id="mascot">
-            <img src="images/mascot.png" alt="Use It or Lose It Mascot" id="mascotImg">
-            <p id="mascotSpeech">Expiring Soon!</p>
+        <div id="mascot-wrapper">
+            <img src="images/temp mascot.jpg" alt="Mascot" id="mascotImg" class="mascot">
+            <div class="speech-bubble">
+                🗓️ Expiring soon! Time to plan a meal!
+            </div>
         </div>
     </section>
-
-    <main id="calendar-page">
+    <main>
         <h2>Food Storage Calendar</h2>
-        <div id="calendar"></div>
-        <div id="expiring-items">
-            <h3>Expiring Soon!</h3>
-            <ul id="expiringList"></ul>
+        <div class="day-headers">
+            <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
         </div>
+        <div id="calendar" class="calendar-grid"></div>
+        <p id="calendar-note" class="note">Days with expiring items will be highlighted.</p>
     </main>
-
+    
     <footer>
-        <p>&copy; 2025 Use It or Lose It </p>
+        <p>&copy; 2025 Use It or Lose It</p>
     </footer>
 </body>
 </html>

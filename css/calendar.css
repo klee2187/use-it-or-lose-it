@@ -1,58 +1,112 @@
-@import url('style.css');
-
-#calendar-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
+/* Calendar Page Specific Styles */
+main {
+    padding: 30px 20px;
+    text-align: center;
 }
 
-#calendar {
+h2 {
+    color: var(--dark-green);
+    margin-bottom: 10px;
+}
+
+/* Day Header */
+.day-headers {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 0.5rem;
+    gap: 10px;
+    padding: 0 20px;
     max-width: 700px;
-    width: 100%;
-    margin-bottom: 2rem;
-}
-
-.day {
-    background: white;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: left;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    border: 1px solid #c5e1a5;
-}
-
-.day .date {
+    margin: 0 auto 5px;
     font-weight: bold;
-    color: #558b2f;
+    color: var(--dark-green);
+    font-size: 0.9rem;
 }
 
-.day.event {
-    font-size: 0.85rem;
-    background-color: #fdd835;
-    color: #2b5d34;
-    border-radius: 5px;
-    padding: 3px 5px;
-    margin-top: 4px;
-    display: inline-block;
+/* Calendar grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    padding: 20px;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
-#expiring-items {
-    width: 80%;
-    max-width: 600px;
-    background: white;
-    padding: 1rem;
+.calendar-cell {
+    background: var(--cream);
+    border: 2px solid var(--light-green);
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 15px 0;
+    font-weight: bold;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-#expiring-items h3 {
-    color: #558b2f;
+.calendar-cell:hover {
+    background: var(--light-green);
+    transform: scale(1.05);
 }
 
-#expiringList li {
-    margin: 5px 0;
+/* Highlight expiring days */
+.calendar-cell.expiring {
+    background: var(--green);
+    color: var(--white);
+    box-shadow: 0 0 10px var(--dark-green);
+}
+
+/* Empty day placeholders */
+.calendar-cell.empty {
+    background: transparent;
+    border: none;
+    pointer-events: none; 
+}
+
+/* Tooltip for expiring items */
+.tooltip {
+    display: none;
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    color: var(--text-dark);
+    border: 1px solid var(--light-green);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.calendar-cell:hover .tooltip,
+.calendar-cell:focus .tooltip {
+    display: block;
+}
+
+.note {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    margin-top: 10px;
+}
+
+/* Responsive Layout */
+@media (max-width: 700px) {
+    .calendar-grid, .day-headers {
+        grid-template-columns: repeat(7, 1fr);
+        font-size: 0.7rem; 
+    }
+    
+    .calendar-cell {
+        padding: 8px 0;
+    }
+
+    .tooltip {
+        top: -55px;
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
 }
