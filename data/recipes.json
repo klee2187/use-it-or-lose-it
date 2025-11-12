@@ -1,5 +1,5 @@
 [{
-    "Recipes":[{
+    "recipes":[{
         "id": 1,
         "name": "Cheesy Chile Relleno Casserole",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/10/chile-relleno-casserole-recipe.jpg",
@@ -729,7 +729,7 @@
             "Greek yogurt, cottage cheese, cream cheese, mascarpone cheese for sour cream"
         ],
         "variations": [
-            "Add 1/2 pound fresh mushrooms"
+            "Add 1/2 pound fresh or canned mushrooms"
         ],
         "creator": "The Ashcroft Family Table"
     }]
