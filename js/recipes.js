@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p><strong>Instructions:</strong> ${recipe.instructions}</p>
                 
                 <h4>Ingredients:</h4>
-                <ul>${recipe.ingredients}</ul>
+                <ul>${ingredientList}</ul>
                 
                 ${isFavoriteSection 
                     ? `<button class="remove-fav" data-id="${recipe.id}">Remove Favorite</button>`
