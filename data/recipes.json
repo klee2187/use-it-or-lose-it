@@ -1,8 +1,10 @@
-[{
-    "recipes":[{
+{
+    "recipes": [
+        {
         "id": 1,
         "name": "Cheesy Chile Relleno Casserole",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/10/chile-relleno-casserole-recipe.jpg",
+        "description": "Chile Relleno Casserole is full of whole green chiles, a fluffy egg batter, and lots of cheesy goodness. It's an easy breakfast with flavors the entire family will love!",
         "prepTime": "15 miutes",
         "cookTime": "50 minutes",
         "additionalTime": "5 minutes",
@@ -42,12 +44,15 @@
         "id": 2,
         "name": "Banana Smoothie with Ice",
         "image": "data/images/banana-smoothie-with-ice.jpg",
+        "description": "This Banana Smoothie with ice features fresh or frozen bananas, creamy yogurt, and sweet brown sugar. It's a tasty and refreshing drink for your breakfast or brunch!",
         "prepTime": "5 minutes",
+        "cookTime": "N/A",
+        "additionalTime": "N/A",
         "totalTime": "5 minutes",
         "course": "Breakfast",
         "cuisine":"American",
         "servings": 4,
-        "servingSize": "",
+        "servingSize": "1 serving",
         "calories": "281 kcal",
         "ingredients": [
             "4-5 ice cubes",
@@ -65,9 +70,7 @@
         ],
         "substitutions": [
             "Honey (1/2 cup) for brown sugar",
-            "Ice cream (2 scoops) and milk (for thinning to desired consistency) for yogurt"
-        ],
-        "variations": [
+            "Ice cream (2 scoops) and milk (for thinning to desired consistency) for yogurt",
             "Add peanut butter and oats for more protein."
         ],
         "creator":"The Ashcroft Family Table"
@@ -76,6 +79,7 @@
         "id": 3,
         "name": "Fluffy Blueberry Muffins from Scratch",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/12/fluffy-blueberry-muffins-1.jpg",
+        "description": "You’ll never go back to box mixes once you try these fluffy blueberry muffins. They’re homemade, only 8 ingredients, and made completely from scratch!",
         "prepTime": "10 minutes",
         "cookTime": "24 minutes",
         "additionalTime": "5 minutes",
@@ -115,8 +119,10 @@
         "id": 4,
         "name": "Easy German Oven Pancakes",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/01/german-oven-pancakes-1.jpg",
+        "description": "German Oven Pancakes feature a vanilla cinnamon batter that’s baked in a buttered dish and puffs while in the oven. It’s a delicious twist on the traditional pancake!",
         "prepTime": "10 minutes",
         "cookTime": "20 minutes",
+        "additionalTime": "N/A",
         "totalTime": "30 minutes",
         "course": "Breakfast",
         "cuisine": "American",
@@ -139,34 +145,36 @@
             "4. Carefully pour the batter into the buttered pan.",
             "5. Bake for 20 minutes or until golden brown."
         ],
+        "substitutions": [
+            "Ghee (1:1); coconut oil (1:1), olive oil (3/4 of the amount of called for butter), margarine (1:1), pureed banana, avacado, pumpkin (1:1), applesauce (1:1) for butter",
+            "Powdered milk (mix 1 1/2 cups with 1 1/4 cups water), half and half (1:1), dairy free milks (1:1) for evaporated milk"
+        ],
         "creator": "The Ashcroft Family Table"
     },
     {
         "id": 5,
         "name": "The Easiest Braided Raspberry Pastry",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/10/raspberry-pastry-1-1024x1536.jpg",
+        "description": "This braided Raspberry Pastry features sweet jam, a sugar glaze, and a pancake mix pastry. It’s a delicious breakfast treat without all of the fuss of traditional dough.",
         "prepTime":"15 miutes",
         "cookTime": "15 minutes",
+        "additionalTime": "N/A",
         "totalTime": "30 minutes",
         "course": "Breakfast",
         "cuisine": "American",
         "servings": 10,
         "servingSize": "1 piece",
         "calories": "235 kcal",
-        "ingredients": {
-            "pastry":[
-                "4 ounces cream cheese, cold",
-                "4 tablespoons butter, cold",
-                "2 cups pancake mix",
-                "1/4 cup milk",
-                "1/2 cup jam"
-            ],
-            "glaze": [
-                "1 cup powdered sugar",
-                "1 tablespoon milk",
-                "1/2 teaspoon vanilla"
-            ]
-        },
+        "ingredients": [
+            "4 ounces cream cheese, cold",
+            "4 tablespoons butter, cold",
+            "2 cups pancake mix",
+            "1/4 cup milk",
+            "1/2 cup jam",
+            "1 cup powdered sugar",
+            "1 tablespoon milk",
+            "1/2 teaspoon vanilla"
+        ],
         "instructions": [
             "1. Preheat oven to 425 degrees and grease a half sheet pan or line with parchment paper.",
             "2. In a large bowl, cut cream cheese and cold butter into pancake mix with a pastry cutter (or sturdy fork) until the mixture resembles crumbs.", 
@@ -189,8 +197,10 @@
         "id": 6,
         "name": "4-Ingredient Pumpkin Pancakes With Pancake Mix",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/11/pumpkin-pancakes-with-pancake-mix.jpg",
+        "description": "You’ll only need 4 ingredients to make these light and fluffy Pumpkin Pancakes with Pancake Mix. They taste like fall and your kids will love the bright orange color!",
         "prepTime":"5 minutes",
         "cookTime": "20 minutes",
+        "additionalTime": "N/A",
         "totalTime": "25 minutes",
         "course": "Breakfast",
         "cuisine": "American",
@@ -211,15 +221,18 @@
             "5. Turn pancakes over and cook for 2 minutes longer or until the other side is done."
         ],
         "substitutions": [
-            "Cinnamon (1 1/2 teaspoons) and ginger (1/2 teaspoon for pumpkin pie spice"
+            "Cinnamon (1 1/2 teaspoons) and ginger (1/2 teaspoon for pumpkin pie spice",
+            "Bisquick (1:1) for pancake mix"
         ]
     },
     {
         "id": 7,
         "name": "Healthy Crustless Broccoli and Ham Quiche",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/10/quiche-with-ham-and-broccoli.jpg",
+        "description": "This Crustless Broccoli and Ham Quiche features a delicious egg filling and is topped with melty cheese. It’s low-carb and a healthy option for your breakfast or brunch.",
         "prepTime": "10 minutes",
         "cookTime": "30 minutes",
+        "additionalTime": "N/A",
         "totalTime": "40 minutes",
         "course": "Breakfast",
         "cuisine": "American",
@@ -258,8 +271,10 @@
         "id": 8,
         "name": "The Best Monte Cristo Sliders",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/02/monte-cristo-sliders-1024x1536.jpg",
+        "description": "These sliders are the party version of the popular sandwich made with turkey, ham, Swiss, and powdered sugar. I’ve adjusted the recipe for maximum flavor to make these the best Monte Cristo Sliders ever!",
         "prepTime":"15 miutes",
         "cookTime":"30 minutes",
+        "additionalTime": "N/A",
         "totalTime": "45 minutes",
         "course": "Lunch",
         "cuisine": "American",
@@ -292,7 +307,8 @@
             "11. Allow the rolls to cool slightly and then dust with powdered sugar. Use a metal spatula to cut the sliders apart and serve with warmed raspberry jam."
         ],
         "substitutions": [
-            "Any pre-packaged dinner rolls, homemade rolls, off brand hawaiian rolls for King's Hawaiian Dinner Rolls"
+            "Any pre-packaged dinner rolls, homemade rolls, off brand hawaiian rolls for King's Hawaiian Dinner Rolls",
+            "Aioli for mayonnaise"
         ],
         "creator": "The Ashcroft Family Table"
     },
@@ -300,31 +316,29 @@
         "id": 9,
         "name": "Pumpkin Chocolate Chip Skillet Pancake",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/08/pumpkin-chocolate-chip-skillet-pancake-1024x1536.jpg",
+        "description": "This Pumpkin Chocolate Chip Skillet Pancake is baked in a cast iron skillet and topped with a delicious cream cheese whipped cream. It’s a yummy festive breakfast that’s perfect for fall!",
         "prepTime": "5 minutes",
         "cookTime": "30 minutes",
+        "additionalTime": "N/A",
         "totalTime": "35 minutes",
         "course": "Breakfast",
         "cuisine": "American",
         "servings": 10,
         "servingSize": "1 piece",
         "calories": "271 kcal",
-        "ingredients": {
-            "pancake": [
-                "2 cups pancake mix",
-                "1/2 cup pumpkin puree",
-                "1 teaspoon pumpkin pie spice",
-                "1 teaspoon vanilla",
-                "1 1/4 cup milk",
-                "1/2 cup chocolate chips",
-                "additional pumpkin pie spice and cinnamon sticks, if desired"
-            ],
-            "cream": [
-                "4 ounces cream cheese, cold",
-                "1 cup heavy whipping cream",
-                "1/2 cup powdered sugar",
-                "1/2 teaspoon vanilla"
-            ]
-        },
+        "ingredients": [
+            "2 cups pancake mix",
+            "1/2 cup pumpkin puree",
+            "1 teaspoon pumpkin pie spice",
+            "1 teaspoon vanilla",
+            "1 1/4 cup milk",
+            "1/2 cup chocolate chips",
+            "additional pumpkin pie spice and cinnamon sticks, if desired",
+            "4 ounces cream cheese, cold",
+            "1 cup heavy whipping cream",
+            "1/2 cup powdered sugar",
+            "1/2 teaspoon vanilla"
+        ],
         "instructions": [
             "1. Preheat oven to 350 degrees.",
             "2. Add pancake mix, pumpkin puree, pumpkin pie spice, vanilla, and milk to a medium mixing bowl. Gently whisk until just combined. Do not overmix.",
@@ -346,6 +360,7 @@
         "id": 10,
         "name": "Butterscotch Overnight Sticky Buns",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/03/overnight-butterscotch-rolls.jpg",
+        "description": "These Butterscotch Overnight Sticky Buns are soft, pull-apart rolls covered in a delicious sugar glaze and topped with pecans. This yummy dish is perfect for any family gathering or holiday brunch.",
         "prepTime": "10 minutes",
         "cookTime":"30 minutes",
         "additionalTime": "8 hours",
@@ -377,7 +392,7 @@
         ],
         "substitutions": [
             "Any frozen rolls",
-            "Chopped pecans for wholw pecans"
+            "Chopped pecans for whole pecans"
         ],
         "creator": "The Ashcroft Family Table"
     },
@@ -385,6 +400,7 @@
         "id": 11,
         "name": "Cherry Chocolate Chip Muffins",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/02/cherry-muffins-1024x1536.jpg",
+        "description": "These yummy Cherry Chocolate Chip Muffins are made with maraschino cherries and topped with a pretty pink glaze. They’re perfect for Valentine’s Day!",
         "prepTime": "10 minutes",
         "cookTime": "18 minutes",
         "additionalTime": "10 minutes",
@@ -394,23 +410,19 @@
         "servings": 12,
         "servingSize": "1 regular or 2 mini",
         "calories": "237 kcal",
-        "ingredients": {
-            "muffins": [
-                "1 egg",
-                "1/2 cup milk",
-                "1/4 cup avocado oil",
-                "1 1/2 cups flour",
-                "1/2 cup granulated sugar",
-                "2 teaspoons baking powder",
-                "1/2 teaspoon salt",
-                "10 ounces maraschino cherries",
-                "3/4 cup miniature chocolate chips"
-            ],
-            "glaze": [
-                "1 cup powdered sugar",
-                "2-3 tablespoons reserved cherry juice"
-            ]
-        },
+        "ingredients": [
+            "1 egg",
+            "1/2 cup milk",
+            "1/4 cup avocado oil",
+            "1 1/2 cups flour",
+            "1/2 cup granulated sugar",
+            "2 teaspoons baking powder",
+            "1/2 teaspoon salt",
+            "10 ounces maraschino cherries",
+            "3/4 cup miniature chocolate chips",
+            "1 cup powdered sugar",
+            "2-3 tablespoons reserved cherry juice"
+        ],
         "instructions": [
             "1. Preheat your oven to 375 degrees.",
             "2. Whisk egg, milk, and vegetable oil together in a medium mixing bowl.",
@@ -425,9 +437,7 @@
         ],
         "substitutions": [
             "Frozen whole cherries or fresh cherries for maraschino cherries",
-            "Regular sized chocolate chips for mini chocolate chips"
-        ],
-        "variations": [
+            "Regular sized chocolate chips for mini chocolate chips",
             "Add half a cup of chopped pecans or walnuts if you want to add nuts"
         ],
         "creator": "The Ashcroft Family Table"
@@ -436,7 +446,10 @@
         "id": 12,
         "name": "Grape and Apple Chicken Salad",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/01/grape-and-apple-chicken-salad.jpg",
+        "description": "This grape and apple chicken salad is a quick and easy meal that features a creamy dressing, delicious fruit, savory chicken, and an extra special crunch. It’s the best chicken salad recipe ever!",
         "prepTime": "10 minutes",
+        "cookTime": "N/A",
+        "additionalTime": "N/A",
         "totalTime": "10 minutes",
         "course": "Lunch",
         "cuisine": "American",
@@ -463,9 +476,7 @@
             "Chicken, shrimp, tuna, crab, or spam for ham",
             "Cashews, candied pecans, or no nuts in place of almonds",
             "Greek yogurt for mayonnaise",
-            "Croissants, ciabatta rolls, wheat bread, lettuce leaves, sliced cucumbers for buns"
-        ],
-        "variations": [
+            "Croissants, ciabatta rolls, wheat bread, lettuce leaves, sliced cucumbers for buns",
             "Add celery for a crunch."
         ],
         "creator": "The Ashcroft Family Table"
@@ -474,8 +485,10 @@
         "id": 13,
         "name": "Coconut Cilantro Chicken Soup",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/04/coconut-chicken-soup-1024x1536.jpg",
+        "description": "Coconut Cilantro Chicken Soup features a creamy broth, flavorful spices, shredded chicken, and white rice. This tasty soup is as easy to make as it is delicious!",
         "prepTime": "5 minutes",
         "cookTime": "15 minutes",
+        "additionalTime": "N/A",
         "totalTime": "20 minutes",
         "course": "Lunch",
         "cuisine": "Thai",
@@ -506,9 +519,7 @@
             "Turkey or canned chicken for chicken",
             "Vegetable stock, chicken bouillon, coconut milk for chicken broth",
             "Parsley (1:1), Thai basil (1:1), lemon or lime (add to taste) for cilantro",
-            "Ghee (1:1); coconut oil (1:1), olive oil (3/4 of the amount of called for butter), margarine (1:1) for butter"
-        ],
-        "variations": [
+            "Ghee (1:1); coconut oil (1:1), olive oil (3/4 of the amount of called for butter), margarine (1:1) for butter",
             "Add 1/2 teaspoon curry powder",
             "Add 1/4 teaspoon chili powder",
             "Add Chopped jalapeno",
@@ -521,7 +532,10 @@
         "id": 14,
         "name": "Healthy Turkey Lasagna Soup",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/02/lasagna-soup-1.jpg",
+        "description": "This healthy Turkey Lasagna Soup recipe features browned ground turkey, tender noodles, a flavorful broth, and a little cheese. It’s everything you love about traditional lasagna without all of the calories!",
+        "prepTime": "N/A",
         "cookTime": "25 minutes",
+        "additionalTime": "N/A",
         "totalTime": "25 minutes",
         "course": "Lunch",
         "cuisine": "Italian",
@@ -559,7 +573,10 @@
         "id": 15,
         "name": "The Easiest Creamy Taco Soup",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/02/creamy-taco-soup-recipe-1024x1536.jpg",
+        "description": "This delicious creamy taco soup features a creamy broth, ground beef, beans, vegetables, and plenty of taco spice. It’s so easy to make and ready in just 30 minutes!",
+        "prepTime": "N/A",
         "cookTime":"30 minutes",
+        "additionalTime":"N/A",
         "totalTime":"30 minutes",
         "course": "Lunch",
         "cuisine": "Mexican",
@@ -586,9 +603,7 @@
             "Ground turkey or leftover taco meat for ground beef",
             "Kidney beans for pinto or black beans",
             "Vegetable stock, chicken bouillon, coconut milk for chicken broth",
-            "Marscapone, cottage cheese, greek yogurt for cream cheese"
-        ],
-        "variations": [
+            "Marscapone, cottage cheese, greek yogurt for cream cheese",
             "Add 1 1/2 cups cooked rice or noodles after adding cream cheese",
             "Suggested toppings: tortilla strips, shredded cheese, lime juice, chopped avocado, cilantro, and sour cream"
         ],
@@ -598,28 +613,26 @@
         "id": 16,
         "name": "Melty Kalua Pork Sandwiches",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2023/03/kalua-pork-sandwiches.jpg",
+        "description": "If you’re a fan of the iconic plate lunch, you won’t want to miss these Melty Kalua Pork Sandwiches. This mouth-watering twist on a classic will transport you straight to the islands!",
         "prepTime":"10 minutes",
         "cookTime": "8 hours 10 minutes",
+        "additionalTime": "N/A",
         "totalTime": "8 hours 20 minutes",
         "course": "Lunch",
         "cuisine": "American",
         "servings": 6,
         "servingSize": "1 Sandwich",
         "calories": "661 kcal",
-        "ingredients": {
-            "kaluaPork": [
-                "4-6 pound pork shoulder",
-                "1 Tablespoon liquid smoke",
-                "2-3 teaspoons Himalayan pink salt"
-            ],
-            "kaluaSandwich": [
-                "6 hoagie buns",
-                "36 ounces kalua pork",
-                "12 slices provolone cheese",
-                "1 cup katsu sauce",
-                "3 cups shredded cabbage"
-            ]
-        },
+        "ingredients": [
+            "4-6 pound pork shoulder",
+            "1 Tablespoon liquid smoke",
+            "2-3 teaspoons Himalayan pink salt",
+            "6 hoagie buns",
+            "36 ounces kalua pork",
+            "12 slices provolone cheese",
+            "1 cup katsu sauce",
+            "3 cups shredded cabbage"
+        ],
         "instructions": [
             "1. Pat pork shoulder dry with paper towels and then pierce all over using a fork.",
             "2. Place the pork in slow cooker and pour liquid smoke and Himalayan pink salt over the pork.",
@@ -632,9 +645,7 @@
         ],
         "substitutions": [
             "Swiss or colby jack for provolone",
-            "Red hawaiian salt for Himalayan Pink Salt"
-        ],
-        "variations": [
+            "Red hawaiian salt for Himalayan Pink Salt",
             "Toast the bread for a crunch",
             "Add pineapple rings on top of cheese for a sweet element"
         ],
@@ -644,8 +655,10 @@
         "id": 17,
         "name": "Easy Crock Pot Minestrone Soup",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/03/crock-pot-minestrone-soup-1024x1536.jpg",
+        "description": "This Crock Pot Minestrone Soup features tender vegetables, pasta, and beans in a flavorful seasoned broth. With a shorter ingredient list and the use of frozen vegetables, this will be the easiest minestrone soup you’ve ever made!",
         "prepTime": "10 minutes",
         "cookTime": "4 hours",
+        "additionalTime": "N/A",
         "totalTime": "4 hours 10 minutes",
         "course": "Lunch",
         "cuisine": "Italian",
@@ -674,9 +687,7 @@
         ],
         "substitutions": [
             "Use fresh or frozen veggies",
-            "Any small pasta shapes (ditalini, shells, wagon wheels) for macaroni"
-        ],
-        "variations": [
+            "Any small pasta shapes (ditalini, shells, wagon wheels) for macaroni",
             "Add Sun-dried tomato pesto",
             "Add Chopped celery",
             "Add Bay leaves",
@@ -697,8 +708,10 @@
         "id": 18,
         "name": "The Easiest Creamy Chicken Noodle Soup",
         "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/01/easy-creamy-chicken-noodle-soup-3-1024x1536.jpg",
+        "description": "This Creamy Chicken Noodle Soup features a creamy broth, tender chicken, and savory vegetables. It’s incredibly easy to make and only has 8 ingredients!",
         "prepTime":"5 minutes",
         "cookTime": "40 minutes",
+        "additionalTime": "N/A",
         "totalTime": "45 minutes",
         "course": "Lunch",
         "cuisine": "American",
@@ -726,12 +739,10 @@
         "substitutions": [
             "Cream of mushroom soup, cream of celery soup, cream of shrimp, greek yogurt for cream of chicken soup",
             "Powdered milk (mix 1 1/2 cups with 1 1/4 cups water), half and half (1:1), dairy free milks (1:1) for evaporated milk",
-            "Greek yogurt, cottage cheese, cream cheese, mascarpone cheese for sour cream"
-        ],
-        "variations": [
+            "Greek yogurt, cottage cheese, cream cheese, mascarpone cheese for sour cream",
             "Add 1/2 pound fresh or canned mushrooms"
         ],
         "creator": "The Ashcroft Family Table"
     }]
 
-}]
+}

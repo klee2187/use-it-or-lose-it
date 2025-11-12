@@ -86,12 +86,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             card.innerHTML = `
                 <h3>${recipe.name}</h3>
-                <p><strong>Type:</strong> ${recipe.type}</p>
+                <img src=${recipe.image} alt="photo of the prepared recipe">
+                <p>${recipe.description}</p>
+                <p><strong>Type:</strong> ${recipe.course}</p>
                 <p><strong>Prep Time:</strong> ${recipe.prepTime}</p>
                 <p><strong>Instructions:</strong> ${recipe.instructions}</p>
                 
                 <h4>Ingredients:</h4>
-                <ul>${ingredientList}</ul>
+                <ul>${recipe.ingredients}</ul>
                 
                 ${isFavoriteSection 
                     ? `<button class="remove-fav" data-id="${recipe.id}">Remove Favorite</button>`
