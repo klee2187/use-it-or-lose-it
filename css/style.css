@@ -100,7 +100,8 @@ main {
 }
 
 .speech-bubble {
-    left: 70px; 
+    position: absolute;
+    left: 85px; 
     top: 0; 
     background-color: var(--white);
     color: var(--text-dark);
@@ -118,7 +119,7 @@ main {
     position: absolute;
     width: 0;
     height: 0;
-    left: -10px; 
+    left: -8px; 
     top: 15px;
     border: 5px solid transparent;
     border-right-color: var(--white);

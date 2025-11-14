@@ -50,6 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Render the highlight
         if (recipeHighlight) {
+            const recipeType = recipeHighlight.type ? recipeHighlight.type : 'N/A';
+            
             tipContent.innerHTML = `
                 <h3>${recipeHighlight.name}</h3>
                 <p><strong>Type:</strong> ${recipeHighlight.type}</p>
