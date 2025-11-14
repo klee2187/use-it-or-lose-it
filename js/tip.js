@@ -6,8 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('data/recipes.json').then(res => res.json()),
         Promise.resolve(JSON.parse(localStorage.getItem('inventoryItems')) || [])
     ])
+    
     .then(([recipeData, inventoryItems]) => {
-        const recipes = recipeData.recipes;
+        // Safety check 1: Ensure recipeData and recipes array exist
+        const recipes = recipeData && recipeData.recipes ? recipeData.recipes : [];
         let recipeHighlight = null;
 
         // Try to find a recipe using an item expiring in the next week
@@ -21,16 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 const daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24));
                 return daysRemaining > 0 && daysRemaining <= 7;
             })
-            .map(item => item.name.toLowerCase());
+            
+            .map(item => item.name ? item.name.toLowerCase() : null)
+            .filter(name => name); 
 
         // Find a recipe using one of those expiring ingredients
         for (const recipe of recipes) {
-            const usesExpiringItem = recipe.ingredients.some(ing => 
-                expiringItemNames.includes(ing.name.toLowerCase())
-            );
-            if (usesExpiringItem) {
+            const UsesExpiringItem = recipe.ingredients.some(ing => {
+                if (ing && ing.name) {
+                    return expiringItemNames.includes(ing.name.toLowerCase());
+                }
+                return false;
+            });
+            
+            if (UsesExpiringItem) {
                 recipeHighlight = recipe;
-                break; 
+                break
             }
         }
 
