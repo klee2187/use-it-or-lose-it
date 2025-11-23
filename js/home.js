@@ -1,76 +1,73 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Check for alerts immediately
-    checkExpirationsForAlert();
+import { initNavbarToggle, checkInventoryAlerts } from "./utils.js";
 
-    function checkExpirationsForAlert() {
-        const items = JSON.parse(localStorage.getItem('inventoryItems')) || [];
-        const alertSection = document.getElementById('alertSection');
-        const alertMessage = document.getElementById('alertMessage');
-        
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const nearExpiration = [];
-        const expired = [];
+document.addEventListener("DOMContentLoaded", () => {
+  initNavbarToggle();
 
-        items.forEach(item => {
-            const expDate = new Date(item.expiration);
-            expDate.setDate(expDate.getDate() + 1); 
-            const timeDiff = expDate.getTime() - today.getTime();
-            const daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24));
+  const recipeHighlightBox = document.querySelector(".recipe-highlight");
+  const suggestedBox = document.getElementById("suggestedRecipes");
+  const tipContent = document.getElementById("tipContent");
 
-            if (daysRemaining <= 0) {
-                expired.push(item);
-            } else if (daysRemaining <= 3) {
-                nearExpiration.push(item);
-            }
-        });
+  const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+  const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
 
-        if (expired.length > 0) {
-            showAlert('danger', expired.length, 0);
-        } else if (nearExpiration.length > 0) {
-            showAlert('warning', 0, nearExpiration.length);
-        } else {
-            showAlert('safe', 0, 0);
-        }
-    }
+  // Random Recipe Highlight
+  if (recipes.length > 0) {
+    const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
+    recipeHighlightBox.innerHTML = `
+      <h3>🍲 Recipe Highlight</h3>
+      <p><strong>${randomRecipe.name}</strong></p>
+      <p>Type: ${randomRecipe.type}</p>
+      <a href="recipes.html">Check out the full recipe on the Recipes page!</a>
+    `;
+  }
 
-    function showAlert(type, expiredCount, warningCount) {
-        const alertSection = document.getElementById('alertSection');
-        const alertMessage = document.getElementById('alertMessage');
-        
-        alertSection.classList.remove('hidden', 'danger', 'warning', 'safe', 'show');
-        alertSection.classList.add(type);
-        
-        let message = '';
+  // Suggested Recipes Based on Expiring Inventory
+  const today = new Date();
+  const expiringNames = inventory
+    .filter(item => {
+      const expDate = new Date(item.expiration);
+      const diffDays = Math.ceil((expDate - today) / (1000 * 60 * 60 * 24));
+      return diffDays > 0 && diffDays <= 5;
+    })
+    .map(item => item.name.toLowerCase());
 
-        if (type === 'danger') {
-            const itemText = expiredCount === 1 ? 'item' : 'items';
-            message = `🚨 **URGENT:** You have <span class="danger-text">${expiredCount} ${itemText}</span> that have expired! Check your inventory now!`;
-        } else if (type === 'warning') {
-            const itemText = warningCount === 1 ? 'item' : 'items';
-            message = `⚠️ **Heads Up:** <span class="warning-text">${warningCount} ${itemText}</span> are expiring in the next 3 days. Time to plan a meal!`;
-        } else if (type === 'safe') {
-            message = `✅ **Great job!** No items are critically close to expiring.`;
-        }
-        
-        alertMessage.innerHTML = message;
+  const suggested = recipes.filter(recipe => {
+    let ingredients = Array.isArray(recipe.ingredients)
+      ? recipe.ingredients
+      : typeof recipe.ingredients === "string"
+      ? recipe.ingredients.split(",").map(i => i.trim())
+      : [];
 
-        // Add close button
-        const closeBtn = document.createElement('button');
-        closeBtn.classList.add('close-btn');
-        closeBtn.innerHTML = '&times;';
-        closeBtn.addEventListener('click', () => {
-            alertSection.classList.add('hidden');
-        });
+    return ingredients.some(ing => expiringNames.includes(ing.toLowerCase()));
+  });
 
-        // Ensures no duplicate close button
-        if (!alertSection.querySelector('.close-btn')) {
-            alertSection.appendChild(closeBtn);
-        }
+  if (suggested.length > 0) {
+    suggestedBox.innerHTML = "<h3>🧑‍🍳 Suggested Recipes</h3>";
+    suggested.forEach(recipe => {
+      const card = document.createElement("div");
+      card.classList.add("recipe-card");
+      card.innerHTML = `
+        <p><strong>${recipe.name}</strong></p>
+        <p>Type: ${recipe.type}</p>
+      `;
+      suggestedBox.appendChild(card);
+    });
+  } else {
+    suggestedBox.innerHTML =
+      "<p>No suggested recipes based on expiring items.</p>";
+  }
 
-        // Slight delay to trigger transition
-        setTimeout(() => {
-            alertSection.classList.add('show');
-        }, 50);
-    }
+  // Tip of the Day
+  const tips = [
+    "Store herbs in damp paper towels to keep them fresh longer.",
+    "Use clear containers so you can see what you have.",
+    "Freeze leftovers in labeled portions for easy reuse.",
+    "Plan meals around what’s already in your fridge.",
+    "Check expiration dates weekly to avoid waste.",
+  ];
+  const tip = tips[Math.floor(Math.random() * tips.length)];
+  tipContent.querySelector("p").textContent = tip;
+
+  // Alerts
+  checkInventoryAlerts(inventory);
 });

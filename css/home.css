@@ -1,73 +1,114 @@
-/* Mascot Animation Requirement */
-#mascot-section {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 100;
+.homepage-box {
+  background-color: var(--white);
+  border: 2px solid var(--light-green);
+  border-radius: 15px;
+  padding: var(--spacing-md);
+  margin: var(--spacing-md) auto;
+  max-width: 900px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
-#mascot {
-    width: 100px;
-    height: auto;
-    text-align: center;
-    cursor: pointer;
+.homepage-box h2,
+.homepage-box h3 {
+  color: var(--green);
+  margin-bottom: var(--spacing-sm);
 }
 
-#mascotImg {
-    width: 100%;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.recipe-highlight a {
+  display: inline-block;
+  margin-top: var(--spacing-sm);
+  color: var(--accent-orange);
+  font-weight: bold;
+  text-decoration: none;
+}
+.recipe-highlight a:hover {
+  text-decoration: underline;
+  color: var(--dark-green);
 }
 
-#mascotSpeech {
-    background: var(--white);
-    border: 1px solid var(--light-green);
-    border-radius: 15px;
-    padding: 8px;
-    position: absolute;
-    bottom: 100%;
-    right: 50%;
-    transform: translateX(50%);
-    width: 150px;
-    font-size: 0.8rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    white-space: nowrap;
+.quick-links .feature-card-container {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-sm);
+}
+.feature-card {
+  background-color: var(--green);
+  color: var(--white);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.feature-card a {
+  color: var(--white);
+  text-decoration: none;
+}
+.feature-card:hover {
+  background-color: var(--dark-green);
+  transform: scale(1.05);
 }
 
-/* Keyframe for Wave Animation */
-@keyframes wave {
-    0%, 100% { transform: rotate(0deg); }
-    15% { transform: rotate(-5deg); }
-    30% { transform: rotate(10deg); }
-    45% { transform: rotate(-10deg); }
-    60% { transform: rotate(5deg); }
+.calendar-widget .calendar-placeholder {
+  background-color: #f1f8e9;
+  border: 2px dashed var(--light-green);
+  padding: var(--spacing-lg);
+  border-radius: 10px;
+  margin-top: var(--spacing-sm);
+  font-style: italic;
 }
 
-/* Alert Styling */
+#suggestedRecipes .recipe-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: var(--spacing-md);
+  margin: var(--spacing-sm) auto;
+  max-width: 600px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
 .alert {
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    background-color: #fff3cd;
-    color: #856404;
-    border: 1px solid #ffeeba;
+  padding: var(--spacing-md);
+  border-radius: 8px;
+  margin: var(--spacing-md) auto;
+  max-width: 900px;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
-/* Recipe Card Styling */
-.recipe-of-the-day {
-    text-align: center;
+.alert.safe {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+.alert.warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+.alert.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }
 
-.recipe-card a {
-    text-decoration: none;
-    color: var(--color-text);
-    display: block;
+.alert.hidden {
+  display: none;
 }
 
-.recipe-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-top: 10px;
+.alert-dismiss {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  margin-left: var(--spacing-md);
+  cursor: pointer;
+  color: inherit;
 }

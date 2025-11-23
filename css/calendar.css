@@ -1,112 +1,74 @@
-/* Calendar Page Specific Styles */
-main {
-    padding: 30px 20px;
-    text-align: center;
+.calendar-box {
+  background-color: var(--white);
+  border: 2px solid var(--light-green);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 900px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
 
-h2 {
-    color: var(--dark-green);
-    margin-bottom: 10px;
+.calendar-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.calendar-controls button {
+  padding: 8px 16px;
+  border-radius: 5px;
+  background-color: var(--green);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+}
+.calendar-controls button:hover { background-color: var(--dark-green); }
+.calendar-controls button:focus-visible {
+  outline: 2px solid var(--accent-orange);
+  outline-offset: 2px;
 }
 
-/* Day Header */
-.day-headers {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-    padding: 0 20px;
-    max-width: 700px;
-    margin: 0 auto 5px;
-    font-weight: bold;
-    color: var(--dark-green);
-    font-size: 0.9rem;
-}
-
-/* Calendar grid */
 .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-    padding: 20px;
-    max-width: 700px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
 }
-
 .calendar-cell {
-    background: var(--cream);
-    border: 2px solid var(--light-green);
-    border-radius: 10px;
-    text-align: center;
-    padding: 15px 0;
-    font-weight: bold;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  border: 1px solid #ccc;
+  min-height: 80px;
+  padding: 5px;
+  border-radius: 5px;
+  position: relative;
 }
+.calendar-cell.expired { background-color: #ffebee; }
+.calendar-cell.expiring { background-color: var(--cream); }
+.calendar-cell.safe { background-color: #e8f5e9; }
 
-.calendar-cell:hover {
-    background: var(--light-green);
-    transform: scale(1.05);
+.calendar-cell .date {
+  font-weight: bold;
 }
-
-/* Highlight expiring days */
-.calendar-cell.expiring {
-    background: var(--green);
-    color: var(--white);
-    box-shadow: 0 0 10px var(--dark-green);
+.calendar-cell .tooltip {
+  position: absolute;
+  bottom: 5px; left: 5px;
+  background: rgba(0,0,0,0.75);
+  color: white;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  display: none;
 }
-
-/* Empty day placeholders */
-.calendar-cell.empty {
-    background: transparent;
-    border: none;
-    pointer-events: none; 
+.calendar-cell:hover .tooltip {
+  display: block;
 }
-
-/* Tooltip for expiring items */
-.tooltip {
-    display: none;
-    position: absolute;
-    top: -45px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--white);
-    color: var(--text-dark);
-    border: 1px solid var(--light-green);
-    border-radius: 8px;
-    padding: 8px 12px;
-    font-size: 0.9rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    white-space: nowrap;
-    z-index: 10;
+.calendar-cell.danger {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
 }
-
-.calendar-cell:hover .tooltip,
-.calendar-cell:focus .tooltip {
-    display: block;
+.calendar-cell.warning {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
 }
-
-.note {
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--text-dark);
-    margin-top: 10px;
-}
-
-/* Responsive Layout */
-@media (max-width: 700px) {
-    .calendar-grid, .day-headers {
-        grid-template-columns: repeat(7, 1fr);
-        font-size: 0.7rem; 
-    }
-    
-    .calendar-cell {
-        padding: 8px 0;
-    }
-
-    .tooltip {
-        top: -55px;
-        font-size: 0.8rem;
-        padding: 6px 10px;
-    }
+.calendar-cell.safe {
+  background-color: #e8f5e9;
+  border: 1px solid #c3e6cb;
 }

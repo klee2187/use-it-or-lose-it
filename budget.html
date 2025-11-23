@@ -1,73 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Budget - Use It or Lose It</title>
-    <meta name="description" content="Use It or Lose It helps you track food inventory, manage expirations, find recipes, and reduce household food waste." />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/budget.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Budget | Use It or Lose It</title>
+  <meta name="description" content="Track your grocery budget, add expenses, and reduce household food waste." />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/budget.css" />
+  <script type="module" src="js/budget.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Use It or Lose It</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="inventory.html">Inventory</a></li>
-                <li><a href="recipes.html">Recipes</a></li>
-                <li><a href="budget.html" class="active">Budget</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="calendar.html">Calendar</a></li> 
-            </ul>
-        </nav>
-    </header>
-    <section id="mascot-section">
-        <div id="mascot-wrapper">
-            <picture>
-                <img src="images/tempmascot.jpg" alt="Mascot, our friendly food guy" id="mascotImg" class="mascot">
-            </picture>
-            <div class="speech-bubble">
-                💸 Plan smart! Spending less on groceries means more savings!
-            </div>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header>
+    <h1>Use It or Lose It</h1>
+    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="hamburger"></span>
+    </button>
+    <nav id="nav-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="inventory.html">Inventory</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="budget.html" class="active">Budget</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="budget-box">
+      <h2>Budget Tracker</h2>
+      <p>💸 Plan smart! Spending less on groceries means more savings!</p>
+
+      <!-- Set Budget -->
+      <form id="setBudgetForm">
+        <div class="form-group">
+          <label for="budgetAmount">Set Your Budget ($)</label>
+          <input type="number" id="budgetAmount" min="0" step="0.01" required />
         </div>
+        <button type="submit">Save Budget</button>
+      </form>
+
+      <!-- Add Expense -->
+      <form id="budgetForm">
+        <div class="form-group">
+          <label for="expenseName">Expense Name</label>
+          <input type="text" id="expenseName" required />
+        </div>
+        <div class="form-group">
+          <label for="expenseAmount">Amount ($)</label>
+          <input type="number" id="expenseAmount" min="0" step="0.01" required />
+        </div>
+        <button type="submit">Add Expense</button>
+      </form>
+
+      <!-- Summary -->
+      <div class="budget-summary" aria-live="polite">
+        <p><strong>Total Budget:</strong> $<span id="totalBudget">0.00</span></p>
+        <p><strong>Total Spent:</strong> $<span id="totalSpent">0.00</span></p>
+        <p><strong>Remaining:</strong> $<span id="remainingBudget">0.00</span></p>
+        <div class="budget-progress" role="progressbar" aria-label="Budget usage" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div id="progressBar"></div>
+        </div>
+      </div>
+
+      <h3>Expenses</h3>
+      <ul id="expenseList"></ul>
     </section>
-    <main>
-        <section class="budget-section">
-            <h2>Add Budget Item (Expense Tracker)</h2>
-            <form id="budgetForm">
-                <label for="itemName">Item Name</label>
-                <input type="text" id="itemName" required />
-                <label for="itemPrice">Unit Price ($)</label>
-                <input type="number" id="itemPrice" min="0" step="0.01" required />
-                <label for="itemQuantity">Quantity</label>
-                <input type="number" id="itemQuantity" min="1" required />
-                <button type="submit">Add Expense</button>
-            </form>
-        </section>
-        <section class="budget-section">
-            <h2>Budget Summary</h2>
-            <table id="budgetTable">
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Price</th>
-                        <th>Qty</th>
-                        <th>Total</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-            <div id="budgetResult">
-                <p id="grandTotal">Grand Total: $0.00</p>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Use It or Lose It</p>
-    </footer>
-    <script src="js/budget.js"></script>
+  </main>
+
+<footer>
+  <p>&copy; 2025 Use It or Lose It. All rights reserved.</p>
+</footer>
 </body>
 </html>

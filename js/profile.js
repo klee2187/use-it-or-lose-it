@@ -1,62 +1,56 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const profileForm = document.getElementById('profileForm');
-    const profileDisplay = document.getElementById('profileDisplay');
-    const displayElements = {
-        name: document.getElementById('displayName'),
-        email: document.getElementById('displayEmail'),
-        household: document.getElementById('displayHousehold'),
-        goal: document.getElementById('displayGoal')
+  const profileForm = document.getElementById('profileForm');
+  const editProfileBtn = document.getElementById('editProfileBtn');
+  const clearProfileBtn = document.getElementById('clearProfileBtn');
+
+  // Display elements
+  const displayName = document.getElementById('displayName');
+  const displayEmail = document.getElementById('displayEmail');
+  const displayFamilySize = document.getElementById('displayFamilySize');
+
+  // Input elements
+  const nameInput = document.getElementById('profileName');
+  const emailInput = document.getElementById('profileEmail');
+  const familySizeInput = document.getElementById('profileFamilySize');
+
+  // Load saved profile from localStorage
+  const savedProfile = JSON.parse(localStorage.getItem('profile')) || {};
+  if (savedProfile.name) displayName.textContent = savedProfile.name;
+  if (savedProfile.email) displayEmail.textContent = savedProfile.email;
+  if (savedProfile.familySize) displayFamilySize.textContent = savedProfile.familySize;
+
+  // Save Profile
+  profileForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const profile = {
+      name: nameInput.value.trim(),
+      email: emailInput.value.trim(),
+      familySize: familySizeInput.value.trim()
     };
-    
-    // Load existing profiles
-    loadProfile();
 
-    profileForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        saveProfile();
-    });
+    localStorage.setItem('profile', JSON.stringify(profile));
 
-    function saveProfile() {
-        const profileData = {
-            fullName: document.getElementById('fullName').value,
-            email: document.getElementById('email').value,
-            householdSize: document.getElementById('householdSize').value,
-            foodGoal: document.getElementById('foodGoal').value
-        };
+    displayName.textContent = profile.name || '—';
+    displayEmail.textContent = profile.email || '—';
+    displayFamilySize.textContent = profile.familySize || '—';
 
-        localStorage.setItem('userProfile', JSON.stringify(profileData));
-        
-        // Hide form and show display area
-        profileForm.classList.add('hidden');
-        displayProfile(profileData);
-        profileDisplay.classList.remove('hidden');
-    }
+    profileForm.reset();
+  });
 
-    function loadProfile() {
-        const profileData = JSON.parse(localStorage.getItem('userProfile'));
+  // Edit Profile
+  editProfileBtn.addEventListener('click', () => {
+    const savedProfile = JSON.parse(localStorage.getItem('profile')) || {};
+    if (savedProfile.name) nameInput.value = savedProfile.name;
+    if (savedProfile.email) emailInput.value = savedProfile.email;
+    if (savedProfile.familySize) familySizeInput.value = savedProfile.familySize;
+  });
 
-        if (profileData) {
-            // Populate form if data exists 
-            document.getElementById('fullName').value = profileData.fullName || '';
-            document.getElementById('email').value = profileData.email || '';
-            document.getElementById('householdSize').value = profileData.householdSize || '';
-            document.getElementById('foodGoal').value = profileData.foodGoal || '';
-            
-            // Display data
-            displayProfile(profileData);
-            profileForm.classList.add('hidden');
-            profileDisplay.classList.remove('hidden');
-        } else {
-            // Show form if no profile exists
-            profileForm.classList.remove('hidden');
-            profileDisplay.classList.add('hidden');
-        }
-    }
-
-    function displayProfile(data) {
-        displayElements.name.textContent = data.fullName;
-        displayElements.email.textContent = data.email;
-        displayElements.household.textContent = data.householdSize;
-        displayElements.goal.textContent = data.foodGoal;
-    }
+  // Clear Profile
+  clearProfileBtn.addEventListener('click', () => {
+    localStorage.removeItem('profile');
+    displayName.textContent = '—';
+    displayEmail.textContent = '—';
+    displayFamilySize.textContent = '—';
+    profileForm.reset();
+  });
 });

@@ -1,108 +1,71 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('inventoryForm');
-    const inventoryList = document.getElementById('inventoryList');
+import { initNavbarToggle, checkInventoryAlerts } from "./utils.js";
 
-    // Load items from localStorage
-    loadInventory();
+document.addEventListener("DOMContentLoaded", () => {
+  initNavbarToggle();
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        addItem();
+  const inventoryForm = document.getElementById("inventoryForm");
+  const inventoryBody = document.getElementById("inventoryBody");
+
+  let inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+
+  // Render Inventory Table
+  function renderInventory() {
+    inventoryBody.innerHTML = "";
+
+    if (inventory.length === 0) {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td colspan="4">No items in inventory.</td>`;
+      inventoryBody.appendChild(row);
+      return;
+    }
+
+    inventory.forEach((item, index) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${item.name}</td>
+        <td>${item.quantity}</td>
+        <td>${item.expiration}</td>
+        <td><button class="delete-btn" data-index="${index}">❌</button></td>
+      `;
+      inventoryBody.appendChild(row);
     });
 
-    // Load and display inventory
-    function loadInventory() {
-        const items = JSON.parse(localStorage.getItem('inventoryItems')) || [];
-        inventoryList.innerHTML = ''; 
+    // Attach delete handlers
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+      btn.addEventListener("click", e => {
+        const idx = e.target.getAttribute("data-index");
+        inventory.splice(idx, 1);
+        localStorage.setItem("inventory", JSON.stringify(inventory));
+        renderInventory();
+        checkInventoryAlerts(inventory); 
+      });
+    });
+  }
 
-        // Sort items by expiration date
-        items.sort((a, b) => new Date(a.expiration) - new Date(b.expiration));
+  // Add Item
+  inventoryForm.addEventListener("submit", e => {
+    e.preventDefault();
 
-        items.forEach((item, index) => {
-            displayItem(item, index);
-        });
+    const name = document.getElementById("itemName").value.trim();
+    const quantity = document.getElementById("itemQuantity").value.trim();
+    const expiration = document.getElementById("itemExpiration").value;
 
-        // Save sorted list back to storage
-        localStorage.setItem('inventoryItems', JSON.stringify(items));
+    if (!name || !quantity || !expiration) {
+      alert("Please fill out all fields.");
+      return;
     }
 
-    // Add a new item
-    function addItem() {
-        const name = document.getElementById('itemName').value;
-        const quantity = parseInt(document.getElementById('quantity').value);
-        const expiration = document.getElementById('expiration').value;
-        const type = document.getElementById('itemType').value;
+    inventory.push({ name, quantity, expiration });
+    localStorage.setItem("inventory", JSON.stringify(inventory));
 
-        const newItem = {
-            name,
-            quantity,
-            expiration,
-            type
-        };
+    inventoryForm.reset();
+    renderInventory();
+    checkInventoryAlerts(inventory); 
+  });
 
-        const items = JSON.parse(localStorage.getItem('inventoryItems')) || [];
-        items.push(newItem);
-        localStorage.setItem('inventoryItems', JSON.stringify(items));
-        
-        form.reset();
-        loadInventory();
-    }
+  // Initial render
+  renderInventory();
 
-    // Function to render an item to DOM
-    function displayItem(item, index) {
-        const li = document.createElement('li');
-        
-        // Calculate days remaining
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const expDate = new Date(item.expiration);
-        expDate.setDate(expDate.getDate() + 1); 
-        const timeDiff = expDate.getTime() - today.getTime();
-        const daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-        let statusClass = 'safe';
-        let statusText = `${daysRemaining} days remaining`;
-
-        if (daysRemaining <= 0) {
-            statusClass = 'danger';
-            statusText = 'EXPIRED!';
-        } else if (daysRemaining <= 3) {
-            statusClass = 'warning';
-            statusText = `Expires in ${daysRemaining} days!`;
-        }
-
-        li.classList.add('inventory-item', statusClass);
-        li.dataset.index = index;
-
-        li.innerHTML = `
-            <div>
-                <strong>${item.name}</strong> (${item.type})
-                <span class="quantity">Qty: ${item.quantity}</span>
-            </div>
-            <div class="expiration-info">
-                Expires: ${item.expiration} 
-                <span class="status-badge">(${statusText})</span>
-            </div>
-            <button class="btn-delete">Use/Delete</button>
-        `;
-
-        // Attach delete/use event listener
-        li.querySelector('.btn-delete').addEventListener('click', () => {
-            deleteItem(index);
-        });
-
-        inventoryList.appendChild(li);
-    }
-
-    // Function to delete/use an item
-    function deleteItem(index) {
-        let items = JSON.parse(localStorage.getItem('inventoryItems')) || [];
-        
-        items.splice(index, 1);
-        
-        localStorage.setItem('inventoryItems', JSON.stringify(items));
-        loadInventory(); // Reload list
-    }
-
-    window.loadInventory = loadInventory; 
+  // Alerts
+  checkInventoryAlerts(inventory);
 });

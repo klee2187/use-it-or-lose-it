@@ -1,156 +1,73 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const recipesContainer = document.getElementById('recipesList');
-    const favoritesContainer = document.getElementById('favoriteRecipes');
-    const searchInput = document.getElementById('searchInput');
-    const newRandomBtn = document.getElementById('newRandomBtn');
-    const randomRecipeDiv = document.getElementById('randomRecipe');
-    const typeFilter = document.getElementById('typeFilter');
+import { initNavbarToggle } from "./utils.js";
 
-    let allRecipes = [];
+document.addEventListener("DOMContentLoaded", () => {
+  initNavbarToggle();
 
-    // Initialize 
-    fetchRecipes();
-    loadFavorites();
+  const featuredSection = document.querySelector(".featured-recipe");
+  const gallery = document.querySelector(".recipe-gallery");
 
-    // Event Listeners
-    searchInput.addEventListener('input', filterAndRenderRecipes);
-    typeFilter.addEventListener('change', filterAndRenderRecipes);
-    newRandomBtn.addEventListener('click', displayRandomRecipe);
+  let recipes = JSON.parse(localStorage.getItem("recipes"));
 
-    // Core Data Functions
+  if (!recipes || recipes.length === 0) {
+    fetch("data/recipes.json")
+      .then(res => res.json())
+      .then(data => {
+        localStorage.setItem("recipes", JSON.stringify(data));
+        renderRecipes(data);
+      })
+      .catch(err => {
+        featuredSection.innerHTML = "<p>Error loading recipes.</p>";
+        console.error("Fetch error:", err);
+      });
+  } else {
+    renderRecipes(recipes);
+  }
 
-    function fetchRecipes() {
-        fetch('data/recipes.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                allRecipes = data.recipes;
-                populateFilterOptions(data.recipes);
-                filterAndRenderRecipes();
-                displayRandomRecipe();
-            })
-            .catch(error => console.error('Error loading recipes:', error));
+  function renderRecipes(recipes) {
+    if (recipes.length === 0) {
+      featuredSection.innerHTML = "<p>No recipes found. Add some in your inventory!</p>";
+      return;
     }
 
-    function populateFilterOptions(recipes) {
-        const types = [...new Set(recipes.map(recipe => recipe.type))];
-        typeFilter.innerHTML = '<option value="all">All Types</option>';
-        types.forEach(type => {
-            const option = document.createElement('option');
-            option.value = type;
-            option.textContent = type;
-            typeFilter.appendChild(option);
-        });
-    }
+    const featuredRecipe = recipes[Math.floor(Math.random() * recipes.length)];
+    const featuredIngredients = Array.isArray(featuredRecipe.ingredients)
+      ? featuredRecipe.ingredients
+      : typeof featuredRecipe.ingredients === "string"
+        ? featuredRecipe.ingredients.split(",").map(i => i.trim())
+        : [];
 
-    // Rendering Functions
+    featuredSection.innerHTML = `
+      <div class="featured-card">
+        <img src="${featuredRecipe.image || 'images/placeholder.jpg'}" alt="${featuredRecipe.name}" />
+        <div class="info">
+          <h2>${featuredRecipe.name}</h2>
+          <p>Type: ${featuredRecipe.type || "Uncategorized"}</p>
+          <p class="ingredients">Ingredients: ${featuredIngredients.join(', ')}</p>
+        </div>
+      </div>
+    `;
 
-    function filterAndRenderRecipes() {
-        const searchTerm = searchInput.value.toLowerCase();
-        const filterType = typeFilter.value;
+    const galleryRecipes = recipes.filter(r => r !== featuredRecipe).slice(0, 3);
+    gallery.innerHTML = "";
 
-        const filteredRecipes = allRecipes.filter(recipe => {
-            const matchesSearch = recipe.name.toLowerCase().includes(searchTerm) || 
-                                 recipe.ingredients.some(ing => ing.name.toLowerCase().includes(searchTerm));
-            
-            const matchesType = filterType === 'all' || recipe.type === filterType;
-            
-            return matchesSearch && matchesType;
-        });
+    galleryRecipes.forEach(recipe => {
+      const ingredients = Array.isArray(recipe.ingredients)
+        ? recipe.ingredients
+        : typeof recipe.ingredients === "string"
+          ? recipe.ingredients.split(",").map(i => i.trim())
+          : [];
 
-        renderRecipes(filteredRecipes, recipesContainer, false);
-    }
-
-    function renderRecipes(recipes, container, isFavoriteSection) {
-        container.innerHTML = '';
-        if (recipes.length === 0) {
-            container.innerHTML = `<p>No recipes found matching your criteria.</p>`;
-            return;
-        }
-
-        const favorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-
-        recipes.forEach(recipe => {
-            const isFav = favorites.includes(recipe.id);
-            const card = document.createElement('div');
-            card.classList.add('recipe-card');
-            if (isFav) {
-                card.classList.add('favorite');
-            }
-
-            const ingredientList = recipe.ingredients.map(ing => `<li>${ing.quantity} ${ing.unit} ${ing.name}</li>`).join('');
-
-            card.innerHTML = `
-                <h3>${recipe.name}</h3>
-                <img src=${recipe.image} alt="photo of the prepared recipe">
-                <p>${recipe.description}</p>
-                <p><strong>Type:</strong> ${recipe.course}</p>
-                <p><strong>Prep Time:</strong> ${recipe.prepTime}</p>
-                <p><strong>Instructions:</strong> ${recipe.instructions}</p>
-                
-                <h4>Ingredients:</h4>
-                <ul>${ingredientList}</ul>
-                
-                ${isFavoriteSection 
-                    ? `<button class="remove-fav" data-id="${recipe.id}">Remove Favorite</button>`
-                    : `<button class="fav-btn" data-id="${recipe.id}">${isFav ? 'Remove Favorite' : 'Add to Favorites'}</button>`
-                }
-            `;
-            
-            container.appendChild(card);
-        });
-
-        // Re-attach event listeners
-        attachFavoriteListeners();
-    }
-
-    function displayRandomRecipe() {
-        if (allRecipes.length === 0) return;
-        const randomIndex = Math.floor(Math.random() * allRecipes.length);
-        const randomRecipe = allRecipes[randomIndex];
-        
-        // Use a temporary array to render just the one recipe
-        renderRecipes([randomRecipe], randomRecipeDiv, false);
-    }
-
-    // Favorites
-
-    function attachFavoriteListeners() {
-        document.querySelectorAll('.fav-btn').forEach(button => {
-            button.onclick = (e) => toggleFavorite(e.target.dataset.id);
-        });
-        document.querySelectorAll('.remove-fav').forEach(button => {
-            button.onclick = (e) => toggleFavorite(e.target.dataset.id);
-        });
-    }
-
-    function toggleFavorite(recipeId) {
-        let favorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-        recipeId = parseInt(recipeId);
-
-        const index = favorites.indexOf(recipeId);
-
-        if (index > -1) {
-            favorites.splice(index, 1); // Remove
-        } else {
-            favorites.push(recipeId); // Add
-        }
-
-        localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
-        
-        // Re-render
-        filterAndRenderRecipes();
-        loadFavorites();
-    }
-
-    function loadFavorites() {
-        const favorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-        const favoriteRecipesData = allRecipes.filter(recipe => favorites.includes(recipe.id));
-        
-        renderRecipes(favoriteRecipesData, favoritesContainer, true);
-    }
+      const card = document.createElement("div");
+      card.classList.add("recipe-card");
+      card.innerHTML = `
+        <img src="${recipe.image || 'images/placeholder.jpg'}" alt="${recipe.name}" />
+        <div class="info">
+          <h3>${recipe.name}</h3>
+          <p>Type: ${recipe.type || "Uncategorized"}</p>
+          <p class="ingredients">Ingredients: ${ingredients.join(', ')}</p>
+        </div>
+      `;
+      gallery.appendChild(card);
+    });
+  }
 });

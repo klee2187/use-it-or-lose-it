@@ -1,50 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calendar | Use It or Lose It</title>
-    <meta name="description" content="Use It or Lose It helps you track food inventory, manage expirations, find recipes, and reduce household food waste." />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/calendar.css">
-    <script defer src="js/calendar.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendar | Use It or Lose It</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/calendar.css" />
+  <script type="module" src="js/calendar.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Use It or Lose It</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="inventory.html">Inventory</a></li>
-                <li><a href="recipes.html">Recipes</a></li>
-                <li><a href="budget.html">Budget</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="calendar.html" class="active">Calendar</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <section id="mascot-section">
-        <div id="mascot-wrapper">
-            <picture>
-                <img src="images/tempmascot.jpg" alt="Mascot, our friendly food guy" id="mascotImg" class="mascot">
-            </picture>
-            <div class="speech-bubble">
-                🗓️ Expiring soon! Time to plan a meal!
-            </div>
-        </div>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header>
+    <h1>Use It or Lose It</h1>
+    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="hamburger"></span>
+    </button>
+    <nav id="nav-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="inventory.html">Inventory</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="recipes-all.html">All Recipes</a></li>
+        <li><a href="budget.html">Budget</a></li>
+        <li><a href="calendar.html" class="active">Calendar</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Alerts -->
+  <section id="alertSection" class="alert hidden">
+    <p id="alertMessage"></p>
+    <button id="alertDismissBtn" aria-label="Dismiss alert">✖</button>
+  </section>
+
+  <main>
+    <section class="calendar-box">
+      <h2 id="calendarHeader">Calendar</h2>
+      <div class="calendar-controls">
+        <button id="prevMonthBtn">Previous</button>
+        <button id="todayBtn">Today</button>
+        <button id="nextMonthBtn">Next</button>
+      </div>
+      <div id="calendarGrid" class="calendar-grid"></div>
     </section>
-    <main>
-        <h2>Food Storage Calendar</h2>
-        <div class="day-headers">
-            <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
-        </div>
-        <div id="calendar" class="calendar-grid"></div>
-        <p id="calendar-note" class="note">Days with expiring items will be highlighted.</p>
-    </main>
-    
-    <footer>
-        <p>&copy; 2025 Use It or Lose It</p>
-    </footer>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Use It or Lose It</p>
+  </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.querySelector('.nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    toggle.addEventListener('click', () => {
+      navMenu.classList.toggle('nav-open');
+    });
+  });
+</script>
+<footer>
+  <p>&copy; 2025 Use It or Lose It. All rights reserved.</p>
+</footer>
 </body>
 </html>
