@@ -12,24 +12,30 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("data/recipes.json")
       .then(res => res.json())
       .then(data => {
-        localStorage.setItem("recipes", JSON.stringify(data));
-        renderRecipes(data);
+        const recipesArray = data.recipes || []; // ✅ extract array
+        localStorage.setItem("recipes", JSON.stringify(recipesArray));
+        recipes = recipesArray;
+        console.log("Fetched recipes:", recipes);
+        renderRecipes(recipes);
       })
       .catch(err => {
         featuredSection.innerHTML = "<p>Error loading recipes.</p>";
         console.error("Fetch error:", err);
       });
   } else {
+    console.log("Loaded recipes from localStorage:", recipes);
     renderRecipes(recipes);
   }
 
   function renderRecipes(recipes) {
-    if (recipes.length === 0) {
+    if (!Array.isArray(recipes) || recipes.length === 0) {
       featuredSection.innerHTML = "<p>No recipes found. Add some in your inventory!</p>";
       return;
     }
 
     const featuredRecipe = recipes[Math.floor(Math.random() * recipes.length)];
+    if (!featuredRecipe) return; // ✅ guard
+
     const featuredIngredients = Array.isArray(featuredRecipe.ingredients)
       ? featuredRecipe.ingredients
       : typeof featuredRecipe.ingredients === "string"
@@ -41,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <img src="${featuredRecipe.image || 'images/placeholder.jpg'}" alt="${featuredRecipe.name}" />
         <div class="info">
           <h2>${featuredRecipe.name}</h2>
-          <p>Type: ${featuredRecipe.type || "Uncategorized"}</p>
+          <p>Type: ${featuredRecipe.course || "Uncategorized"}</p>
           <p class="ingredients">Ingredients: ${featuredIngredients.join(', ')}</p>
         </div>
       </div>
@@ -51,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     gallery.innerHTML = "";
 
     galleryRecipes.forEach(recipe => {
+      if (!recipe) return;
       const ingredients = Array.isArray(recipe.ingredients)
         ? recipe.ingredients
         : typeof recipe.ingredients === "string"
@@ -63,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <img src="${recipe.image || 'images/placeholder.jpg'}" alt="${recipe.name}" />
         <div class="info">
           <h3>${recipe.name}</h3>
-          <p>Type: ${recipe.type || "Uncategorized"}</p>
+          <p>Type: ${recipe.course || "Uncategorized"}</p>
           <p class="ingredients">Ingredients: ${ingredients.join(', ')}</p>
         </div>
       `;

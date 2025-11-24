@@ -40,10 +40,6 @@
   border-radius: 5px;
   position: relative;
 }
-.calendar-cell.expired { background-color: #ffebee; }
-.calendar-cell.expiring { background-color: var(--cream); }
-.calendar-cell.safe { background-color: #e8f5e9; }
-
 .calendar-cell .date {
   font-weight: bold;
 }
@@ -60,15 +56,17 @@
 .calendar-cell:hover .tooltip {
   display: block;
 }
-.calendar-cell.danger {
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
+
+/* Expiration states */
+.calendar-cell.expired {
+  background-color: #fdecea;
+  border: 2px solid #dc3545;
 }
 .calendar-cell.warning {
-  background-color: #fff3cd;
-  border: 1px solid #ffeeba;
+  background-color: #fff8e1;
+  border: 2px solid #ffc107;
 }
 .calendar-cell.safe {
-  background-color: #e8f5e9;
-  border: 1px solid #c3e6cb;
+  background-color: #e6f9e6;
+  border: 2px solid #2ecc71;
 }

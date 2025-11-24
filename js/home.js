@@ -3,12 +3,14 @@ import { initNavbarToggle, checkInventoryAlerts } from "./utils.js";
 document.addEventListener("DOMContentLoaded", () => {
   initNavbarToggle();
 
+  const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+  const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+
+  checkInventoryAlerts(inventory);
+
   const recipeHighlightBox = document.querySelector(".recipe-highlight");
   const suggestedBox = document.getElementById("suggestedRecipes");
   const tipContent = document.getElementById("tipContent");
-
-  const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
-  const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
 
   // Random Recipe Highlight
   if (recipes.length > 0) {
@@ -25,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const today = new Date();
   const expiringNames = inventory
     .filter(item => {
+      if (!item.expiration) return false;
       const expDate = new Date(item.expiration);
       const diffDays = Math.ceil((expDate - today) / (1000 * 60 * 60 * 24));
       return diffDays > 0 && diffDays <= 5;
@@ -35,8 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let ingredients = Array.isArray(recipe.ingredients)
       ? recipe.ingredients
       : typeof recipe.ingredients === "string"
-      ? recipe.ingredients.split(",").map(i => i.trim())
-      : [];
+        ? recipe.ingredients.split(",").map(i => i.trim())
+        : [];
 
     return ingredients.some(ing => expiringNames.includes(ing.toLowerCase()));
   });

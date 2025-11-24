@@ -35,7 +35,7 @@
     <button id="alertDismissBtn" aria-label="Dismiss alert">✖</button>
   </section>
 
-  <main>
+  <main id="main">
     <section class="calendar-box">
       <h2 id="calendarHeader">Calendar</h2>
       <div class="calendar-controls">
@@ -48,21 +48,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Use It or Lose It</p>
+    <p>&copy; 2025 Use It or Lose It. All rights reserved.</p>
   </footer>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.querySelector('.nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-
-    toggle.addEventListener('click', () => {
-      navMenu.classList.toggle('nav-open');
-    });
-  });
-</script>
-<footer>
-  <p>&copy; 2025 Use It or Lose It. All rights reserved.</p>
-</footer>
 </body>
 </html>

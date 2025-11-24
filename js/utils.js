@@ -1,13 +1,13 @@
 // Navbar toggle
 export function initNavbarToggle() {
-  const navToggle = document.querySelector(".nav-toggle");
+  const toggleBtn = document.querySelector(".nav-toggle");
   const navMenu = document.getElementById("nav-menu");
 
-  if (navToggle && navMenu) {
-    navToggle.addEventListener("click", () => {
-      const isOpen = navMenu.classList.contains("nav-open");
-      navMenu.classList.toggle("nav-open");
-      navToggle.setAttribute("aria-expanded", String(!isOpen));
+  if (toggleBtn && navMenu) {
+    toggleBtn.addEventListener("click", () => {
+      const expanded = toggleBtn.getAttribute("aria-expanded") === "true";
+      toggleBtn.setAttribute("aria-expanded", !expanded);
+      navMenu.classList.toggle("nav-open"); // ✅ matches CSS
     });
   }
 }
