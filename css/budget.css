@@ -1,40 +1,69 @@
+/* Budget container */
 .budget-box {
   background-color: var(--white);
   border: 2px solid var(--light-green);
   border-radius: 15px;
   padding: 20px;
   margin: 20px auto;
-  max-width: 700px;
+  max-width: 900px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
 
-.budget-box h2 { text-align: center; margin-bottom: 20px; }
-
-.form-group { margin-bottom: 15px; display: flex; flex-direction: column; }
-.form-group label { margin-bottom: 5px; font-weight: 500; }
-.form-group input {
-  padding: 8px 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem;
+/* Title */
+.budget-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
+/* Form groups */
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.form-group input {
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Buttons */
 .budget-box button {
-  padding: 10px 20px; border-radius: 10px;
-  background-color: var(--green); color: var(--white);
-  font-weight: bold; border: none; cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: var(--green);
+  color: var(--white);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
   transition: background 0.3s ease;
 }
-.budget-box button:hover { background-color: var(--dark-green); }
+.budget-box button:hover {
+  background-color: var(--dark-green);
+}
 
-.budget-summary { margin-top: 20px; }
+/* Summary section */
+.budget-summary {
+  margin-top: 20px;
+}
 
+/* Progress bar */
 .budget-progress {
-  width: 100%; height: 25px;
+  width: 100%;
+  height: 25px;
   background-color: #eee;
   border-radius: 10px;
   margin-top: 10px;
   position: relative;
 }
 #progressBar {
-  height: 100%; width: 0%;
+  height: 100%;
+  width: 0%;
   background-color: var(--accent-orange);
   border-radius: 10px;
   transition: width 0.5s ease;
@@ -43,9 +72,12 @@
   font-weight: bold;
   line-height: 25px;
 }
+.over-budget {
+  color: #c62828;
+  font-weight: bold;
+}
 
-.over-budget { color: #c62828; font-weight: bold; }
-
+/* Expense list */
 #expenseList {
   list-style: none;
   padding: 0;
@@ -57,29 +89,81 @@
   border-radius: 10px;
   padding: 12px 15px;
   margin-bottom: 12px;
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 .delete-expense {
-  background-color: #ff5252; border: none; color: white;
-  font-size: 0.9rem; border-radius: 6px;
-  padding: 6px 10px; cursor: pointer;
+  background-color: #ff5252;
+  border: none;
+  color: white;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
   transition: background 0.2s ease;
 }
-.delete-expense:hover { background-color: #e53935; }
-.delete-expense:focus-visible { outline: 2px solid var(--accent-orange); outline-offset: 2px; }
+.delete-expense:hover {
+  background-color: #e53935;
+}
+.delete-expense:focus-visible {
+  outline: 2px solid var(--accent-orange);
+  outline-offset: 2px;
+}
 
+/* Monthly summary */
 .monthly-summary {
   margin-top: 30px;
   padding-top: 15px;
   border-top: 2px solid var(--light-green);
 }
-.monthly-summary h3 { text-align: center; margin-bottom: 10px; }
-#monthlySummaryList { list-style: none; padding: 0; }
+.monthly-summary h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+#monthlySummaryList {
+  list-style: none;
+  padding: 0;
+}
 #monthlySummaryList li {
   background-color: #f1f8e9;
   border: 1px solid var(--green);
   border-radius: 8px;
   padding: 8px 12px;
   margin-bottom: 8px;
+}
+
+/* Responsive layout */
+.budget-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 768px) {
+  .budget-layout {
+    grid-template-columns: 1fr; /* stack vertically */
+  }
+  .budget-progress {
+    height: 20px;
+  }
+  #progressBar {
+    font-size: 0.85rem;
+    line-height: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .budget-box {
+    margin: 10px;
+    padding: 15px;
+  }
+  .budget-box h2 {
+    font-size: 1.3rem;
+  }
+  .monthly-summary h3 {
+    font-size: 1.1rem;
+  }
+  #monthlySummaryList li {
+    font-size: 0.9rem;
+  }
 }
