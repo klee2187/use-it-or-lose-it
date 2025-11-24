@@ -91,3 +91,17 @@
   background-color: var(--dark-green);
   transform: scale(1.05);
 }
+
+@media (max-width: 480px) {
+  .recipe-card img {
+    height: 150px; /* smaller images on phones */
+  }
+
+  .recipe-card .info h3 {
+    font-size: 1rem;
+  }
+
+  .recipe-card .info p {
+    font-size: 0.85rem;
+  }
+}
