@@ -7,15 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const gallery = document.querySelector(".recipe-gallery");
 
   let recipes = JSON.parse(localStorage.getItem("recipes"));
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
   if (!recipes || recipes.length === 0) {
     fetch("data/recipes.json")
       .then(res => res.json())
       .then(data => {
-        const recipesArray = data.recipes || []; // ✅ extract array
+        const recipesArray = data.recipes || [];
         localStorage.setItem("recipes", JSON.stringify(recipesArray));
         recipes = recipesArray;
-        console.log("Fetched recipes:", recipes);
         renderRecipes(recipes);
       })
       .catch(err => {
@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Fetch error:", err);
       });
   } else {
-    console.log("Loaded recipes from localStorage:", recipes);
     renderRecipes(recipes);
   }
 
@@ -34,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const featuredRecipe = recipes[Math.floor(Math.random() * recipes.length)];
-    if (!featuredRecipe) return; // ✅ guard
+    if (!featuredRecipe) return;
 
     const featuredIngredients = Array.isArray(featuredRecipe.ingredients)
       ? featuredRecipe.ingredients
@@ -49,6 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <h2>${featuredRecipe.name}</h2>
           <p>Type: ${featuredRecipe.course || "Uncategorized"}</p>
           <p class="ingredients">Ingredients: ${featuredIngredients.join(', ')}</p>
+          <button class="fav-btn" data-id="${featuredRecipe.id}">
+            ${favorites.includes(featuredRecipe.id) ? "💔 Remove Favorite" : "❤️ Add to Favorites"}
+          </button>
         </div>
       </div>
     `;
@@ -72,9 +74,30 @@ document.addEventListener("DOMContentLoaded", () => {
           <h3>${recipe.name}</h3>
           <p>Type: ${recipe.course || "Uncategorized"}</p>
           <p class="ingredients">Ingredients: ${ingredients.join(', ')}</p>
+          <button class="fav-btn" data-id="${recipe.id}">
+            ${favorites.includes(recipe.id) ? "💔 Remove Favorite" : "❤️ Add to Favorites"}
+          </button>
         </div>
       `;
       gallery.appendChild(card);
     });
   }
+
+  // Favorites toggle
+  document.body.addEventListener("click", e => {
+    if (e.target.classList.contains("fav-btn")) {
+      const id = parseInt(e.target.dataset.id, 10);
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+      if (favorites.includes(id)) {
+        favorites = favorites.filter(favId => favId !== id);
+        e.target.textContent = "❤️ Add to Favorites";
+      } else {
+        favorites.push(id);
+        e.target.textContent = "💔 Remove Favorite";
+      }
+
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+  });
 });

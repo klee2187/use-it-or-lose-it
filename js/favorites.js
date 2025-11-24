@@ -1,36 +1,52 @@
-import { getExpirationStatus } from './utils.js';
+import { initNavbarToggle } from "./utils.js";
 
-document.addEventListener('DOMContentLoaded', () => {
-  const favoritesList = document.getElementById('favoritesList');
-  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  const inventoryItems = JSON.parse(localStorage.getItem('inventoryItems')) || [];
+document.addEventListener("DOMContentLoaded", () => {
+  initNavbarToggle();
 
-  if (favorites.length === 0) {
-    favoritesList.innerHTML = '<li>No favorites yet.</li>';
+  const gallery = document.getElementById("favoritesGallery");
+  const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  if (!favorites || favorites.length === 0) {
+    gallery.innerHTML = "<p>You have no favorite recipes yet.</p>";
     return;
   }
 
-  favorites.forEach(fav => {
-    const li = document.createElement('li');
-    li.textContent = fav.name;
+  const favoriteRecipes = recipes.filter(r => favorites.includes(r.id));
 
-    // Highlight if recipe uses expiring inventory items
-    const expiringIngredient = inventoryItems.find(item => {
-      if (!item.expiration) return false;
-      const status = getExpirationStatus(item.expiration);
+  if (favoriteRecipes.length === 0) {
+    gallery.innerHTML = "<p>No matching recipes found in favorites.</p>";
+    return;
+  }
 
-      const matches = fav.ingredients.some(i =>
-        typeof i === 'string'
-          ? i.toLowerCase().includes(item.name.toLowerCase())
-          : (i.name || '').toLowerCase().includes(item.name.toLowerCase())
-      );
+  favoriteRecipes.forEach(recipe => {
+    const ingredients = Array.isArray(recipe.ingredients)
+      ? recipe.ingredients
+      : typeof recipe.ingredients === "string"
+        ? recipe.ingredients.split(",").map(i => i.trim())
+        : [];
 
-      if (!matches) return false;
+    const card = document.createElement("div");
+    card.classList.add("recipe-card");
+    card.innerHTML = `
+      <img src="${recipe.image || 'images/placeholder.jpg'}" alt="${recipe.name}" />
+      <div class="info">
+        <h3>${recipe.name}</h3>
+        <p>Type: ${recipe.course || "Uncategorized"}</p>
+        <p class="ingredients">Ingredients: ${ingredients.join(', ')}</p>
+        <button class="remove-fav-btn" data-id="${recipe.id}">💔 Remove</button>
+      </div>
+    `;
+    gallery.appendChild(card);
+  });
 
-      li.classList.add(status);
-      return true;
-    });
-
-    favoritesList.appendChild(li);
+  // Remove favorites
+  gallery.addEventListener("click", e => {
+    if (e.target.classList.contains("remove-fav-btn")) {
+      const id = parseInt(e.target.dataset.id, 10);
+      const updated = favorites.filter(favId => favId !== id);
+      localStorage.setItem("favorites", JSON.stringify(updated));
+      location.reload();
+    }
   });
 });
