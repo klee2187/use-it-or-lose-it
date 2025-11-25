@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevMonthBtn = document.getElementById("prevMonthBtn");
   const nextMonthBtn = document.getElementById("nextMonthBtn");
   const todayBtn = document.getElementById("todayBtn");
+  const monthlySummaryList = document.getElementById("monthlySummaryList");
 
   let currentDate = new Date();
 
@@ -57,9 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         expiringItems.forEach((item) => {
           const expDate = new Date(item.expiration);
           expDate.setHours(0, 0, 0, 0);
-          const diffDays = Math.ceil(
-            (expDate - today) / (1000 * 60 * 60 * 24)
-          );
+          const diffDays = Math.ceil((expDate - today) / (1000 * 60 * 60 * 24));
 
           if (diffDays <= 0) {
             cell.classList.add("expired");
@@ -73,15 +72,41 @@ document.addEventListener("DOMContentLoaded", () => {
         const tooltip = document.createElement("div");
         tooltip.classList.add("tooltip");
         tooltip.textContent = expiringItems.map((i) => i.name).join(", ");
-        tooltip.setAttribute(
-          "aria-label",
-          `Expiring items: ${tooltip.textContent}`
-        );
+        tooltip.setAttribute("aria-label", `Expiring items: ${tooltip.textContent}`);
         cell.appendChild(tooltip);
       }
 
       calendarGrid.appendChild(cell);
     }
+
+    renderMonthlySummary(year, month);
+  };
+
+  const renderMonthlySummary = (year, month) => {
+    monthlySummaryList.innerHTML = "";
+
+    const monthlyTotals = {};
+    inventory.forEach((item) => {
+      if (!item.expiration) return;
+      const expDate = new Date(item.expiration);
+      if (expDate.getFullYear() === year && expDate.getMonth() === month) {
+        const key = expDate.toISOString().split("T")[0]; // YYYY-MM-DD
+        if (!monthlyTotals[key]) monthlyTotals[key] = [];
+        monthlyTotals[key].push(item.name);
+      }
+    });
+
+    if (Object.keys(monthlyTotals).length === 0) {
+      monthlySummaryList.innerHTML = "<li>No expiring items this month.</li>";
+      return;
+    }
+
+    Object.entries(monthlyTotals).forEach(([date, items]) => {
+      const li = document.createElement("li");
+      const formattedDate = new Date(date).toLocaleDateString();
+      li.textContent = `${formattedDate}: ${items.join(", ")}`;
+      monthlySummaryList.appendChild(li);
+    });
   };
 
   prevMonthBtn.addEventListener("click", () => {

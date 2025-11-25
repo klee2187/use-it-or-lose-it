@@ -1,48 +1,113 @@
 .calendar-box {
-  background-color: var(--white);
-  border: 2px solid var(--light-green);
-  border-radius: 15px;
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 900px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+background-color: var(--white);
+border: 2px solid var(--light-green);
+border-radius: 15px;
+padding: 20px;
+margin: 20px auto;
+max-width: 900px;
+box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
 
 .calendar-controls {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 15px;
+display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;
 }
 .calendar-controls button {
-  padding: 8px 16px;
-  border-radius: 5px;
-  background-color: var(--green);
-  color: var(--white);
-  border: none;
-  cursor: pointer;
+padding: 8px 16px; border-radius: 5px;
+background-color: var(--green); color: var(--white);
+border: none; cursor: pointer;
 }
 .calendar-controls button:hover { background-color: var(--dark-green); }
 .calendar-controls button:focus-visible {
-  outline: 2px solid var(--accent-orange);
-  outline-offset: 2px;
+outline: 2px solid var(--accent-orange);
+outline-offset: 2px;
 }
 
 .calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
+display: grid;
+grid-template-columns: repeat(7, 1fr);
+gap: 5px;
 }
 .calendar-cell {
-  border: 1px solid #ccc;
-  min-height: 80px;
-  padding: 5px;
-  border-radius: 5px;
-  position: relative;
+border: 1px solid #ccc;
+min-height: 80px;
+padding: 5px;
+border-radius: 5px;
+position: relative;
 }
-.calendar-cell .date {
-  font-weight: bold;
+.calendar-cell .date { font-weight: bold; }
+.calendar-cell .tooltip {
+position: absolute;
+bottom: 5px; left: 5px;
+background: rgba(0,0,0,0.75);
+color: white;
+padding: 4px 6px;
+border-radius: 4px;
+font-size: 0.75rem;
+display: none;
 }
+.calendar-cell:hover .tooltip { display: block; }
+
+/* Expiration states */
+.calendar-cell.expired {
+background-color: #fdecea;
+border: 2px solid #dc3545;
+}
+.calendar-cell.warning {
+background-color: #fff8e1;
+border: 2px solid #ffc107;
+}
+.calendar-cell.safe {
+background-color: #e6f9e6;
+border: 2px solid #2ecc71;
+}
+
+/* Monthly summary list for Calendar */
+.monthly-summary {
+margin-top: 25px;
+padding-top: 15px;
+border-top: 2px solid var(--light-green);
+}
+.monthly-summary h3 {
+text-align: center;
+margin-bottom: 12px;
+font-size: 1.2rem;
+color: var(--dark-green);
+}
+
+#monthlySummaryList {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+#monthlySummaryList li {
+background-color: #f1f8e9;
+border: 1px solid var(--green);
+border-radius: 8px;
+padding: 8px 12px;
+margin-bottom: 8px;
+box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+font-size: 0.95rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+.calendar-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+.calendar-cell {
+min-height: 60px;
+font-size: 0.9rem;
+}
+#monthlySummaryList li {
+flex-direction: column;
+align-items: flex-start;
+font-size: 0.9rem;
+}
+}
+
 .calendar-cell .tooltip {
   position: absolute;
   bottom: 5px; left: 5px;
@@ -51,22 +116,11 @@
   padding: 4px 6px;
   border-radius: 4px;
   font-size: 0.75rem;
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 .calendar-cell:hover .tooltip {
-  display: block;
-}
-
-/* Expiration states */
-.calendar-cell.expired {
-  background-color: #fdecea;
-  border: 2px solid #dc3545;
-}
-.calendar-cell.warning {
-  background-color: #fff8e1;
-  border: 2px solid #ffc107;
-}
-.calendar-cell.safe {
-  background-color: #e6f9e6;
-  border: 2px solid #2ecc71;
+  visibility: visible;
+  opacity: 1;
 }
