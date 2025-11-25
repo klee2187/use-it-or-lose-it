@@ -43,7 +43,7 @@
     {
         "id": 2,
         "name": "Banana Smoothie with Ice",
-        "image": "data/images/banana-smoothie-with-ice.jpg",
+        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/07/banana-smoothie-with-ice.jpg",
         "description": "This Banana Smoothie with ice features fresh or frozen bananas, creamy yogurt, and sweet brown sugar. It's a tasty and refreshing drink for your breakfast or brunch!",
         "prepTime": "5 minutes",
         "cookTime": "N/A",
