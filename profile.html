@@ -29,46 +29,64 @@
     </nav>
   </header>
 
-<main id="main">
-  <section class="profile-box">
-    <h2>Profile</h2>
-    <p>Manage your account and preferences here.</p>
+  <main id="main">
+    <section class="profile-box">
+      <h2>Profile</h2>
+      <p>Manage your account and preferences here.</p>
 
-    <!-- Profile Input Form in a box -->
-    <form id="profileForm" class="profile-form">
-      <table class="profile-table">
-        <tr>
-          <th><label for="profileName">Name</label></th>
-          <td><input type="text" id="profileName" required /></td>
-        </tr>
-        <tr>
-          <th><label for="profileEmail">Email</label></th>
-          <td><input type="email" id="profileEmail" required /></td>
-        </tr>
-        <tr>
-          <th><label for="profileFamilySize">Family Size</label></th>
-          <td><input type="number" id="profileFamilySize" min="1" required /></td>
-        </tr>
-      </table>
-      <div class="form-buttons">
-        <button type="submit">Save Profile</button>
-        <button type="button" id="editProfileBtn">Edit Profile</button>
-        <button type="button" id="clearProfileBtn">Clear Profile</button>
-      </div>
-    </form>
+      <!-- Profile Input Form -->
+      <form id="profileForm" class="profile-form">
+        <table class="profile-table">
+          <tr>
+            <th><label for="profileName">Name</label></th>
+            <td><input type="text" id="profileName" required /></td>
+          </tr>
+          <tr>
+            <th><label for="profileEmail">Email</label></th>
+            <td><input type="email" id="profileEmail" required /></td>
+          </tr>
+          <tr>
+            <th><label for="profileFamilySize">Family Size</label></th>
+            <td><input type="number" id="profileFamilySize" min="1" required /></td>
+          </tr>
+          <tr>
+            <th><label for="profileDiet">Dietary Preference</label></th>
+            <td>
+              <select id="profileDiet">
+                <option value="">— Select —</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Vegan">Vegan</option>
+                <option value="Gluten-Free">Gluten-Free</option>
+                <option value="None">None</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th><label for="profileCuisine">Favorite Cuisine</label></th>
+            <td><input type="text" id="profileCuisine" placeholder="e.g. Italian, Mexican" /></td>
+          </tr>
+        </table>
+        <div class="form-buttons">
+          <button type="submit">Save Profile</button>
+          <button type="button" id="editProfileBtn">Edit Profile</button>
+          <button type="button" id="clearProfileBtn">Clear Profile</button>
+        </div>
+      </form>
 
-    <!-- Display saved preferences -->
-    <section class="profile-preferences">
-      <h3>My Profile</h3>
-      <p><strong>Name:</strong> <span id="displayName">—</span></p>
-      <p><strong>Email:</strong> <span id="displayEmail">—</span></p>
-      <p><strong>Family Size:</strong> <span id="displayFamilySize">—</span></p>
+      <!-- Display saved preferences -->
+      <section class="profile-preferences">
+        <h3>My Profile</h3>
+        <p><strong>Name:</strong> <span id="displayName">—</span></p>
+        <p><strong>Email:</strong> <span id="displayEmail">—</span></p>
+        <p><strong>Family Size:</strong> <span id="displayFamilySize">—</span></p>
+        <p><strong>Dietary Preference:</strong> <span id="displayDiet">—</span></p>
+        <p><strong>Favorite Cuisine:</strong> <span id="displayCuisine">—</span></p>
+      </section>
     </section>
-  </section>
-</main>
+  </main>
 
-<footer>
-  <p>&copy; 2025 Use It or Lose It. All rights reserved.</p>
-</footer>
+  <footer>
+    <p>&copy; 2025 Use It or Lose It. All rights reserved.</p>
+  </footer>
 </body>
 </html>
