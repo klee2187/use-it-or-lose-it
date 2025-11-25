@@ -10,61 +10,68 @@
 
 .inventory-box h2 {
   text-align: center;
+  color: var(--green);
   margin-bottom: 20px;
 }
 
-/* Form styling */
+/* Form Styling */
 #inventoryForm {
-  margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
+  justify-content: center;
+  align-items: flex-end; 
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
 }
 
-#inventoryForm .form-group {
+.form-group {
   flex: 1 1 250px;
   display: flex;
   flex-direction: column;
 }
 
-#inventoryForm label {
+.form-group label {
+  font-size: 0.9rem;
   margin-bottom: 5px;
-  font-weight: 500;
+  font-weight: bold;
 }
 
-#inventoryForm input {
+.form-group input {
   padding: 8px 10px;
-  border-radius: 5px;
   border: 1px solid #ccc;
+  border-radius: 5px;
   font-size: 1rem;
 }
 
 #inventoryForm button {
-  padding: 10px 20px;
-  border-radius: 10px;
   background-color: var(--green);
-  color: var(--white);
-  font-weight: bold;
+  color: white;
+  padding: 10px 20px;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-weight: bold;
+  height: 38px;
+  transition: background 0.3s;
 }
+
 #inventoryForm button:hover {
   background-color: var(--dark-green);
 }
 
-/* Table styling */
+/* Table Styling */
 .inventory-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
-  font-size: 1rem;
+  margin-top: 10px;
   border: 2px solid var(--light-green);
   border-radius: 10px;
   overflow: hidden;
 }
 
-.inventory-table th,
+.inventory-table th, 
 .inventory-table td {
   padding: 12px 15px;
   text-align: left;
@@ -73,71 +80,65 @@
 
 .inventory-table th {
   background-color: var(--green);
-  color: var(--white);
+  color: white;
   font-weight: bold;
 }
 
+/* Default alternating row color */
 .inventory-table tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
+/* Safe items */
+.inventory-table tr.status-safe {
+  background-color: #e8f5e9; 
+  border: 2px solid #2ecc71; 
+}
+
+/* Expiring items */
+.inventory-table tr.status-expiring {
+  background-color: #fff8e1; 
+  border: 2px solid #ffc107; 
+}
+
+/* Expired items */
+.inventory-table tr.status-expired {
+  background-color: #ffebee; 
+  border: 2px solid #dc3545; 
+}
+
+/* Hover effect */
 .inventory-table tr:hover {
   background-color: #f1f8e9;
   transition: background 0.2s ease;
 }
 
-/* Status coloring */
-.inventory-table tr.safe td {
-  background-color: #e8f5e9; 
-}
-.inventory-table tr.warning td {
-  background-color: #fff8e1; 
-}
-.inventory-table tr.danger td {
-  background-color: #ffebee;
-}
-
 /* Action buttons */
-.inventory-table .action-btn {
-  padding: 6px 12px;
-  border-radius: 6px;
+.delete-btn {
+  background-color: #ef5350;
+  color: white;
   border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
   cursor: pointer;
   font-size: 0.9rem;
   transition: background 0.2s ease;
 }
 
-.inventory-table .edit-btn {
-  background-color: var(--accent-orange);
-  color: var(--white);
-}
-.inventory-table .edit-btn:hover {
-  background-color: #e67e22;
+.delete-btn:hover {
+  background-color: #c62828;
 }
 
-.inventory-table .delete-btn {
-  background-color: #ff5252;
-  color: var(--white);
-}
-.inventory-table .delete-btn:hover {
-  background-color: #e53935;
-}
-/* Default row */
-.inventory-table tr {
-  border: 2px solid transparent;
-}
-
-/* Safe items */
-.inventory-table tr.safe {
-  border: 2px solid #2ecc71; /* green */
-}
-
-/* Almost expired items */
-.inventory-table tr.warning {
-  border: 2px solid #ffc107; /* yellow/orange */
-}
-
-/* Expired items */
-.inventory-table tr.expired {
-  border: 2px solid #dc3545; /* red */
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  #inventoryForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .inventory-table {
+    display: block;
+    overflow-x: auto; 
+    white-space: nowrap;
+  }
 }

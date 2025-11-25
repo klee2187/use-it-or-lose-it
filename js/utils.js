@@ -1,4 +1,4 @@
-// Navbar toggle
+// Initialize Navbar Toggle
 export function initNavbarToggle() {
   const toggleBtn = document.querySelector(".nav-toggle");
   const navMenu = document.getElementById("nav-menu");
@@ -7,18 +7,17 @@ export function initNavbarToggle() {
     toggleBtn.addEventListener("click", () => {
       const expanded = toggleBtn.getAttribute("aria-expanded") === "true";
       toggleBtn.setAttribute("aria-expanded", !expanded);
-      navMenu.classList.toggle("nav-open"); // ✅ matches CSS
+      navMenu.classList.toggle("nav-open");
     });
   }
 }
 
-// Alert system
+// Alert System Display
 export function showAlert(message, type = "safe") {
   const alertSection = document.getElementById("alertSection");
   const alertMessage = document.getElementById("alertMessage");
-  const alertDismissBtn = document.getElementById("alertDismissBtn");
-
-  if (!alertSection || !alertMessage || !alertDismissBtn) return;
+  
+  if (!alertSection || !alertMessage) return;
 
   let emoji = "ℹ️";
   if (type === "safe") emoji = "✅";
@@ -26,36 +25,48 @@ export function showAlert(message, type = "safe") {
   if (type === "error") emoji = "❌";
 
   alertMessage.textContent = `${emoji} ${message}`;
+  
   alertSection.classList.remove("hidden", "safe", "warning", "error");
   alertSection.classList.add(type);
-
-  alertDismissBtn.addEventListener("click", () => {
-    alertSection.classList.add("hidden");
-  });
 }
 
-// Expiring/Expired items alert
+// Initialize Alert Dismissal
+export function initAlertDismiss() {
+    const alertDismissBtn = document.getElementById("alertDismissBtn");
+    const alertSection = document.getElementById("alertSection");
+
+    if (alertDismissBtn && alertSection) {
+        alertDismissBtn.addEventListener("click", () => {
+            alertSection.classList.add("hidden");
+        });
+    }
+}
+
+// Check Inventory for Expirations
 export function checkInventoryAlerts(inventory) {
   const today = new Date();
+  today.setHours(0, 0, 0, 0); 
 
   const expiringItems = inventory.filter(item => {
+    if (!item.expiration) return false;
     const expDate = new Date(item.expiration);
-    const diffDays = Math.ceil((expDate - today) / (1000 * 60 * 60 * 24));
+    const diffTime = expDate - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return diffDays > 0 && diffDays <= 5;
   });
 
   const expiredItems = inventory.filter(item => {
+    if (!item.expiration) return false;
     const expDate = new Date(item.expiration);
     return expDate < today;
   });
 
+  // Prioritize showing the most critical alert
   if (expiredItems.length > 0) {
     const names = expiredItems.map(item => item.name).join(", ");
-    showAlert(`These items have expired: ${names}`, "error");
+    showAlert(`These ${expiredItems.length} items have EXPIRED: ${names}`, "error");
   } else if (expiringItems.length > 0) {
     const names = expiringItems.map(item => item.name).join(", ");
-    showAlert(`These items are expiring soon: ${names}`, "warning");
-  } else {
-    showAlert("No items expiring in the next 5 days.", "safe");
+    showAlert(`These ${expiringItems.length} items are expiring soon: ${names}`, "warning");
   }
 }

@@ -30,10 +30,14 @@
   </header>
 
   <main id="main">
+    <section id="alertSection" class="alert hidden">
+      <p id="alertMessage"></p>
+      <button id="alertDismissBtn" aria-label="Dismiss alert">✖</button>
+    </section>
+
     <section class="inventory-box">
       <h2>Inventory</h2>
 
-      <!-- Add Item Form -->
       <form id="inventoryForm">
         <div class="form-group">
           <label for="itemName">Item Name</label>
@@ -50,7 +54,6 @@
         <button type="submit">Add Item</button>
       </form>
 
-      <!-- Inventory Table -->
       <table class="inventory-table">
         <thead>
           <tr>
@@ -64,11 +67,6 @@
         </tbody>
       </table>
     </section>
-    <!-- Alerts -->
-<section id="alertSection" class="alert hidden">
-  <p id="alertMessage"></p>
-  <button id="alertDismissBtn" aria-label="Dismiss alert">✖</button>
-</section>
   </main>
 
   <footer>

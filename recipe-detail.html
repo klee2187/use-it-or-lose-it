@@ -1,33 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Detail | Use It or Lose It</title>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/recipe-detail.css">
-    <script type="module" src="js/recipe-detail.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipe Detail | Use It or Lose It</title>
+  <meta name="description" content="View recipe instructions, ingredients, and check inventory status." />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/recipes-detail.css" />
+  <script type="module" src="js/recipe-detail.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Use It or Lose It</h1>
-        <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-            <span class="hamburger"></span>
-        </button>
-        <nav id="nav-menu">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="recipes.html">Recipes</a></li>
-                <li><a href="recipes-all.html">All Recipes</a></li>
-            </ul>
-        </nav>
-    </header>
+  
+  <header>
+    <h1>Use It or Lose It</h1>
+    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="hamburger"></span>
+    </button>
+    <nav id="nav-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="inventory.html">Inventory</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="recipes-all.html">All Recipes</a></li>
+        <li><a href="budget.html">Budget</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main id="main">
-        <section id="recipeDetail"></section>
-    </main>
+  <section id="alertSection" class="alert hidden">
+    <p id="alertMessage"></p>
+    <button id="alertDismissBtn" aria-label="Dismiss alert">✖</button>
+  </section>
 
-    <footer>
-        <p>&copy; 2025 Use It or Lose It. All rights reserved.</p>
+  <main id="main">
+    <a href="recipes-all.html" class="back-link">← Back to Recipes</a>
+    
+    <section id="recipeDetailContainer" class="recipe-detail-box">
+      </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Use It or Lose It.</p>
+  </footer>
 </body>
 </html>

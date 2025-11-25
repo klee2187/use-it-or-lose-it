@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Recipes | Use It or Lose It</title>
+  <meta name="description" content="Discover recipes suggested based on your inventory." />
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/recipes.css" />
   <script type="module" src="js/recipes.js" defer></script>
@@ -28,7 +29,6 @@
     </nav>
   </header>
 
-  <!-- Alerts -->
   <section id="alertSection" class="alert hidden">
     <p id="alertMessage"></p>
     <button id="alertDismissBtn" aria-label="Dismiss alert">✖</button>
@@ -36,14 +36,20 @@
 
   <main id="main">
     <section class="featured-recipe"></section>
+    
+    <div class="view-all-container">
+        <h2>Curated Recipes</h2>
+    </div>
+
     <section class="recipe-gallery"></section>
+
     <div class="view-all-container">
       <a href="recipes-all.html" class="view-all-btn">View All Recipes</a>
     </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 Use It or Lose It. All rights reserved.</p>
+    <p>&copy; 2025 Use It or Lose It.</p>
   </footer>
 </body>
 </html>
