@@ -3,19 +3,35 @@
   background-color: var(--white);
   border: 2px solid var(--light-green);
   border-radius: 15px;
-  padding: 20px;
-  margin: 20px auto;
+  padding: 30px; 
+  margin: 30px auto;
   max-width: 900px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
 }
 
-/* Title */
+/* Titles and Separators */
 .budget-box h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  color: var(--green);
+}
+.budget-box h3 {
+  color: var(--dark-green);
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+.budget-box hr {
+  border: 0;
+  height: 1px;
+  background-color: var(--light-green);
+  margin: 25px 0;
 }
 
-/* Form groups */
+
+/* Forms */
+#setBudgetForm, #budgetForm {
+  padding: 10px 0;
+}
 .form-group {
   margin-bottom: 15px;
   display: flex;
@@ -23,13 +39,19 @@
 }
 .form-group label {
   margin-bottom: 5px;
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--text-dark);
 }
 .form-group input {
-  padding: 8px 10px;
-  border-radius: 5px;
+  padding: 10px 12px;
+  border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 1rem;
+  transition: border-color 0.2s;
+}
+.form-group input:focus {
+  border-color: var(--accent-orange);
+  outline: none;
 }
 
 /* Buttons */
@@ -41,115 +63,133 @@
   font-weight: bold;
   border: none;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.1s;
+  width: 100%; 
+  max-width: 200px; 
+  margin-top: 10px;
+}
+#setBudgetForm button {
+    background-color: var(--accent-orange);
+}
+#setBudgetForm button:hover {
+    background-color: #d97706;
 }
 .budget-box button:hover {
   background-color: var(--dark-green);
+  transform: translateY(-2px);
 }
+
 
 /* Summary section */
 .budget-summary {
-  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.budget-summary p {
+  font-size: 1.1rem;
+  margin: 8px 0;
 }
 
 /* Progress bar */
 .budget-progress {
   width: 100%;
-  height: 25px;
+  height: 30px; 
   background-color: #eee;
-  border-radius: 10px;
-  margin-top: 10px;
+  border-radius: 15px;
+  margin-top: 15px;
   position: relative;
+  overflow: hidden;
+  border: 1px solid var(--light-green);
 }
 #progressBar {
   height: 100%;
   width: 0%;
   background-color: var(--accent-orange);
-  border-radius: 10px;
+  border-radius: 15px;
   transition: width 0.5s ease;
   text-align: center;
   color: var(--white);
   font-weight: bold;
-  line-height: 25px;
+  line-height: 28px;
+  font-size: 0.9rem;
 }
 .over-budget {
-  color: #c62828;
+  color: #c62828; 
   font-weight: bold;
+}
+#progressBar[style*="background-color: #c62828"] {
+    background-color: #c62828 !important; 
+}
+
+/* Expense List & Monthly Summary Container */
+.expense-views-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
 }
 
 /* Expense list */
 #expenseList {
   list-style: none;
   padding: 0;
-  margin-top: 20px;
 }
 #expenseList li {
   background-color: var(--light-green);
-  border: 2px solid var(--green);
+  border-left: 5px solid var(--green);
   border-radius: 10px;
   padding: 12px 15px;
   margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  font-size: 1rem;
 }
 .delete-expense {
   background-color: #ff5252;
   border: none;
   color: white;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   border-radius: 6px;
   padding: 6px 10px;
   cursor: pointer;
   transition: background 0.2s ease;
+  min-width: 70px; 
+  margin-left: 10px;
 }
 .delete-expense:hover {
   background-color: #e53935;
 }
-.delete-expense:focus-visible {
-  outline: 2px solid var(--accent-orange);
-  outline-offset: 2px;
-}
+
 
 /* Monthly summary */
 .monthly-summary {
-  margin-top: 30px;
   padding-top: 15px;
-  border-top: 2px solid var(--light-green);
 }
-.monthly-summary h3 {
-  text-align: center;
-  margin-bottom: 10px;
-}
+
 #monthlySummaryList {
   list-style: none;
   padding: 0;
 }
 #monthlySummaryList li {
-  background-color: #f1f8e9;
-  border: 1px solid var(--green);
+  background-color: #f1f8e9; 
+  border: 1px solid var(--light-green);
   border-radius: 8px;
-  padding: 8px 12px;
+  padding: 10px 12px;
   margin-bottom: 8px;
+  font-weight: 500;
 }
 
 /* Responsive layout */
-.budget-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+@media (min-width: 768px) {
+    .expense-views-container {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 @media (max-width: 768px) {
-  .budget-layout {
-    grid-template-columns: 1fr; /* stack vertically */
-  }
-  .budget-progress {
-    height: 20px;
-  }
-  #progressBar {
-    font-size: 0.85rem;
-    line-height: 20px;
+  .budget-box {
+    margin: 20px;
+    padding: 20px;
   }
 }
 @media (max-width: 480px) {
@@ -157,13 +197,7 @@
     margin: 10px;
     padding: 15px;
   }
-  .budget-box h2 {
-    font-size: 1.3rem;
-  }
-  .monthly-summary h3 {
-    font-size: 1.1rem;
-  }
-  #monthlySummaryList li {
-    font-size: 0.9rem;
+  .budget-box button {
+      max-width: 100%;
   }
 }
