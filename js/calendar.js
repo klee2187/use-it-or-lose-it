@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const TODAY = new Date();
     TODAY.setHours(0, 0, 0, 0);
 
-    // Core Logic
     const getItemSeverity = (items) => {
         let severity = 'none'; // Default state
         items.forEach(item => {
@@ -79,7 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Fill days
         for (let day = 1; day <= lastDay.getDate(); day++) {
+
             if ((startDayIndex + day - 1) % 7 === 0) {
+                // If it's not the very first day, create a new row
                 if (day !== 1) { 
                     currentRow = document.createElement("div");
                     currentRow.setAttribute("role", "row");
@@ -129,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
             currentRow.appendChild(cell); 
         }
         
-        // Fill the rest of the last row with empty cells (if needed)
+        // Fill the rest of the last row with empty cells 
         const totalCells = startDayIndex + lastDay.getDate();
         const cellsInLastRow = totalCells % 7;
         const remainingCells = cellsInLastRow === 0 ? 0 : 7 - cellsInLastRow;
@@ -145,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderMonthlySummary(year, month);
     };
 
-    // render Monthly Summary and event listeners 
+    // Render Monthly Summary and event listeners
     const renderMonthlySummary = (year, month) => {
         monthlySummaryList.innerHTML = "";
 
