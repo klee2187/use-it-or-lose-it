@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
   const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
 
-  // Run Alert Check
+  // Run Alert Check with updated thresholds
   checkInventoryAlerts(inventory);
 
   // DOM Elements
@@ -27,19 +27,19 @@ document.addEventListener("DOMContentLoaded", () => {
       <a href="recipes.html">Check out the full recipe on the Recipes page!</a>
     `;
   } else if (recipeHighlightBox) {
-      recipeHighlightBox.innerHTML = `<p>Add recipes to see a highlight here!</p>`;
+    recipeHighlightBox.innerHTML = `<p>Add recipes to see a highlight here!</p>`;
   }
 
   // Suggested Recipes Logic 
   const today = new Date();
   
-  // Get list of ingredients expiring soon
+  // Get list of ingredients expiring soon (within 7 days)
   const expiringNames = inventory
     .filter(item => {
       if (!item.expiration) return false;
       const expDate = new Date(item.expiration);
       const diffDays = Math.ceil((expDate - today) / (1000 * 60 * 60 * 24));
-      return diffDays > 0 && diffDays <= 5;
+      return diffDays > 0 && diffDays <= 7;
     })
     .map(item => item.name.toLowerCase());
 
@@ -56,38 +56,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Render Suggested Recipes
   if (suggestedBox) {
-      if (suggested.length > 0) {
-        suggestedBox.innerHTML = "<h3>🧑‍🍳 Suggested Recipes (Use up your ingredients!)</h3>";
-        suggested.forEach(recipe => {
-          const card = document.createElement("div");
-          card.classList.add("recipe-card");
-          card.innerHTML = `
-            <p><strong>${recipe.name}</strong></p>
-            <p>Type: ${recipe.type}</p>
-          `;
-          suggestedBox.appendChild(card);
-        });
-      } else {
-        suggestedBox.innerHTML =
-          "<h3>🧑‍🍳 Suggested Recipes</h3><p>No suggested recipes based on expiring items right now.</p>";
-      }
+    if (suggested.length > 0) {
+      suggestedBox.innerHTML = "<h3>🧑‍🍳 Suggested Recipes (Use up your ingredients!)</h3>";
+      suggested.forEach(recipe => {
+        const card = document.createElement("div");
+        card.classList.add("recipe-card");
+        card.innerHTML = `
+          <p><strong>${recipe.name}</strong></p>
+          <p>Type: ${recipe.type}</p>
+        `;
+        suggestedBox.appendChild(card);
+      });
+    } else {
+      suggestedBox.innerHTML =
+        "<h3>🧑‍🍳 Suggested Recipes</h3><p>No suggested recipes based on expiring items right now.</p>";
+    }
   }
 
   // Tip of the Day
   if (tipContent) {
-      const tips = [
-        "Store herbs in damp paper towels to keep them fresh longer.",
-        "Use clear containers so you can see what you have.",
-        "Freeze leftovers in labeled portions for easy reuse.",
-        "Plan meals around what’s already in your fridge.",
-        "Check expiration dates weekly to avoid waste.",
-      ];
-      const tip = tips[Math.floor(Math.random() * tips.length)];
-      const pTag = tipContent.querySelector("p");
-      if(pTag) pTag.textContent = tip;
+    const tips = [
+      "Store herbs in damp paper towels to keep them fresh longer.",
+      "Use clear containers so you can see what you have.",
+      "Freeze leftovers in labeled portions for easy reuse.",
+      "Plan meals around what’s already in your fridge.",
+      "Check expiration dates weekly to avoid waste.",
+    ];
+    const tip = tips[Math.floor(Math.random() * tips.length)];
+    const pTag = tipContent.querySelector("p");
+    if (pTag) pTag.textContent = tip;
   }
 });
 
+// Back to Top Button
 document.getElementById("backToTop")?.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });

@@ -49,14 +49,16 @@
         </div>
         <div class="form-group">
           <label for="itemUnit">Unit</label>
-          <select id="itemUnit" required>
-            <option value="">Select unit</option>
+          <select id="itemUnit">
+            <option value="">(No unit)</option>
             <option value="pkg">Package(s)</option>
             <option value="can">Can(s)</option>
             <option value="oz">Ounce(s)</option>
             <option value="lb">Pound(s)</option>
             <option value="g">Gram(s)</option>
             <option value="kg">Kilogram(s)</option>
+            <option value="gal">Gallon(s)</option>
+            <option value="half-gal">Half Gallon(s)</option>
           </select>
         </div>
         <div class="form-group">
@@ -68,6 +70,7 @@
         <input type="hidden" id="editIndex" value="" />
 
         <button type="submit">Add Item</button>
+        <button type="button" id="cancelEditBtn" class="cancel-btn hidden">Cancel Edit</button>
       </form>
 
       <table class="inventory-table">
