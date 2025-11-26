@@ -1,41 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Favorites | Use It or Lose It</title>
-  <link rel="stylesheet" href="css/global.css" />
-  <link rel="stylesheet" href="css/recipes.css" />
-  <script type="module" src="js/favorites.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorites | Use It or Lose It</title>
+    <meta name="description" content="A collection of your saved and favorite recipes." />
+    
+    <style>
+        :root {
+            --white: #ffffff;
+            --text-dark: #212121;
+            --accent-red: #E53935; /* Used for the Remove/Heartbreak button */
+            --light-bg: #f4f4ff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+        }
+        
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #4CAF50; /* A pleasant green color */
+            margin-bottom: 30px;
+        }
+
+        /* Essential button styling for the remove action */
+        .remove-fav-btn {
+            background-color: var(--accent-red);
+            color: var(--white);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+    </style>
+
+    <link rel="preload" href="css/global.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/recipes.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/recipes.css">
+    </noscript>
+
+    <script type="module" src="js/favorites.js" defer></script>
 </head>
 <body>
-  
-  <header>
-    <h1>Use It or Lose It</h1>
-    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-      <span class="hamburger"></span>
-    </button>
-    <nav id="nav-menu">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="inventory.html">Inventory</a></li>
-        <li><a href="recipes.html">Recipes</a></li>
-        <li><a href="recipes-all.html">All Recipes</a></li>
-        <li><a href="favorites.html" class="active">Favorites</a></li>
-        <li><a href="budget.html">Budget</a></li>
-        <li><a href="calendar.html">Calendar</a></li>
-        <li><a href="profile.html">Profile</a></li>
-      </ul>
-    </nav>
-  </header>
+    
+    <header>
+        <h1>Use It or Lose It</h1>
+        <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+            <span class="hamburger"></span>
+        </button>
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="inventory.html">Inventory</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="recipes-all.html">All Recipes</a></li>
+                <li><a href="favorites.html" class="active">Favorites</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main id="main">
-    <h2>❤️ Your Favorite Recipes</h2>
-    <section class="recipe-gallery" id="favoritesGallery"></section>
-  </main>
+    <main id="main">
+        <h2>❤️ Your Favorite Recipes</h2>
+        <section class="recipe-gallery" id="favoritesGallery" role="region" aria-live="polite">
+            <p>Loading your favorite recipes...</p>
+        </section>
+    </main>
 
-  <footer>
-    <p>&copy; 2025 Use It or Lose It. All rights reserved.</p>
-  </footer>
+    <footer>
+        <p>&copy; 2025 Use It or Lose It</p>
+    </footer>
 </body>
 </html>
