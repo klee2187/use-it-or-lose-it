@@ -1,126 +1,219 @@
-import { initNavbarToggle, checkInventoryAlerts } from "./utils.js";
+import { initNavbarToggle, initAlertDismiss, checkInventoryAlerts } from "./utils.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  initNavbarToggle();
+    initNavbarToggle();
+    // Assuming initAlertDismiss exists in utils.js to handle the alert section
+    // initAlertDismiss(); 
 
-  const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
-  checkInventoryAlerts(inventory);
+    const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+    checkInventoryAlerts(inventory); // Check for global expiration alerts
 
-  const calendarHeader = document.getElementById("calendarHeader");
-  const calendarGrid = document.getElementById("calendarGrid");
-  const prevMonthBtn = document.getElementById("prevMonthBtn");
-  const nextMonthBtn = document.getElementById("nextMonthBtn");
-  const todayBtn = document.getElementById("todayBtn");
-  const monthlySummaryList = document.getElementById("monthlySummaryList");
+    const calendarHeader = document.getElementById("calendarHeader");
+    const calendarGrid = document.getElementById("calendarGrid");
+    const prevMonthBtn = document.getElementById("prevMonthBtn");
+    const nextMonthBtn = document.getElementById("nextMonthBtn");
+    const todayBtn = document.getElementById("todayBtn");
+    const monthlySummaryList = document.getElementById("monthlySummaryList");
 
-  let currentDate = new Date();
+    let currentDate = new Date();
+    currentDate.setDate(1); 
+    currentDate.setHours(0, 0, 0, 0);
 
-  const renderCalendar = () => {
-    calendarGrid.innerHTML = "";
+    const TODAY = new Date();
+    TODAY.setHours(0, 0, 0, 0);
 
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
+    // Core Logic
+    const getItemSeverity = (items) => {
+        let severity = 'none'; // Default state
+        items.forEach(item => {
+            if (!item.expiration) return;
+            const expDate = new Date(item.expiration);
+            expDate.setHours(0, 0, 0, 0);
+            const diffTime = expDate.getTime() - TODAY.getTime();
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            let currentSeverity = 'safe';
+            
+            if (diffDays <= 0) {
+                currentSeverity = 'expired';
+            } else if (diffDays <= 3) {
+                currentSeverity = 'warning';
+            }
 
-    const firstDay = new Date(year, month, 1);
-    const lastDay = new Date(year, month + 1, 0);
+            if (currentSeverity === 'expired') {
+                severity = 'expired';
+            } else if (currentSeverity === 'warning' && severity !== 'expired') {
+                severity = 'warning';
+            } else if (currentSeverity === 'safe' && severity === 'none') {
+                severity = 'safe';
+            }
+        });
+        return severity;
+    };
 
-    calendarHeader.textContent = `${firstDay.toLocaleString("default", {
-      month: "long",
-    })} ${year}`;
+    const renderCalendar = () => {
+        calendarGrid.innerHTML = "";
 
-    // Empty cells before first day
-    for (let i = 0; i < firstDay.getDay(); i++) {
-      const emptyCell = document.createElement("div");
-      emptyCell.classList.add("calendar-cell");
-      calendarGrid.appendChild(emptyCell);
-    }
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
 
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        
+        const startDayIndex = firstDay.getDay(); // 0=Sunday
 
-    // Fill days
-    for (let day = 1; day <= lastDay.getDate(); day++) {
-      const cell = document.createElement("div");
-      cell.classList.add("calendar-cell");
-      cell.innerHTML = `<div class="date">${day}</div>`;
+        calendarHeader.textContent = `${firstDay.toLocaleString("default", {
+            month: "long",
+        })} ${year}`;
 
-      const cellDate = new Date(year, month, day);
-      cellDate.setHours(0, 0, 0, 0);
+        let currentRow = document.createElement("div");
+        currentRow.setAttribute("role", "row");
+        calendarGrid.appendChild(currentRow);
 
-      const expiringItems = inventory.filter((item) => {
-        if (!item.expiration) return false;
-        const expDate = new Date(item.expiration);
-        expDate.setHours(0, 0, 0, 0);
-        return expDate.getTime() === cellDate.getTime();
-      });
+        // Empty cells before the first day
+        for (let i = 0; i < startDayIndex; i++) {
+            const emptyCell = document.createElement("div");
+            emptyCell.classList.add("calendar-cell", "empty");
+            emptyCell.setAttribute("role", "gridcell"); 
+            currentRow.appendChild(emptyCell);
+        }
 
-      if (expiringItems.length > 0) {
-        expiringItems.forEach((item) => {
-          const expDate = new Date(item.expiration);
-          expDate.setHours(0, 0, 0, 0);
-          const diffDays = Math.ceil((expDate - today) / (1000 * 60 * 60 * 24));
+        // Fill days
+        for (let day = 1; day <= lastDay.getDate(); day++) {
+            if ((startDayIndex + day - 1) % 7 === 0) {
+                if (day !== 1) { 
+                    currentRow = document.createElement("div");
+                    currentRow.setAttribute("role", "row");
+                    calendarGrid.appendChild(currentRow);
+                }
+            }
+            
+            const cell = document.createElement("div");
+            cell.classList.add("calendar-cell");
+            cell.setAttribute("role", "gridcell"); 
 
-          if (diffDays <= 0) {
-            cell.classList.add("expired");
-          } else if (diffDays <= 3) {
-            cell.classList.add("warning");
-          } else {
-            cell.classList.add("safe");
-          }
+            const cellDate = new Date(year, month, day);
+            cellDate.setHours(0, 0, 0, 0);
+
+            if (cellDate.getTime() === TODAY.getTime()) {
+                cell.classList.add("today");
+            }
+            
+            const expiringItems = inventory.filter((item) => {
+                if (!item.expiration) return false;
+                const expDate = new Date(item.expiration);
+                expDate.setHours(0, 0, 0, 0);
+                return expDate.getTime() === cellDate.getTime();
+            });
+            
+            cell.innerHTML = `<div class="date">${day}</div>`;
+
+            if (expiringItems.length > 0) {
+                const severity = getItemSeverity(expiringItems, cellDate);
+                if (severity !== 'none') {
+                    cell.classList.add(severity);
+                }
+
+                const countEl = document.createElement("div");
+                countEl.classList.add("item-count");
+                countEl.textContent = `${expiringItems.length} item(s) expiring`;
+                cell.appendChild(countEl);
+
+                const tooltip = document.createElement("div");
+                tooltip.classList.add("tooltip");
+                const itemNames = expiringItems.map((i) => i.name).join(", ");
+                tooltip.textContent = `Expiring: ${itemNames}`;
+                tooltip.setAttribute("aria-label", tooltip.textContent);
+                cell.appendChild(tooltip);
+            }
+
+            currentRow.appendChild(cell); 
+        }
+        
+        // Fill the rest of the last row with empty cells (if needed)
+        const totalCells = startDayIndex + lastDay.getDate();
+        const cellsInLastRow = totalCells % 7;
+        const remainingCells = cellsInLastRow === 0 ? 0 : 7 - cellsInLastRow;
+
+        for (let i = 0; i < remainingCells; i++) {
+            const emptyCell = document.createElement("div");
+            emptyCell.classList.add("calendar-cell", "empty");
+            emptyCell.setAttribute("role", "gridcell");
+            currentRow.appendChild(emptyCell);
+        }
+
+
+        renderMonthlySummary(year, month);
+    };
+
+    // render Monthly Summary and event listeners 
+    const renderMonthlySummary = (year, month) => {
+        monthlySummaryList.innerHTML = "";
+
+        const monthlyItems = [];
+        inventory.forEach((item) => {
+            if (!item.expiration) return;
+            const expDate = new Date(item.expiration);
+            
+            if (expDate.getFullYear() === year && expDate.getMonth() === month) {
+                const severity = getItemSeverity([item]);
+                monthlyItems.push({ 
+                    date: expDate.toISOString().split("T")[0], 
+                    name: item.name,
+                    severity: severity
+                });
+            }
         });
 
-        const tooltip = document.createElement("div");
-        tooltip.classList.add("tooltip");
-        tooltip.textContent = expiringItems.map((i) => i.name).join(", ");
-        tooltip.setAttribute("aria-label", `Expiring items: ${tooltip.textContent}`);
-        cell.appendChild(tooltip);
-      }
+        if (monthlyItems.length === 0) {
+            monthlySummaryList.innerHTML = "<li>No expiring items this month.</li>";
+            return;
+        }
 
-      calendarGrid.appendChild(cell);
-    }
+        monthlyItems.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-    renderMonthlySummary(year, month);
-  };
+        monthlyItems.forEach((item) => {
+            const li = document.createElement("li");
+            const formattedDate = new Date(item.date).toLocaleDateString();
+            
+            let emoji = '✅';
+            let colorClass = 'safe-text'; 
+            let borderColor = '#388E3C'; 
+            
+            if (item.severity === 'warning') {
+                emoji = '⚠️';
+                colorClass = 'warning-text';
+                borderColor = '#FF9800'; 
+            } else if (item.severity === 'expired') {
+                emoji = '❌';
+                colorClass = 'expired-text';
+                borderColor = '#C62828'; 
+            }
 
-  const renderMonthlySummary = (year, month) => {
-    monthlySummaryList.innerHTML = "";
+            li.innerHTML = `
+                <span class="date-label ${colorClass}">${emoji} ${formattedDate}</span>
+                <span>${item.name}</span>
+            `;
+            li.style.borderLeftColor = borderColor;
+            
+            monthlySummaryList.appendChild(li);
+        });
+    };
 
-    const monthlyTotals = {};
-    inventory.forEach((item) => {
-      if (!item.expiration) return;
-      const expDate = new Date(item.expiration);
-      if (expDate.getFullYear() === year && expDate.getMonth() === month) {
-        const key = expDate.toISOString().split("T")[0]; // YYYY-MM-DD
-        if (!monthlyTotals[key]) monthlyTotals[key] = [];
-        monthlyTotals[key].push(item.name);
-      }
+    prevMonthBtn.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        currentDate.setDate(1); 
+        renderCalendar();
+    });
+    nextMonthBtn.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        currentDate.setDate(1); 
+        renderCalendar();
+    });
+    todayBtn.addEventListener("click", () => {
+        currentDate = new Date();
+        currentDate.setDate(1); 
+        renderCalendar();
     });
 
-    if (Object.keys(monthlyTotals).length === 0) {
-      monthlySummaryList.innerHTML = "<li>No expiring items this month.</li>";
-      return;
-    }
-
-    Object.entries(monthlyTotals).forEach(([date, items]) => {
-      const li = document.createElement("li");
-      const formattedDate = new Date(date).toLocaleDateString();
-      li.textContent = `${formattedDate}: ${items.join(", ")}`;
-      monthlySummaryList.appendChild(li);
-    });
-  };
-
-  prevMonthBtn.addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
     renderCalendar();
-  });
-  nextMonthBtn.addEventListener("click", () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    renderCalendar();
-  });
-  todayBtn.addEventListener("click", () => {
-    currentDate = new Date();
-    renderCalendar();
-  });
-
-  renderCalendar();
 });
