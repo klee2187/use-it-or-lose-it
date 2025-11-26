@@ -87,3 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if(pTag) pTag.textContent = tip;
   }
 });
+
+document.getElementById("backToTop")?.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});

@@ -38,11 +38,13 @@
   font-weight: bold;
 }
 
-.form-group input {
+.form-group input,
+.form-group select {
   padding: 8px 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
+  background-color: #fff;
 }
 
 #inventoryForm button {
@@ -84,37 +86,34 @@
   font-weight: bold;
 }
 
-/* Default alternating row color */
 .inventory-table tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-/* Safe items */
+/* Status Colors */
 .inventory-table tr.status-safe {
   background-color: #e8f5e9; 
   border: 2px solid #2ecc71; 
 }
 
-/* Expiring items */
 .inventory-table tr.status-expiring {
   background-color: #fff8e1; 
   border: 2px solid #ffc107; 
 }
 
-/* Expired items */
 .inventory-table tr.status-expired {
   background-color: #ffebee; 
   border: 2px solid #dc3545; 
 }
 
-/* Hover effect */
 .inventory-table tr:hover {
   background-color: #f1f8e9;
   transition: background 0.2s ease;
 }
 
 /* Action buttons */
-.delete-btn {
+.delete-btn,
+.edit-btn {
   background-color: #ef5350;
   color: white;
   border: none;
@@ -125,8 +124,17 @@
   transition: background 0.2s ease;
 }
 
+.edit-btn {
+  background-color: #42a5f5;
+  margin-right: 5px;
+}
+
 .delete-btn:hover {
   background-color: #c62828;
+}
+
+.edit-btn:hover {
+  background-color: #1565c0;
 }
 
 /* Mobile Responsiveness */
