@@ -15,6 +15,7 @@
   margin-bottom: var(--spacing-sm);
 }
 
+/* Recipe Highlight */
 .recipe-highlight a {
   display: inline-block;
   margin-top: var(--spacing-sm);
@@ -23,11 +24,13 @@
   text-decoration: none;
 }
 
-.recipe-highlight a:hover {
+.recipe-highlight a:hover,
+.recipe-highlight a:focus {
   text-decoration: underline;
-  color: var(--dark-green);
+  color: #d35400; /* deeper orange */
 }
 
+/* Quick Links */
 .quick-links .feature-card-container {
   display: flex;
   justify-content: center;
@@ -51,11 +54,13 @@
   text-decoration: none;
 }
 
-.feature-card:hover {
+.feature-card:hover,
+.feature-card:focus {
   background-color: var(--dark-green);
   transform: scale(1.05);
 }
 
+/* Calendar Widget */
 .calendar-widget .calendar-placeholder {
   background-color: #f1f8e9;
   border: 2px dashed var(--light-green);
@@ -65,17 +70,26 @@
   font-style: italic;
 }
 
+/* Suggested Recipes Grid */
+#suggestedRecipes .recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
 #suggestedRecipes .recipe-card {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: var(--spacing-md);
-  margin: var(--spacing-sm) auto;
-  max-width: 600px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: transform 0.2s ease;
 }
 
-#suggestedRecipes .recipe-card:hover {
+#suggestedRecipes .recipe-card:hover,
+#suggestedRecipes .recipe-card:focus {
   transform: scale(1.02);
+  outline: 2px dashed var(--accent-orange);
+  outline-offset: 4px;
 }

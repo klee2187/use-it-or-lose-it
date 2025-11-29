@@ -1,8 +1,9 @@
+/* Global Variables & Reset */
 :root {
-  --green: #388e3c;           
-  --dark-green: #2e7d32;      
-  --light-green: #81c784;     
-  --accent-orange: #e67e22;   
+  --green: #388e3c;
+  --dark-green: #2e7d32;
+  --light-green: #81c784;
+  --accent-orange: #e67e22;
   --white: #ffffff;
   --text-dark: #212121;
   --high-contrast-text: #1a1a1a;
@@ -17,9 +18,7 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: "Segoe UI", Arial, sans-serif;
@@ -71,7 +70,7 @@ header h1 {
   color: var(--dark-green);
 }
 
-/* Mobile nav toggle */
+/* Mobile Nav Toggle */
 .nav-toggle {
   display: none;
   background: none;
@@ -92,9 +91,34 @@ header h1 {
   height: 3px;
   background-color: var(--white);
   margin: 5px 0;
-  transition: 0.3s;
+  transition: transform 0.4s ease, opacity 0.4s ease, background-color 0.4s ease;
+  position: relative;
 }
 
+.nav-toggle .hamburger::before,
+.nav-toggle .hamburger::after {
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle .hamburger::before { top: -8px; }
+.nav-toggle .hamburger::after { top: 8px; }
+
+/* Animate into X */
+.nav-toggle.open .hamburger {
+  background-color: transparent;
+  opacity: 0;
+}
+
+.nav-toggle.open .hamburger::before {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.open .hamburger::after {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile menu styles */
 @media (max-width: 768px) {
   .nav-toggle { display: block; }
   
@@ -110,7 +134,7 @@ header h1 {
     width: 200px;
     box-shadow: 0 3px 8px rgba(0,0,0,0.2);
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-20px);
     transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
@@ -118,13 +142,19 @@ header h1 {
     display: flex;
     opacity: 1;
     transform: translateY(0);
+    animation: slideDown 0.3s ease forwards;
   }
   
   #nav-menu ul { flex-direction: column; gap: var(--spacing-sm); }
   #nav-menu li a { display: block; padding: var(--spacing-sm); }
 }
 
-/* Alerts (Global System) */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Alerts */
 .alert {
   display: flex;
   justify-content: space-between;
@@ -137,42 +167,33 @@ header h1 {
   transition: opacity 0.3s ease;
 }
 
-.alert.hidden {
-  display: none;
-}
+.alert.hidden { display: none; }
 
-/* Safe (green) */
 .alert.safe {
   background-color: #e8f5e9;
   border: 2px solid #2ecc71;
   color: #1b5e20;
 }
 
-/* Warning (within 7 days) */
 .alert.warning {
   background-color: #fff3cd;
   border: 2px solid #ffc107;
   color: #856404;
 }
 
-/* Error (expired or ≤3 days critical) */
 .alert.error {
   background-color: #f8d7da;
   border: 2px solid #dc3545;
   color: #721c24;
 }
 
-/* Info (general messages) */
 .alert.info {
   background-color: #e7f3fe;
   border: 2px solid #2196f3;
   color: #0c5460;
 }
 
-#alertMessage {
-  flex: 1;
-  margin: 0;
-}
+#alertMessage { flex: 1; margin: 0; }
 
 #alertDismissBtn {
   background: none; 
@@ -199,9 +220,7 @@ header h1 {
   z-index: 999;
 }
 
-.back-to-top.visible {
-  opacity: 1;
-}
+.back-to-top.visible { opacity: 1; }
 
 /* Footer */
 footer {

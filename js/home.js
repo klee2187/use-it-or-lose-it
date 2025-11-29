@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
   const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
 
-  // Run Alert Check with updated thresholds
+  // Run Alert Check
   checkInventoryAlerts(inventory);
 
   // DOM Elements
@@ -30,34 +30,36 @@ document.addEventListener("DOMContentLoaded", () => {
     recipeHighlightBox.innerHTML = `<p>Add recipes to see a highlight here!</p>`;
   }
 
-  // Suggested Recipes Logic 
+  // Suggested Recipes Logic
   const today = new Date();
-  
-  // Get list of ingredients expiring soon (within 7 days)
+  today.setHours(0, 0, 0, 0);
+
   const expiringNames = inventory
     .filter(item => {
       if (!item.expiration) return false;
       const expDate = new Date(item.expiration);
+      if (isNaN(expDate)) return false;
       const diffDays = Math.ceil((expDate - today) / (1000 * 60 * 60 * 24));
       return diffDays > 0 && diffDays <= 7;
     })
     .map(item => item.name.toLowerCase());
 
-  // Filter recipes that use those ingredients
   const suggested = recipes.filter(recipe => {
     let ingredients = Array.isArray(recipe.ingredients)
       ? recipe.ingredients
       : typeof recipe.ingredients === "string"
         ? recipe.ingredients.split(",").map(i => i.trim())
         : [];
-
-    return ingredients.some(ing => expiringNames.includes(ing.toLowerCase()));
+    return ingredients.some(ing =>
+      expiringNames.some(name => ing.toLowerCase().includes(name))
+    );
   });
 
-  // Render Suggested Recipes
   if (suggestedBox) {
     if (suggested.length > 0) {
       suggestedBox.innerHTML = "<h3>🧑‍🍳 Suggested Recipes (Use up your ingredients!)</h3>";
+      const grid = document.createElement("div");
+      grid.classList.add("recipe-grid");
       suggested.forEach(recipe => {
         const card = document.createElement("div");
         card.classList.add("recipe-card");
@@ -65,8 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>${recipe.name}</strong></p>
           <p>Type: ${recipe.type}</p>
         `;
-        suggestedBox.appendChild(card);
+        grid.appendChild(card);
       });
+      suggestedBox.appendChild(grid);
     } else {
       suggestedBox.innerHTML =
         "<h3>🧑‍🍳 Suggested Recipes</h3><p>No suggested recipes based on expiring items right now.</p>";
@@ -76,19 +79,25 @@ document.addEventListener("DOMContentLoaded", () => {
   // Tip of the Day
   if (tipContent) {
     const tips = [
-      "Store herbs in damp paper towels to keep them fresh longer.",
-      "Use clear containers so you can see what you have.",
-      "Freeze leftovers in labeled portions for easy reuse.",
-      "Plan meals around what’s already in your fridge.",
-      "Check expiration dates weekly to avoid waste.",
+      "💡 Store herbs in damp paper towels to keep them fresh longer.",
+      "💡 Use clear containers so you can see what you have.",
+      "💡 Freeze leftovers in labeled portions for easy reuse.",
+      "💡 Plan meals around what’s already in your fridge.",
+      "💡 Check expiration dates weekly to avoid waste.",
     ];
     const tip = tips[Math.floor(Math.random() * tips.length)];
     const pTag = tipContent.querySelector("p");
     if (pTag) pTag.textContent = tip;
   }
-});
 
-// Back to Top Button
-document.getElementById("backToTop")?.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  // Back to Top Button
+  const backToTopBtn = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    const visible = window.scrollY > 300;
+    backToTopBtn.classList.toggle("visible", visible);
+    backToTopBtn.setAttribute("aria-hidden", !visible);
+  });
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 });
