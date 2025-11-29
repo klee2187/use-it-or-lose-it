@@ -1,3 +1,4 @@
+/* Featured Recipe Section */
 .featured-recipe {
     max-width: 1200px;
     margin: var(--spacing-lg) auto;
@@ -13,6 +14,11 @@
     flex-direction: column; 
     align-items: center;
     text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.featured-card:hover {
+    transform: translateY(-4px);
 }
 
 .featured-card img {
@@ -25,14 +31,17 @@
 .featured-card .info {
     padding: var(--spacing-md);
 }
+
 .featured-card .info h2 {
     margin-bottom: var(--spacing-sm);
     color: var(--green);
 }
+
 .featured-card .info p {
     margin: var(--spacing-sm) 0;
-    color: var(--text-light); 
+    color: var(--text-dark);
 }
+
 .featured-card .info .ingredients {
     font-style: italic;
     color: var(--dark-green);
@@ -54,8 +63,7 @@
     }
 }
 
-
-/* Recipe Gallery (Used on recipes.html and recipes-all.html) */
+/* Recipe Gallery */
 .recipe-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -74,7 +82,9 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none; 
     color: inherit;
+    position: relative;
 }
+
 .recipe-card:hover {
     transform: scale(1.02);
     box-shadow: 0 6px 14px rgba(0,0,0,0.15);
@@ -89,22 +99,25 @@
 
 .recipe-card .info {
     padding: var(--spacing-md);
-    position: relative; 
 }
+
 .recipe-card .info h3 {
     margin: 0 0 var(--spacing-sm);
     color: var(--green);
 }
+
 .recipe-card .info p {
     margin: var(--spacing-sm) 0;
     font-size: 0.95rem;
-    color: var(--text-light);
+    color: var(--text-dark);
 }
+
 .recipe-card .info .ingredients {
     font-style: italic;
     color: var(--dark-green);
 }
 
+/* Favorite Button */
 .fav-btn {
     position: absolute;
     top: 10px;
@@ -128,7 +141,7 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* --- View All Button --- */
+/* View All Button */
 .view-all-container {
     text-align: center;
     margin: var(--spacing-lg) 0;
@@ -143,11 +156,12 @@
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
-.view-all-btn:hover {
+
+.view-all-btn:hover,
+.view-all-btn:focus {
     background-color: var(--dark-green);
     transform: scale(1.05);
 }
-
 
 /* Mobile adjustments */
 @media (max-width: 480px) {
