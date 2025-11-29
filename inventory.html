@@ -29,66 +29,73 @@
   </nav>
 </header>
 
-  <main id="main">
-    <section id="alertSection" class="alert hidden" aria-hidden="true">
-      <p id="alertMessage"></p>
-      <button id="alertDismissBtn" aria-label="Dismiss alert">✖</button>
-    </section>
+<main id="main">
+  <section id="alertSection" class="alert hidden" aria-hidden="true">
+    <p id="alertMessage"></p>
+    <button id="alertDismissBtn" aria-label="Dismiss alert">✖</button>
+  </section>
 
-    <section class="inventory-box">
-      <h2>Inventory</h2>
+  <section class="inventory-box">
+    <h2>Inventory</h2>
 
-      <form id="inventoryForm">
-        <div class="form-group">
-          <label for="itemName">Item Name</label>
-          <input type="text" id="itemName" required />
-        </div>
-        <div class="form-group">
-          <label for="itemQuantity">Quantity</label>
-          <input type="number" id="itemQuantity" min="1" required />
-        </div>
-        <div class="form-group">
-          <label for="itemUnit">Unit</label>
-          <select id="itemUnit">
-            <option value="">(No unit)</option>
-            <option value="pkg">Package(s)</option>
-            <option value="can">Can(s)</option>
-            <option value="oz">Ounce(s)</option>
-            <option value="lb">Pound(s)</option>
-            <option value="g">Gram(s)</option>
-            <option value="kg">Kilogram(s)</option>
-            <option value="gal">Gallon(s)</option>
-            <option value="half-gal">Half Gallon(s)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="itemExpiration">Expiration Date</label>
-          <input type="date" id="itemExpiration" required />
-        </div>
+    <form id="inventoryForm">
+      <div class="form-group">
+        <label for="itemName">Item Name</label>
+        <input type="text" id="itemName" required />
+      </div>
+      <div class="form-group">
+        <label for="itemQuantity">Quantity</label>
+        <input type="number" id="itemQuantity" min="1" required />
+      </div>
+      <div class="form-group">
+        <label for="itemUnit">Unit</label>
+        <select id="itemUnit">
+          <option value="">(No unit)</option>
+          <option value="pkg">Package(s)</option>
+          <option value="can">Can(s)</option>
+          <option value="oz">Ounce(s)</option>
+          <option value="lb">Pound(s)</option>
+          <option value="g">Gram(s)</option>
+          <option value="kg">Kilogram(s)</option>
+          <option value="gal">Gallon(s)</option>
+          <option value="half-gal">Half Gallon(s)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="itemExpiration">Expiration Date</label>
+        <input type="date" id="itemExpiration" required />
+      </div>
 
-        <!-- Hidden field for edit mode -->
-        <input type="hidden" id="editIndex" value="" />
+      <input type="hidden" id="editIndex" value="" />
 
-        <button type="submit">Add Item</button>
-        <button type="button" id="cancelEditBtn" class="cancel-btn hidden">Cancel Edit</button>
-      </form>
+      <button type="submit">Add Item</button>
+      <button type="button" id="cancelEditBtn" class="cancel-btn hidden">Cancel Edit</button>
+    </form>
 
-      <table class="inventory-table">
-        <thead>
-          <tr>
-            <th scope="col">Item</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Expiration</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody id="inventoryBody"></tbody>
-      </table>
-    </section>
-  </main>
+    <!-- Legend for status colors -->
+    <div class="status-legend">
+      <span class="legend safe">Safe</span>
+      <span class="legend warning">Expiring Soon (≤7 days)</span>
+      <span class="legend critical">Critical (≤3 days)</span>
+      <span class="legend expired">Expired</span>
+    </div>
 
-  <footer>
-    <p>&copy; 2025 Use It or Lose It</p>
-  </footer>
+    <table class="inventory-table">
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Expiration</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="inventoryBody"></tbody>
+    </table>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Use It or Lose It</p>
+</footer>
 </body>
 </html>

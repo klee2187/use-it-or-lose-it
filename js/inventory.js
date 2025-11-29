@@ -35,7 +35,7 @@ function loadInventory() {
   tableBody.innerHTML = "";
 
   if (inventory.length === 0) {
-    tableBody.innerHTML = "<tr><td colspan='5' style='text-align:center;'>No items in inventory. Add one above!</td></tr>";
+    tableBody.innerHTML = "<tr><td colspan='4' style='text-align:center;'>No items in inventory. Add one above!</td></tr>";
     return;
   }
 
@@ -70,7 +70,7 @@ function handleAddOrEditItem(e) {
   const cancelEditBtn = document.getElementById("cancelEditBtn");
 
   const name = nameInput?.value.trim();
-  const quantity = qtyInput?.value.trim();
+  const quantity = parseInt(qtyInput?.value.trim(), 10);
   const unit = unitSelect?.value || "";
   const expiration = expInput?.value;
 
@@ -96,6 +96,10 @@ function handleAddOrEditItem(e) {
   editIndexInput.value = "";
   submitBtn.textContent = "Add Item";
   cancelEditBtn.classList.add("hidden");
+
+  // Clear editing highlight
+  document.querySelectorAll(".inventory-table tr").forEach(tr => tr.classList.remove("editing"));
+
   loadInventory();
   checkInventoryAlerts(inventory);
 }
@@ -134,6 +138,10 @@ function handleTableActions(e) {
     const cancelEditBtn = document.getElementById("cancelEditBtn");
     cancelEditBtn.classList.remove("hidden");
 
+    // Highlight the row being edited
+    document.querySelectorAll(".inventory-table tr").forEach(tr => tr.classList.remove("editing"));
+    e.target.closest("tr").classList.add("editing");
+
     showAlert(`Editing ${item.name}...`, "info");
   }
 }
@@ -150,6 +158,9 @@ function cancelEditMode() {
   submitBtn.textContent = "Add Item";
   cancelEditBtn.classList.add("hidden");
 
+  // Remove editing highlight
+  document.querySelectorAll(".inventory-table tr").forEach(tr => tr.classList.remove("editing"));
+
   showAlert("Edit cancelled.", "warning");
 }
 
@@ -163,10 +174,10 @@ function getExpirationStatus(dateString) {
   const expDate = new Date(dateString);
   const diffDays = Math.ceil((expDate - today) / (1000 * 60 * 60 * 24));
 
-  if (diffDays < 0) return "status-expired";       // Already expired
-  if (diffDays <= 3) return "status-critical";     // Within 3 days → RED
-  if (diffDays <= 7) return "status-warning";      // Within 7 days → YELLOW/ORANGE
-  return "status-safe";                            // More than 7 days
+  if (diffDays < 0) return "status-expired";
+  if (diffDays <= 3) return "status-critical";
+  if (diffDays <= 7) return "status-warning";
+  return "status-safe";
 }
 
 // HELPER: Format Dates

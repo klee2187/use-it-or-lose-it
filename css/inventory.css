@@ -20,7 +20,7 @@
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
-  align-items: flex-end; 
+  align-items: flex-end;
   margin-bottom: 30px;
   padding-bottom: 20px;
   border-bottom: 1px solid #ddd;
@@ -63,7 +63,7 @@
   background-color: var(--dark-green);
 }
 
-/* Cancel Edit Button (outline style) */
+/* Cancel Edit Button */
 .cancel-btn {
   background: none;
   border: 1.5px solid #9e9e9e;
@@ -86,6 +86,25 @@
   display: none;
 }
 
+/* Legend Styling */
+.status-legend {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+  justify-content: center;
+}
+
+.legend {
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.legend.safe { background: #e8f5e9; color: #1b5e20; }
+.legend.warning { background: #fff3cd; color: #856404; }
+.legend.critical { background: #ffebee; color: #b71c1c; }
+.legend.expired { background: #f8d7da; color: #721c24; text-decoration: line-through; }
+
 /* Table Styling */
 .inventory-table {
   width: 100%;
@@ -96,7 +115,7 @@
   overflow: hidden;
 }
 
-.inventory-table th, 
+.inventory-table th,
 .inventory-table td {
   padding: 12px 15px;
   text-align: left;
@@ -115,35 +134,32 @@
 
 /* Status Colors */
 .inventory-table tr.status-safe {
-  background-color: #e8f5e9; 
-  border: 2px solid #2ecc71; 
+  background-color: #e8f5e9;
   color: #1b5e20;
 }
 
 .inventory-table tr.status-warning {
-  background-color: #fff3cd;   /* yellow background */
-  border: 2px solid #ffc107;   /* orange/yellow border */
-  color: #856404;              /* amber text */
+  background-color: #fff3cd;
+  color: #856404;
 }
 
 .inventory-table tr.status-critical {
-  background-color: #ffebee;   /* light red background */
-  border: 2px solid #dc3545;   /* red border */
-  color: #b71c1c;              /* dark red text */
+  background-color: #ffebee;
+  color: #b71c1c;
 }
 
 .inventory-table tr.status-expired {
-  background-color: #f8d7da;   /* pale red background */
-  border: 2px solid #dc3545;   /* red border */
-  color: #721c24;              /* deep red text */
+  background-color: #f8d7da;
+  color: #721c24;
+  text-decoration: line-through;
 }
 
 .inventory-table tr:hover {
-  background-color: #f1f8e9;
-  transition: background 0.2s ease;
+  filter: brightness(0.97);
+  transition: filter 0.2s ease;
 }
 
-/* Action buttons (outline style) */
+/* Action buttons */
 .delete-btn,
 .edit-btn {
   background: none;
@@ -154,13 +170,12 @@
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.2s ease;
+  margin: 0 4px;
 }
 
-/* Edit button specific */
 .edit-btn {
   border-color: #42a5f5;
   color: #42a5f5;
-  margin-right: 5px;
 }
 
 .edit-btn:hover {
@@ -169,7 +184,6 @@
   border-color: #1565c0;
 }
 
-/* Delete button specific */
 .delete-btn {
   border-color: #ef5350;
   color: #ef5350;
@@ -181,6 +195,13 @@
   border-color: #c62828;
 }
 
+/* Highlight row being edited */
+.inventory-table tr.editing {
+  outline: 2px dashed var(--accent-orange);
+  outline-offset: -4px;
+  background-color: #fff8e1 !important; /* pale yellow */
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 600px) {
   #inventoryForm {
@@ -190,7 +211,7 @@
   
   .inventory-table {
     display: block;
-    overflow-x: auto; 
+    overflow-x: auto;
     white-space: nowrap;
   }
 }
