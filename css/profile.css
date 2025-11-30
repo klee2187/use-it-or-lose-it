@@ -1,65 +1,153 @@
-.profile-section {
-    max-width: 600px;
-    margin: 2rem auto;
-    background-color: var(--white);
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.profile-box {
+  background-color: var(--white);
+  border: 2px solid var(--light-green);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 700px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
 
-.profile-section h2 {
-    text-align: center;
-    color: var(--dark-green);
-    margin-bottom: 1rem;
+.profile-box h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--green);
 }
 
-form label {
+.profile-box p {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--text-dark);
+}
+
+/* Profile form */
+.profile-form { margin-bottom: 20px; }
+
+.profile-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+.profile-table th {
+  text-align: left;
+  padding: 10px;
+  width: 40%;
+  color: var(--dark-green);
+}
+.profile-table td { padding: 10px; }
+.profile-table input,
+.profile-table select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+.profile-table input:focus,
+.profile-table select:focus {
+  outline: 2px solid var(--accent-orange);
+  outline-offset: 2px;
+}
+
+/* Buttons */
+.form-buttons {
+  display: flex;
+  gap: 10px;
+}
+.form-buttons button {
+  flex: 1;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.form-buttons button:focus-visible {
+  outline: 2px solid var(--dark-green);
+  outline-offset: 2px;
+}
+#profileForm button[type="submit"] {
+  background-color: var(--green);
+  color: var(--white);
+}
+#profileForm button[type="submit"]:hover { background-color: var(--dark-green); }
+#editProfileBtn { background-color: var(--accent-orange); color: var(--white); }
+#editProfileBtn:hover { background-color: #e67e22; }
+#clearProfileBtn { background-color: #ff5252; color: var(--white); }
+#clearProfileBtn:hover { background-color: #e53935; }
+
+/* Preferences display */
+.profile-preferences {
+  background-color: #f1f8e9;
+  border: 2px solid var(--green);
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 20px;
+}
+.profile-preferences h3 {
+  margin-bottom: 10px;
+  text-align: center;
+  color: var(--dark-green);
+}
+.profile-preferences p { margin: 6px 0; font-size: 1rem; }
+.profile-preferences strong { color: var(--green); }
+
+/* Fade-in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Modal popup */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+.modal.hidden { display: none; }
+.modal-content {
+  background: var(--white);
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.modal-content p {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: var(--green);
+}
+.modal-content button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  background-color: var(--accent-orange);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+}
+.modal-content button:hover { background-color: #d97706; }
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .profile-table th,
+  .profile-table td {
     display: block;
-    font-weight: 600;
-    margin-top: 1rem;
-}
-
-form input {
     width: 100%;
-    padding: 0.6rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-top: 0.3rem;
-}
-
-button {
-    display: block;
-    width: 100%;
-    background-color: var(--green);
-    color: var(--white);
-    padding: 0.75rem;
-    border: none;
-    border-radius: 5px;
-    margin-top: 1.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: var(--dark-green);
-}
-
-#profileDisplay {
-    margin-top: 2rem;
-    background-color: var(--light-green);
-    padding: 1rem;
-    border-radius: 10px;
-}
-
-#profileDisplay p {
-    margin-bottom: 0.5rem;
-}
-
-#profileDisplay strong {
-    color: var(--dark-green);
-}
-
-.hidden {
-    display: none;
+    padding: 8px;
+  }
+  .form-buttons { flex-direction: column; }
+  .form-buttons button { width: 100%; }
+  .profile-box { margin: 10px; padding: 15px; }
+  .profile-box h2 { font-size: 1.3rem; }
+  .profile-preferences p { font-size: 0.95rem; }
 }

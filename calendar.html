@@ -1,47 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calendar | Use It or Lose It</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/calendar.css">
-    <script defer src="js/calendar.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendar | Use It or Lose It</title>
+  <meta name="description" content="Track inventory expiration dates with a monthly calendar view." />
+
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/calendar.css" />
+  <script type="module" src="js/calendar.js" defer></script>
+  <script type="module" src="js/navbar.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Use It or Lose It</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="inventory.html">Inventory</a></li>
-                <li><a href="recipes.html">Recipes</a></li>
-                <li><a href="budget.html">Budget</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="calendar.html" class="active">Calendar</a></li>
-            </ul>
-        </nav>
-    </header>
+  
+<header>
+  <h1>Use It or Lose It</h1>
+  <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+    <span class="hamburger"></span>
+  </button>
+  <nav id="nav-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="inventory.html">Inventory</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="recipes-all.html">All Recipes</a></li>
+      <li><a href="budget.html">Budget</a></li>
+      <li><a href="calendar.html" class="active">Calendar</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="favorites.html">Favorites</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="alertSection" class="alert hidden" role="alert">
+  <ul id="alertMessage" aria-live="polite"></ul>
+  <button id="alertDismiss" aria-label="Dismiss alerts">✖</button>
+</section>
+
+<main id="main">
+  <section class="calendar-box">
+    <h2 id="calendarHeader" aria-live="polite">Calendar</h2>
     
-    <section id="mascot-section">
-        <div id="mascot-wrapper">
-            <img src="images/temp mascot.jpg" alt="Mascot" id="mascotImg" class="mascot">
-            <div class="speech-bubble">
-                🗓️ Expiring soon! Time to plan a meal!
-            </div>
-        </div>
-    </section>
-    <main>
-        <h2>Food Storage Calendar</h2>
-        <div class="day-headers">
-            <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
-        </div>
-        <div id="calendar" class="calendar-grid"></div>
-        <p id="calendar-note" class="note">Days with expiring items will be highlighted.</p>
-    </main>
+    <div class="calendar-controls">
+      <button id="prevMonthBtn" aria-label="Previous Month">← Previous</button>
+      <button id="todayBtn">Today</button>
+      <button id="nextMonthBtn" aria-label="Next Month">Next →</button>
+    </div>
     
-    <footer>
-        <p>&copy; 2025 Use It or Lose It</p>
-    </footer>
+    <div id="calendarContainer">
+      <div class="calendar-header-days" aria-hidden="true">
+        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+      <div id="calendarGrid" class="calendar-grid" role="grid" aria-labelledby="calendarHeader"></div>
+    </div>
+  </section>
+  
+  <section class="monthly-summary">
+    <h3>Monthly Expiring Items Summary</h3>
+    <div id="monthlySummaryGrid" aria-live="polite"></div>
+  </section>
+</main>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top" aria-hidden="true">↑</button>
+
+<footer>
+  <p>&copy; 2025 Use It or Lose It</p>
+</footer>
 </body>
 </html>

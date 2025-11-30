@@ -1,96 +1,261 @@
-.budget-section {
-    max-width: 600px;
-    margin: 2rem auto;
-    background-color: var(--white);
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* Budget container */
+.budget-box {
+  background-color: var(--white);
+  border: 2px solid var(--light-green);
+  border-radius: 15px;
+  padding: 30px; 
+  margin: 30px auto;
+  max-width: 900px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
 }
 
-.budget-section h2 {
-    text-align: center;
-    color: var(--dark-green);
-    margin-bottom: 1rem;
+/* Titles and Separators */
+.budget-box h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: var(--green);
+}
+.budget-box h3 {
+  color: var(--dark-green);
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+.budget-box hr {
+  border: 0;
+  height: 1px;
+  background-color: var(--light-green);
+  margin: 25px 0;
 }
 
-form label {
-    display: block;
-    font-weight: 600;
-    margin-top: 1rem;
+/* Forms */
+#setBudgetForm, #budgetForm {
+  padding: 10px 0;
+}
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.form-group input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+.form-group input:focus {
+  border-color: var(--accent-orange);
+  outline: none;
 }
 
-form input {
-    width: 100%;
-    padding: 0.6rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-top: 0.3rem;
-    text-align: right; 
+/* Buttons */
+.budget-box button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: var(--green);
+  color: var(--white);
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.1s;
+  width: 100%; 
+  max-width: 200px; 
+  margin-top: 10px;
+}
+#setBudgetForm button {
+  background-color: var(--accent-orange);
+}
+#setBudgetForm button:hover {
+  background-color: #d97706;
+}
+.budget-box button:hover {
+  background-color: var(--dark-green);
+  transform: translateY(-2px);
 }
 
-button {
-    display: block;
-    width: 100%;
-    background-color: var(--green);
-    color: var(--white);
-    padding: 0.75rem;
-    border: none;
-    border-radius: 5px;
-    margin-top: 1.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+/* Summary section */
+.budget-summary {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.budget-summary p {
+  font-size: 1.1rem;
+  margin: 8px 0;
 }
 
-button:hover {
-    background-color: var(--dark-green);
+/* Progress bar */
+.budget-progress {
+  width: 100%;
+  height: 30px; 
+  background-color: #eee;
+  border-radius: 15px;
+  margin-top: 15px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--light-green);
+}
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background-color: var(--accent-orange);
+  border-radius: 15px;
+  transition: width 0.5s ease;
+  text-align: center;
+  color: var(--white);
+  font-weight: bold;
+  line-height: 28px;
+  font-size: 0.9rem;
+}
+.over-budget {
+  color: #c62828; 
+  font-weight: bold;
+}
+#progressBar[style*="background-color: #c62828"] {
+  background-color: #c62828 !important; 
 }
 
-/* Budget Table (Itemized Tracker) */
-#budgetTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 15px;
-    font-size: 0.9rem;
+/* Expense List & Monthly Summary Container */
+.expense-views-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
 }
 
-#budgetTable th, #budgetTable td {
-    padding: 10px;
-    border: 1px solid var(--light-green);
-    text-align: left;
+/* Expense list */
+#expenseList {
+  list-style: none;
+  padding: 0;
+}
+#expenseList li {
+  background-color: var(--light-green);
+  border-left: 5px solid var(--green);
+  border-radius: 10px;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  font-size: 1rem;
+}
+.delete-expense {
+  background-color: #ff5252;
+  border: none;
+  color: white;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  min-width: 70px; 
+  margin-left: 10px;
+}
+.delete-expense:hover {
+  background-color: #e53935;
 }
 
-#budgetTable th {
-    background-color: var(--dark-green);
-    color: var(--white);
-    font-weight: 700;
+/* Monthly summary */
+.monthly-summary {
+  padding-top: 15px;
+}
+#monthlySummaryList {
+  list-style: none;
+  padding: 0;
+}
+#monthlySummaryList li {
+  background-color: #f1f8e9; 
+  border: 1px solid var(--light-green);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
-#budgetTable td:nth-child(2), #budgetTable td:nth-child(3), #budgetTable td:nth-child(4) {
-    text-align: right; 
+/* Alerts */
+.alert {
+  background-color: var(--accent-orange);
+  color: var(--white);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 8px;
+  margin: var(--spacing-md) auto;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.alert.hidden {
+  display: none;
+}
+.alert button {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 
-.btn-delete {
-    background-color: #d32f2f; 
-    color: white;
-    padding: 5px 10px;
-    width: auto;
-    display: inline-block;
-    font-size: 0.8rem;
-    margin: 0;
+/* Fade-in Animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-#budgetResult {
-    margin-top: 2rem;
-    background-color: var(--light-green);
-    padding: 1rem;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--dark-green);
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--accent-orange);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  transform: scale(1.1);
+  background-color: var(--dark-green);
 }
 
-.hidden {
-    display: none;
+/* Responsive layout */
+@media (min-width: 768px) {
+  .expense-views-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 768px) {
+  .budget-box {
+    margin: 20px;
+    padding: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .budget-box {
+    margin: 10px;
+    padding: 15px;
+  }
+  .budget-box button {
+    max-width: 100%;
+  }
 }

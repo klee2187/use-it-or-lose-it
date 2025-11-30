@@ -1,70 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Budget - Use It or Lose It</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/budget.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Budget | Use It or Lose It</title>
+  <meta name="description" content="Track your grocery budget, add expenses, and reduce household food waste." />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/budget.css" />
+  <script type="module" src="js/budget.js" defer></script>
+  <script type="module" src="js/navbar.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Use It or Lose It</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="inventory.html">Inventory</a></li>
-                <li><a href="recipes.html">Recipes</a></li>
-                <li><a href="budget.html" class="active">Budget</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="calendar.html">Calendar</a></li> 
-            </ul>
-        </nav>
-    </header>
-    <section id="mascot-section">
-        <div id="mascot-wrapper">
-            <img src="images/temp mascot.jpg" alt="Mascot" id="mascotImg" class="mascot">
-            <div class="speech-bubble">
-                💸 Plan smart! Spending less on groceries means more savings!
-            </div>
-        </div>
-    </section>
-    <main>
-        <section class="budget-section">
-            <h2>Add Budget Item (Expense Tracker)</h2>
-            <form id="budgetForm">
-                <label for="itemName">Item Name</label>
-                <input type="text" id="itemName" required />
-                <label for="itemPrice">Unit Price ($)</label>
-                <input type="number" id="itemPrice" min="0" step="0.01" required />
-                <label for="itemQuantity">Quantity</label>
-                <input type="number" id="itemQuantity" min="1" required />
-                <button type="submit">Add Expense</button>
-            </form>
-        </section>
-        <section class="budget-section">
-            <h2>Budget Summary</h2>
-            <table id="budgetTable">
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Price</th>
-                        <th>Qty</th>
-                        <th>Total</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-            <div id="budgetResult">
-                <p id="grandTotal">Grand Total: $0.00</p>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Use It or Lose It</p>
-    </footer>
-    <script src="js/budget.js"></script>
+  
+<header>
+  <h1>Use It or Lose It</h1>
+  <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+    <span class="hamburger"></span>
+  </button>
+  <nav id="nav-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="inventory.html">Inventory</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="recipes-all.html">All Recipes</a></li>
+      <li><a href="budget.html" class="active">Budget</a></li>
+      <li><a href="calendar.html">Calendar</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="favorites.html">Favorites</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <!-- Alert Section -->
+  <section id="alertSection" class="alert hidden">
+    <p id="alertMessage" aria-live="polite"></p>
+    <button id="alertDismiss" aria-label="Dismiss alert">✖</button>
+  </section>
+
+  <section class="budget-box">
+    <h2>Budget Tracker</h2>
+    <p>💸 Plan smart! Spending less on groceries means more savings!</p>
+
+    <form id="setBudgetForm">
+      <h3>Set Monthly Budget</h3>
+      <div class="form-group">
+        <label for="budgetAmount">Amount ($)</label>
+        <input type="number" id="budgetAmount" min="0" step="0.01" required placeholder="e.g., 500.00" />
+      </div>
+      <button type="submit">Save Budget</button>
+    </form>
+
+    <hr>
+
+    <form id="budgetForm">
+      <h3>Record a New Expense</h3>
+      <div class="form-group">
+        <label for="expenseName">Expense Name</label>
+        <input type="text" id="expenseName" required placeholder="e.g., Weekly Grocery Run" />
+      </div>
+      <div class="form-group">
+        <label for="expenseAmount">Amount ($)</label>
+        <input type="number" id="expenseAmount" min="0" step="0.01" required placeholder="e.g., 75.50" />
+      </div>
+      <button type="submit">Add Expense</button>
+    </form>
+
+    <hr>
+
+    <div class="budget-summary" aria-live="polite">
+      <h3>Current Budget Status</h3>
+      <p><strong>Total Budget:</strong> $<span id="totalBudget">0.00</span></p>
+      <p><strong>Total Spent:</strong> $<span id="totalSpent">0.00</span></p>
+      <p><strong>Remaining:</strong> $<span id="remainingBudget">0.00</span></p>
+      
+      <div class="budget-progress" role="progressbar" aria-label="Budget usage percentage" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="progressBar"></div>
+      </div>
+    </div>
+
+    <hr>
+    
+    <div class="expense-views-container">
+      <section class="current-expenses">
+        <h3>Recent Expenses</h3>
+        <ul id="expenseList"></ul>
+      </section>
+
+      <section class="monthly-summary">
+        <h3>Monthly History</h3>
+        <ul id="monthlySummaryList"></ul>
+      </section>
+    </div>
+    
+  </section>
+</main>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top" aria-hidden="true">↑</button>
+
+<footer>
+  <p>&copy; 2025 Use It or Lose It</p>
+</footer>
 </body>
 </html>

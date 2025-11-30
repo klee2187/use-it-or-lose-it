@@ -1,156 +1,132 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const recipesContainer = document.getElementById('recipesList');
-    const favoritesContainer = document.getElementById('favoriteRecipes');
-    const searchInput = document.getElementById('searchInput');
-    const newRandomBtn = document.getElementById('newRandomBtn');
-    const randomRecipeDiv = document.getElementById('randomRecipe');
-    const typeFilter = document.getElementById('typeFilter');
+import { initNavbarToggle, initAlertDismiss } from "./utils.js";
 
-    let allRecipes = [];
-
-    // Initialize 
-    fetchRecipes();
-    loadFavorites();
-
-    // Event Listeners
-    searchInput.addEventListener('input', filterAndRenderRecipes);
-    typeFilter.addEventListener('change', filterAndRenderRecipes);
-    newRandomBtn.addEventListener('click', displayRandomRecipe);
-
-    // Core Data Functions
-
-    function fetchRecipes() {
-        fetch('data/recipes.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                allRecipes = data.recipes;
-                populateFilterOptions(data.recipes);
-                filterAndRenderRecipes();
-                displayRandomRecipe();
-            })
-            .catch(error => console.error('Error loading recipes:', error));
+document.addEventListener("DOMContentLoaded", () => {
+  initNavbarToggle();
+  initAlertDismiss(); 
+  
+  const featuredSection = document.querySelector(".featured-recipe");
+  const gallery = document.querySelector(".recipe-gallery");
+  
+  let recipes = JSON.parse(localStorage.getItem("recipes"));
+  
+  if (!recipes || recipes.length === 0) {
+    fetch("data/recipes.json")
+      .then(res => res.json())
+      .then(data => {
+        const recipesArray = data.recipes || [];
+        recipesArray.forEach(r => r.id = parseInt(r.id, 10)); 
+        localStorage.setItem("recipes", JSON.stringify(recipesArray));
+        renderRecipes(recipesArray);
+      })
+      .catch(err => {
+        featuredSection.innerHTML = "<p>Error loading recipes. Please check 'data/recipes.json'.</p>";
+        console.error("Fetch error:", err);
+      });
+  } else {
+    renderRecipes(recipes);
+  }
+  
+  function renderRecipes(recipes) {
+    if (!Array.isArray(recipes) || recipes.length === 0) {
+      featuredSection.innerHTML = "<p>No recipes found. Try adding ingredients to your inventory!</p>";
+      return;
     }
-
-    function populateFilterOptions(recipes) {
-        const types = [...new Set(recipes.map(recipe => recipe.type))];
-        typeFilter.innerHTML = '<option value="all">All Types</option>';
-        types.forEach(type => {
-            const option = document.createElement('option');
-            option.value = type;
-            option.textContent = type;
-            typeFilter.appendChild(option);
-        });
+    
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || []; 
+    const featuredRecipe = recipes[Math.floor(Math.random() * recipes.length)];
+    if (!featuredRecipe) return;
+    
+    featuredSection.innerHTML = createFeaturedCard(featuredRecipe, favorites);
+    
+    const galleryRecipes = recipes.filter(r => r.id !== featuredRecipe.id).slice(0, 3);
+    gallery.innerHTML = "";
+    
+    galleryRecipes.forEach((recipe, index) => {
+      const cardHTML = createRecipeCard(recipe, favorites, index);
+      gallery.insertAdjacentHTML('beforeend', cardHTML);
+    });
+  }
+  
+  function formatIngredients(ingredients) {
+    if (Array.isArray(ingredients)) {
+      return ingredients.slice(0, 5).join(', ') + (ingredients.length > 5 ? '...' : '');
     }
+    return ingredients;
+  }
+  
+  function createFeaturedCard(recipe, favorites) {
+    const ingredientsText = formatIngredients(recipe.ingredients);
+    const isFavorite = favorites.includes(recipe.id);
+    
+    return `
+    <div class="featured-card recipe-card fade-in"> 
+      <img src="${recipe.image || 'images/placeholder.jpg'}" alt="${recipe.name}" class="featured-image" fetchpriority="high" />
+      <div class="info">
+        <h2>🍴 ${recipe.name}</h2>
+        <p>Type: ${recipe.course || "Uncategorized"}</p>
+        <p class="ingredients">Key Ingredients: ${ingredientsText}</p>
+        <a href="recipe-detail.html?id=${recipe.id}" class="view-recipe-btn view-all-btn">View Recipe</a>
+        <button class="fav-btn" data-id="${recipe.id}">
+          ${isFavorite ? "💔 Remove Favorite" : "❤️ Add to Favorites"}
+        </button>
+      </div>
+    </div>
+    `;
+  }
 
-    // Rendering Functions
+  function createRecipeCard(recipe, favorites, index = 0) {
+    const ingredientsText = formatIngredients(recipe.ingredients);
+    const isFavorite = favorites.includes(recipe.id);
+    
+    return `
+    <a href="recipe-detail.html?id=${recipe.id}" 
+       class="recipe-card fade-in" 
+       style="animation-delay:${index * 0.15}s">
+      <img src="${recipe.image || 'images/placeholder.jpg'}" alt="${recipe.name}" loading="lazy" />
+      <div class="info">
+        <h3>🍴 ${recipe.name}</h3>
+        <p>Type: ${recipe.course || "Uncategorized"}</p>
+        <p class="ingredients">Key Ingredients: ${ingredientsText}</p>
+        <button class="fav-btn" data-id="${recipe.id}" aria-label="Toggle favorite status for ${recipe.name}" onclick="event.preventDefault(); event.stopPropagation();">
+          ${isFavorite ? "💔" : "❤️"}
+        </button>
+      </div>
+    </a>
+    `;
+  }
 
-    function filterAndRenderRecipes() {
-        const searchTerm = searchInput.value.toLowerCase();
-        const filterType = typeFilter.value;
-
-        const filteredRecipes = allRecipes.filter(recipe => {
-            const matchesSearch = recipe.name.toLowerCase().includes(searchTerm) || 
-                                 recipe.ingredients.some(ing => ing.name.toLowerCase().includes(searchTerm));
-            
-            const matchesType = filterType === 'all' || recipe.type === filterType;
-            
-            return matchesSearch && matchesType;
-        });
-
-        renderRecipes(filteredRecipes, recipesContainer, false);
+  document.body.addEventListener("click", e => {
+    if (e.target.classList.contains("fav-btn")) {
+      const id = parseInt(e.target.dataset.id, 10);
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      
+      if (favorites.includes(id)) {
+        favorites = favorites.filter(favId => favId !== id);
+        e.target.textContent = (e.target.closest('.featured-card')) ? "❤️ Add to Favorites" : "❤️";
+      } else {
+        favorites.push(id);
+        e.target.textContent = (e.target.closest('.featured-card')) ? "💔 Remove Favorite" : "💔";
+      }
+      localStorage.setItem("favorites", JSON.stringify(favorites));
     }
+  });
+});
 
-    function renderRecipes(recipes, container, isFavoriteSection) {
-        container.innerHTML = '';
-        if (recipes.length === 0) {
-            container.innerHTML = `<p>No recipes found matching your criteria.</p>`;
-            return;
-        }
+const backToTopBtn = document.getElementById("backToTop");
 
-        const favorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTopBtn.setAttribute("aria-hidden", "false");
+    backToTopBtn.classList.add("visible");
+  } else {
+    backToTopBtn.setAttribute("aria-hidden", "true");
+    backToTopBtn.classList.remove("visible");
+  }
+});
 
-        recipes.forEach(recipe => {
-            const isFav = favorites.includes(recipe.id);
-            const card = document.createElement('div');
-            card.classList.add('recipe-card');
-            if (isFav) {
-                card.classList.add('favorite');
-            }
-
-            const ingredientList = recipe.ingredients.map(ing => `<li>${ing.quantity} ${ing.unit} ${ing.name}</li>`).join('');
-
-            card.innerHTML = `
-                <h3>${recipe.name}</h3>
-                <img src=${recipe.image} alt="photo of the prepared recipe">
-                <p>${recipe.description}</p>
-                <p><strong>Type:</strong> ${recipe.course}</p>
-                <p><strong>Prep Time:</strong> ${recipe.prepTime}</p>
-                <p><strong>Instructions:</strong> ${recipe.instructions}</p>
-                
-                <h4>Ingredients:</h4>
-                <ul>${ingredientList}</ul>
-                
-                ${isFavoriteSection 
-                    ? `<button class="remove-fav" data-id="${recipe.id}">Remove Favorite</button>`
-                    : `<button class="fav-btn" data-id="${recipe.id}">${isFav ? 'Remove Favorite' : 'Add to Favorites'}</button>`
-                }
-            `;
-            
-            container.appendChild(card);
-        });
-
-        // Re-attach event listeners
-        attachFavoriteListeners();
-    }
-
-    function displayRandomRecipe() {
-        if (allRecipes.length === 0) return;
-        const randomIndex = Math.floor(Math.random() * allRecipes.length);
-        const randomRecipe = allRecipes[randomIndex];
-        
-        // Use a temporary array to render just the one recipe
-        renderRecipes([randomRecipe], randomRecipeDiv, false);
-    }
-
-    // Favorites
-
-    function attachFavoriteListeners() {
-        document.querySelectorAll('.fav-btn').forEach(button => {
-            button.onclick = (e) => toggleFavorite(e.target.dataset.id);
-        });
-        document.querySelectorAll('.remove-fav').forEach(button => {
-            button.onclick = (e) => toggleFavorite(e.target.dataset.id);
-        });
-    }
-
-    function toggleFavorite(recipeId) {
-        let favorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-        recipeId = parseInt(recipeId);
-
-        const index = favorites.indexOf(recipeId);
-
-        if (index > -1) {
-            favorites.splice(index, 1); // Remove
-        } else {
-            favorites.push(recipeId); // Add
-        }
-
-        localStorage.setItem('favoriteRecipes', JSON.stringify(favorites));
-        
-        // Re-render
-        filterAndRenderRecipes();
-        loadFavorites();
-    }
-
-    function loadFavorites() {
-        const favorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
-        const favoriteRecipesData = allRecipes.filter(recipe => favorites.includes(recipe.id));
-        
-        renderRecipes(favoriteRecipesData, favoritesContainer, true);
-    }
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 });

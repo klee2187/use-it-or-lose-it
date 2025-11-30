@@ -1,0 +1,242 @@
+/* Global Variables */
+:root {
+  --green: #2e7d32;
+  --dark-green: #1b5e20;
+  --light-green: #a5d6a7;
+  --accent-orange: #ff7043;
+  --white: #ffffff;
+  --text-dark: #333333;
+  --text-light: #666666;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: #fafafa;
+}
+
+/* Header & Navbar */
+header {
+  background-color: var(--green);
+  color: var(--white);
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1000;
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+.nav-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+}
+
+/* Hamburger lines */
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: var(--white);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  position: relative;
+}
+
+.hamburger::before {
+  top: -6px;
+}
+
+.hamburger::after {
+  top: 6px;
+}
+
+/* Animate hamburger into X with bounce */
+.nav-toggle.active .hamburger {
+  background-color: transparent;
+}
+.nav-toggle.active .hamburger::before {
+  transform: rotate(45deg) translate(5px, 5px);
+  transition: transform 0.3s ease;
+}
+.nav-toggle.active .hamburger::after {
+  transform: rotate(-45deg) translate(5px, -5px);
+  transition: transform 0.3s ease;
+}
+.nav-toggle.active .hamburger::before,
+.nav-toggle.active .hamburger::after {
+  animation: bounce 0.3s ease;
+}
+
+@keyframes bounce {
+  0%   { transform: scale(0.9); }
+  50%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Nav Menu with slide-down animation */
+#nav-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--green);
+  width: 200px;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 999;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+#nav-menu.open {
+  display: block;
+  max-height: 500px;
+  opacity: 1;
+}
+
+#nav-menu ul {
+  list-style: none;
+}
+
+#nav-menu li {
+  border-bottom: 1px solid var(--light-green);
+}
+
+#nav-menu li:last-child {
+  border-bottom: none;
+}
+
+#nav-menu a {
+  display: block;
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--white);
+  text-decoration: none;
+}
+
+#nav-menu a:hover,
+#nav-menu a.active {
+  background-color: var(--dark-green);
+}
+
+/* Desktop nav always visible */
+@media (min-width: 768px) {
+  .nav-toggle {
+    display: none;
+  }
+  #nav-menu {
+    display: block;
+    position: static;
+    width: auto;
+    background: none;
+    box-shadow: none;
+    max-height: none;
+    opacity: 1;
+  }
+  #nav-menu ul {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+  #nav-menu li {
+    border: none;
+  }
+  #nav-menu a {
+    color: var(--white);
+    padding: 0;
+  }
+  #nav-menu a:hover,
+  #nav-menu a.active {
+    text-decoration: underline;
+    background: none;
+  }
+}
+
+/* Alerts */
+.alert {
+  background-color: var(--accent-orange);
+  color: var(--white);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 5px;
+  margin: var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert.hidden {
+  display: none;
+}
+
+#alertDismissBtn {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: var(--spacing-md);
+  background-color: var(--green);
+  color: var(--white);
+  margin-top: var(--spacing-lg);
+}
+
+/* --- Fun Additions --- */
+
+/* Fade-in animation for recipe cards */
+.recipe-card {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.recipe-card:nth-child(1) { animation-delay: 0.1s; }
+.recipe-card:nth-child(2) { animation-delay: 0.2s; }
+.recipe-card:nth-child(3) { animation-delay: 0.3s; }
+.recipe-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

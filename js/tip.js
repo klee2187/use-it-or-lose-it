@@ -1,58 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const tipContent = document.getElementById('tipContent');
+  const tipContent = document.getElementById('tipContent');
+  if (!tipContent) return;
 
-    // Fetch the inventory and then the recipes
-    Promise.all([
-        fetch('data/recipes.json').then(res => res.json()),
-        Promise.resolve(JSON.parse(localStorage.getItem('inventoryItems')) || [])
-    ])
-    .then(([recipeData, inventoryItems]) => {
-        const recipes = recipeData.recipes;
-        let recipeHighlight = null;
+  const inventoryItems = JSON.parse(localStorage.getItem('inventoryItems')) || [];
+  const recipes = JSON.parse(localStorage.getItem('recipes')) || [];
 
-        // Try to find a recipe using an item expiring in the next week
-        const expiringItemNames = inventoryItems
-            .filter(item => {
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
-                const expDate = new Date(item.expiration);
-                expDate.setDate(expDate.getDate() + 1); // Adjust
-                const timeDiff = expDate.getTime() - today.getTime();
-                const daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24));
-                return daysRemaining > 0 && daysRemaining <= 7;
-            })
-            .map(item => item.name.toLowerCase());
+  if (recipes.length === 0 || inventoryItems.length === 0) {
+    tipContent.textContent = "No recipes or inventory items available.";
+    return;
+  }
 
-        // Find a recipe using one of those expiring ingredients
-        for (const recipe of recipes) {
-            const usesExpiringItem = recipe.ingredients.some(ing => 
-                expiringItemNames.includes(ing.name.toLowerCase())
-            );
-            if (usesExpiringItem) {
-                recipeHighlight = recipe;
-                break; 
-            }
-        }
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-        // If no expiring recipes, just pick a random one
-        if (!recipeHighlight && recipes.length > 0) {
-            const randomIndex = Math.floor(Math.random() * recipes.length);
-            recipeHighlight = recipes[randomIndex];
-        }
+  // Find items expiring within 7 days
+  const expiringSoon = inventoryItems.filter(item => {
+    if (!item.expiration) return false;
+    const expDate = new Date(item.expiration);
+    expDate.setHours(0, 0, 0, 0);
+    const diffDays = Math.ceil((expDate - today) / (1000 * 60 * 60 * 24));
+    return diffDays >= 0 && diffDays <= 7;
+  });
 
-        // Render the highlight
-        if (recipeHighlight) {
-            tipContent.innerHTML = `
-                <h3>${recipeHighlight.name}</h3>
-                <p><strong>Type:</strong> ${recipeHighlight.type}</p>
-                <p>Check out the full recipe on the <a href="recipes.html">Recipes page</a>!</p>
-            `;
-        } else {
-            tipContent.innerHTML = `<p>No recipes available or inventory is empty. Start adding items to get personalized tips!</p>`;
-        }
-    })
-    .catch(error => {
-        console.error('Error loading recipe highlight:', error);
-        tipContent.innerHTML = `<p>Error loading recipe highlight.</p>`;
-    });
+  if (expiringSoon.length > 0) {
+    const ingredient = (expiringSoon[0].name || '').toLowerCase();
+
+    // Find a recipe that uses the expiring ingredient
+    const suggestion = recipes.find(r =>
+      Array.isArray(r.ingredients) &&
+      r.ingredients.some(i =>
+        typeof i === 'string'
+          ? i.toLowerCase().includes(ingredient)
+          : (i.name || '').toLowerCase().includes(ingredient)
+      )
+    );
+
+    if (suggestion) {
+      tipContent.innerHTML = `
+        <h3>${suggestion.name}</h3>
+        <p><strong>Uses:</strong> ${ingredient}</p>
+        <p>${suggestion.description || 'Try this recipe to use it up!'}</p>
+      `;
+    } else {
+      tipContent.textContent = `No recipe found for ${ingredient}.`;
+    }
+  } else {
+    tipContent.textContent = "No expiring items right now.";
+  }
 });

@@ -1,73 +1,95 @@
-/* Mascot Animation Requirement */
-#mascot-section {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 100;
+.homepage-box {
+  background-color: var(--white);
+  border: 2px solid var(--light-green);
+  border-radius: 15px;
+  padding: var(--spacing-md);
+  margin: var(--spacing-md) auto;
+  max-width: 900px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
-#mascot {
-    width: 100px;
-    height: auto;
-    text-align: center;
-    cursor: pointer;
+.homepage-box h2,
+.homepage-box h3 {
+  color: var(--green);
+  margin-bottom: var(--spacing-sm);
 }
 
-#mascotImg {
-    width: 100%;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* Recipe Highlight */
+.recipe-highlight a {
+  display: inline-block;
+  margin-top: var(--spacing-sm);
+  color: var(--accent-orange);
+  font-weight: bold;
+  text-decoration: none;
 }
 
-#mascotSpeech {
-    background: var(--white);
-    border: 1px solid var(--light-green);
-    border-radius: 15px;
-    padding: 8px;
-    position: absolute;
-    bottom: 100%;
-    right: 50%;
-    transform: translateX(50%);
-    width: 150px;
-    font-size: 0.8rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    white-space: nowrap;
+.recipe-highlight a:hover,
+.recipe-highlight a:focus {
+  text-decoration: underline;
+  color: #d35400; /* deeper orange */
 }
 
-/* Keyframe for Wave Animation */
-@keyframes wave {
-    0%, 100% { transform: rotate(0deg); }
-    15% { transform: rotate(-5deg); }
-    30% { transform: rotate(10deg); }
-    45% { transform: rotate(-10deg); }
-    60% { transform: rotate(5deg); }
+/* Quick Links */
+.quick-links .feature-card-container {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-sm);
 }
 
-/* Alert Styling */
-.alert {
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    background-color: #fff3cd;
-    color: #856404;
-    border: 1px solid #ffeeba;
+.feature-card {
+  background-color: var(--green);
+  color: var(--white);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Recipe Card Styling */
-.recipe-of-the-day {
-    text-align: center;
+.feature-card a {
+  color: var(--white);
+  text-decoration: none;
 }
 
-.recipe-card a {
-    text-decoration: none;
-    color: var(--color-text);
-    display: block;
+.feature-card:hover,
+.feature-card:focus {
+  background-color: var(--dark-green);
+  transform: scale(1.05);
 }
 
-.recipe-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-top: 10px;
+/* Calendar Widget */
+.calendar-widget .calendar-placeholder {
+  background-color: #f1f8e9;
+  border: 2px dashed var(--light-green);
+  padding: var(--spacing-lg);
+  border-radius: 10px;
+  margin-top: var(--spacing-sm);
+  font-style: italic;
+}
+
+/* Suggested Recipes Grid */
+#suggestedRecipes .recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+#suggestedRecipes .recipe-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: var(--spacing-md);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+#suggestedRecipes .recipe-card:hover,
+#suggestedRecipes .recipe-card:focus {
+  transform: scale(1.02);
+  outline: 2px dashed var(--accent-orange);
+  outline-offset: 4px;
 }

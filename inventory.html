@@ -1,70 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inventory - Use It or Lose It</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/inventory.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventory | Use It or Lose It</title>
+  <meta name="description" content="Track your household inventory and reduce food waste." />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/inventory.css" />
+  <script type="module" src="js/inventory.js" defer></script>
+  <script type="module" src="js/navbar.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Use It or Lose It</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="inventory.html" class="active">Inventory</a></li>
-                <li><a href="recipes.html">Recipes</a></li>
-                <li><a href="budget.html">Budget</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="calendar.html">Calendar</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section id="mascot-section">
-        <div id="mascot-wrapper">
-            <img src="images/temp mascot.jpg" alt="Mascot" id="mascotImg" class="mascot">
-            <div class="speech-bubble">
-                📦 Keep track! Every item counts toward your goal!
-            </div>
-        </div>
-    </section>
-    <main>
-        <section class="inventory-box">
-            <h2>Add New Item</h2>
-            <form id="inventoryForm">
-                <div class="form-group">
-                    <label for="itemName">Item Name</label>
-                    <input type="text" id="itemName" required />
-                </div>
-                <div class="form-group">
-                    <label for="quantity">Quantity</label>
-                    <input type="number" id="quantity" min="1" required />
-                </div>
-                <div class="form-group">
-                    <label for="expiration">Expiration Date</label>
-                    <input type="date" id="expiration" required /> 
-                </div>
-                <div class="form-group">
-                    <label for="itemType">Storage Location</label>
-                    <select id="itemType" required>
-                        <option value="fridge">Fridge</option>
-                        <option value="freezer">Freezer</option>
-                        <option value="pantry">Pantry</option>
-                    </select>
-                </div>
-                <button type="submit">Add Item</button>
-            </form>
-        </section>
-        <section class="inventory-box">
-            <h2>Current Inventory</h2>
-            <ul id="inventoryList">
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Use It or Lose It</p>
-    </footer>
-    <script src="js/inventory.js"></script>
+<header>
+  <h1>Use It or Lose It</h1>
+  <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+    <span class="hamburger"></span>
+  </button>
+  <nav id="nav-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="inventory.html" class="active">Inventory</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="recipes-all.html">All Recipes</a></li>
+      <li><a href="budget.html">Budget</a></li>
+      <li><a href="calendar.html">Calendar</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="favorites.html">Favorites</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <section id="alertSection" class="alert hidden" aria-hidden="true">
+    <p id="alertMessage"></p>
+    <button id="alertDismissBtn" aria-label="Dismiss alert">✖</button>
+  </section>
+
+  <section class="inventory-box">
+    <h2>Inventory</h2>
+
+    <form id="inventoryForm">
+      <div class="form-group">
+        <label for="itemName">Item Name</label>
+        <input type="text" id="itemName" required />
+      </div>
+      <div class="form-group">
+        <label for="itemQuantity">Quantity</label>
+        <input type="number" id="itemQuantity" min="1" required />
+      </div>
+      <div class="form-group">
+        <label for="itemUnit">Unit</label>
+        <select id="itemUnit">
+          <option value="">(No unit)</option>
+          <option value="pkg">Package(s)</option>
+          <option value="can">Can(s)</option>
+          <option value="oz">Ounce(s)</option>
+          <option value="lb">Pound(s)</option>
+          <option value="g">Gram(s)</option>
+          <option value="kg">Kilogram(s)</option>
+          <option value="gal">Gallon(s)</option>
+          <option value="half-gal">Half Gallon(s)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="itemExpiration">Expiration Date</label>
+        <input type="date" id="itemExpiration" required />
+      </div>
+
+      <input type="hidden" id="editIndex" value="" />
+
+      <button type="submit">Add Item</button>
+      <button type="button" id="cancelEditBtn" class="cancel-btn hidden">Cancel Edit</button>
+    </form>
+
+    <!-- Legend for status colors -->
+    <div class="status-legend">
+      <span class="legend safe">Safe</span>
+      <span class="legend warning">Expiring Soon (≤7 days)</span>
+      <span class="legend critical">Critical (≤3 days)</span>
+      <span class="legend expired">Expired</span>
+    </div>
+
+    <table class="inventory-table">
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Expiration</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="inventoryBody"></tbody>
+    </table>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Use It or Lose It</p>
+</footer>
 </body>
 </html>

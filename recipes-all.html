@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Recipes | Use It or Lose It</title>
+  <meta name="description" content="Search and filter through all available recipes." />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/recipes.css" /> 
+  <link rel="stylesheet" href="css/recipes-all.css" />
+  <script type="module" src="js/recipes-all.js" defer></script>
+  <script type="module" src="js/navbar.js" defer></script>
+</head>
+<body>
+  
+<header>
+  <h1>Use It or Lose It</h1>
+  <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+    <span class="hamburger"></span>
+  </button>
+  <nav id="nav-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="inventory.html">Inventory</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="recipes-all.html" class="active">All Recipes</a></li>
+      <li><a href="budget.html">Budget</a></li>
+      <li><a href="calendar.html">Calendar</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="favorites.html">Favorites</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <section id="alertSection" class="alert hidden">
+    <p id="alertMessage"></p>
+    <button id="alertDismissBtn" aria-label="Dismiss alert">✖</button>
+  </section>
+
+<main id="main">
+  <h2>All Recipes</h2>
+
+  <section class="filter-bar">
+    <label for="searchInput" class="visually-hidden">Search recipes by name or ingredient</label>
+    <input type="text" id="searchInput" placeholder="🔍 Search by name or ingredient..." />
+
+    <label for="typeFilter" class="visually-hidden">Filter recipes by type</label>
+    <select id="typeFilter">
+      <option value="">All Types</option>
+      <option value="Breakfast">Breakfast</option>
+      <option value="Lunch">Lunch</option>
+      <option value="Dinner">Dinner</option>
+      <option value="Snack">Snack</option>
+      <option value="Dessert">Dessert</option>
+    </select>
+
+    <button id="clearFilters" class="clear-btn">Clear Filters</button>
+  </section>
+
+  <section class="recipe-gallery"></section>
+</main>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top" aria-hidden="true">↑</button>
+
+  <footer>
+    <p>&copy; 2025 Use It or Lose It</p>
+  </footer>
+</body>
+</html>
