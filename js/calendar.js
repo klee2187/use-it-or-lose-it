@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevMonthBtn = document.getElementById("prevMonthBtn");
   const nextMonthBtn = document.getElementById("nextMonthBtn");
   const todayBtn = document.getElementById("todayBtn");
-  const monthlySummaryList = document.getElementById("monthlySummaryList");
+  const monthlySummaryGrid = document.getElementById("monthlySummaryGrid");
 
   let currentDate = new Date();
   currentDate.setDate(1);
@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const TODAY = new Date();
   TODAY.setHours(0, 0, 0, 0);
 
-  // Expanded severity logic
   const getItemSeverity = (items) => {
     let severity = "none";
     items.forEach((item) => {
@@ -32,23 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
       let currentSeverity = "safe";
 
-      if (diffDays <= 0) {
-        currentSeverity = "expired";
-      } else if (diffDays <= 3) {
-        currentSeverity = "critical";
-      } else if (diffDays <= 7) {
-        currentSeverity = "warning";
-      }
+      if (diffDays <= 0) currentSeverity = "expired";
+      else if (diffDays <= 3) currentSeverity = "critical";
+      else if (diffDays <= 7) currentSeverity = "warning";
 
-      if (currentSeverity === "expired") {
-        severity = "expired";
-      } else if (currentSeverity === "critical" && severity !== "expired") {
-        severity = "critical";
-      } else if (currentSeverity === "warning" && severity !== "expired" && severity !== "critical") {
-        severity = "warning";
-      } else if (currentSeverity === "safe" && severity === "none") {
-        severity = "safe";
-      }
+      if (currentSeverity === "expired") severity = "expired";
+      else if (currentSeverity === "critical" && severity !== "expired") severity = "critical";
+      else if (currentSeverity === "warning" && severity !== "expired" && severity !== "critical") severity = "warning";
+      else if (currentSeverity === "safe" && severity === "none") severity = "safe";
     });
     return severity;
   };
@@ -63,30 +53,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const lastDay = new Date(year, month + 1, 0);
     const startDayIndex = firstDay.getDay();
 
-    calendarHeader.textContent = `${firstDay.toLocaleString("default", {
-      month: "long",
-    })} ${year}`;
-
-    let currentRow = document.createElement("div");
-    currentRow.setAttribute("role", "row");
-    calendarGrid.appendChild(currentRow);
+    calendarHeader.textContent = `${firstDay.toLocaleString("default", { month: "long" })} ${year}`;
 
     // Empty cells before the first day
     for (let i = 0; i < startDayIndex; i++) {
       const emptyCell = document.createElement("div");
       emptyCell.classList.add("calendar-cell", "empty");
       emptyCell.setAttribute("role", "gridcell");
-      currentRow.appendChild(emptyCell);
+      calendarGrid.appendChild(emptyCell);
     }
 
     // Fill days
     for (let day = 1; day <= lastDay.getDate(); day++) {
-      if ((startDayIndex + day - 1) % 7 === 0 && day !== 1) {
-        currentRow = document.createElement("div");
-        currentRow.setAttribute("role", "row");
-        calendarGrid.appendChild(currentRow);
-      }
-
       const cell = document.createElement("div");
       cell.classList.add("calendar-cell");
       cell.setAttribute("role", "gridcell");
@@ -109,9 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (expiringItems.length > 0) {
         const severity = getItemSeverity(expiringItems);
-        if (severity !== "none") {
-          cell.classList.add(severity);
-        }
+        if (severity !== "none") cell.classList.add(severity);
 
         const countEl = document.createElement("div");
         countEl.classList.add("item-count");
@@ -120,32 +96,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const tooltip = document.createElement("div");
         tooltip.classList.add("tooltip");
-        const itemNames = expiringItems.map((i) => i.name).join(", ");
-        tooltip.textContent = `Expiring: ${itemNames}`;
+        tooltip.textContent = `Expiring: ${expiringItems.map(i => i.name).join(", ")}`;
         tooltip.setAttribute("aria-label", tooltip.textContent);
         cell.appendChild(tooltip);
       }
 
-      currentRow.appendChild(cell);
-    }
-
-    // Fill the rest of the last row with empty cells
-    const totalCells = startDayIndex + lastDay.getDate();
-    const cellsInLastRow = totalCells % 7;
-    const remainingCells = cellsInLastRow === 0 ? 0 : 7 - cellsInLastRow;
-
-    for (let i = 0; i < remainingCells; i++) {
-      const emptyCell = document.createElement("div");
-      emptyCell.classList.add("calendar-cell", "empty");
-      emptyCell.setAttribute("role", "gridcell");
-      currentRow.appendChild(emptyCell);
+      calendarGrid.appendChild(cell);
     }
 
     renderMonthlySummary(year, month);
   };
 
   const renderMonthlySummary = (year, month) => {
-    monthlySummaryList.innerHTML = "";
+    monthlySummaryGrid.innerHTML = "";
 
     const monthlyItems = [];
     inventory.forEach((item) => {
@@ -163,14 +126,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (monthlyItems.length === 0) {
-      monthlySummaryList.innerHTML = "<li>No expiring items this month.</li>";
+      monthlySummaryGrid.innerHTML = "<p>No expiring items this month.</p>";
       return;
     }
 
     monthlyItems.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-    monthlyItems.forEach((item) => {
-      const li = document.createElement("li");
+    monthlyItems.forEach((item, index) => {
+      const card = document.createElement("div");
+      card.classList.add("summary-card", "fade-in");
+      card.style.animationDelay = `${index * 0.1}s`;
+
       const formattedDate = new Date(item.date).toLocaleDateString();
 
       let emoji = "✅";
@@ -191,13 +157,12 @@ document.addEventListener("DOMContentLoaded", () => {
         borderColor = "#C62828";
       }
 
-      li.innerHTML = `
-        <span class="date-label ${colorClass}">${emoji} ${formattedDate}</span>
-        <span>${item.name}</span>
+      card.style.borderLeftColor = borderColor;
+      card.innerHTML = `
+        <div class="date-label ${colorClass}">${emoji} ${formattedDate}</div>
+        <div class="item-name">${item.name}</div>
       `;
-      li.style.borderLeftColor = borderColor;
-
-      monthlySummaryList.appendChild(li);
+      monthlySummaryGrid.appendChild(card);
     });
   };
 
@@ -218,4 +183,19 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   renderCalendar();
+
+  // Back to Top button logic
+  const backToTopBtn = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.setAttribute("aria-hidden", "false");
+      backToTopBtn.classList.add("visible");
+    } else {
+      backToTopBtn.setAttribute("aria-hidden", "true");
+      backToTopBtn.classList.remove("visible");
+    }
+  });
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 });
