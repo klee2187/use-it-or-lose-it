@@ -37,28 +37,30 @@
     <button id="alertDismissBtn" aria-label="Dismiss alert">✖</button>
   </section>
 
-  <main id="main">
-    <h2>All Recipes</h2>
+<main id="main">
+  <h2>All Recipes</h2>
 
-    <section class="filter-bar">
-      <label for="searchInput" class="visually-hidden">Search recipes by name or ingredient</label>
-      <input type="text" id="searchInput" placeholder="🔍 Search by name or ingredient..." />
+  <section class="filter-bar">
+    <label for="searchInput" class="visually-hidden">Search recipes by name or ingredient</label>
+    <input type="text" id="searchInput" placeholder="🔍 Search by name or ingredient..." />
 
-      <label for="typeFilter" class="visually-hidden">Filter recipes by type</label>
-      <select id="typeFilter">
-        <option value="">All Types</option>
-        <option value="Breakfast">Breakfast</option>
-        <option value="Lunch">Lunch</option>
-        <option value="Dinner">Dinner</option>
-        <option value="Snack">Snack</option>
-        <option value="Dessert">Dessert</option>
-      </select>
+    <label for="typeFilter" class="visually-hidden">Filter recipes by type</label>
+    <select id="typeFilter">
+      <option value="">All Types</option>
+      <option value="Breakfast">Breakfast</option>
+      <option value="Lunch">Lunch</option>
+      <option value="Dinner">Dinner</option>
+      <option value="Snack">Snack</option>
+      <option value="Dessert">Dessert</option>
+    </select>
 
-      <button id="clearFilters" class="clear-btn">Clear Filters</button>
-    </section>
+    <button id="clearFilters" class="clear-btn">Clear Filters</button>
+  </section>
 
-    <section class="recipe-gallery"></section>
-  </main>
+  <section class="recipe-gallery"></section>
+</main>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top" aria-hidden="true">↑</button>
 
   <footer>
     <p>&copy; 2025 Use It or Lose It</p>
