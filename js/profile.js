@@ -1,7 +1,6 @@
 import { initNavbarToggle } from "./utils.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ✅ Initialize hamburger menu
   initNavbarToggle();
 
   const profileForm = document.getElementById("profileForm");
@@ -14,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const displayFamilySize = document.getElementById("displayFamilySize");
   const displayDiet = document.getElementById("displayDiet");
   const displayCuisine = document.getElementById("displayCuisine");
+  const preferencesSection = document.querySelector(".profile-preferences");
 
   // Input elements
   const nameInput = document.getElementById("profileName");
@@ -21,6 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const familySizeInput = document.getElementById("profileFamilySize");
   const dietInput = document.getElementById("profileDiet");
   const cuisineInput = document.getElementById("profileCuisine");
+
+  // Success modal
+  const successModal = document.getElementById("successModal");
+  const closeModalBtn = document.getElementById("closeModalBtn");
 
   // Load saved profile
   const savedProfile = JSON.parse(localStorage.getItem("profile")) || {};
@@ -49,7 +53,15 @@ document.addEventListener("DOMContentLoaded", () => {
     displayDiet.textContent = profile.diet || "—";
     displayCuisine.textContent = profile.cuisine || "—";
 
+    // Animate preferences section
+    preferencesSection.classList.remove("fade-in");
+    void preferencesSection.offsetWidth; 
+    preferencesSection.classList.add("fade-in");
+
     profileForm.reset();
+
+    // Show success modal
+    successModal.classList.remove("hidden");
   });
 
   // Edit Profile
@@ -71,5 +83,14 @@ document.addEventListener("DOMContentLoaded", () => {
     displayDiet.textContent = "—";
     displayCuisine.textContent = "—";
     profileForm.reset();
+
+    preferencesSection.classList.remove("fade-in");
+    void preferencesSection.offsetWidth;
+    preferencesSection.classList.add("fade-in");
+  });
+
+  // Close modal
+  closeModalBtn.addEventListener("click", () => {
+    successModal.classList.add("hidden");
   });
 });
