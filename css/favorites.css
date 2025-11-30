@@ -1,0 +1,67 @@
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-md);
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Reuse recipe-card styles from recipes.css */
+.favorites-grid .recipe-card {
+  position: relative;
+}
+
+/* Remove Favorite Button */
+.remove-fav-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: var(--spacing-xs);
+  min-width: 44px;
+  min-height: 44px;
+  border: none;
+  background: var(--white);
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--accent-orange);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.remove-fav-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--accent-orange);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  transform: scale(1.1);
+  background-color: var(--dark-green);
+}

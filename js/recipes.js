@@ -111,3 +111,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+const backToTopBtn = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTopBtn.setAttribute("aria-hidden", "false");
+    backToTopBtn.classList.add("visible");
+  } else {
+    backToTopBtn.setAttribute("aria-hidden", "true");
+    backToTopBtn.classList.remove("visible");
+  }
+});
+
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
