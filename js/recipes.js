@@ -27,10 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   function renderRecipes(recipes) {
-    if (!Array.isArray(recipes) || recipes.length === 0) {
-      featuredSection.innerHTML = "<p>No recipes found. Try adding ingredients to your inventory!</p>";
-      return;
-    }
+
     
     const favorites = JSON.parse(localStorage.getItem("favorites")) || []; 
     const featuredRecipe = recipes[Math.floor(Math.random() * recipes.length)];
@@ -55,19 +52,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   function createFeaturedCard(recipe, favorites) {
-    const ingredientsText = formatIngredients(recipe.ingredients);
+
     const isFavorite = favorites.includes(recipe.id);
-    
+
     return `
     <div class="featured-card recipe-card fade-in"> 
-      <img src="${recipe.image || 'images/placeholder.jpg'}" alt="${recipe.name}" class="featured-image" fetchpriority="high" />
+      <img src="${recipe.image || 'images/placeholder.jpg'}" alt="${recipe.name}" class="featured-image" />
       <div class="info">
         <h2>🍴 ${recipe.name}</h2>
         <p>Type: ${recipe.course || "Uncategorized"}</p>
-        <p class="ingredients">Key Ingredients: ${ingredientsText}</p>
+        <p class="ingredients">Key Ingredients: ${formatIngredients(recipe.ingredients)}</p>
         <a href="recipe-detail.html?id=${recipe.id}" class="view-recipe-btn view-all-btn">View Recipe</a>
-        <button class="fav-btn" data-id="${recipe.id}">
-          ${isFavorite ? "💔 Remove Favorite" : "❤️ Add to Favorites"}
+        <button class="fav-btn ${isFavorite ? "active" : ""}" data-id="${recipe.id}">
+          <span class="heart-icon">❤️</span>
         </button>
       </div>
     </div>
@@ -75,58 +72,43 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function createRecipeCard(recipe, favorites, index = 0) {
-    const ingredientsText = formatIngredients(recipe.ingredients);
+
     const isFavorite = favorites.includes(recipe.id);
-    
+
     return `
-    <a href="recipe-detail.html?id=${recipe.id}" 
-       class="recipe-card fade-in" 
-       style="animation-delay:${index * 0.15}s">
+    <a href="recipe-detail.html?id=${recipe.id}" class="recipe-card fade-in" style="animation-delay:${index * 0.15}s">
       <img src="${recipe.image || 'images/placeholder.jpg'}" alt="${recipe.name}" loading="lazy" />
       <div class="info">
         <h3>🍴 ${recipe.name}</h3>
         <p>Type: ${recipe.course || "Uncategorized"}</p>
-        <p class="ingredients">Key Ingredients: ${ingredientsText}</p>
-        <button class="fav-btn" data-id="${recipe.id}" aria-label="Toggle favorite status for ${recipe.name}" onclick="event.preventDefault(); event.stopPropagation();">
-          ${isFavorite ? "💔" : "❤️"}
+        <p class="ingredients">Key Ingredients: ${formatIngredients(recipe.ingredients)}</p>
+        <button class="fav-btn ${isFavorite ? "active" : ""}" data-id="${recipe.id}" onclick="event.preventDefault(); event.stopPropagation();">
+          <span class="heart-icon">❤️</span>
         </button>
       </div>
     </a>
     `;
   }
 
+  // Event listener
   document.body.addEventListener("click", e => {
-    if (e.target.classList.contains("fav-btn")) {
-      const id = parseInt(e.target.dataset.id, 10);
-      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-      
-      if (favorites.includes(id)) {
-        favorites = favorites.filter(favId => favId !== id);
-        e.target.textContent = (e.target.closest('.featured-card')) ? "❤️ Add to Favorites" : "❤️";
-      } else {
-        favorites.push(id);
-        e.target.textContent = (e.target.closest('.featured-card')) ? "💔 Remove Favorite" : "💔";
-      }
-      localStorage.setItem("favorites", JSON.stringify(favorites));
-    }
-  });
-});
+    const btn = e.target.closest(".fav-btn");
+    if (!btn) return;
+    
+    const id = parseInt(btn.dataset.id, 10);
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-const backToTopBtn = document.getElementById("backToTop");
+  // normalize to integers
+  favorites = favorites.map(favId => parseInt(favId, 10));
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTopBtn.setAttribute("aria-hidden", "false");
-    backToTopBtn.classList.add("visible");
+  if (favorites.includes(id)) {
+    favorites = favorites.filter(favId => favId !== id);
+    btn.classList.remove("active");
   } else {
-    backToTopBtn.setAttribute("aria-hidden", "true");
-    backToTopBtn.classList.remove("visible");
+    favorites.push(id);
+    btn.classList.add("active");
   }
-});
-
-backToTopBtn.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+  
+  localStorage.setItem("favorites", JSON.stringify(favorites));
   });
 });
