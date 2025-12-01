@@ -743,6 +743,326 @@
             "Add 1/2 pound fresh or canned mushrooms"
         ],
         "creator": "The Ashcroft Family Table"
-    }]
+    },
+    {
+        "id": 19,
+        "name": "Easy Spaghetti with Chili Sauce (Cincinnati Chili)",
+        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/10/cincinatti-chili-1024x1536.jpg",
+        "description": "Spaghetti with Chili Sauce (or Cincinnati Chili) features a meaty chili served over spaghetti and topped with sour cream and cheese. Yum!",
+        "prepTime":"5 minutes",
+        "cookTime": "20 minutes",
+        "additionalTime": "N/A",
+        "totalTime": "25 minutes",
+        "course": "Dinner",
+        "cuisine": "American",
+        "servings": 6,
+        "calories": "565 kcal",
+        "ingredients": [
+            "1 pound ground beef",
+            "1 cup chopped onions",
+            "1 tablespoon chili powder",
+            "1 teaspoon salt",
+            "28 ounces canned diced tomatoes, undrained",
+            "15 ounces canned kidney beans, undrained",
+            "8 ounces canned tomato sauce",
+            "16 ounces spaghetti noodles",
+            "Shredded cheddar cheese",
+            "Sour cream"
+        ],
+        "instructions": [
+            "1. Cook and stir ground beef and onions in a large skillet or pan until beef is brown and onions are tender; drain off fat.",
+            "2. Stir in chili powder, salt, tomatoes, beans, and tomato sauce.",
+            "3. Cook uncovered over medium heat, about 10 minutes or until thickened. ",
+            "4. While the chili sauce is simmering, cook the spaghetti as directed on package and drain.",
+            "5. Spoon chili over hot spaghetti.",
+            "6. Sprinkle each serving with cheddar cheese and a dollop of sour cream."
+        ],
+        "substitutions": [
+            "Dried onions (3 Tablespoons) or onion powder (1 teaspoon) for fresh onion",
+            "Ground turkey for ground beef",
+            "Black beans, pinto beans, navy beans, cannelini beans, or beans of choice for kidney beans",
+            "Tomato paste (1 part paste to 1 part water), canned tomatoes (1:1), tomato soup (remove 1/4 cup liquid for every 10.75 ounce can), spaghetti sauce (1:1) for tomato sauce",
+            "Instead of one can whole tomatoes, try 2 cans diced tomatoes for already broken up tomatoes and to stretch the sauce",
+            "To increase the spice factor, add two more teaspoons of chili powder and a shake or so of crushed red pepper"
+        ],
+        "creator": "The Ashcroft Family Table"
+    },
+    {
+        "id": 20,
+        "name": "Easy Spam Fried Rice",
+        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/12/spam-fried-rice-recipe.jpg",
+        "description": "This Spam Fried Rice recipe features the delicious canned meat mixed with rice, vegetables, and a salty sauce. It's an easy side dish and a great way to use up leftover rice!",
+        "prepTime":"5 minutes",
+        "cookTime": "30 minutes",
+        "additionalTime": "N/A",
+        "totalTime": "35 minutes",
+        "course": "Dinner",
+        "cuisine": "Asian",
+        "servings": 6,
+        "calories": "250 kcal",
+        "ingredients": [
+            "1 cup uncooked long-grain rice, or 3 cups of cooked rice",
+            "6 ounces Spam",
+            "1 cup frozen peas and carrots",
+            "2 eggs",
+            "2 Tablespoons soy sauce",
+            "1 Tablespoon vinegar",
+            "1/2 Tablespoon sesame oil"
+        ],
+        "instructions": [
+            "1. Cook rice or measure out leftover cooked rice.",
+            "2. While the rice is cooking, dice Spam. Fry in a medium frying pan over medium heat until brown and crispy.",
+            "3. While the Spam is cooking, place mixed peas and carrots in a microwave-safe dish and cover with water. Cover and microwave on high for 2 minutes.",
+            "4. Drain the vegetables and add them to the frying pan.",
+            "5. Push the meat and vegetables to the side of the pan. Lightly beat eggs and add them to the frying pan. Push the eggs around until they start to cook and then mix them with the meat and vegetables. Cook the eggs for 2-3 more minutes.",
+            "6. When the eggs are cooked, add the cooked rice, soy sauce, vinegar, and sesame oil to the frying pan.",
+            "7. Stir everything together until mixed well. Turn the heat to low and continue warming until the rice is heated through."
+        ],
+        "substitutions": [
+            "You can use leftover rice for this recipe",
+            "Try adding different falvors like: minced garlic, frozen corn, fish sauce, oyster sauce, green onion",
+            "Try different spam flavors like: original, low sodium, or teriyaki"
+        ],
+        "creator": "The Ashcroft Family Table"
+    },
+    {
+        "id": 21,
+        "name": "Elevated Hamburger Helper Lasagna (One Pot)",
+        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/08/hamburger-helper-lasagna-1024x1536.jpg",
+        "description": "This elevated Hamburger Helper Lasagna combines the noodles from the familiar boxed dinner with a homemade meat sauce and 2 different kinds of cheese. It's a delicious one pot lasagna meal that's so easy to throw together!",
+        "prepTime":"N/A",
+        "cookTime": "35 minutes",
+        "additionalTime": "N/A",
+        "totalTime": "35 minutes",
+        "course": "Dinner",
+        "cuisine": "American",
+        "servings": 8,
+        "calories": "421 kcal",
+        "ingredients": [
+            "1 pound ground beef",
+            "2 cloves garlic, minced",
+            "3 ounces tomato paste, about 5 tablespoons",
+            "15 ounces diced tomatoes",
+            "1 teaspoon salt",
+            "3/4 teaspoon pepper",
+            "1/2 teaspoon oregano",
+            "2 boxes Hamburger Helper Lasagna, 6.9 ounces each",
+            "4 cups chicken broth",
+            "2 ounces cream cheese",
+            "1 1/2 cups shredded mozzarella cheese, divided",
+            "dried parsley, optional"
+        ],
+        "instructions": [
+            "1. Add ground beef and minced garlic to a dutch oven or large soup pot. Brown ground beef and garlic over medium-high heat.",
+            "2. Once the ground beef is cooked, drain off any excess oil. Add tomato paste, diced tomatoes, salt, pepper, and oregano to the pot. Stir to combine.",
+            "3. Cover the pan and simmer for 10 minutes.",
+            "4. Add 2 packages of Hamburger Helper Lasagna noodles (not the seasoning) and chicken broth or water to the meat mixture. Bring to a boil.",
+            "5. Once the mixture is boiling, reduce to a simmer. Cover and cook for 10 minutes, or until the noodles are al dente.",
+            "6. Reduce the heat to low. Add cream cheese and 1 cup of shredded mozzarella to the noodles. Stir until the cheeses have melted.",
+            "7. Top with an additional 1/2 cup of mozzarella cheese and parsley before serving."
+        ],
+        "substitutions": [
+            "Use any noodle shape you'd like in place of hamburger helper noodles",
+            "Swap ricotta or cottage cheese (8 oz) for cream cheese with 1 cup mozzarella",
+            "24 oz jar of favorite pasta sauce in place of tomatoes and seasonings",
+            "Tomato sauce or tomatoe puree (2-3 T. to 1 T. paste), diced/crushed tomatoes (2 T. to 1 T. paste), pureed red peppers, ketchup (1:1) for tomato paste",
+            "Marjoram, thyme, italian seasoning, basil, parsley, tarragon, mexican oregano (1:1) for oregano",
+            "Vegetable stock, chicken bouillon, chicken stock, coconut milk for chicken broth"
+        ],
+        "creator": "The Ashcroft Family Table"
+    },
+    {
+        "id": 22,
+        "name": "Simple Crock Pot Hamburger Stew",
+        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/11/hamburger-stew-1024x1536.jpg",
+        "description": "This simple Crock Pot Hamburger Stew features browned hamburger, potatoes, carrots, peas, and onions and is a cinch to throw together!",
+        "prepTime":"20 minutes",
+        "cookTime": "5 hours",
+        "additionalTime": "N/A",
+        "totalTime": "5 hours 20 minutes",
+        "course": "Dinner",
+        "cuisine": "American",
+        "servings": 8,
+        "calories": "285 kcal",
+        "ingredients": [
+            "1 pound ground beef",
+            "1 medium onion",
+            "3-4 small potatoes",
+            "1 pound baby carrots, chopped if desired",
+            "Salt and pepper, to taste",
+            "10.5 ounces canned tomato soup",
+            "2 cups beef broth",
+            "2 Tablespoons Worcestershire sauce",
+            "12 ounces frozen peas, partially thawed"
+        ],
+        "instructions": [
+            "1. Brown ground beef in a frying pan until no longer pink. Drain and set aside.",
+            "2. While the ground beef is cooking, chop onion into small pieces and peel and slice potatoes into half circles.",
+            "3. Layer potatoes, chopped onion, and baby carrots in Crock Pot, seasoning each layer with salt and pepper.",
+            "4. Pour tomato soup, beef broth, and Worcestershire sauce over the vegetables in the Crock Pot.",
+            "5. Add ground beef on top of the vegetables and stir everything to combine.",
+            "6. Cover and cook on low for 5 to 6 hours or on high for 3 to 4 hours.",
+            "7. Once the vegetables are soft, remove the lid and add frozen peas. Stir to combine, turn the Crock Pot to warm and allow the peas to defrost.",
+            "8. Serve immediately."
+        ],
+        "substitutions": [
+            "Adjust cooking times according to your crockpot capabilities",
+            "Ground turkey for ground beef",
+            "Slice 2-3 medium carrots into 1 in pieces in place of baby carrots",
+            "Add 1 cup beef broth after cooking if desired",
+            "Beef stock, beef consomme, chicken broth, vegetable broth, mushroom broth, beef bouillon for beef broth"
+        ],
+        "creator": "The Ashcroft Family Table"
+    },
+    {
+        "id": 23,
+        "name": "Poppy Seed Chicken Casserole with Rice",
+        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/03/poppy-seed-chicken-casserole-1024x1536.jpg",
+        "description": "Poppy Seed Chicken Casserole with Rice features a creamy chicken and rice mixture covered with a delicious crunchy Ritz cracker topping. It's an easy way to use up leftovers and is sure to become a family favorite dinner!",
+        "prepTime":"10 minutes",
+        "cookTime": "30 minutes",
+        "additionalTime": "N/A",
+        "totalTime": "40 minutes",
+        "course": "Dinner",
+        "cuisine": "American",
+        "servings": 8,
+        "calories": "390 kcal",
+        "ingredients": [
+            "2 cooked and shredded chicken breasts, about 3 cups",
+            "10.5 ounces canned cream of chicken soup",
+            "1 1/2 cups sour cream",
+            "2 cups cooked white rice",
+            "3.4 ounces crushed Ritz crackers, 1 sleeve",
+            "1/4 cup butter, melted",
+            "2 teaspoons poppy seeds",
+            "1 Tablespoon dried parsley",
+            "1/4 cup grated Parmesan cheese"
+        ],
+        "instructions": [
+            "1. Preheat oven to 350 degrees. Lightly coat a 9×13 baking dish with cooking spray and set aside.",
+            "2. In a medium-sized bowl, mix shredded chicken, cream of chicken soup, sour cream, and cooked rice.",
+            "3. Mix crushed Ritz crackers, melted butter, poppy seeds, dried parsley, and grated Parmesan cheese in a small bowl.",
+            "4. Pour the chicken mixture into the greased pan and spread into an even layer. Top with cracker crumb mixture.",
+            "5. Bake, uncovered, at 350 degrees for 30 minutes or until topping is crispy and the chicken mixture is bubbling."
+        ],
+        "substitutions": [
+            "Use plain Greek yogurt instead of sour cream.",
+            "Add in some softened cream cheese in place of some of the sour cream.",
+            "Add in cooked peas or broccoli to the chicken mixture.",
+            "Omit the rice and serve over cooked egg noodles or mashed potatoes.",
+            "Use leftover turkey, pork, or canned chicken instead of chicken.",
+            "Mix in Worcestershire sauce, garlic powder, lemon juice, or pepper to the chicken mixture.",
+            "Cream of mushroom soup, cream of celery soup, cream of shrimp, greek yogurt for cream of chicken soup",
+            "Ghee (1:1); coconut oil (1:1), olive oil (3/4 of the amount of called for butter), margarine (1:1) for butter" 
+        ],
+        "creator": "The Ashcroft Family Table"
+    },
+    {
+        "id": 24,
+        "name": "The Best 3 Ingredient Crock PotPork Chops",
+        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/04/crock-pot-pork-chops-1024x1536.jpg",
+        "description": "These 3 Ingredient Crock Pot Pork Chops are incredibly tender, flavorful, and so easy to make. As the name suggests, you'll only need three ingredients to make this delicious dinner!",
+        "prepTime":"10 minutes",
+        "cookTime": "6 hours",
+        "additionalTime": "N/A",
+        "totalTime": "6 hours 10 minutes",
+        "course": "Dinner",
+        "cuisine": "American",
+        "servings": 6,
+        "calories": "402 kcal",
+        "ingredients": [
+            "4 pork chops, preferably bone-in",
+            "Salt and pepper, to taste",
+            "10.75 ounces cream of chicken soup (1 can)",
+            "12 ounces cooked egg noodles or rice"
+        ],
+        "instructions": [
+            "1. Brown pork chops in a greased frying pan over medium heat. (You’re not cooking the chops through, but rather searing each side briefly for extra flavor.)",
+            "2. Sprinkle each pork chop with some salt and pepper and place them in the Crock Pot.",
+            "3. Pour cream of chicken soup over the pork chops and cover with the lid.",
+            "4. Cook on LOW for 6-8 hours until pork is no longer pink.",
+            "5. Serve pork chops and gravy over cooked egg noodles or rice."
+        ],
+        "substitutions": [
+            "Cream of mushroom soup, cream of celery soup, cream of shrimp, greek yogurt for cream of chicken soup",
+            "Use an extra can of soup to make more gravy" 
+        ],
+        "creator": "The Ashcroft Family Table"
+    },
+    {
+        "id": 25,
+        "name": "Crock Pot Rosemary Pork Chops",
+        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/02/rosemary-pork-chops-1-1024x1536.jpg",
+        "description": "These Rosemary Pork Chops have all of the flavors of a Sunday dinner without all of the work! A creamy mushroom and rosemary sauce cover tender pork chops and red potatoes in this easy Crock Pot recipe.",
+        "prepTime":"15 minutes",
+        "cookTime": "4 hours",
+        "additionalTime": "N/A",
+        "totalTime": "4 hours 15 minutes",
+        "course": "Dinner",
+        "cuisine": "American",
+        "servings": 6,
+        "calories": "330 kcal",
+        "ingredients": [
+            "6 pork chops",
+            "1 1/2 pounds petite red potatoes, or about 8 medium red potatoes",
+            "2 teaspoons dried rosemary",
+            "1/4 cup dried chopped onions, (onion flakes)",
+            "Salt and pepper, to taste",
+            "10 ounces canned cream of mushroom soup",
+            "1 teaspoon Worcestershire sauce",
+            "4 ounces canned sliced mushrooms, undrained"
+        ],
+        "instructions": [
+            "1. Brown pork chops in a lightly greased frying pan over medium heat, about 2 minutes on each side. (You’re not cooking the meat through, but rather searing each side briefly for extra flavor.)",
+            "2. While the pork chops are browning, wash and cut each red potato in half.",
+            "3. Place the potatoes on the bottom of the slow cooker and then place the pork chops on top of the potatoes.",
+            "4. Sprinkle the pork chops with dried rosemary, dried chopped onion, salt, and pepper.",
+            "5. Mix cream of mushroom soup, Worcestershire sauce, and mushrooms with the juice in a small bowl.",
+            "6. Pour the soup mixture over the pork chops.",
+            "7. Cover and cook on LOW for 4-6 hours, or until meat and potatoes are cooked through."
+        ],
+        "substitutions": [
+            "Adjust cooking times according to your crockpot capabilities",
+            "Skip browning pork chops if in a rush",
+            "Dried minced onion (2 T.) or onion powder (1 T.) in place of onion flakes" 
+        ],
+        "creator": "The Ashcroft Family Table"
+    },
+    {
+        "id": 26,
+        "name": "Crock Pot Country Style Pork Ribs (3 ingredients)",
+        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/09/crock-pot-country-style-pork-ribs-1024x1536.jpg",
+        "description": "You'll only 3 ingredients to make these tender Crock Pot Country Style Pork Ribs. They're perfectly saucy and delicious, and couldn't be easier to throw together!",
+        "prepTime":"30 minutes",
+        "cookTime": "8 hours",
+        "additionalTime": "N/A",
+        "totalTime": "8 hours 30 minutes",
+        "course": "Dinner",
+        "cuisine": "American",
+        "servings": 8,
+        "calories": "312 kcal",
+        "ingredients": [
+            "3-4 pounds country style pork ribs, boneless",
+            "salt and pepper, to taste",
+            "1 onion, sliced",
+            "16 ounces barbeque sauce"
+        ],
+        "instructions": [
+            "1. Sprinkle ribs with salt and pepper and place on a foil-lined baking sheet.",
+            "2. Broil ribs in oven on low until browned, turning every 5 minutes.",
+            "3. Put sliced onion in the bottom of the Crock Pot followed by the ribs.",
+            "4. Pour barbecue sauce over the ribs. Cover and cook on low for 6-8 hours or on high for 4-5 hours.",
+            "5. Serve ribs with rice, mashed potatoes, or pasta."
+        ],
+        "substitutions": [
+            "Purchase country style ribs and not large rack of ribs",
+            "You can skip the broiler altogether and just brown the sides in a frying pan, but this will take longer",
+            "Add a little flavor and tenderizer to the meat, you can pour in a can of Coke with the barbeque sauce",
+            "Adjust cooking times according to your crockpot capabilities"
+        ],
+        "creator": "The Ashcroft Family Table"
+    }
+]
 
 }
+
