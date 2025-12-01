@@ -9,13 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const recipeId = parseInt(params.get("id"), 10);
 
   const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
-  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   const recipe = recipes.find(r => r.id === recipeId);
 
   if (!recipe) {
     detailSection.innerHTML = "<p>Recipe not found.</p>";
     return;
   }
+
+  favorites = favorites.map(favId => parseInt(favId, 10));
 
   const ingredients = Array.isArray(recipe.ingredients) ? recipe.ingredients : [];
   const instructions = Array.isArray(recipe.instructions) ? recipe.instructions : [];
@@ -30,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
       <span>Servings: <strong>${recipe.servings || "N/A"}</strong></span>
     </div>
 
-    <!-- Heart button -->
     <button class="fav-btn ${favorites.includes(recipe.id) ? "active" : ""}" data-id="${recipe.id}" aria-label="Toggle favorite">
       <span class="heart-icon">❤️</span>
     </button>
@@ -46,26 +47,42 @@ document.addEventListener("DOMContentLoaded", () => {
     </ol>
   `;
 
-  // Event listener
   document.body.addEventListener("click", e => {
     const btn = e.target.closest(".fav-btn");
     if (!btn) return;
     
     const id = parseInt(btn.dataset.id, 10);
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    favorites = favorites.map(favId => parseInt(favId, 10));
 
-  // normalize to integers
-  favorites = favorites.map(favId => parseInt(favId, 10));
-
-  if (favorites.includes(id)) {
-    favorites = favorites.filter(favId => favId !== id);
-    btn.classList.remove("active");
-  } else {
-    favorites.push(id);
-    btn.classList.add("active");
-  }
+    if (favorites.includes(id)) {
+      favorites = favorites.filter(favId => favId !== id);
+      btn.classList.remove("active");
+    } else {
+      favorites.push(id);
+      btn.classList.add("active");
+    }
 
     localStorage.setItem("favorites", JSON.stringify(favorites));
   });
-  
+});
+
+// Back to Top button logic
+const backToTopBtn = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTopBtn.setAttribute("aria-hidden", "false");
+    backToTopBtn.classList.add("visible");
+  } else {
+    backToTopBtn.setAttribute("aria-hidden", "true");
+    backToTopBtn.classList.remove("visible");
+  }
+});
+
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 });

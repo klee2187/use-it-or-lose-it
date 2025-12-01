@@ -2,7 +2,7 @@ import { initNavbarToggle, initAlertDismiss } from "./utils.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   initNavbarToggle();
-  initAlertDismiss();
+  initAlertDismiss(); 
 
   const gallery = document.querySelector(".recipe-gallery");
   const searchInput = document.getElementById("searchInput");
@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderRecipes(recipes);
   }
 
+  // --- Filtering ---
   function filterAndRender() {
     const searchText = searchInput.value.toLowerCase();
     const filterType = typeFilter.value;
@@ -56,8 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
     renderRecipes(recipes);
   });
 
+  // --- Render All Recipes ---
   function renderRecipes(recipesToRender) {
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    favorites = favorites.map(favId => parseInt(favId, 10));
     gallery.innerHTML = "";
 
     if (recipesToRender.length === 0) {
@@ -66,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     recipesToRender.forEach((recipe, index) => {
-      const isFavorite = favorites.includes(recipe.id);
+      const isFavorite = favorites.includes(parseInt(recipe.id, 10));
       const cardHTML = `
         <a href="recipe-detail.html?id=${recipe.id}" class="recipe-card fade-in" style="animation-delay:${index * 0.1}s">
           <img src="${recipe.image || 'images/placeholder.jpg'}" alt="${recipe.name}" loading="lazy" />
@@ -84,29 +87,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Event listener
+  // --- Heart Toggle ---
   document.body.addEventListener("click", e => {
     const btn = e.target.closest(".fav-btn");
     if (!btn) return;
-    
+
     const id = parseInt(btn.dataset.id, 10);
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    favorites = favorites.map(favId => parseInt(favId, 10));
 
-  // normalize to integers
-  favorites = favorites.map(favId => parseInt(favId, 10));
-
-  if (favorites.includes(id)) {
-    favorites = favorites.filter(favId => favId !== id);
-    btn.classList.remove("active");
-  } else {
-    favorites.push(id);
-    btn.classList.add("active");
-  }
+    if (favorites.includes(id)) {
+      favorites = favorites.filter(favId => favId !== id);
+      btn.classList.remove("active");
+    } else {
+      favorites.push(id);
+      btn.classList.add("active");
+    }
 
     localStorage.setItem("favorites", JSON.stringify(favorites));
   });
 
-    // Back to Top button logic
+  // --- Back to Top ---
   const backToTopBtn = document.getElementById("backToTop");
 
   window.addEventListener("scroll", () => {

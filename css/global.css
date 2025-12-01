@@ -1,19 +1,45 @@
-/* Global Variables */
+/* --- Global Variables --- */
 :root {
+  /* Brand Colors */
   --green: #2e7d32;
   --dark-green: #1b5e20;
   --light-green: #a5d6a7;
   --accent-orange: #ff7043;
+
+  /* Neutral Colors */
   --white: #ffffff;
+  --black: #000000;
   --text-dark: #333333;
   --text-light: #666666;
+  --text-muted: #888888;
+  --border-color: #e0e0e0;
+
+  /* Spacing Scale */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Typography */
+  --font-family: system-ui, sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --line-height: 1.6;
+
+  /* Shadows */
+  --shadow: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-lg: 0 4px 8px rgba(0,0,0,0.15);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.6s ease;
 }
 
-/* Reset */
+/* --- Reset --- */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -21,8 +47,8 @@
 }
 
 body {
-  font-family: system-ui, sans-serif;
-  line-height: 1.6;
+  font-family: var(--font-family);
+  line-height: var(--line-height);
   color: var(--text-dark);
   background-color: #fafafa;
 }
@@ -209,6 +235,7 @@ header h1 {
 
 /* Footer */
 footer {
+  min-height: 100px;
   text-align: center;
   padding: var(--spacing-md);
   background-color: var(--green);
@@ -216,13 +243,13 @@ footer {
   margin-top: var(--spacing-lg);
 }
 
-/* --- Fun Additions --- */
+/* --- Animation & Transitions --- */
 
-/* Fade-in animation for recipe cards */
+/* Fade-in for recipe cards */
 .recipe-card {
   opacity: 0;
   transform: translateY(10px);
-  animation: fadeInUp 0.6s ease forwards;
+  animation: fadeInUp var(--transition-slow) ease forwards;
 }
 
 .recipe-card:nth-child(1) { animation-delay: 0.1s; }
@@ -239,6 +266,34 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Fade-out for removing favorites */
+.fade-out {
+  animation: fadeOut var(--transition-slow) ease forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+}
+
+/* Bounce for hamburger toggle */
+.nav-toggle.active .hamburger::before,
+.nav-toggle.active .hamburger::after {
+  animation: bounce var(--transition-fast);
+}
+
+@keyframes bounce {
+  0%   { transform: scale(0.9); }
+  50%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 /* --- Heart Favorite Toggle --- */
