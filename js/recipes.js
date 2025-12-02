@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavbarToggle();
   initAlertDismiss();
 
-  const featuredSection = document.querySelector(".featured-recipe");
+  const featuredSection = document.querySelector(".featured-recipe-content");
   const gallery = document.querySelector(".recipe-gallery");
   const searchInput = document.getElementById("searchInput");
   const typeFilter = document.getElementById("typeFilter");
@@ -46,20 +46,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const isFavorite = favorites.includes(parseInt(featuredRecipe.id, 10));
     
-featuredSection.innerHTML = `
-  <div class="featured-card recipe-card fade-in">
-    <img src="${featuredRecipe.image || 'images/placeholder.jpg'}" alt="${featuredRecipe.name}" class="featured-image" fetchpriority="high" />
-    <div class="info">
-      <h2>🍴 ${featuredRecipe.name}</h2>
-      <p>Type: ${featuredRecipe.course || "Uncategorized"}</p>
-      <p class="ingredients">Key Ingredients: ${Array.isArray(featuredRecipe.ingredients) ? featuredRecipe.ingredients.slice(0,5).join(", ") : ""}</p>
-      <a href="recipe-detail.html?id=${featuredRecipe.id}" class="view-recipe-btn">View Recipe</a>
-      <button class="fav-btn ${isFavorite ? "active" : ""}" data-id="${featuredRecipe.id}">
-        <span class="heart-icon">❤️</span>
-      </button>
-    </div>
-  </div>
-`;
+    featuredSection.innerHTML = `
+      <div class="featured-card recipe-card fade-in">
+        <img src="${featuredRecipe.image || 'images/placeholder.jpg'}" alt="${featuredRecipe.name}" class="featured-image" fetchpriority="high" />
+        <div class="info">
+          <h2>🍴 ${featuredRecipe.name}</h2>
+          <p>Type: ${featuredRecipe.course || "Uncategorized"}</p>
+          <p class="ingredients">Key Ingredients: ${Array.isArray(featuredRecipe.ingredients) ? featuredRecipe.ingredients.slice(0,5).join(", ") : ""}</p>
+          <a href="recipe-detail.html?id=${featuredRecipe.id}" class="view-recipe-btn">View Recipe</a>
+          <button class="fav-btn ${isFavorite ? "active" : ""}" data-id="${featuredRecipe.id}">
+            <span class="heart-icon">❤️</span>
+          </button>
+        </div>
+      </div>
+    `;
   }
 
   // --- Filter & Search ---
@@ -121,6 +121,9 @@ featuredSection.innerHTML = `
       `;
       gallery.insertAdjacentHTML("beforeend", cardHTML);
     });
+
+    // Debugging fallback
+    console.log("Rendered recipes:", recipesToRender);
   }
 
   // --- Heart Toggle ---
@@ -131,17 +134,31 @@ featuredSection.innerHTML = `
     const id = parseInt(btn.dataset.id, 10);
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     favorites = favorites.map(favId => parseInt(favId, 10));
-
-    if (favorites.includes(id)) {
+     if (favorites.includes(id)) {
       favorites = favorites.filter(favId => favId !== id);
       btn.classList.remove("active");
+      showToast("Removed from favorites");
     } else {
       favorites.push(id);
       btn.classList.add("active");
+      showToast("Added to favorites");
     }
 
     localStorage.setItem("favorites", JSON.stringify(favorites));
   });
+
+  // --- Toast Notification ---
+  function showToast(message) {
+    const toast = document.getElementById("toast");
+    if (!toast) return;
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2000);
+  }
 
   // --- Back to Top ---
   if (backToTopBtn) {

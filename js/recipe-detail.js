@@ -43,9 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <h3>Instructions:</h3>
     <ol class="instructions-list">
-      ${instructions.map(step => `<li>${step}</li>`).join("")}
+    ${instructions.map(step => `<li>${step.replace(/^\d+\.\s*/, "")}</li>`).join("")}
     </ol>
-  `;
+    `;
 
   document.body.addEventListener("click", e => {
     const btn = e.target.closest(".fav-btn");
