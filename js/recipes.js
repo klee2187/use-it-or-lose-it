@@ -9,9 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("searchInput");
   const typeFilter = document.getElementById("typeFilter");
   const clearFiltersBtn = document.getElementById("clearFilters");
+  const backToTopBtn = document.getElementById("backToTop");
 
   let recipes = JSON.parse(localStorage.getItem("recipes"));
 
+  // --- Load Recipes ---
   if (!recipes || recipes.length === 0) {
     fetch("data/recipes.json")
       .then(res => res.json())
@@ -34,6 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- Featured Recipe ---
   function renderFeatured(recipes) {
+    if (!featuredSection) return;
+
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     favorites = favorites.map(favId => parseInt(favId, 10));
 
@@ -41,27 +45,27 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!featuredRecipe) return;
 
     const isFavorite = favorites.includes(parseInt(featuredRecipe.id, 10));
-
-    featuredSection.innerHTML = `
-      <div class="featured-card recipe-card fade-in">
-        <img src="${featuredRecipe.image || 'images/placeholder.jpg'}" alt="${featuredRecipe.name}" class="featured-image" fetchpriority="high" />
-        <div class="info">
-          <h2>🍴 ${featuredRecipe.name}</h2>
-          <p>Type: ${featuredRecipe.course || "Uncategorized"}</p>
-          <p class="ingredients">Key Ingredients: ${Array.isArray(featuredRecipe.ingredients) ? featuredRecipe.ingredients.slice(0,5).join(", ") : ""}</p>
-          <a href="recipe-detail.html?id=${featuredRecipe.id}" class="view-recipe-btn">View Recipe</a>
-          <button class="fav-btn ${isFavorite ? "active" : ""}" data-id="${featuredRecipe.id}">
-            <span class="heart-icon">❤️</span>
-          </button>
-        </div>
-      </div>
-    `;
+    
+featuredSection.innerHTML = `
+  <div class="featured-card recipe-card fade-in">
+    <img src="${featuredRecipe.image || 'images/placeholder.jpg'}" alt="${featuredRecipe.name}" class="featured-image" fetchpriority="high" />
+    <div class="info">
+      <h2>🍴 ${featuredRecipe.name}</h2>
+      <p>Type: ${featuredRecipe.course || "Uncategorized"}</p>
+      <p class="ingredients">Key Ingredients: ${Array.isArray(featuredRecipe.ingredients) ? featuredRecipe.ingredients.slice(0,5).join(", ") : ""}</p>
+      <a href="recipe-detail.html?id=${featuredRecipe.id}" class="view-recipe-btn">View Recipe</a>
+      <button class="fav-btn ${isFavorite ? "active" : ""}" data-id="${featuredRecipe.id}">
+        <span class="heart-icon">❤️</span>
+      </button>
+    </div>
+  </div>
+`;
   }
 
-  // --- Curated Recipes ---
+  // --- Filter & Search ---
   function filterAndRender() {
-    const searchText = searchInput.value.toLowerCase();
-    const filterType = typeFilter.value;
+    const searchText = searchInput?.value.toLowerCase() || "";
+    const filterType = typeFilter?.value || "";
 
     const filteredRecipes = recipes.filter(recipe => {
       const nameMatch = recipe.name.toLowerCase().includes(searchText);
@@ -81,12 +85,16 @@ document.addEventListener("DOMContentLoaded", () => {
   searchInput?.addEventListener("input", filterAndRender);
   typeFilter?.addEventListener("change", filterAndRender);
   clearFiltersBtn?.addEventListener("click", () => {
+    if (!searchInput || !typeFilter) return;
     searchInput.value = "";
     typeFilter.value = "";
     renderRecipes(recipes);
   });
 
+  // --- Render Recipes ---
   function renderRecipes(recipesToRender) {
+    if (!gallery) return;
+
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     favorites = favorites.map(favId => parseInt(favId, 10));
     gallery.innerHTML = "";
@@ -96,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    recipesToRender.slice(0, 3).forEach((recipe, index) => {
+    recipesToRender.forEach((recipe, index) => {
       const isFavorite = favorites.includes(parseInt(recipe.id, 10));
       const cardHTML = `
         <a href="recipe-detail.html?id=${recipe.id}" class="recipe-card fade-in" style="animation-delay:${index * 0.1}s">
@@ -136,22 +144,22 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // --- Back to Top ---
-  const backToTopBtn = document.getElementById("backToTop");
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      backToTopBtn.setAttribute("aria-hidden", "false");
-      backToTopBtn.classList.add("visible");
-    } else {
-      backToTopBtn.setAttribute("aria-hidden", "true");
-      backToTopBtn.classList.remove("visible");
-    }
-  });
-
-  backToTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+  if (backToTopBtn) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.setAttribute("aria-hidden", "false");
+        backToTopBtn.classList.add("visible");
+      } else {
+        backToTopBtn.setAttribute("aria-hidden", "true");
+        backToTopBtn.classList.remove("visible");
+      }
     });
-  });
+
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  }
 });
