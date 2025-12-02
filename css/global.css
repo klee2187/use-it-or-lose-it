@@ -235,7 +235,7 @@ header h1 {
 
 /* Footer */
 footer {
-  min-height: 100px;
+  min-height: 120px;
   text-align: center;
   padding: var(--spacing-md);
   background-color: var(--green);
