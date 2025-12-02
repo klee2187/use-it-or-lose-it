@@ -406,7 +406,7 @@
 {
       "id": 12,
       "name": "Grape and Apple Chicken Salad",
-      "image": "images/grape-apple-chicken-salad.webp",
+      "image": "images/grape-and-apple-chicken-salad.webp",
       "description": "This grape and apple chicken salad is a quick and easy meal that features a creamy dressing, delicious fruit, savory chicken, and an extra special crunch. It’s the best chicken salad recipe ever!",
       "prepTime": "10 minutes",
       "cookTime": null,
@@ -445,7 +445,7 @@
     {
       "id": 13,
       "name": "Coconut Cilantro Chicken Soup",
-      "image": "images/coconut-cilantro-chicken-soup.webp",
+      "image": "images/coconut-chicken-soup.webp",
       "description": "Coconut Cilantro Chicken Soup features a creamy broth, flavorful spices, shredded chicken, and white rice. This tasty soup is as easy to make as it is delicious!",
       "prepTime": "5 minutes",
       "cookTime": "15 minutes",
@@ -532,7 +532,7 @@
     {
       "id": 15,
       "name": "The Easiest Creamy Taco Soup",
-      "image": "images/creamy-taco-soup.webp",
+      "image": "images/creamy-taco-soup-recipe.webp",
       "description": "This delicious creamy taco soup features a creamy broth, ground beef, beans, vegetables, and plenty of taco spice. It’s so easy to make and ready in just 30 minutes!",
       "prepTime": "10 minutes",
       "cookTime": "30 minutes",
