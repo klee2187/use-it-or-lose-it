@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Cheesy Chile Relleno Casserole",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/10/chile-relleno-casserole-recipe.jpg",
+      "image": "images/chile-relleno-casserole.webp",
       "description": "Chile Relleno Casserole is full of whole green chiles, a fluffy egg batter, and lots of cheesy goodness. It's an easy breakfast with flavors the entire family will love!",
       "prepTime": "15 minutes",
       "cookTime": "50 minutes",
@@ -44,7 +44,7 @@
     {
       "id": 2,
       "name": "Banana Smoothie with Ice",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/07/banana-smoothie-with-ice.jpg",
+      "image": "images/banana-smoothie.webp",
       "description": "This Banana Smoothie with ice features fresh or frozen bananas, creamy yogurt, and sweet brown sugar. It's a tasty and refreshing drink for your breakfast or brunch!",
       "prepTime": "5 minutes",
       "cookTime": null,
@@ -79,7 +79,7 @@
     {
       "id": 3,
       "name": "Fluffy Blueberry Muffins from Scratch",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/12/fluffy-blueberry-muffins-1.jpg",
+      "image": "images/blueberry-muffins.webp",
       "description": "You’ll never go back to box mixes once you try these fluffy blueberry muffins. They’re homemade, only 8 ingredients, and made completely from scratch!",
       "prepTime": "10 minutes",
       "cookTime": "24 minutes",
@@ -119,7 +119,7 @@
     {
       "id": 4,
       "name": "Easy German Oven Pancakes",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/01/german-oven-pancakes-1.jpg",
+      "image": "images/german-oven-pancakes.webp",
       "description": "German Oven Pancakes feature a vanilla cinnamon batter that’s baked in a buttered dish and puffs while in the oven. It’s a delicious twist on the traditional pancake!",
       "prepTime": "10 minutes",
       "cookTime": "20 minutes",
@@ -154,7 +154,7 @@
     {
       "id": 5,
       "name": "The Easiest Braided Raspberry Pastry",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/10/raspberry-pastry-1-1024x1536.jpg",
+      "image": "images/braided-raspberry-pastry.webp",
       "description": "This braided Raspberry Pastry features sweet jam, a sugar glaze, and a pancake mix pastry. It’s a delicious breakfast treat without all of the fuss of traditional dough.",
       "prepTime": "15 minutes",
       "cookTime": "15 minutes",
@@ -196,7 +196,7 @@
     {
       "id": 6,
       "name": "4-Ingredient Pumpkin Pancakes With Pancake Mix",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/11/pumpkin-pancakes-with-pancake-mix.jpg",
+      "image": "images/pumpkin-pancakes.webp",
       "description": "You’ll only need 4 ingredients to make these light and fluffy Pumpkin Pancakes with Pancake Mix. They taste like fall and your kids will love the bright orange color!",
       "prepTime": "5 minutes",
       "cookTime": "20 minutes",
@@ -229,7 +229,7 @@
     {
       "id": 7,
       "name": "Healthy Crustless Broccoli and Ham Quiche",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/10/quiche-with-ham-and-broccoli.jpg",
+      "image": "images/quiche-with-ham-and-broccoli.webp",
       "description": "This Crustless Broccoli and Ham Quiche features a delicious egg filling and is topped with melty cheese. It’s low-carb and a healthy option for your breakfast or brunch.",
       "prepTime": "10 minutes",
       "cookTime": "30 minutes",
@@ -271,7 +271,7 @@
     {
       "id": 8,
       "name": "The Best Monte Cristo Sliders",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/02/monte-cristo-sliders-1024x1536.jpg",
+      "image": "images/monte-cristo-sliders.webp",
       "description": "These sliders are the party version of the popular sandwich made with turkey, ham, Swiss, and powdered sugar. I’ve adjusted the recipe for maximum flavor to make these the best Monte Cristo Sliders ever!",
       "prepTime": "15 minutes",
       "cookTime": "30 minutes",
@@ -316,7 +316,7 @@
     {
       "id": 9,
       "name": "Pumpkin Chocolate Chip Skillet Pancake",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/08/pumpkin-chocolate-chip-skillet-pancake-1024x1536.jpg",
+      "image": "images/pumpkin-chocolate-chip-skillet-pancake.webp",
       "description": "This Pumpkin Chocolate Chip Skillet Pancake is baked in a cast iron skillet and topped with a delicious cream cheese whipped cream. It’s a yummy festive breakfast that’s perfect for fall!",
       "prepTime": "5 minutes",
       "cookTime": "30 minutes",
@@ -360,7 +360,7 @@
     {
   "id": 10,
   "name": "Cherry Chocolate Chip Muffins",
-  "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/02/cherry-muffins-1024x1536.jpg",
+  "image": "images/cherry-muffins.webp",
   "description": "These yummy Cherry Chocolate Chip Muffins are made with maraschino cherries and topped with a pretty pink glaze. They’re perfect for Valentine’s Day!",
   "prepTime": "10 minutes",
   "cookTime": "18 minutes",
@@ -404,55 +404,9 @@
   "creator": "The Ashcroft Family Table"
 },
 {
-      "id": 11,
-      "name": "Cherry Chocolate Chip Muffins",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/02/cherry-muffins-1024x1536.jpg",
-      "description": "These yummy Cherry Chocolate Chip Muffins are made with maraschino cherries and topped with a pretty pink glaze. They’re perfect for Valentine’s Day!",
-      "prepTime": "10 minutes",
-      "cookTime": "18 minutes",
-      "additionalTime": "10 minutes",
-      "totalTime": "38 minutes",
-      "course": "Breakfast",
-      "cuisine": "American",
-      "servings": 12,
-      "servingSize": "1 regular or 2 mini",
-      "calories": "237 kcal",
-      "ingredients": [
-        "1 egg",
-        "1/2 cup milk",
-        "1/4 cup avocado oil",
-        "1 1/2 cups flour",
-        "1/2 cup granulated sugar",
-        "2 teaspoons baking powder",
-        "1/2 teaspoon salt",
-        "10 ounces maraschino cherries",
-        "3/4 cup miniature chocolate chips",
-        "1 cup powdered sugar",
-        "2-3 tablespoons reserved cherry juice"
-      ],
-      "instructions": [
-        "1. Preheat your oven to 375 degrees.",
-        "2. Whisk egg, milk, and avocado oil together in a medium mixing bowl.",
-        "3. Stir flour, granulated sugar, baking powder, and salt into the wet ingredients just until moist.",
-        "4. Drain the jar of maraschino cherries, saving 3 tablespoons of the juice.",
-        "5. Chop the cherries into quarters and fold them into the batter along with chocolate chips.",
-        "6. Lightly grease a muffin tin and use a 1/4 measuring cup to add batter to each cup.",
-        "7. Bake the muffins for 18 minutes or until a toothpick inserted into the center of a muffin comes out clean.",
-        "8. Allow the muffins to cool for 10 minutes and then move from the pan to a wire rack.",
-        "9. Combine powdered sugar and reserved cherry juice to make the glaze. Start with 1 tablespoon of juice at a time until you reach the desired consistency.",
-        "10. Drizzle the glaze over the cooled muffins using a spoon or fork."
-      ],
-      "substitutions": [
-        "Frozen whole cherries or fresh cherries for maraschino cherries",
-        "Regular sized chocolate chips for mini chocolate chips",
-        "Add half a cup of chopped pecans or walnuts if you want to add nuts"
-      ],
-      "creator": "The Ashcroft Family Table"
-    },
-    {
       "id": 12,
       "name": "Grape and Apple Chicken Salad",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/01/grape-and-apple-chicken-salad.jpg",
+      "image": "images/grape-apple-chicken-salad.webp",
       "description": "This grape and apple chicken salad is a quick and easy meal that features a creamy dressing, delicious fruit, savory chicken, and an extra special crunch. It’s the best chicken salad recipe ever!",
       "prepTime": "10 minutes",
       "cookTime": null,
@@ -491,7 +445,7 @@
     {
       "id": 13,
       "name": "Coconut Cilantro Chicken Soup",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/04/coconut-chicken-soup-1024x1536.jpg",
+      "image": "images/coconut-cilantro-chicken-soup.webp",
       "description": "Coconut Cilantro Chicken Soup features a creamy broth, flavorful spices, shredded chicken, and white rice. This tasty soup is as easy to make as it is delicious!",
       "prepTime": "5 minutes",
       "cookTime": "15 minutes",
@@ -538,7 +492,7 @@
     {
       "id": 14,
       "name": "Easy Chicken Enchiladas",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/10/chicken-enchiladas-1.jpg",
+      "image": "images/chicken-enchiladas.webp",
       "description": "These easy chicken enchiladas are made with shredded chicken, cheese, and a delicious enchilada sauce. They’re a simple and tasty dinner the whole family will love!",
       "prepTime": "15 minutes",
       "cookTime": "25 minutes",
@@ -578,7 +532,7 @@
     {
       "id": 15,
       "name": "The Easiest Creamy Taco Soup",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/02/creamy-taco-soup-recipe-1024x1536.jpg",
+      "image": "images/creamy-taco-soup.webp",
       "description": "This delicious creamy taco soup features a creamy broth, ground beef, beans, vegetables, and plenty of taco spice. It’s so easy to make and ready in just 30 minutes!",
       "prepTime": "10 minutes",
       "cookTime": "30 minutes",
@@ -618,7 +572,7 @@
     {
       "id": 16,
       "name": "Melty Kalua Pork Sandwiches",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2023/03/kalua-pork-sandwiches.jpg",
+      "image": "images/kalua-pork-sandwiches.webp",
       "description": "If you’re a fan of the iconic plate lunch, you won’t want to miss these Melty Kalua Pork Sandwiches. This mouth-watering twist on a classic will transport you straight to the islands!",
       "prepTime": "10 minutes",
       "cookTime": "8 hours 10 minutes",
@@ -659,7 +613,7 @@
     {
       "id": 17,
       "name": "Easy Crock Pot Minestrone Soup",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/03/crock-pot-minestrone-soup-1024x1536.jpg",
+      "image": "images/crock-pot-minestrone-soup.webp",
       "description": "This Crock Pot Minestrone Soup features tender vegetables, pasta, and beans in a flavorful seasoned broth. With a shorter ingredient list and the use of frozen vegetables, this will be the easiest minestrone soup you’ve ever made!",
       "prepTime": "10 minutes",
       "cookTime": "4 hours",
@@ -712,7 +666,7 @@
     {
   "id": 18,
   "name": "The Easiest Creamy Chicken Noodle Soup",
-  "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/01/easy-creamy-chicken-noodle-soup-3-1024x1536.jpg",
+  "image": "images/easy-creamy-chicken-noodle-soup.webp",
   "description": "This Creamy Chicken Noodle Soup features a creamy broth, tender chicken, and savory vegetables. It’s incredibly easy to make and only has 8 ingredients!",
   "prepTime": "5 minutes",
   "cookTime": "40 minutes",
@@ -752,7 +706,7 @@
     {
       "id": 19,
       "name": "Easy Spaghetti with Chili Sauce (Cincinnati Chili)",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/10/cincinatti-chili-1024x1536.jpg",
+      "image": "images/cincinatti-chili.webp",
       "description": "Spaghetti with Chili Sauce (or Cincinnati Chili) features a meaty chili served over spaghetti and topped with sour cream and cheese. Yum!",
       "prepTime": "5 minutes",
       "cookTime": "20 minutes",
@@ -795,7 +749,7 @@
     {
       "id": 20,
       "name": "Easy Spam Fried Rice",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/12/spam-fried-rice-recipe.jpg",
+      "image": "images/spam-fried-rice.webp",
       "description": "This Spam Fried Rice recipe features the delicious canned meat mixed with rice, vegetables, and a salty sauce. It's an easy side dish and a great way to use up leftover rice!",
       "prepTime": "5 minutes",
       "cookTime": "30 minutes",
@@ -833,7 +787,7 @@
     {
       "id": 21,
       "name": "Elevated Hamburger Helper Lasagna (One Pot)",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/08/hamburger-helper-lasagna-1024x1536.jpg",
+      "image": "images/hamburger-helper-lasagna.webp",
       "description": "This elevated Hamburger Helper Lasagna combines the noodles from the familiar boxed dinner with a homemade meat sauce and 2 different kinds of cheese. It's a delicious one pot lasagna meal that's so easy to throw together!",
       "prepTime": "10 minutes",
       "cookTime": "35 minutes",
@@ -879,7 +833,7 @@
         {
       "id": 22,
       "name": "Simple Crock Pot Hamburger Stew",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/11/hamburger-stew-1024x1536.jpg",
+      "image": "images/hamburger-stew.webp",
       "description": "This simple Crock Pot Hamburger Stew features browned hamburger, potatoes, carrots, peas, and onions and is a cinch to throw together!",
       "prepTime": "20 minutes",
       "cookTime": "5 hours",
@@ -922,7 +876,7 @@
     {
       "id": 23,
       "name": "Poppy Seed Chicken Casserole with Rice",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/03/poppy-seed-chicken-casserole-1024x1536.jpg",
+      "image": "images/poppy-seed-chicken-casserole.webp",
       "description": "Poppy Seed Chicken Casserole with Rice features a creamy chicken and rice mixture covered with a delicious crunchy Ritz cracker topping. It's an easy way to use up leftovers and is sure to become a family favorite dinner!",
       "prepTime": "10 minutes",
       "cookTime": "30 minutes",
@@ -965,7 +919,7 @@
     {
       "id": 24,
       "name": "The Best 3 Ingredient Crock Pot Pork Chops",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/04/crock-pot-pork-chops-1024x1536.jpg",
+      "image": "images/crock-pot-pork-chops.webp",
       "description": "These 3 Ingredient Crock Pot Pork Chops are incredibly tender, flavorful, and so easy to make. As the name suggests, you'll only need three ingredients to make this delicious dinner!",
       "prepTime": "10 minutes",
       "cookTime": "6 hours",
@@ -997,7 +951,7 @@
     {
       "id": 25,
       "name": "Crock Pot Rosemary Pork Chops",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/02/rosemary-pork-chops-1-1024x1536.jpg",
+      "image": "images/rosemary-pork-chops.webp",
       "description": "These Rosemary Pork Chops have all of the flavors of a Sunday dinner without all of the work! A creamy mushroom and rosemary sauce cover tender pork chops and red potatoes in this easy Crock Pot recipe.",
       "prepTime": "15 minutes",
       "cookTime": "4 hours",
@@ -1036,7 +990,7 @@
     {
       "id": 26,
       "name": "Crock Pot Country Style Pork Ribs (3 ingredients)",
-      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/09/crock-pot-country-style-pork-ribs-1024x1536.jpg",
+      "image": "images/crock-pot-country-style-pork-ribs.webp",
       "description": "You'll only need 3 ingredients to make these tender Crock Pot Country Style Pork Ribs. They're perfectly saucy and delicious, and couldn't be easier to throw together!",
       "prepTime": "30 minutes",
       "cookTime": "8 hours",
