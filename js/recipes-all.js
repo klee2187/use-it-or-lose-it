@@ -2,7 +2,7 @@ import { initNavbarToggle, initAlertDismiss } from "./utils.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   initNavbarToggle();
-  initAlertDismiss();
+  initAlertDismiss(); 
 
   const gallery = document.querySelector(".recipe-gallery");
   const searchInput = document.getElementById("searchInput");
@@ -29,9 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
     renderRecipes(recipes);
   }
 
+  // --- Filtering ---
   function filterAndRender() {
-    if (!recipes) return;
-
     const searchText = searchInput.value.toLowerCase();
     const filterType = typeFilter.value;
 
@@ -58,66 +57,57 @@ document.addEventListener("DOMContentLoaded", () => {
     renderRecipes(recipes);
   });
 
+  // --- Render All Recipes ---
   function renderRecipes(recipesToRender) {
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    favorites = favorites.map(favId => parseInt(favId, 10));
     gallery.innerHTML = "";
 
     if (recipesToRender.length === 0) {
-      gallery.innerHTML = "<p style='grid-column: 1 / -1; text-align: center; margin-top: 20px;'>No recipes match your search criteria. Try clearing the filters.</p>";
+      gallery.innerHTML = "<p>No recipes match your search criteria.</p>";
       return;
     }
 
     recipesToRender.forEach((recipe, index) => {
-      const cardHTML = createRecipeCard(recipe, favorites, index);
+      const isFavorite = favorites.includes(parseInt(recipe.id, 10));
+      const cardHTML = `
+        <a href="recipe-detail.html?id=${recipe.id}" class="recipe-card fade-in" style="animation-delay:${index * 0.1}s">
+          <img src="${recipe.image || 'images/placeholder.jpg'}" alt="${recipe.name}" loading="lazy" />
+          <div class="info">
+            <h3>🍴 ${recipe.name}</h3>
+            <p>Type: ${recipe.course || "Uncategorized"}</p>
+            <p class="ingredients">Key Ingredients: ${Array.isArray(recipe.ingredients) ? recipe.ingredients.slice(0,5).join(", ") : ""}</p>
+            <button class="fav-btn ${isFavorite ? "active" : ""}" data-id="${recipe.id}" onclick="event.preventDefault(); event.stopPropagation();">
+              <span class="heart-icon">❤️</span>
+            </button>
+          </div>
+        </a>
+      `;
       gallery.insertAdjacentHTML("beforeend", cardHTML);
     });
   }
 
-  function formatIngredients(ingredients) {
-    if (Array.isArray(ingredients)) {
-      return ingredients.slice(0, 5).join(", ") + (ingredients.length > 5 ? "..." : "");
-    }
-    return ingredients;
-  }
-
-  function createRecipeCard(recipe, favorites, index = 0) {
-    const ingredientsText = formatIngredients(recipe.ingredients);
-    const isFavorite = favorites.includes(recipe.id);
-
-    return `
-      <a href="recipe-detail.html?id=${recipe.id}" 
-         class="recipe-card fade-in" 
-         style="animation-delay:${index * 0.1}s">
-        <img src="${recipe.image || 'images/placeholder.jpg'}" alt="${recipe.name}" loading="lazy" />
-        <div class="info">
-          <h3>🍴 ${recipe.name}</h3>
-          <p>Type: ${recipe.course || "Uncategorized"}</p>
-          <p class="ingredients">Key Ingredients: ${ingredientsText}</p>
-          <button class="fav-btn" data-id="${recipe.id}" aria-label="Toggle favorite status for ${recipe.name}" onclick="event.preventDefault(); event.stopPropagation();">
-            ${isFavorite ? "💔" : "❤️"}
-          </button>
-        </div>
-      </a>
-    `;
-  }
-
+  // --- Heart Toggle ---
   document.body.addEventListener("click", e => {
-    if (e.target.classList.contains("fav-btn")) {
-      const id = parseInt(e.target.dataset.id, 10);
-      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const btn = e.target.closest(".fav-btn");
+    if (!btn) return;
 
-      if (favorites.includes(id)) {
-        favorites = favorites.filter(favId => favId !== id);
-        e.target.textContent = "❤️";
-      } else {
-        favorites.push(id);
-        e.target.textContent = "💔";
-      }
-      localStorage.setItem("favorites", JSON.stringify(favorites));
+    const id = parseInt(btn.dataset.id, 10);
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    favorites = favorites.map(favId => parseInt(favId, 10));
+
+    if (favorites.includes(id)) {
+      favorites = favorites.filter(favId => favId !== id);
+      btn.classList.remove("active");
+    } else {
+      favorites.push(id);
+      btn.classList.add("active");
     }
+
+    localStorage.setItem("favorites", JSON.stringify(favorites));
   });
 
-  // Back to Top button logic
+  // --- Back to Top ---
   const backToTopBtn = document.getElementById("backToTop");
 
   window.addEventListener("scroll", () => {

@@ -5,14 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const gallery = document.querySelector(".favorites-grid");
   const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
-  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  favorites = favorites.map(favId => parseInt(favId, 10));
 
   if (!favorites || favorites.length === 0) {
     gallery.innerHTML = "<p>You have no favorite recipes yet.</p>";
     return;
   }
 
-  const favoriteRecipes = recipes.filter(r => favorites.includes(r.id));
+  const favoriteRecipes = recipes.filter(r => favorites.includes(parseInt(r.id, 10)));
 
   if (favoriteRecipes.length === 0) {
     gallery.innerHTML = "<p>No matching recipes found in favorites.</p>";
@@ -31,26 +33,49 @@ document.addEventListener("DOMContentLoaded", () => {
     card.classList.add("recipe-card", "fade-in");
     card.style.animationDelay = `${index * 0.15}s`;
 
+    const isFavorite = favorites.includes(parseInt(recipe.id, 10));
+
     card.innerHTML = `
       <img src="${recipe.image || 'images/placeholder.jpg'}" alt="${recipe.name}" loading="lazy" />
       <div class="info">
         <h3>🍴 ${recipe.name}</h3>
         <p>Type: ${recipe.course || "Uncategorized"}</p>
         <p class="ingredients">Key Ingredients: ${ingredients.slice(0,5).join(', ')}${ingredients.length > 5 ? '...' : ''}</p>
-        <button class="remove-fav-btn" data-id="${recipe.id}" onclick="event.preventDefault(); event.stopPropagation();">💔 Remove</button>
+        <button class="fav-btn ${isFavorite ? "active" : ""}" data-id="${recipe.id}" onclick="event.preventDefault(); event.stopPropagation();">
+          <span class="heart-icon">❤️</span>
+        </button>
       </div>
     `;
     gallery.appendChild(card);
   });
 
-  // Remove favorites
+  // Toggle favorites with fade-out on removal
   gallery.addEventListener("click", e => {
-    if (e.target.classList.contains("remove-fav-btn")) {
-      const id = parseInt(e.target.dataset.id, 10);
-      let updated = favorites.filter(favId => favId !== id);
-      localStorage.setItem("favorites", JSON.stringify(updated));
-      location.reload();
+    const btn = e.target.closest(".fav-btn");
+    if (!btn) return;
+
+    const id = parseInt(btn.dataset.id, 10);
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    favorites = favorites.map(favId => parseInt(favId, 10));
+
+    const card = btn.closest(".recipe-card");
+
+    if (favorites.includes(id)) {
+      favorites = favorites.filter(favId => favId !== id);
+      btn.classList.remove("active");
+      card.classList.add("fade-out");
+      setTimeout(() => {
+        card.remove();
+        if (gallery.children.length === 0) {
+          gallery.innerHTML = "<p>You have no favorite recipes yet.</p>";
+        }
+      }, 600);
+    } else {
+      favorites.push(id);
+      btn.classList.add("active");
     }
+
+    localStorage.setItem("favorites", JSON.stringify(favorites));
   });
 });
 

@@ -158,8 +158,8 @@
 
 /* Alerts */
 .alert {
-  background-color: var(--accent-orange);
-  color: var(--white);
+  background-color: transparent;
+  color: var(--text-dark);
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: 8px;
   margin: var(--spacing-md) auto;
