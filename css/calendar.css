@@ -30,9 +30,9 @@
   border: none; 
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
-.calendar-controls button:hover { background-color: #d97706; }
+.calendar-controls button:hover { background-color: #d97706; transform: scale(1.05); }
 .calendar-controls button:focus-visible {
   outline: 2px solid var(--dark-green);
   outline-offset: 2px;
@@ -62,26 +62,32 @@
 /* Calendar Cells */
 .calendar-cell {
   border: 1px solid #ccc;
-  min-height: 80px;
+  min-height: 90px;
   padding: 8px;
   position: relative;
   cursor: default;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
-.calendar-cell:hover { background-color: #fafafa; }
+.calendar-cell:hover { background-color: #fafafa; transform: scale(1.02); box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
 .calendar-cell .date { 
   font-weight: bold; 
   font-size: 1.1rem;
   color: #000000;
+  margin-bottom: 4px;
 }
 
 /* Expiration severity states */
 .calendar-cell.expired { background-color: #FFEFEF; border-color: #C62828; }
+.calendar-cell.expired .date { color: #C62828; }
 .calendar-cell.warning { background-color: #FFFCE5; border-color: #FFB300; }
+.calendar-cell.warning .date { color: #FF9800; }
 .calendar-cell.critical { background-color: #F8D7DA; border-color: #dc3545; }
+.calendar-cell.critical .date { color: #dc3545; }
 .calendar-cell.safe { background-color: #E8F5E9; border-color: var(--green); }
+.calendar-cell.safe .date { color: #388E3C; }
 .calendar-cell.today { box-shadow: 0 0 0 3px var(--accent-orange) inset; }
 .calendar-cell.empty { background-color: #f7f7f7; border-color: #e0e0e0; }
 
@@ -107,7 +113,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Spacing between list items */
+  gap: 8px;
 }
 .summary-list-item {
   background-color: var(--white);
@@ -119,16 +125,14 @@
   align-items: center;
   transition: box-shadow 0.2s ease;
 }
-.summary-list-item:hover {
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
+.summary-list-item:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
 
 .list-marker {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    margin-right: 15px;
-    flex-shrink: 0; 
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 15px;
+  flex-shrink: 0; 
 }
 
 /* Marker Colors */
@@ -138,20 +142,22 @@
 .safe-marker { background-color: #388E3C; }
 
 .list-content {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
 }
 
 .list-content .date-label {
   font-weight: bold;
   margin-right: 15px;
 }
+
 .list-content .item-name {
   font-size: 0.95rem;
   text-align: right; 
 }
-
 
 /* Severity text classes */
 .expired-text { color: #C62828 !important; } 
@@ -221,8 +227,21 @@
   transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 1000;
 }
-.back-to-top.visible { opacity: 1; pointer-events: auto; }
-.back-to-top:hover { transform: scale(1.1); background-color: var(--dark-green); }
+.back-to-top.visible { 
+  opacity: 1; 
+  pointer-events: auto; 
+  animation: bounceIn 0.4s ease; 
+}
+.back-to-top:hover { 
+  transform: scale(1.1); 
+  background-color: var(--dark-green); 
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -238,4 +257,27 @@
 }
 @media (max-width: 480px) {
   .calendar-header-days span { font-size: 0.8rem; }
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-orange);
+  color: var(--white);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 2000;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
 }

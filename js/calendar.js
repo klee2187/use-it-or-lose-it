@@ -21,6 +21,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const TODAY = new Date();
   TODAY.setHours(0, 0, 0, 0);
 
+  // Toast setup
+  const toast = document.createElement("div");
+  toast.id = "toast";
+  toast.className = "toast";
+  toast.setAttribute("aria-live", "polite");
+  document.body.appendChild(toast);
+
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("show");
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3000);
+  }
+
   const getItemSeverity = (items) => {
     const priority = {
       "expired": 0,
@@ -33,20 +48,20 @@ document.addEventListener("DOMContentLoaded", () => {
     let maxSeverity = "none";
 
     items.forEach((item) => {
-        if (!item.expiration) return;
-        const expDate = new Date(item.expiration);
-        expDate.setHours(0, 0, 0, 0);
-        const diffTime = expDate.getTime() - TODAY.getTime();
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        let currentSeverity = "safe";
+      if (!item.expiration) return;
+      const expDate = new Date(item.expiration);
+      expDate.setHours(0, 0, 0, 0);
+      const diffTime = expDate.getTime() - TODAY.getTime();
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      let currentSeverity = "safe";
 
-        if (diffDays <= 0) currentSeverity = "expired";
-        else if (diffDays <= 3) currentSeverity = "critical";
-        else if (diffDays <= 7) currentSeverity = "warning";
+      if (diffDays <= 0) currentSeverity = "expired";
+      else if (diffDays <= 3) currentSeverity = "critical";
+      else if (diffDays <= 7) currentSeverity = "warning";
 
-        if (priority[currentSeverity] < priority[maxSeverity]) {
-            maxSeverity = currentSeverity;
-        }
+      if (priority[currentSeverity] < priority[maxSeverity]) {
+        maxSeverity = currentSeverity;
+      }
     });
     return maxSeverity;
   };
@@ -105,6 +120,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     renderMonthlySummary(year, month);
+
+    // Toast alert for expiring items this month
+    const expiringCount = inventory.filter((item) => {
+      if (!item.expiration) return false;
+      const expDate = new Date(item.expiration);
+      return expDate.getFullYear() === year && expDate.getMonth() === month;
+    }).length;
+
+    if (expiringCount > 0) {
+      showToast(`⚠️ ${expiringCount} item(s) expiring this month`);
+    }
   };
 
   const renderMonthlySummary = (year, month) => {
@@ -132,7 +158,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     monthlyItems.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-    // Create the UL container
     const listContainer = document.createElement("ul");
     listContainer.classList.add("summary-list");
 
@@ -162,11 +187,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       listItem.innerHTML = `
-      <span class="list-marker ${listMarkerClass}"></span>
-      <div class="list-content">
-      <span class="date-label ${colorClass}">${emoji} ${formattedDate}</span>
-      <span class="item-name">${item.name}</span>
-      </div>
+        <span class="list-marker ${listMarkerClass}"></span>
+        <div class="list-content">
+          <span class="date-label ${colorClass}">${emoji} ${formattedDate}</span>
+          <span class="item-name">${item.name}</span>
+        </div>
       `;
       listContainer.appendChild(listItem);
     });
@@ -174,20 +199,24 @@ document.addEventListener("DOMContentLoaded", () => {
     monthlySummaryGrid.appendChild(listContainer);
   };
 
+  // Navigation buttons with toast feedback
   prevMonthBtn.addEventListener("click", () => {
     currentDate.setMonth(currentDate.getMonth() - 1);
     currentDate.setDate(1);
     renderCalendar();
+    showToast(`📅 Moved to ${currentDate.toLocaleString("default", { month: "long" })} ${currentDate.getFullYear()}`);
   });
   nextMonthBtn.addEventListener("click", () => {
     currentDate.setMonth(currentDate.getMonth() + 1);
     currentDate.setDate(1);
     renderCalendar();
+    showToast(`📅 Moved to ${currentDate.toLocaleString("default", { month: "long" })} ${currentDate.getFullYear()}`);
   });
   todayBtn.addEventListener("click", () => {
     currentDate = new Date();
     currentDate.setDate(1);
     renderCalendar();
+    showToast("📅 Returned to current month");
   });
 
   renderCalendar();
