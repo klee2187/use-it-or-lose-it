@@ -1,100 +1,75 @@
-import { initNavbarToggle } from "./utils.js";
+import {
+  initNavbarToggle,
+  loadRecipes,
+  getFavorites,
+  toggleFavorite,
+  showToast,
+  initBackToTop
+} from "./utils.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   initNavbarToggle();
+  initBackToTop();
 
   const gallery = document.querySelector(".favorites-grid");
-  const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
-  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  const recipes = await loadRecipes();
+  let favorites = getFavorites();
 
-  favorites = favorites.map(favId => parseInt(favId, 10));
-
-  if (!favorites || favorites.length === 0) {
-    gallery.innerHTML = "<p>You have no favorite recipes yet.</p>";
+  if (!favorites.length) {
+    gallery.innerHTML = '<p>You have no favorite recipes yet.</p>';
     return;
   }
 
-  const favoriteRecipes = recipes.filter(r => favorites.includes(parseInt(r.id, 10)));
+  const favoriteRecipes = recipes.filter(r => favorites.includes(r.id));
 
-  if (favoriteRecipes.length === 0) {
-    gallery.innerHTML = "<p>No matching recipes found in favorites.</p>";
+  if (!favoriteRecipes.length) {
+    gallery.innerHTML = '<p>No matching recipes found in favorites.</p>';
     return;
   }
 
-  favoriteRecipes.forEach((recipe, index) => {
-    const ingredients = Array.isArray(recipe.ingredients)
-      ? recipe.ingredients
-      : typeof recipe.ingredients === "string"
-        ? recipe.ingredients.split(",").map(i => i.trim())
-        : [];
+  gallery.innerHTML = favoriteRecipes.map(r => renderCard(r, true)).join("");
 
-    const card = document.createElement("a");
-    card.href = `recipe-detail.html?id=${recipe.id}`;
-    card.classList.add("recipe-card", "fade-in");
-    card.style.animationDelay = `${index * 0.15}s`;
-
-    const isFavorite = favorites.includes(parseInt(recipe.id, 10));
-
-    card.innerHTML = `
-      <img src="${recipe.image || 'images/placeholder.jpg'}" alt="${recipe.name}" loading="lazy" />
-      <div class="info">
-        <h3>🍴 ${recipe.name}</h3>
-        <p>Type: ${recipe.course || "Uncategorized"}</p>
-        <p class="ingredients">Key Ingredients: ${ingredients.slice(0,5).join(', ')}${ingredients.length > 5 ? '...' : ''}</p>
-        <button class="fav-btn ${isFavorite ? "active" : ""}" data-id="${recipe.id}" onclick="event.preventDefault(); event.stopPropagation();">
-          <span class="heart-icon">❤️</span>
-        </button>
-      </div>
-    `;
-    gallery.appendChild(card);
-  });
-
-  // Toggle favorites with fade-out on removal
+  // Toggle/remove favorites
   gallery.addEventListener("click", e => {
     const btn = e.target.closest(".fav-btn");
     if (!btn) return;
+    e.preventDefault();
 
     const id = parseInt(btn.dataset.id, 10);
-    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    favorites = favorites.map(favId => parseInt(favId, 10));
+    const result = toggleFavorite(id);
+
+    btn.classList.toggle("active", result.active);
+    btn.setAttribute("aria-label", result.active ? "Remove from favorites" : "Add to favorites");
 
     const card = btn.closest(".recipe-card");
-
-    if (favorites.includes(id)) {
-      favorites = favorites.filter(favId => favId !== id);
-      btn.classList.remove("active");
+    if (!result.active && card) {
       card.classList.add("fade-out");
       setTimeout(() => {
         card.remove();
-        if (gallery.children.length === 0) {
-          gallery.innerHTML = "<p>You have no favorite recipes yet.</p>";
+        if (!gallery.children.length) {
+          gallery.innerHTML = '<p>You have no favorite recipes yet.</p>';
         }
-      }, 600);
+      }, 300);
+      showToast("Removed from favorites 💔");
     } else {
-      favorites.push(id);
-      btn.classList.add("active");
+      showToast("Added to favorites ❤️");
     }
-
-    localStorage.setItem("favorites", JSON.stringify(favorites));
   });
 });
 
-// Back to Top button logic
-const backToTopBtn = document.getElementById("backToTop");
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTopBtn.setAttribute("aria-hidden", "false");
-    backToTopBtn.classList.add("visible");
-  } else {
-    backToTopBtn.setAttribute("aria-hidden", "true");
-    backToTopBtn.classList.remove("visible");
-  }
-});
-
-backToTopBtn.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-});
+function renderCard(recipe, isFav) {
+  const { id, name, image, course, ingredients = [] } = recipe;
+  return `
+    <a href="recipe-detail.html?id=${id}" class="recipe-card fade-in">
+      <img src="${image || 'images/placeholder.jpg'}" alt="${name}" loading="lazy" />
+      <div class="info">
+        <h3 class="recipe-title">${name}</h3>
+        <p class="recipe-type"><strong>Type:</strong> ${course || 'Uncategorized'}</p>
+        <p class="ingredients"><strong>Key Ingredients:</strong> ${ingredients.slice(0,5).join(", ")}</p>
+        <button class="fav-btn ${isFav ? "active" : ""}" data-id="${id}" aria-label="${isFav ? "Remove from favorites" : "Add to favorites"}">
+          <span class="heart-icon">❤️</span>
+        </button>
+      </div>
+    </a>
+  `;
+}

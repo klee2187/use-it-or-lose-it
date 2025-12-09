@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Recipes | Use It or Lose It</title>
   <meta name="description" content="Discover recipes suggested based on your inventory." />
+
+  <!-- Global + Recipes CSS -->
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/recipes.css" /> 
+
+  <!-- JS -->
   <script type="module" src="js/recipes.js" defer></script>
   <script type="module" src="js/navbar.js" defer></script>
 </head>
 <body>
-
 <header>
   <h1>Use It or Lose It</h1>
   <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
@@ -31,13 +34,14 @@
   </nav>
 </header>
 
-
 <main id="main">
+  <!-- Featured Recipe -->
   <section class="featured-recipe">
     <h2 class="section-heading">🍽️ Featured Recipe</h2>
     <div class="featured-recipe-content"></div>
   </section>
   
+  <!-- Curated Recipes -->
   <h2 class="section-heading">Curated Recipes</h2>
   <section class="recipe-gallery"></section>
 

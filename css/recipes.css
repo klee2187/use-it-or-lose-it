@@ -395,3 +395,62 @@
 .toast.error {
   background-color: #dc3545; /* red for errors */
 }
+
+/* --- Recipe Info Hierarchy --- */
+.recipe-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--dark-green);
+  margin: 0;
+}
+
+.recipe-type {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.recipe-type strong {
+  color: var(--green);
+}
+
+.ingredients {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  margin: var(--spacing-xs) 0;
+}
+
+.ingredients strong {
+  color: var(--dark-green);
+  font-weight: bold;
+}
+
+/* --- Featured Card Layout --- */
+.featured-card .info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  align-items: flex-start;
+}
+
+.featured-card .recipe-title {
+  font-size: 1.4rem;
+  color: var(--green);
+}
+
+.featured-card .view-recipe-btn {
+  align-self: flex-start;
+  margin-top: var(--spacing-sm);
+}
+
+/* --- Curated Card Layout --- */
+.recipe-card .info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.recipe-card .recipe-title {
+  font-size: 1.1rem;
+  color: var(--green);
+}
