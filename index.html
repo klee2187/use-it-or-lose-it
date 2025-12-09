@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home | Use It or Lose It</title>
-  <link rel="preconnect" href="https://www.ashcroftfamilytable.com">
   <meta name="description" content="Reduce food waste by tracking inventory, recipes, and tips." />
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/home.css" />
@@ -14,11 +13,9 @@
 <body>
   <header>
     <h1>Use It or Lose It</h1>
-    <!-- Hamburger toggle -->
     <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
       <span class="hamburger"></span>
     </button>
-    <!-- Navigation -->
     <nav id="nav-menu">
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
@@ -29,10 +26,12 @@
         <li><a href="calendar.html">Calendar</a></li>
         <li><a href="profile.html">Profile</a></li>
         <li><a href="favorites.html">Favorites</a></li>
-
       </ul>
     </nav>
   </header>
+
+  <!-- Featured Recipe Banner -->
+  <section id="featuredRecipeBanner" class="featured-banner" aria-live="polite"></section>
 
   <!-- Alerts -->
   <section id="alertSection" class="alert hidden" role="alert">
@@ -51,6 +50,9 @@
       <p>Your personalized tip will appear here.</p>
     </section>
 
+    <!-- Did You Know Banner -->
+    <section id="funFactBanner" class="funfact-banner" aria-live="polite"></section>
+
     <section class="homepage-box recipe-highlight"></section>
 
     <section class="homepage-box quick-links">
@@ -63,11 +65,13 @@
       </div>
     </section>
 
-
     <section id="suggestedRecipes" class="homepage-box"></section>
   </main>
 
   <button id="backToTop" class="back-to-top" aria-label="Back to top" aria-hidden="true">↑</button>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" aria-live="polite"></div>
 
   <footer>
     <p>&copy; 2025 Use It or Lose It</p>

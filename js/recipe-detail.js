@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const recipe = recipes.find(r => r.id === recipeId);
 
   if (!recipe) {
-    detailSection.innerHTML = "<p>Recipe not found.</p>";
+    detailSection.innerHTML = "<p class='error-msg'>Recipe not found.</p>";
     return;
   }
 
@@ -29,8 +29,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const instructions = Array.isArray(recipe.instructions) ? recipe.instructions : [];
 
   detailSection.innerHTML = `
-    <article class="recipe-detail">
-      <img src="${recipe.image || 'images/placeholder.jpg'}" alt="${recipe.name}" class="recipe-image" />
+    <article class="recipe-detail fade-in">
+      <img src="${recipe.image || 'images/placeholder.jpg'}" 
+           alt="${recipe.name}" 
+           class="recipe-image" />
+
       <h2 class="recipe-name">${recipe.name}</h2>
 
       <div class="metadata">
