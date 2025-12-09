@@ -9,6 +9,7 @@
   <!-- Global + Recipes CSS -->
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/recipes.css" />
+  <link rel="stylesheet" href="css/favorites.css" />
 
   <!-- JS -->
   <script type="module" src="js/favorites.js" defer></script>
@@ -35,13 +36,39 @@
 </header>
 
 <main>
+  <!-- Centered Header -->
   <section class="homepage-box centered-container">
-    <h2>⭐ Your Favorite Recipes</h2>
-    <p>Quick access to the recipes you love most.</p>
+    <h2 class="section-heading">⭐ Your Favorite Recipes</h2>
+    <p class="section-subtext">Quick access to the recipes you love most.</p>
   </section>
 
+  <!-- Filter Bar -->
+   <section class="filter-bar">
+  <label class="visually-hidden" for="favSearch">Search favorites</label>
+  <input type="text" id="favSearch" placeholder="Search favorites..." />
+
+  <label class="visually-hidden" for="favSort">Sort favorites</label>
+  <select id="favSort">
+    <option value="alpha">Alphabetical (A-Z)</option>
+    <option value="newest">Newest Added</option>
+    <option value="oldest">Oldest Added</option>
+  </select>
+
+  <label class="visually-hidden" for="favType">Filter by type</label>
+  <select id="favType">
+    <option value="">All Types</option>
+    <option value="Breakfast">Breakfast</option>
+    <option value="Lunch">Lunch</option>
+    <option value="Dinner">Dinner</option>
+    <option value="Dessert">Dessert</option>
+  </select>
+
+  <button id="clearFavFilters" class="clear-btn">Clear Filters</button>
+</section>
+
+  <!-- Favorites Grid -->
   <section id="favoritesList" class="homepage-box">
-    <h3>Saved Recipes</h3>
+    <h3 class="section-heading">Saved Recipes</h3>
     <div class="favorites-grid"></div>
   </section>
 </main>

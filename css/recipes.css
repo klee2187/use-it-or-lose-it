@@ -454,3 +454,57 @@
   font-size: 1.1rem;
   color: var(--green);
 }
+
+/* --- Heart Pop Animation --- */
+.fav-btn .heart-icon {
+  display: inline-block;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.fav-btn.active .heart-icon {
+  color: red;
+  animation: heartPop 0.4s ease;
+}
+
+@keyframes heartPop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.4); }
+  60%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* --- Shimmer Loading Effect --- */
+.recipe-card img,
+.featured-card img {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* --- View All Recipes Button --- */
+.view-all-container {
+  display: flex;
+  justify-content: center;
+  margin: var(--spacing-lg) auto;
+}
+
+.view-all-btn {
+  background-color: var(--accent-orange);
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.view-all-btn:hover {
+  background-color: var(--dark-green);
+  transform: scale(1.05);
+}
