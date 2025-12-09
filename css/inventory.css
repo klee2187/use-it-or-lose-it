@@ -56,11 +56,12 @@
   cursor: pointer;
   font-weight: bold;
   height: 38px;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s;
 }
 
 #inventoryForm button:hover {
   background-color: var(--dark-green);
+  transform: scale(1.05);
 }
 
 /* Cancel Edit Button */
@@ -128,35 +129,25 @@
   font-weight: bold;
 }
 
+.inventory-table tr {
+  min-height: 48px;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
 .inventory-table tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
 /* Status Colors */
-.inventory-table tr.status-safe {
-  background-color: #e8f5e9;
-  color: #1b5e20;
-}
+.inventory-table tr.status-safe { background-color: #e8f5e9; color: #1b5e20; }
+.inventory-table tr.status-warning { background-color: #fff3cd; color: #856404; }
+.inventory-table tr.status-critical { background-color: #ffebee; color: #b71c1c; }
+.inventory-table tr.status-expired { background-color: #f8d7da; color: #721c24; text-decoration: line-through; }
 
-.inventory-table tr.status-warning {
-  background-color: #fff3cd;
-  color: #856404;
-}
-
-.inventory-table tr.status-critical {
-  background-color: #ffebee;
-  color: #b71c1c;
-}
-
-.inventory-table tr.status-expired {
-  background-color: #f8d7da;
-  color: #721c24;
-  text-decoration: line-through;
-}
-
-.inventory-table tr:hover {
-  filter: brightness(0.97);
-  transition: filter 0.2s ease;
+.inventory-table tr.editing {
+  outline: 2px dashed var(--accent-orange);
+  outline-offset: -4px;
+  background-color: #fff8e1 !important; /* pale yellow highlight */
 }
 
 /* Action buttons */
@@ -183,6 +174,10 @@
   color: #1565c0;
   border-color: #1565c0;
 }
+.edit-btn:focus-visible {
+  outline: 2px solid var(--accent-orange);
+  outline-offset: 2px;
+}
 
 .delete-btn {
   border-color: #ef5350;
@@ -194,12 +189,45 @@
   color: #c62828;
   border-color: #c62828;
 }
+.delete-btn:focus-visible {
+  outline: 2px solid var(--accent-orange);
+  outline-offset: 2px;
+}
 
-/* Highlight row being edited */
-.inventory-table tr.editing {
-  outline: 2px dashed var(--accent-orange);
-  outline-offset: -4px;
-  background-color: #fff8e1 !important; /* pale yellow */
+/* Alerts */
+.alert {
+  background: #f8d7da;
+  color: #721c24;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 6px;
+  margin: var(--spacing-md) auto;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.alert.hidden { display: none; }
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-orange);
+  color: var(--white);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 2000;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
 }
 
 /* Mobile Responsiveness */
@@ -208,7 +236,7 @@
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .inventory-table {
     display: block;
     overflow-x: auto;
