@@ -31,7 +31,10 @@
   </header>
 
   <!-- Featured Recipe Banner -->
-  <section id="featuredRecipeBanner" class="featured-banner" aria-live="polite"></section>
+  <section id="featuredRecipeBanner" class="featured-banner" aria-live="polite">
+    <h3>🍽️ Featured Recipe of the Week</h3>
+    <!-- JS will inject recipe content here -->
+  </section>
 
   <!-- Alerts -->
   <section id="alertSection" class="alert hidden" role="alert">
@@ -40,41 +43,65 @@
   </section>
 
   <main id="main">
+    <!-- Welcome -->
     <section class="homepage-box centered-container">
-      <h2>Welcome to Use It or Lose It</h2>
+      <h2>👋 Welcome to Use It or Lose It</h2>
       <p>Track your food, save money, and reduce waste.</p>
     </section>
 
+    <!-- Tip of the Day -->
     <section id="tipContent" class="homepage-box tip-section" role="status" aria-live="polite">
-      <h3>Tip of the Day</h3>
+      <h3>🌿 Tip of the Day</h3>
       <p>Your personalized tip will appear here.</p>
     </section>
 
     <!-- Did You Know Banner -->
-    <section id="funFactBanner" class="funfact-banner" aria-live="polite"></section>
+    <section id="funFactBanner" class="funfact-banner" aria-live="polite">
+      <h3>🧠 Did You Know?</h3>
+      <!-- JS will inject fun fact here -->
+    </section>
 
-    <section class="homepage-box recipe-highlight"></section>
+    <!-- Recipe Highlight -->
+    <section class="homepage-box recipe-highlight">
+      <h3>📊 Recipe Highlight</h3>
+      <!-- JS will inject highlight recipe here -->
+    </section>
 
+    <!-- Quick Links -->
     <section class="homepage-box quick-links">
-      <h3>Quick Links</h3>
+      <h3>🔗 Quick Links</h3>
       <div class="feature-card-container">
-        <div class="feature-card"><a href="inventory.html">Manage Inventory</a></div>
-        <div class="feature-card"><a href="recipes.html">Find Recipes</a></div>
-        <div class="feature-card"><a href="budget.html">Track Budget</a></div>
-        <div class="feature-card"><a href="calendar.html">Check Calendar</a></div>
+        <div class="feature-card"><a href="inventory.html">📦 Manage Inventory</a></div>
+        <div class="feature-card"><a href="recipes.html">🍴 Find Recipes</a></div>
+        <div class="feature-card"><a href="budget.html">💰 Track Budget</a></div>
+        <div class="feature-card"><a href="calendar.html">📅 Check Calendar</a></div>
       </div>
     </section>
 
-    <section id="suggestedRecipes" class="homepage-box"></section>
+    <!-- Suggested Recipes -->
+    <section id="suggestedRecipes" class="homepage-box">
+      <h3>🍲 Suggested Recipes</h3>
+      <!-- JS will inject suggested recipes here -->
+    </section>
   </main>
 
+  <!-- Back to Top -->
   <button id="backToTop" class="back-to-top" aria-label="Back to top" aria-hidden="true">↑</button>
 
   <!-- Toast Notification -->
   <div id="toast" class="toast" aria-live="polite"></div>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Use It or Lose It</p>
+    <p>© 2025 Use It or Lose It</p>
+
+    <!-- Compact Legend Bar -->
+    <div class="legend-bar">
+      <span class="legend-swatch teal"></span> 🍽️ Featured
+      <span class="legend-swatch blue"></span> 🧠 Fun Fact
+      <span class="legend-swatch orange"></span> 📊 Highlight / 🍲 Suggested
+      <span class="legend-swatch green"></span> 🔗 Quick Links / Footer
+    </div>
   </footer>
 </body>
 </html>
