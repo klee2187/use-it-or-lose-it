@@ -21,8 +21,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const TODAY = new Date();
   TODAY.setHours(0, 0, 0, 0);
 
+  // Toast setup
+  const toast = document.createElement("div");
+  toast.id = "toast";
+  toast.className = "toast";
+  toast.setAttribute("aria-live", "polite");
+  document.body.appendChild(toast);
+
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("show");
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3000);
+  }
+
   const getItemSeverity = (items) => {
-    let severity = "none";
+    const priority = {
+      "expired": 0,
+      "critical": 1,
+      "warning": 2,
+      "safe": 3,
+      "none": 4
+    };
+
+    let maxSeverity = "none";
+
     items.forEach((item) => {
       if (!item.expiration) return;
       const expDate = new Date(item.expiration);
@@ -35,12 +59,11 @@ document.addEventListener("DOMContentLoaded", () => {
       else if (diffDays <= 3) currentSeverity = "critical";
       else if (diffDays <= 7) currentSeverity = "warning";
 
-      if (currentSeverity === "expired") severity = "expired";
-      else if (currentSeverity === "critical" && severity !== "expired") severity = "critical";
-      else if (currentSeverity === "warning" && severity !== "expired" && severity !== "critical") severity = "warning";
-      else if (currentSeverity === "safe" && severity === "none") severity = "safe";
+      if (priority[currentSeverity] < priority[maxSeverity]) {
+        maxSeverity = currentSeverity;
+      }
     });
-    return severity;
+    return maxSeverity;
   };
 
   const renderCalendar = () => {
@@ -89,22 +112,25 @@ document.addEventListener("DOMContentLoaded", () => {
         const severity = getItemSeverity(expiringItems);
         if (severity !== "none") cell.classList.add(severity);
 
-        const countEl = document.createElement("div");
-        countEl.classList.add("item-count");
-        countEl.textContent = `${expiringItems.length} item(s) expiring`;
-        cell.appendChild(countEl);
-
-        const tooltip = document.createElement("div");
-        tooltip.classList.add("tooltip");
-        tooltip.textContent = `Expiring: ${expiringItems.map(i => i.name).join(", ")}`;
-        tooltip.setAttribute("aria-label", tooltip.textContent);
-        cell.appendChild(tooltip);
+        const tooltipText = `Expiring: ${expiringItems.map(i => i.name).join(", ")}`;
+        cell.setAttribute("title", tooltipText); 
       }
 
       calendarGrid.appendChild(cell);
     }
 
     renderMonthlySummary(year, month);
+
+    // Toast alert for expiring items this month
+    const expiringCount = inventory.filter((item) => {
+      if (!item.expiration) return false;
+      const expDate = new Date(item.expiration);
+      return expDate.getFullYear() === year && expDate.getMonth() === month;
+    }).length;
+
+    if (expiringCount > 0) {
+      showToast(`⚠️ ${expiringCount} item(s) expiring this month`);
+    }
   };
 
   const renderMonthlySummary = (year, month) => {
@@ -132,54 +158,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
     monthlyItems.sort((a, b) => new Date(a.date) - new Date(b.date));
 
+    const listContainer = document.createElement("ul");
+    listContainer.classList.add("summary-list");
+
     monthlyItems.forEach((item, index) => {
-      const card = document.createElement("div");
-      card.classList.add("summary-card", "fade-in");
-      card.style.animationDelay = `${index * 0.1}s`;
+      const listItem = document.createElement("li");
+      listItem.classList.add("summary-list-item", "fade-in");
+      listItem.style.animationDelay = `${index * 0.05}s`; 
 
       const formattedDate = new Date(item.date).toLocaleDateString();
 
       let emoji = "✅";
       let colorClass = "safe-text";
-      let borderColor = "#388E3C";
+      let listMarkerClass = "safe-marker";
 
       if (item.severity === "warning") {
         emoji = "⚠️";
         colorClass = "warning-text";
-        borderColor = "#FF9800";
+        listMarkerClass = "warning-marker";
       } else if (item.severity === "critical") {
         emoji = "❗";
         colorClass = "critical-text";
-        borderColor = "#dc3545";
+        listMarkerClass = "critical-marker";
       } else if (item.severity === "expired") {
         emoji = "❌";
         colorClass = "expired-text";
-        borderColor = "#C62828";
+        listMarkerClass = "expired-marker";
       }
 
-      card.style.borderLeftColor = borderColor;
-      card.innerHTML = `
-        <div class="date-label ${colorClass}">${emoji} ${formattedDate}</div>
-        <div class="item-name">${item.name}</div>
+      listItem.innerHTML = `
+        <span class="list-marker ${listMarkerClass}"></span>
+        <div class="list-content">
+          <span class="date-label ${colorClass}">${emoji} ${formattedDate}</span>
+          <span class="item-name">${item.name}</span>
+        </div>
       `;
-      monthlySummaryGrid.appendChild(card);
+      listContainer.appendChild(listItem);
     });
+    
+    monthlySummaryGrid.appendChild(listContainer);
   };
 
+  // Navigation buttons with toast feedback
   prevMonthBtn.addEventListener("click", () => {
     currentDate.setMonth(currentDate.getMonth() - 1);
     currentDate.setDate(1);
     renderCalendar();
+    showToast(`📅 Moved to ${currentDate.toLocaleString("default", { month: "long" })} ${currentDate.getFullYear()}`);
   });
   nextMonthBtn.addEventListener("click", () => {
     currentDate.setMonth(currentDate.getMonth() + 1);
     currentDate.setDate(1);
     renderCalendar();
+    showToast(`📅 Moved to ${currentDate.toLocaleString("default", { month: "long" })} ${currentDate.getFullYear()}`);
   });
   todayBtn.addEventListener("click", () => {
     currentDate = new Date();
     currentDate.setDate(1);
     renderCalendar();
+    showToast("📅 Returned to current month");
   });
 
   renderCalendar();

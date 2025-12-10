@@ -22,17 +22,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const dietInput = document.getElementById("profileDiet");
   const cuisineInput = document.getElementById("profileCuisine");
 
-  // Success modal
+  // Success modal + toast
   const successModal = document.getElementById("successModal");
   const closeModalBtn = document.getElementById("closeModalBtn");
+  const toast = document.getElementById("toast");
+
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("show");
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2500);
+  }
 
   // Load saved profile
   const savedProfile = JSON.parse(localStorage.getItem("profile")) || {};
-  if (savedProfile.name) displayName.textContent = savedProfile.name;
-  if (savedProfile.email) displayEmail.textContent = savedProfile.email;
-  if (savedProfile.familySize) displayFamilySize.textContent = savedProfile.familySize;
-  if (savedProfile.diet) displayDiet.textContent = savedProfile.diet;
-  if (savedProfile.cuisine) displayCuisine.textContent = savedProfile.cuisine;
+  if (savedProfile.name || savedProfile.email || savedProfile.familySize || savedProfile.diet || savedProfile.cuisine) {
+    displayName.textContent = savedProfile.name || "—";
+    displayEmail.textContent = savedProfile.email || "—";
+    displayFamilySize.textContent = savedProfile.familySize || "—";
+    displayDiet.textContent = savedProfile.diet || "—";
+    displayCuisine.textContent = savedProfile.cuisine || "—";
+    preferencesSection.classList.remove("hidden");
+  }
 
   // Save Profile
   profileForm.addEventListener("submit", e => {
@@ -53,15 +65,15 @@ document.addEventListener("DOMContentLoaded", () => {
     displayDiet.textContent = profile.diet || "—";
     displayCuisine.textContent = profile.cuisine || "—";
 
-    // Animate preferences section
+    preferencesSection.classList.remove("hidden");
     preferencesSection.classList.remove("fade-in");
-    void preferencesSection.offsetWidth; 
+    void preferencesSection.offsetWidth;
     preferencesSection.classList.add("fade-in");
 
     profileForm.reset();
 
-    // Show success modal
     successModal.classList.remove("hidden");
+    showToast("✅ Profile saved!");
   });
 
   // Edit Profile
@@ -84,9 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
     displayCuisine.textContent = "—";
     profileForm.reset();
 
-    preferencesSection.classList.remove("fade-in");
-    void preferencesSection.offsetWidth;
-    preferencesSection.classList.add("fade-in");
+    preferencesSection.classList.add("hidden");
+    showToast("🗑️ Profile cleared");
   });
 
   // Close modal

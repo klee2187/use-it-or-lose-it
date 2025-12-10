@@ -1,21 +1,72 @@
 import { initNavbarToggle, checkInventoryAlerts, initAlertDismiss } from "./utils.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize global UI elements
   initNavbarToggle();
   initAlertDismiss();
 
-  // Load Data
   const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
   const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
 
-  // Run Alert Check
   checkInventoryAlerts(inventory);
 
-  // DOM Elements
+  const featuredBanner = document.getElementById("featuredRecipeBanner");
+  const funFactBanner = document.getElementById("funFactBanner");
   const recipeHighlightBox = document.querySelector(".recipe-highlight");
   const suggestedBox = document.getElementById("suggestedRecipes");
   const tipContent = document.getElementById("tipContent");
+
+  // Toast setup
+  const toast = document.getElementById("toast");
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("show");
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3000);
+  }
+
+  // Featured Recipe of the Week
+  if (recipes.length > 0 && featuredBanner) {
+    const weekNumber = Math.floor((new Date().getTime() / (1000 * 60 * 60 * 24 * 7)));
+    const featuredRecipe = recipes[weekNumber % recipes.length];
+    featuredBanner.innerHTML = `
+      <h3>🌟 Featured Recipe of the Week</h3>
+      <p><strong>${featuredRecipe.name}</strong> — ${featuredRecipe.type}</p>
+      <a href="recipe-detail.html?id=${featuredRecipe.id}">View Recipe</a>
+    `;
+  } else if (featuredBanner) {
+    featuredBanner.innerHTML = `<p>Add recipes to see a featured highlight here!</p>`;
+  }
+
+  // Fun Fact Banner
+  if (funFactBanner) {
+    const facts = [
+      "📊 Roughly 1/3 of all food produced globally is wasted each year.",
+      "📊 Reducing food waste could cut greenhouse gas emissions by up to 8%.",
+      "📊 Americans throw away about $1,500 worth of food annually per household.",
+      "📊 If food waste were a country, it would be the third largest emitter of greenhouse gases.",
+      "📊 Composting food scraps can reduce landfill waste and create nutrient-rich soil."
+    ];
+    const fact = facts[Math.floor(Math.random() * facts.length)];
+    funFactBanner.innerHTML = `
+      <h3>Did You Know?</h3>
+      <p>${fact}</p>
+    `;
+  }
+
+  // Monthly summary toast
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const expiringCount = inventory.filter(item => {
+    if (!item.expiration) return false;
+    const expDate = new Date(item.expiration);
+    if (isNaN(expDate)) return false;
+    const diffDays = Math.ceil((expDate - today) / (1000 * 60 * 60 * 24));
+    return diffDays > 0 && diffDays <= 7;
+  }).length;
+  if (expiringCount > 0) {
+    showToast(`⚠️ ${expiringCount} item(s) expiring soon`);
+  }
 
   // Random Recipe Highlight
   if (recipes.length > 0 && recipeHighlightBox) {
@@ -24,16 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
       <h3>🍲 Recipe Highlight</h3>
       <p><strong>${randomRecipe.name}</strong></p>
       <p>Type: ${randomRecipe.type}</p>
-      <a href="recipes.html">Check out the full recipe on the Recipes page!</a>
+      <a href="recipe-detail.html?id=${randomRecipe.id}">Check out this recipe!</a>
     `;
   } else if (recipeHighlightBox) {
     recipeHighlightBox.innerHTML = `<p>Add recipes to see a highlight here!</p>`;
   }
 
   // Suggested Recipes Logic
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
   const expiringNames = inventory
     .filter(item => {
       if (!item.expiration) return false;
@@ -66,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
         card.innerHTML = `
           <p><strong>${recipe.name}</strong></p>
           <p>Type: ${recipe.type}</p>
+          <a href="recipe-detail.html?id=${recipe.id}">View Recipe</a>
         `;
         grid.appendChild(card);
       });
@@ -83,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "💡 Use clear containers so you can see what you have.",
       "💡 Freeze leftovers in labeled portions for easy reuse.",
       "💡 Plan meals around what’s already in your fridge.",
-      "💡 Check expiration dates weekly to avoid waste.",
+      "💡 Check expiration dates weekly to avoid waste."
     ];
     const tip = tips[Math.floor(Math.random() * tips.length)];
     const pTag = tipContent.querySelector("p");

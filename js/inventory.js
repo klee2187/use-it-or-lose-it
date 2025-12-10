@@ -20,10 +20,23 @@ document.addEventListener("DOMContentLoaded", () => {
   if (inventoryBody) {
     inventoryBody.addEventListener("click", handleTableActions);
   }
-
+  
   if (cancelEditBtn) {
     cancelEditBtn.addEventListener("click", cancelEditMode);
   }
+
+  // Toast setup
+  const toast = document.getElementById("toast");
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("show");
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3000);
+  }
+
+  // Show monthly inventory health summary
+  showMonthlySummaryToast(inventory, showToast);
 });
 
 // RENDER INVENTORY
@@ -85,9 +98,11 @@ function handleAddOrEditItem(e) {
     const idx = parseInt(editIndexInput.value, 10);
     inventory[idx] = { name, quantity, unit, expiration };
     showAlert(`${name} updated successfully!`, "safe");
+    showToast(`✏️ ${name} updated`);
   } else {
     inventory.push({ name, quantity, unit, expiration });
     showAlert(`${name} ${unit ? `(${quantity} ${unit})` : `(${quantity})`} added to inventory!`, "safe");
+    showToast(`✅ ${name} added`);
   }
 
   localStorage.setItem("inventory", JSON.stringify(inventory));
@@ -97,11 +112,11 @@ function handleAddOrEditItem(e) {
   submitBtn.textContent = "Add Item";
   cancelEditBtn.classList.add("hidden");
 
-  // Clear editing highlight
   document.querySelectorAll(".inventory-table tr").forEach(tr => tr.classList.remove("editing"));
 
   loadInventory();
   checkInventoryAlerts(inventory);
+  showMonthlySummaryToast(inventory, showToast);
 }
 
 // DELETE OR EDIT ACTIONS
@@ -114,10 +129,12 @@ function handleTableActions(e) {
 
     if (removedItem[0]) {
       showAlert(`${removedItem[0].name} removed.`, "warning");
+      showToast(`🗑️ ${removedItem[0].name} deleted`);
     }
 
     loadInventory();
     checkInventoryAlerts(inventory);
+    showMonthlySummaryToast(inventory, showToast);
   }
 
   if (e.target.classList.contains("edit-btn")) {
@@ -138,11 +155,11 @@ function handleTableActions(e) {
     const cancelEditBtn = document.getElementById("cancelEditBtn");
     cancelEditBtn.classList.remove("hidden");
 
-    // Highlight the row being edited
     document.querySelectorAll(".inventory-table tr").forEach(tr => tr.classList.remove("editing"));
     e.target.closest("tr").classList.add("editing");
 
     showAlert(`Editing ${item.name}...`, "info");
+    showToast(`✏️ Editing ${item.name}`);
   }
 }
 
@@ -158,13 +175,13 @@ function cancelEditMode() {
   submitBtn.textContent = "Add Item";
   cancelEditBtn.classList.add("hidden");
 
-  // Remove editing highlight
   document.querySelectorAll(".inventory-table tr").forEach(tr => tr.classList.remove("editing"));
 
   showAlert("Edit cancelled.", "warning");
+  showToast("❌ Edit cancelled");
 }
 
-// HELPER: Check Expiration Status
+// Check Expiration Status
 function getExpirationStatus(dateString) {
   if (!dateString) return "status-safe";
 
@@ -180,8 +197,34 @@ function getExpirationStatus(dateString) {
   return "status-safe";
 }
 
-// HELPER: Format Dates
+// Format Dates
 function formatDate(dateString) {
   if (!dateString) return "N/A";
   return new Date(dateString).toLocaleDateString();
+}
+
+// Monthly Summary Toast
+function showMonthlySummaryToast(inventory, showToast) {
+  const today = new Date();
+  const currentMonth = today.getMonth();
+  const currentYear = today.getFullYear();
+
+  let expiringCount = 0;
+  let criticalCount = 0;
+  let expiredCount = 0;
+
+  inventory.forEach(item => {
+    if (!item.expiration) return;
+    const expDate = new Date(item.expiration);
+    if (expDate.getMonth() === currentMonth && expDate.getFullYear() === currentYear) {
+      const status = getExpirationStatus(item.expiration);
+      if (status === "status-warning") expiringCount++;
+      if (status === "status-critical") criticalCount++;
+      if (status === "status-expired") expiredCount++;
+    }
+  });
+
+  if (expiringCount || criticalCount || expiredCount) {
+    showToast(`📊 This month: ${expiredCount} expired, ${criticalCount} critical, ${expiringCount} expiring soon`);
+  }
 }

@@ -4,15 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Recipe Detail | Use It or Lose It</title>
-
   <meta name="description" content="View recipe instructions, ingredients, and check inventory status." />
+
+  <!-- Global + Recipes CSS -->
   <link rel="stylesheet" href="css/global.css" />
-  <link rel="stylesheet" href="css/recipes.css" /> 
+  <link rel="stylesheet" href="css/recipes.css" />
+
+  <!-- JS -->
   <script type="module" src="js/recipe-detail.js" defer></script>
   <script type="module" src="js/navbar.js" defer></script>
 </head>
 <body>
-  
 <header>
   <h1>Use It or Lose It</h1>
   <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
@@ -37,6 +39,10 @@
   <section id="recipeDetailContainer" class="recipe-detail-box fade-in"></section>
 </main>
 
+<!-- Toast Notification -->
+<div id="toast" class="toast" aria-live="polite"></div>
+
+<!-- Back to Top Button -->
 <button id="backToTop" class="back-to-top" aria-label="Back to top" aria-hidden="true">↑</button>
 
 <footer>

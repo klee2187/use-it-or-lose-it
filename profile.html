@@ -34,8 +34,8 @@
 
 <main id="main">
   <section class="profile-box">
-    <h2>Profile</h2>
-    <p>Manage your account and preferences here.</p>
+    <h2 class="section-heading">👤 Profile</h2>
+    <p class="section-subtext">Manage your account and preferences here.</p>
 
     <!-- Profile Input Form -->
     <form id="profileForm" class="profile-form">
@@ -76,9 +76,9 @@
       </div>
     </form>
 
-    <!-- Display saved preferences -->
-    <section class="profile-preferences fade-in">
-      <h3>My Profile</h3>
+    <!-- Display saved preferences (hidden by default) -->
+    <section class="profile-preferences hidden fade-in">
+      <h3>📋 My Profile</h3>
       <p><strong>Name:</strong> <span id="displayName">—</span></p>
       <p><strong>Email:</strong> <span id="displayEmail">—</span></p>
       <p><strong>Family Size:</strong> <span id="displayFamilySize">—</span></p>
@@ -95,6 +95,9 @@
     <button id="closeModalBtn">OK</button>
   </div>
 </div>
+
+<!-- Toast Notification -->
+<div id="toast" class="toast" aria-live="polite"></div>
 
 <footer>
   <p>&copy; 2025 Use It or Lose It</p>

@@ -10,7 +10,7 @@ export function initNavbarToggle() {
 
   toggleBtn.addEventListener("click", () => {
     const expanded = toggleBtn.getAttribute("aria-expanded") === "true";
-    toggleBtn.setAttribute("aria-expanded", !expanded);
+    toggleBtn.setAttribute("aria-expanded", String(!expanded));
     navMenu.classList.toggle("nav-open");
     toggleBtn.classList.toggle("open");
   });
@@ -86,4 +86,84 @@ export function checkInventoryAlerts(inventory) {
     const names = warningItems.map(item => item.name).join(", ");
     showAlert(`These ${warningItems.length} items are expiring within 7 days: ${names}`, "warning");
   }
+}
+
+/* FAVORITES + TOAST HELPERS */
+
+// Load recipes.json and cache in localStorage
+export async function loadRecipes() {
+  try {
+    const cached = JSON.parse(localStorage.getItem("recipes"));
+    if (Array.isArray(cached) && cached.length) return cached;
+
+    const res = await fetch("data/recipes.json");
+    const data = await res.json();
+    const recipes = Array.isArray(data.recipes) ? data.recipes : [];
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+    return recipes;
+  } catch {
+    return [];
+  }
+}
+
+// Favorites helpers
+export function getFavorites() {
+  const favs = JSON.parse(localStorage.getItem("favorites")) || [];
+  return favs.map(id => parseInt(id, 10)).filter(Number.isFinite);
+}
+
+export function setFavorites(favs) {
+  localStorage.setItem("favorites", JSON.stringify(favs));
+}
+
+export function toggleFavorite(id) {
+  const recipeId = parseInt(id, 10);
+  let favs = getFavorites();
+
+  if (favs.includes(recipeId)) {
+    favs = favs.filter(f => f !== recipeId);
+    setFavorites(favs);
+    return { active: false };
+  } else {
+    favs.push(recipeId);
+    setFavorites(favs);
+    return { active: true };
+  }
+}
+
+export function isFavorite(id) {
+  return getFavorites().includes(parseInt(id, 10));
+}
+
+// Toast notifications
+export function showToast(message) {
+  const toast = document.getElementById("toast");
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.classList.add("show");
+  toast.setAttribute("aria-live", "polite");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
+}
+
+// Back to Top button
+export function initBackToTop() {
+  const btn = document.getElementById("backToTop");
+  if (!btn) return;
+
+  const toggle = () => {
+    const visible = window.scrollY > 300;
+    btn.setAttribute("aria-hidden", String(!visible));
+    btn.classList.toggle("visible", visible);
+  };
+
+  window.addEventListener("scroll", toggle);
+  toggle();
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 }
