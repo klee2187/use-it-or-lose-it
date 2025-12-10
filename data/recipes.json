@@ -358,52 +358,92 @@
       "creator": "The Ashcroft Family Table"
     },
     {
-  "id": 10,
-  "name": "Cherry Chocolate Chip Muffins",
-  "image": "images/cherry-muffins.webp",
-  "description": "These yummy Cherry Chocolate Chip Muffins are made with maraschino cherries and topped with a pretty pink glaze. They’re perfect for Valentine’s Day!",
-  "prepTime": "10 minutes",
-  "cookTime": "18 minutes",
-  "additionalTime": "10 minutes",
-  "totalTime": "38 minutes",
-  "course": "Breakfast",
-  "cuisine": "American",
-  "servings": 12,
-  "servingSize": "1 regular or 2 mini",
-  "calories": "237 kcal",
-  "ingredients": [
-    "1 egg",
-    "1/2 cup milk",
-    "1/4 cup avocado oil",
-    "1 1/2 cups flour",
-    "1/2 cup granulated sugar",
-    "2 teaspoons baking powder",
-    "1/2 teaspoon salt",
-    "10 ounces maraschino cherries",
-    "3/4 cup miniature chocolate chips",
-    "1 cup powdered sugar",
-    "2-3 tablespoons reserved cherry juice"
-  ],
-  "instructions": [
-    "1. Preheat your oven to 375 degrees.",
-    "2. Whisk egg, milk, and avocado oil together in a medium mixing bowl.",
-    "3. Stir flour, granulated sugar, baking powder, and salt into the wet ingredients just until moist.",
-    "4. Drain the jar of maraschino cherries, saving 3 tablespoons of the juice.",
-    "5. Chop the cherries into quarters and fold them into the batter along with chocolate chips.",
-    "6. Lightly grease a muffin tin and use a 1/4 measuring cup to add batter to each cup.",
-    "7. Bake the muffins for 18 minutes or until a toothpick inserted into the center of a muffin comes out clean.",
-    "8. Allow the muffins to cool for 10 minutes and then move from the pan to a wire rack.",
-    "9. Combine powdered sugar and reserved cherry juice to make the glaze. Start with 1 tablespoon of juice at a time until you reach the desired consistency.",
-    "10. Drizzle the glaze over the cooled muffins using a spoon or fork."
-  ],
-  "substitutions": [
-    "Frozen whole cherries or fresh cherries for maraschino cherries",
-    "Regular sized chocolate chips for mini chocolate chips",
-    "Add half a cup of chopped pecans or walnuts if you want to add nuts"
-  ],
-  "creator": "The Ashcroft Family Table"
-},
-{
+      "id": 10,
+      "name": "Cherry Chocolate Chip Muffins",
+      "image": "images/cherry-muffins.webp",
+      "description": "These yummy Cherry Chocolate Chip Muffins are made with maraschino cherries and topped with a pretty pink glaze. They’re perfect for Valentine’s Day!",
+      "prepTime": "10 minutes",
+      "cookTime": "18 minutes",
+      "additionalTime": "10 minutes",
+      "totalTime": "38 minutes",
+      "course": "Breakfast",
+      "cuisine": "American",
+      "servings": 12,
+      "servingSize": "1 regular or 2 mini",
+      "calories": "237 kcal",
+      "ingredients": [
+        "1 egg",
+        "1/2 cup milk",
+        "1/4 cup avocado oil",
+        "1 1/2 cups flour",
+        "1/2 cup granulated sugar",
+        "2 teaspoons baking powder",
+        "1/2 teaspoon salt",
+        "10 ounces maraschino cherries",
+        "3/4 cup miniature chocolate chips",
+        "1 cup powdered sugar",
+        "2-3 tablespoons reserved cherry juice"
+      ],
+      "instructions": [
+        "1. Preheat your oven to 375 degrees.",
+        "2. Whisk egg, milk, and avocado oil together in a medium mixing bowl.",
+        "3. Stir flour, granulated sugar, baking powder, and salt into the wet ingredients just until moist.",
+        "4. Drain the jar of maraschino cherries, saving 3 tablespoons of the juice.",
+        "5. Chop the cherries into quarters and fold them into the batter along with chocolate chips.",
+        "6. Lightly grease a muffin tin and use a 1/4 measuring cup to add batter to each cup.",
+        "7. Bake the muffins for 18 minutes or until a toothpick inserted into the center of a muffin comes out clean.",
+        "8. Allow the muffins to cool for 10 minutes and then move from the pan to a wire rack.",
+        "9. Combine powdered sugar and reserved cherry juice to make the glaze. Start with 1 tablespoon of juice at a time until you reach the desired consistency.",
+        "10. Drizzle the glaze over the cooled muffins using a spoon or fork."
+      ],
+      "substitutions": [
+        "Frozen whole cherries or fresh cherries for maraschino cherries",
+        "Regular sized chocolate chips for mini chocolate chips",
+        "Add half a cup of chopped pecans or walnuts if you want to add nuts"
+      ],
+      "creator": "The Ashcroft Family Table"
+    },
+    {
+      "id": 11,
+      "name": "Butterscotch Overnight Sticky Buns",
+      "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/03/overnight-butterscotch-rolls.jpg",
+      "description": "These Butterscotch Overnight Sticky Buns are soft, pull-apart rolls covered in a delicious sugar glaze and topped with pecans. This yummy dish is perfect for any family gathering or holiday brunch.",
+      "prepTime": "10 minutes",
+      "cookTime":"30 minutes",
+      "additionalTime": "8 hours",
+      "totalTime": "8 hours 40 minutes",
+      "course": "Breakfast",
+      "cuisine": "American",
+      "servings": 16,
+      "servingSize": "1 bun",
+      "calories": "235 kcal",
+      "ingredients": [
+          "16-18 frozen rolls, or 8 large rolls cut in half",
+          "1/2 cup pecan halves, or 1/4 cup chopped pecans",
+          "3.5 ounces butterscotch pudding and pie filling , not instant",
+          "3/4 cup brown sugar",
+          "1 teaspoon cinnamon",
+          "1/2 cup melted butter"
+      ],
+      "instructions": [
+          "1. Grease a round 9-inch cake pan.",
+          "2. Spread pecan halves in the pan so the rounded sides are down.",
+          "3. Drop the rolls in the pan to form a single layer.",
+          "4. Blend butterscotch pudding, brown sugar, and cinnamon in a small bowl.",
+          "5. Sprinkle the mixture over the rolls.",
+          "6. Pour melted butter over the rolls.",
+          "7. Cover the pan with plastic wrap and refrigerate overnight.",
+          "8. When ready to cook, remove the plastic wrap, preheat your oven to 350 degrees.",
+          "9. Bake for 30 minutes or until sugar is well dissolved and bubbly. Check the rolls after 15 minutes and cover the top with foil if they are browning.",
+          "10. To serve, turn the sticky buns onto a large plate that will catch the syrup."
+      ],
+      "substitutions": [
+          "Any frozen rolls",
+          "Chopped pecans for whole pecans"
+      ],
+      "creator": "The Ashcroft Family Table"
+    },
+    {
       "id": 12,
       "name": "Grape and Apple Chicken Salad",
       "image": "images/grape-and-apple-chicken-salad.webp",
@@ -988,387 +1028,43 @@
       "creator": "The Ashcroft Family Table"
     },
     {
-<<<<<<< HEAD
-        "id": 5,
-        "name": "The Easiest Braided Raspberry Pastry",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/10/raspberry-pastry-1-1024x1536.jpg",
-        "description": "This braided Raspberry Pastry features sweet jam, a sugar glaze, and a pancake mix pastry. It’s a delicious breakfast treat without all of the fuss of traditional dough.",
-        "prepTime":"15 miutes",
-        "cookTime": "15 minutes",
-        "additionalTime": null,
-        "totalTime": "30 minutes",
-        "course": "Breakfast",
-        "cuisine": "American",
-        "servings": 10,
-        "servingSize": "1 piece",
-        "calories": "235 kcal",
-        "ingredients": [
-            "4 ounces cream cheese, cold",
-            "4 tablespoons butter, cold",
-            "2 cups pancake mix",
-            "1/4 cup milk",
-            "1/2 cup jam",
-            "1 cup powdered sugar",
-            "1 tablespoon milk",
-            "1/2 teaspoon vanilla"
-        ],
-        "instructions": [
-            "1. Preheat oven to 425 degrees and grease a half sheet pan or line with parchment paper.",
-            "2. In a large bowl, cut cream cheese and cold butter into pancake mix with a pastry cutter (or sturdy fork) until the mixture resembles crumbs.", 
-            "3. Add 1/4 cup milk to the dry mixture (or enough to make a dough). Mix the dough with a wooden spoon or your hands until well combined.",
-            "4. Knead the dough on a floured surface until smooth (about 2-3 minutes) and roll out to a rectangle the size of the pan. Carefully transfer the dough to the greased baking sheet.",
-            "5. Spread the jam down the center of the pastry and cut 11-13 thin diagonal strips on the bare pastry with a paring knife.",
-            "6. Fold the pieces over the jam and each other alternating sides and starting at the top.",
-            "7. Bake for 12-15 minutes at 425 degrees until the pastry is golden brown and jam is bubbling.",
-            "8. While the pastry is baking, whisk together powdered sugar, 1 tablespoon milk, and vanilla in a small bowl. Remove the pastry from the oven and allow it to cool for 5 minutes.",
-            "9. Drizzle the glaze onto the warm pastry with the whisk."
-        ],
-        "substitutions": [
-            "Bisquick (1:1) for pancake mix",
-            "Margarine (1:1) for butter",
-            "Any other flavor jam (1:1) for raspberry jam"
-        ],
-        "creator":"The Ashcroft Family Table"
+      "id": 26,
+      "name": "Crock Pot Country Style Pork Ribs (3 ingredients)",
+      "image": "images/crock-pot-country-style-pork-ribs.webp",
+      "description": "You'll only need 3 ingredients to make these tender Crock Pot Country Style Pork Ribs. They're perfectly saucy and delicious, and couldn't be easier to throw together!",
+      "prepTime": "30 minutes",
+      "cookTime": "8 hours",
+      "additionalTime": null,
+      "totalTime": "8 hours 30 minutes",
+      "course": "Dinner",
+      "cuisine": "American",
+      "servings": 8,
+      "calories": "312 kcal",
+      "ingredients": [
+        "3-4 pounds country style pork ribs, boneless",
+        "Salt and pepper, to taste",
+        "1 onion, sliced",
+        "16 ounces barbecue sauce"
+      ],
+      "instructions": [
+        "1. Sprinkle ribs with salt and pepper and place on a foil-lined baking sheet.",
+        "2. Broil ribs in oven on low until browned, turning every 5 minutes.",
+        "3. Put sliced onion in the bottom of the Crock Pot followed by the ribs.",
+        "4. Pour barbecue sauce over the ribs. Cover and cook on low for 6-8 hours or on high for 4-5 hours.",
+        "5. Serve ribs with rice, mashed potatoes, or pasta."
+      ],
+      "substitutions": [
+        "Use country style ribs instead of a large rack of ribs",
+        "You can skip the broiler altogether and just brown the sides in a frying pan, but this will take longer",
+        "Add a little flavor and tenderizer to the meat by pouring in a can of Coke with the barbecue sauce",
+        "Adjust cooking times according to your Crock Pot capabilities"
+      ],
+      "creator": "The Ashcroft Family Table"
     },
     {
-        "id": 6,
-        "name": "4-Ingredient Pumpkin Pancakes With Pancake Mix",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/11/pumpkin-pancakes-with-pancake-mix.jpg",
-        "description": "You’ll only need 4 ingredients to make these light and fluffy Pumpkin Pancakes with Pancake Mix. They taste like fall and your kids will love the bright orange color!",
-        "prepTime":"5 minutes",
-        "cookTime": "20 minutes",
-        "additionalTime": null,
-        "totalTime": "25 minutes",
-        "course": "Breakfast",
-        "cuisine": "American",
-        "servings": 20,
-        "servingSize": "1 pancake",
-        "calories": "108 kcal",
-        "ingredients": [
-            "3 cups buttermilk pancake mix",
-            "3 cups cold water",
-            "1 cup pumpkin puree",
-            "2 teaspoons pumpkin pie spice"
-        ],
-        "instructions": [
-            "1. In a medium bowl, whisk all ingredients until just blended. Do not over mix; batter should be lumpy.",
-            "2. Heat griddle over medium-low heat. Once heated spray with cooking spray or butter.",
-            "3. Pour pancake batter onto the griddle using 1/2 cup measuring cup or ladle.",
-            "4. Cook for 2 minutes or until bubbles appear.",
-            "5. Turn pancakes over and cook for 2 minutes longer or until the other side is done."
-        ],
-        "substitutions": [
-            "Cinnamon (1 1/2 teaspoons) and ginger (1/2 teaspoon for pumpkin pie spice",
-            "Bisquick (1:1) for pancake mix"
-        ]
-    },
-    {
-        "id": 7,
-        "name": "Healthy Crustless Broccoli and Ham Quiche",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/10/quiche-with-ham-and-broccoli.jpg",
-        "description": "This Crustless Broccoli and Ham Quiche features a delicious egg filling and is topped with melty cheese. It’s low-carb and a healthy option for your breakfast or brunch.",
-        "prepTime": "10 minutes",
-        "cookTime": "30 minutes",
-        "additionalTime": null,
-        "totalTime": "40 minutes",
-        "course": "Breakfast",
-        "cuisine": "American",
-        "servings": 8,
-        "servingSize":"1 piece",
-        "calories": "362 kcal",
-        "ingredients": [
-            "1 cup ham, cooked and cubed into small pieces",
-            "1/2 cup chopped onion",
-            "1 cup mayonnaise",
-            "4 tablespoons flour",
-            "4 eggs",
-            "1 cup milk",
-            "1 cup broccoli, cooked and chopped",
-            "1 cup grated cheddar cheese"
-        ],
-        "instructions": [
-            "1. Bake for 12-15 minutes at 425 degrees until the pastry is golden brown and jam is bubbling.", 
-            "2.Saute the ham pieces and onion in a small frying pan until the ham and onions have browned.",
-            "3.Combine mayonnaise, flour, eggs, and milk in a medium bowl. Mix well.",
-            "4. Place broccoli, ham, onion, and half the cheese in the bottom of a greased 9 inch pie dish. Pour the egg mixture on top.",
-            "5. Sprinkle the rest of the cheese evenly over the quiche.",
-            "6. Bake at 350 degrees for 35-45 minutes, until the center is almost set (slightly jiggly). Allow to cool for 15 minutes before serving."
-        ],
-        "substitutions": [
-            "Half and half (1:1), evaporated milk (1:1) for milk",
-            "Low-fat mayonnaise (1:1), greek yogurt (1:1), egg (1), aioli (1:1), sour cream (1:1), avacado (1:1), hummus (1:1), white bean dip (1:1) for mayonnaise",
-            "Chicken, shrimp, tuna, crab, or spam for ham",
-            "Onion powder/dried minced onion (1 teaspoon) for onion",
-            "Any other cheese of choice (1:1), nutritional yeast, cashew cheese, commercial vegan cheddar for cheddar cheese",
-            "Veggie of choice for broccoli"
-        ],
-        "creator":"The Ashcroft Family Table"
-    },
-    {
-        "id": 8,
-        "name": "The Best Monte Cristo Sliders",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/02/monte-cristo-sliders-1024x1536.jpg",
-        "description": "These sliders are the party version of the popular sandwich made with turkey, ham, Swiss, and powdered sugar. I’ve adjusted the recipe for maximum flavor to make these the best Monte Cristo Sliders ever!",
-        "prepTime":"15 miutes",
-        "cookTime":"30 minutes",
-        "additionalTime": null,
-        "totalTime": "45 minutes",
-        "course": "Lunch",
-        "cuisine": "American",
-        "servings": 12,
-        "servingSize": "1 slider",
-        "calories": "255 kcal",
-        "ingredients": [
-            "12 Hawaiian dinner rolls, grouped together",
-            "1/4 cup mayonnaise",
-            "1 Tablespoon Dijon mustard",
-            "10 slices Swiss cheese, divided",
-            "12 pieces thinly sliced ham, about 6 ounces",
-            "12 pieces thinly sliced turkey, about 6 ounces",
-            "1/4cup butter, melted, but slightly cooled",
-            "2 eggs",
-            "powdered sugar, for dusting",
-            "warmed raspberry jam, for serving"
-        ],
-        "instructions": [
-            "1. Preheat oven to 350 degrees and place a piece of parchment paper in a 9×13 rectangle baking dish.",
-            "2. Cut the group of Hawaiian dinner rolls in half using a serrated knife so the tops are separated from the bottoms. Do not break the rolls apart into individual servings. You should have 2 large pieces of bread when you're done.",
-            "3. Mix mayonnaise and Dijon mustard together in a small bowl. Spread evenly over the top piece of bread.",
-            "4. Place 5 pieces of Swiss cheese on the bottom piece of bread, cutting one of the pieces in half to fit.",
-            "5. Layer sliced ham and sliced turkey on top of the Swiss cheese.",
-            "6. Top the meat with another 5 pieces of Swiss cheese, cutting one of the pieces in half to fit.",
-            "7. Place the tops of the rolls on the meat and cheese and carefully place all of the sliders in the baking dish.",
-            "8. Mix melted butter and eggs together in a small bowl. Brush the egg mixture over the rolls, making sure to get all of the tops coated.",
-            "9. Cover the baking pan with foil, tenting it so it doesn't touch the tops of the rolls, and bake at 350 degrees for 15 minutes.",
-            "10. After 15 minutes, carefully remove the foil and re-brush the rolls with any egg mixture that has fallen off the sides. Bake uncovered for another 10-15 minutes until the rolls are golden brown and the egg mixture is cooked.",
-            "11. Allow the rolls to cool slightly and then dust with powdered sugar. Use a metal spatula to cut the sliders apart and serve with warmed raspberry jam."
-        ],
-        "substitutions": [
-            "Any pre-packaged dinner rolls, homemade rolls, off brand hawaiian rolls for King's Hawaiian Dinner Rolls",
-            "Aioli for mayonnaise"
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 9,
-        "name": "Pumpkin Chocolate Chip Skillet Pancake",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/08/pumpkin-chocolate-chip-skillet-pancake-1024x1536.jpg",
-        "description": "This Pumpkin Chocolate Chip Skillet Pancake is baked in a cast iron skillet and topped with a delicious cream cheese whipped cream. It’s a yummy festive breakfast that’s perfect for fall!",
-        "prepTime": "5 minutes",
-        "cookTime": "30 minutes",
-        "additionalTime": null,
-        "totalTime": "35 minutes",
-        "course": "Breakfast",
-        "cuisine": "American",
-        "servings": 10,
-        "servingSize": "1 piece",
-        "calories": "271 kcal",
-        "ingredients": [
-            "2 cups pancake mix",
-            "1/2 cup pumpkin puree",
-            "1 teaspoon pumpkin pie spice",
-            "1 teaspoon vanilla",
-            "1 1/4 cup milk",
-            "1/2 cup chocolate chips",
-            "additional pumpkin pie spice and cinnamon sticks, if desired",
-            "4 ounces cream cheese, cold",
-            "1 cup heavy whipping cream",
-            "1/2 cup powdered sugar",
-            "1/2 teaspoon vanilla"
-        ],
-        "instructions": [
-            "1. Preheat oven to 350 degrees.",
-            "2. Add pancake mix, pumpkin puree, pumpkin pie spice, vanilla, and milk to a medium mixing bowl. Gently whisk until just combined. Do not overmix.",
-            "3. Pour the pancake batter into a lightly greased 10-inch cast iron skillet and top with chocolate chips. Bake for 25-30 minutes or until a toothpick inserted into the middle of the pancake comes out clean.",
-            "4. While the pancake is cooking, beat cream cheese for 2-3 minutes in a chilled medium mixing bowl until smooth.",
-            "5. Slowly add the heavy whipping cream until it's all combined with the cream cheese.",
-            "6. Continue beating on medium-high speed until soft peaks form.",
-            "7. Add powdered sugar and vanilla extract to the whipped cream and beat on medium-high speed until stiff peaks form (about 5-10 minutes). Refrigerate until ready to serve.",
-            "8. Slice the skillet pancake and serve with the cream cheese whipped cream and a dusting of pumpkin pie spice and a cinnamon stick, if desired"
-        ],
-        "substitutions": [
-            "Water (1:1), non-dairy milk (1:1), evaporated milk (1:1) for milk",
-            "Cinnamon (3/4 teaspoon + ginger, allspice, cloves, or nutmeg (1/4 teaspoon; cinnamon (1/2 teaspoon) + 2 of these spices: ginger, allspice, cloves, or nutmeg (1/4 teaspoon)",
-            "Any flavor or size chocolate chips you want"
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 10,
-        "name": "Butterscotch Overnight Sticky Buns",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/03/overnight-butterscotch-rolls.jpg",
-        "description": "These Butterscotch Overnight Sticky Buns are soft, pull-apart rolls covered in a delicious sugar glaze and topped with pecans. This yummy dish is perfect for any family gathering or holiday brunch.",
-        "prepTime": "10 minutes",
-        "cookTime":"30 minutes",
-        "additionalTime": "8 hours",
-        "totalTime": "8 hours 40 minutes",
-        "course": "Breakfast",
-        "cuisine": "American",
-        "servings": 16,
-        "servingSize": "1 bun",
-        "calories": "235 kcal",
-        "ingredients": [
-            "16-18 frozen rolls, or 8 large rolls cut in half",
-            "1/2 cup pecan halves, or 1/4 cup chopped pecans",
-            "3.5 ounces butterscotch pudding and pie filling , not instant",
-            "3/4 cup brown sugar",
-            "1 teaspoon cinnamon",
-            "1/2 cup melted butter"
-        ],
-        "instructions": [
-            "1. Grease a round 9-inch cake pan.",
-            "2. Spread pecan halves in the pan so the rounded sides are down.",
-            "3. Drop the rolls in the pan to form a single layer.",
-            "4. Blend butterscotch pudding, brown sugar, and cinnamon in a small bowl.",
-            "5. Sprinkle the mixture over the rolls.",
-            "6. Pour melted butter over the rolls.",
-            "7. Cover the pan with plastic wrap and refrigerate overnight.",
-            "8. When ready to cook, remove the plastic wrap, preheat your oven to 350 degrees.",
-            "9. Bake for 30 minutes or until sugar is well dissolved and bubbly. Check the rolls after 15 minutes and cover the top with foil if they are browning.",
-            "10. To serve, turn the sticky buns onto a large plate that will catch the syrup."
-        ],
-        "substitutions": [
-            "Any frozen rolls",
-            "Chopped pecans for whole pecans"
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 11,
-        "name": "Cherry Chocolate Chip Muffins",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/02/cherry-muffins-1024x1536.jpg",
-        "description": "These yummy Cherry Chocolate Chip Muffins are made with maraschino cherries and topped with a pretty pink glaze. They’re perfect for Valentine’s Day!",
-        "prepTime": "10 minutes",
-        "cookTime": "18 minutes",
-        "additionalTime": "10 minutes",
-        "totalTime": "38 minutes",
-        "course": "Breakfast",
-        "cuisine": "American",
-        "servings": 12,
-        "servingSize": "1 regular or 2 mini",
-        "calories": "237 kcal",
-        "ingredients": [
-            "1 egg",
-            "1/2 cup milk",
-            "1/4 cup avocado oil",
-            "1 1/2 cups flour",
-            "1/2 cup granulated sugar",
-            "2 teaspoons baking powder",
-            "1/2 teaspoon salt",
-            "10 ounces maraschino cherries",
-            "3/4 cup miniature chocolate chips",
-            "1 cup powdered sugar",
-            "2-3 tablespoons reserved cherry juice"
-        ],
-        "instructions": [
-            "1. Preheat your oven to 375 degrees.",
-            "2. Whisk egg, milk, and vegetable oil together in a medium mixing bowl.",
-            "3. Stir flour, granulated sugar, baking powder, and salt into the wet ingredients just until moist.",
-            "4. Drain the jar of maraschino cherries, saving 3 tablespoons of the juice.",
-            "5. Chop the cherries into quarters and fold them into the batter along with chocolate chips.",
-            "6. Lightly grease a muffin tin and use a 1/4 measuring cup to add batter to each cup.",
-            "7. Bake the muffins for 18 minutes or until a toothpick inserted into the center of a muffin comes out clean.",
-            "8. Allow the muffins to cool for 10 minutes and then move from the pan to a wire rack.",
-            "9. Combine powdered sugar and reserved cherry juice to make the glaze. Start with 1 tablespoon of juice at a time until you reach the desired consistency.",
-            "10. Drizzle the glaze over the cooled muffins using a spoon or fork."
-        ],
-        "substitutions": [
-            "Frozen whole cherries or fresh cherries for maraschino cherries",
-            "Regular sized chocolate chips for mini chocolate chips",
-            "Add half a cup of chopped pecans or walnuts if you want to add nuts"
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 12,
-        "name": "Grape and Apple Chicken Salad",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/01/grape-and-apple-chicken-salad.jpg",
-        "description": "This grape and apple chicken salad is a quick and easy meal that features a creamy dressing, delicious fruit, savory chicken, and an extra special crunch. It’s the best chicken salad recipe ever!",
-        "prepTime": "10 minutes",
-        "cookTime": null,
-        "additionalTime": null,
-        "totalTime": "10 minutes",
-        "course": "Lunch",
-        "cuisine": "American",
-        "servings": 8,
-        "servingSize": "1 Sandwich",
-        "calories": "507 kcal",
-        "ingredients": [
-            "3 cups cooked chicken, roughly chopped",
-            "1 cup chopped grapes",
-            "1 cup chopped apples,",
-            "1 cup chopped strawberries",
-            "1/4 cup dried cranberries",
-            "1/4 cup sliced almonds",
-            "1 cup mayonnaise",
-            "Salt and pepper",
-            "8 buns, or 16 slices of bread"
-        ],
-        "instructions": [
-            "1. Add chicken, fruit, dried cranberries, and sliced almonds to a medium-size mixing bowl.",
-            "2. Stir mayonnaise with the rest of the ingredients and mix well to combine. Sprinkle salt and pepper to taste.",
-            "3. Create a sandwich with bread and 3/4 cup of the chicken salad."
-        ],
-        "substitutions": [
-            "Chicken, shrimp, tuna, crab, or spam for ham",
-            "Cashews, candied pecans, or no nuts in place of almonds",
-            "Greek yogurt for mayonnaise",
-            "Croissants, ciabatta rolls, wheat bread, lettuce leaves, sliced cucumbers for buns",
-            "Add celery for a crunch."
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 13,
-        "name": "Coconut Cilantro Chicken Soup",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/04/coconut-chicken-soup-1024x1536.jpg",
-        "description": "Coconut Cilantro Chicken Soup features a creamy broth, flavorful spices, shredded chicken, and white rice. This tasty soup is as easy to make as it is delicious!",
-        "prepTime": "5 minutes",
-        "cookTime": "15 minutes",
-        "additionalTime": null,
-        "totalTime": "20 minutes",
-        "course": "Lunch",
-        "cuisine": "Thai",
-        "servings": 6,
-        "calories": "230 kcal",
-        "ingredients": [
-            "3 Tablespoons butter",
-            "1 cup shredded carrot, about 1 large carrot",
-            "1/4 teaspoon cinnamon",
-            "1/4 teaspoon ginger",
-            "1/4 teaspoon paprika",
-            "1/4 teaspoon salt",
-            "2 cups chicken broth",
-            "1/2 bunch cilantro",
-            "15 ounces unsweetened lite coconut milk, 1 can",
-            "1/2 pound shredded and finely chopped chicken, about 2 cups",
-            "1 cup cooked white rice",
-            "2 Tablespoons lime juice, about 1 fresh lime",
-            "1 Tablespoon soy sauce"
-        ],
-        "instructions": [
-            "1. Add butter, shredded carrot, cinnamon, ginger, paprika, and salt to a large soup pot or dutch oven. Cook over medium-low heat until the carrots are soft and fragrant, then turn the heat to low.",
-            "2. Pulse chicken broth and cilantro in a blender 2-3 times until the cilantro has become fine and pour into the soup pot. Stir to combine.",
-            "3. Add coconut milk, chopped chicken, cooked white rice, lime juice, and soy sauce to the pot and stir to combine.",
-            "4. Simmer the soup on medium-low heat for 5-10 minutes until everything is warmed through. Serve with additional cilantro and lime wedges, if desired."
-        ],
-        "substitutions": [
-            "Turkey or canned chicken for chicken",
-            "Vegetable stock, chicken bouillon, coconut milk for chicken broth",
-            "Parsley (1:1), Thai basil (1:1), lemon or lime (add to taste) for cilantro",
-            "Ghee (1:1); coconut oil (1:1), olive oil (3/4 of the amount of called for butter), margarine (1:1) for butter",
-            "Add 1/2 teaspoon curry powder",
-            "Add 1/4 teaspoon chili powder",
-            "Add Chopped jalapeno",
-            "Add 1/2 teaspoon garam masala blend",
-            "Add 1 tablespoon Thai fish sauce"
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 14,
+        "id": 27,
         "name": "Healthy Turkey Lasagna Soup",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/02/lasagna-soup-1.jpg",
+        "image": "images/turkey-lasagna-soup.webp",
         "description": "This healthy Turkey Lasagna Soup recipe features browned ground turkey, tender noodles, a flavorful broth, and a little cheese. It’s everything you love about traditional lasagna without all of the calories!",
         "prepTime": null,
         "cookTime": "25 minutes",
@@ -1405,533 +1101,6 @@
             "1:1 substitute of basil, italian seasoning, thyme, or marjoram for oregano"
         ],
         "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 15,
-        "name": "The Easiest Creamy Taco Soup",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/02/creamy-taco-soup-recipe-1024x1536.jpg",
-        "description": "This delicious creamy taco soup features a creamy broth, ground beef, beans, vegetables, and plenty of taco spice. It’s so easy to make and ready in just 30 minutes!",
-        "prepTime": null,
-        "cookTime":"30 minutes",
-        "additionalTime": null,
-        "totalTime":"30 minutes",
-        "course": "Lunch",
-        "cuisine": "Mexican",
-        "servings": 8,
-        "calories": "363 kcal",
-        "ingredients": [
-            "1 pound ground beef",
-            "28 ounces canned crushed tomatoes",
-            "2 cups chicken broth",
-            "3 tablespoons taco seasoning",
-            "15.5 ounces canned pinto beans, drained",
-            "15.5 ounces canned black beans, drained",
-            "15 ounces canned corn",
-            "4 ounces cream cheese, room temperature"
-        ],
-        "instructions": [
-            "1. Brown ground beef in a large stockpot over medium-high heat until no longer pink. Drain off any fat.",
-            "2. Add crushed tomatoes, chicken broth, taco seasoning, pinto beans, black beans, and corn to the pot and stir to combine.",
-            "3. Bring the soup to a boil. Once it’s boiling, reduce heat to medium and simmer for 10 minutes.",
-            "4. Add cream cheese to a microwave save bowl and heat for 30 seconds-1 minute. Stir well and then at to the soup. Allow it to melt for 2 minutes and whisk in any remaining cubes until combined.",
-            "5. Serve the soup with desired toppings."
-        ],
-        "substitutions": [
-            "Ground turkey or leftover taco meat for ground beef",
-            "Kidney beans for pinto or black beans",
-            "Vegetable stock, chicken bouillon, coconut milk for chicken broth",
-            "Marscapone, cottage cheese, greek yogurt for cream cheese",
-            "Add 1 1/2 cups cooked rice or noodles after adding cream cheese",
-            "Suggested toppings: tortilla strips, shredded cheese, lime juice, chopped avocado, cilantro, and sour cream"
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 16,
-        "name": "Melty Kalua Pork Sandwiches",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2023/03/kalua-pork-sandwiches.jpg",
-        "description": "If you’re a fan of the iconic plate lunch, you won’t want to miss these Melty Kalua Pork Sandwiches. This mouth-watering twist on a classic will transport you straight to the islands!",
-        "prepTime":"10 minutes",
-        "cookTime": "8 hours 10 minutes",
-        "additionalTime": null,
-        "totalTime": "8 hours 20 minutes",
-        "course": "Lunch",
-        "cuisine": "American",
-        "servings": 6,
-        "servingSize": "1 Sandwich",
-        "calories": "661 kcal",
-        "ingredients": [
-            "4-6 pound pork shoulder",
-            "1 Tablespoon liquid smoke",
-            "2-3 teaspoons Himalayan pink salt",
-            "6 hoagie buns",
-            "36 ounces kalua pork",
-            "12 slices provolone cheese",
-            "1 cup katsu sauce",
-            "3 cups shredded cabbage"
-        ],
-        "instructions": [
-            "1. Pat pork shoulder dry with paper towels and then pierce all over using a fork.",
-            "2. Place the pork in slow cooker and pour liquid smoke and Himalayan pink salt over the pork.",
-            "3. Cover and cook for 8-12 hours on low, or until the pork is cooked through.",
-            "4. Remove the pork from the slow cooker and all but 1 cup of liquid. Shred the pork and return to the slow cooker on the warm setting or keep in an airtight container until you're ready to make the sandwiches.",
-            "5. Preheat your oven to 350 degrees Fahrenheit and lightly spray a 13 in x 18 in baking sheet.",
-            "6. Once the meat is ready, slice hoagie buns in half. Add 4-6 ounces of kalua pork to each hoagie and top with 2 slices of provolone cheese.",
-            "7. Place the open hoagies on the prepared baking sheet and toast at 350 degrees until the cheese has melted. (You may need to toast the sandwiches in batches if all of the hoagies don't fit on the baking sheet.)",
-            "8. Drizzle the sandwiches with katsu sauce, top with shredded cabbage, and serve."
-        ],
-        "substitutions": [
-            "Swiss or colby jack for provolone",
-            "Red hawaiian salt for Himalayan Pink Salt",
-            "Toast the bread for a crunch",
-            "Add pineapple rings on top of cheese for a sweet element"
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 17,
-        "name": "Easy Crock Pot Minestrone Soup",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/03/crock-pot-minestrone-soup-1024x1536.jpg",
-        "description": "This Crock Pot Minestrone Soup features tender vegetables, pasta, and beans in a flavorful seasoned broth. With a shorter ingredient list and the use of frozen vegetables, this will be the easiest minestrone soup you’ve ever made!",
-        "prepTime": "10 minutes",
-        "cookTime": "4 hours",
-        "additionalTime": null,
-        "totalTime": "4 hours 10 minutes",
-        "course": "Lunch",
-        "cuisine": "Italian",
-        "servings": 8,
-        "calories": "243 kcal",
-        "ingredients": [
-            "2 large carrots, peeled and sliced",
-            "1 cup frozen chopped onions, about 1 small onion",
-            "2 cups frozen zucchini slices, about 2 medium zucchini",
-            "2 cloves garlic, minced",
-            "30 ounces canned kidney beans, drained",
-            "28 ounces beef broth",
-            "28 ounces crushed tomatoes",
-            "1 teaspoon dried basil",
-            "1/2 teaspoon dried oregano",
-            "salt and pepper, to taste",
-            "1 1/2 cups uncooked elbow macaroni"
-        ],
-        "instructions": [
-            "1. Peel and slice carrots (or use frozen).",
-            "2. Place the carrots, onion, zucchini slices, minced garlic, kidney beans, beef broth, crushed tomatoes, basil, oregano, and salt and pepper in Crock Pot insert.",
-            "3. Stir well.",
-            "4. Cover and cook on high for 3-4 hours or low for 4-5 hours, until vegetables are tender.",
-            "5. With 30 minutes of cooking time left, add uncooked macaroni. Cover, turn the heat to high, and finish cooking until the macaroni is tender.",
-            "6. Serve with Parmesan cheese."
-        ],
-        "substitutions": [
-            "Use fresh or frozen veggies",
-            "Any small pasta shapes (ditalini, shells, wagon wheels) for macaroni",
-            "Add Sun-dried tomato pesto",
-            "Add Chopped celery",
-            "Add Bay leaves",
-            "Add Potato cubes",
-            "Add Dried rosemary",
-            "Add Yellow squash cubes",
-            "Add Parmesan rind",
-            "Add Frozen green beans",
-            "Add Spinach",
-            "Add Butternut squash",
-            "Add Sweet potato cubes",
-            "Add Cooked ground beef",
-            "Add Seared cubes of chuck roast"
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 18,
-        "name": "The Easiest Creamy Chicken Noodle Soup",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/01/easy-creamy-chicken-noodle-soup-3-1024x1536.jpg",
-        "description": "This Creamy Chicken Noodle Soup features a creamy broth, tender chicken, and savory vegetables. It’s incredibly easy to make and only has 8 ingredients!",
-        "prepTime":"5 minutes",
-        "cookTime": "40 minutes",
-        "additionalTime": null,
-        "totalTime": "45 minutes",
-        "course": "Lunch",
-        "cuisine": "American",
-        "servings": 10,
-        "calories": "412 kcal",
-        "ingredients": [
-            "32 ounces water",
-            "2-3 boneless chicken breasts, trimmed of fat",
-            "2 chicken bouillon cubes",
-            "8 ounces egg noodles",
-            "10.5 ounces cream of chicken soup",
-            "12 ounces evaporated milk",
-            "16 ounces sour cream",
-            "12 ounces frozen carrots",
-            "10 ounces frozen peas"
-        ],
-        "instructions": [
-            "1. Bring water to a boil in a large stockpot.",
-            "2. Add chicken breasts and bouillon cubes to the water and reduce the heat to medium. Simmer for 15-20 minutes (time will depend on the thickness of chicken breasts).",
-            "3. Remove one chicken breast to ensure it has reached 165 degrees Fahrenheit. Carefully remove all of the chicken, shred it, and set aside.",
-            "4. Cook egg noodles in the chicken broth, adding up to a cup of water if needed.",
-            "5. When the noodles are done, add the shredded chicken, cream of chicken soup, evaporated milk, sour cream, frozen carrots, and frozen peas to the pot and stir well to combine.",
-            "6. Heat the soup until all the ingredients are warm."
-        ],
-        "substitutions": [
-            "Cream of mushroom soup, cream of celery soup, cream of shrimp, greek yogurt for cream of chicken soup",
-            "Powdered milk (mix 1 1/2 cups with 1 1/4 cups water), half and half (1:1), dairy free milks (1:1) for evaporated milk",
-            "Greek yogurt, cottage cheese, cream cheese, mascarpone cheese for sour cream",
-            "Add 1/2 pound fresh or canned mushrooms"
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 19,
-        "name": "Easy Spaghetti with Chili Sauce (Cincinnati Chili)",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/10/cincinatti-chili-1024x1536.jpg",
-        "description": "Spaghetti with Chili Sauce (or Cincinnati Chili) features a meaty chili served over spaghetti and topped with sour cream and cheese. Yum!",
-        "prepTime":"5 minutes",
-        "cookTime": "20 minutes",
-        "additionalTime": null,
-        "totalTime": "25 minutes",
-        "course": "Dinner",
-        "cuisine": "American",
-        "servings": 6,
-        "calories": "565 kcal",
-        "ingredients": [
-            "1 pound ground beef",
-            "1 cup chopped onions",
-            "1 tablespoon chili powder",
-            "1 teaspoon salt",
-            "28 ounces canned diced tomatoes, undrained",
-            "15 ounces canned kidney beans, undrained",
-            "8 ounces canned tomato sauce",
-            "16 ounces spaghetti noodles",
-            "Shredded cheddar cheese",
-            "Sour cream"
-        ],
-        "instructions": [
-            "1. Cook and stir ground beef and onions in a large skillet or pan until beef is brown and onions are tender; drain off fat.",
-            "2. Stir in chili powder, salt, tomatoes, beans, and tomato sauce.",
-            "3. Cook uncovered over medium heat, about 10 minutes or until thickened. ",
-            "4. While the chili sauce is simmering, cook the spaghetti as directed on package and drain.",
-            "5. Spoon chili over hot spaghetti.",
-            "6. Sprinkle each serving with cheddar cheese and a dollop of sour cream."
-        ],
-        "substitutions": [
-            "Dried onions (3 Tablespoons) or onion powder (1 teaspoon) for fresh onion",
-            "Ground turkey for ground beef",
-            "Black beans, pinto beans, navy beans, cannelini beans, or beans of choice for kidney beans",
-            "Tomato paste (1 part paste to 1 part water), canned tomatoes (1:1), tomato soup (remove 1/4 cup liquid for every 10.75 ounce can), spaghetti sauce (1:1) for tomato sauce",
-            "Instead of one can whole tomatoes, try 2 cans diced tomatoes for already broken up tomatoes and to stretch the sauce",
-            "To increase the spice factor, add two more teaspoons of chili powder and a shake or so of crushed red pepper"
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 20,
-        "name": "Easy Spam Fried Rice",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/12/spam-fried-rice-recipe.jpg",
-        "description": "This Spam Fried Rice recipe features the delicious canned meat mixed with rice, vegetables, and a salty sauce. It's an easy side dish and a great way to use up leftover rice!",
-        "prepTime":"5 minutes",
-        "cookTime": "30 minutes",
-        "additionalTime": null,
-        "totalTime": "35 minutes",
-        "course": "Dinner",
-        "cuisine": "Asian",
-        "servings": 6,
-        "calories": "250 kcal",
-        "ingredients": [
-            "1 cup uncooked long-grain rice, or 3 cups of cooked rice",
-            "6 ounces Spam",
-            "1 cup frozen peas and carrots",
-            "2 eggs",
-            "2 Tablespoons soy sauce",
-            "1 Tablespoon vinegar",
-            "1/2 Tablespoon sesame oil"
-        ],
-        "instructions": [
-            "1. Cook rice or measure out leftover cooked rice.",
-            "2. While the rice is cooking, dice Spam. Fry in a medium frying pan over medium heat until brown and crispy.",
-            "3. While the Spam is cooking, place mixed peas and carrots in a microwave-safe dish and cover with water. Cover and microwave on high for 2 minutes.",
-            "4. Drain the vegetables and add them to the frying pan.",
-            "5. Push the meat and vegetables to the side of the pan. Lightly beat eggs and add them to the frying pan. Push the eggs around until they start to cook and then mix them with the meat and vegetables. Cook the eggs for 2-3 more minutes.",
-            "6. When the eggs are cooked, add the cooked rice, soy sauce, vinegar, and sesame oil to the frying pan.",
-            "7. Stir everything together until mixed well. Turn the heat to low and continue warming until the rice is heated through."
-        ],
-        "substitutions": [
-            "You can use leftover rice for this recipe",
-            "Try adding different falvors like: minced garlic, frozen corn, fish sauce, oyster sauce, green onion",
-            "Try different spam flavors like: original, low sodium, or teriyaki"
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 21,
-        "name": "Elevated Hamburger Helper Lasagna (One Pot)",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/08/hamburger-helper-lasagna-1024x1536.jpg",
-        "description": "This elevated Hamburger Helper Lasagna combines the noodles from the familiar boxed dinner with a homemade meat sauce and 2 different kinds of cheese. It's a delicious one pot lasagna meal that's so easy to throw together!",
-        "prepTime":"N/A",
-        "cookTime": "35 minutes",
-        "additionalTime": null,
-        "totalTime": "35 minutes",
-        "course": "Dinner",
-        "cuisine": "American",
-        "servings": 8,
-        "calories": "421 kcal",
-        "ingredients": [
-            "1 pound ground beef",
-            "2 cloves garlic, minced",
-            "3 ounces tomato paste, about 5 tablespoons",
-            "15 ounces diced tomatoes",
-            "1 teaspoon salt",
-            "3/4 teaspoon pepper",
-            "1/2 teaspoon oregano",
-            "2 boxes Hamburger Helper Lasagna, 6.9 ounces each",
-            "4 cups chicken broth",
-            "2 ounces cream cheese",
-            "1 1/2 cups shredded mozzarella cheese, divided",
-            "dried parsley, optional"
-        ],
-        "instructions": [
-            "1. Add ground beef and minced garlic to a dutch oven or large soup pot. Brown ground beef and garlic over medium-high heat.",
-            "2. Once the ground beef is cooked, drain off any excess oil. Add tomato paste, diced tomatoes, salt, pepper, and oregano to the pot. Stir to combine.",
-            "3. Cover the pan and simmer for 10 minutes.",
-            "4. Add 2 packages of Hamburger Helper Lasagna noodles (not the seasoning) and chicken broth or water to the meat mixture. Bring to a boil.",
-            "5. Once the mixture is boiling, reduce to a simmer. Cover and cook for 10 minutes, or until the noodles are al dente.",
-            "6. Reduce the heat to low. Add cream cheese and 1 cup of shredded mozzarella to the noodles. Stir until the cheeses have melted.",
-            "7. Top with an additional 1/2 cup of mozzarella cheese and parsley before serving."
-        ],
-        "substitutions": [
-            "Use any noodle shape you'd like in place of hamburger helper noodles",
-            "Swap ricotta or cottage cheese (8 oz) for cream cheese with 1 cup mozzarella",
-            "24 oz jar of favorite pasta sauce in place of tomatoes and seasonings",
-            "Tomato sauce or tomatoe puree (2-3 T. to 1 T. paste), diced/crushed tomatoes (2 T. to 1 T. paste), pureed red peppers, ketchup (1:1) for tomato paste",
-            "Marjoram, thyme, italian seasoning, basil, parsley, tarragon, mexican oregano (1:1) for oregano",
-            "Vegetable stock, chicken bouillon, chicken stock, coconut milk for chicken broth"
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 22,
-        "name": "Simple Crock Pot Hamburger Stew",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2020/11/hamburger-stew-1024x1536.jpg",
-        "description": "This simple Crock Pot Hamburger Stew features browned hamburger, potatoes, carrots, peas, and onions and is a cinch to throw together!",
-        "prepTime":"20 minutes",
-        "cookTime": "5 hours",
-        "additionalTime": null,
-        "totalTime": "5 hours 20 minutes",
-        "course": "Dinner",
-        "cuisine": "American",
-        "servings": 8,
-        "calories": "285 kcal",
-        "ingredients": [
-            "1 pound ground beef",
-            "1 medium onion",
-            "3-4 small potatoes",
-            "1 pound baby carrots, chopped if desired",
-            "Salt and pepper, to taste",
-            "10.5 ounces canned tomato soup",
-            "2 cups beef broth",
-            "2 Tablespoons Worcestershire sauce",
-            "12 ounces frozen peas, partially thawed"
-        ],
-        "instructions": [
-            "1. Brown ground beef in a frying pan until no longer pink. Drain and set aside.",
-            "2. While the ground beef is cooking, chop onion into small pieces and peel and slice potatoes into half circles.",
-            "3. Layer potatoes, chopped onion, and baby carrots in Crock Pot, seasoning each layer with salt and pepper.",
-            "4. Pour tomato soup, beef broth, and Worcestershire sauce over the vegetables in the Crock Pot.",
-            "5. Add ground beef on top of the vegetables and stir everything to combine.",
-            "6. Cover and cook on low for 5 to 6 hours or on high for 3 to 4 hours.",
-            "7. Once the vegetables are soft, remove the lid and add frozen peas. Stir to combine, turn the Crock Pot to warm and allow the peas to defrost.",
-            "8. Serve immediately."
-        ],
-        "substitutions": [
-            "Adjust cooking times according to your crockpot capabilities",
-            "Ground turkey for ground beef",
-            "Slice 2-3 medium carrots into 1 in pieces in place of baby carrots",
-            "Add 1 cup beef broth after cooking if desired",
-            "Beef stock, beef consomme, chicken broth, vegetable broth, mushroom broth, beef bouillon for beef broth"
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 23,
-        "name": "Poppy Seed Chicken Casserole with Rice",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/03/poppy-seed-chicken-casserole-1024x1536.jpg",
-        "description": "Poppy Seed Chicken Casserole with Rice features a creamy chicken and rice mixture covered with a delicious crunchy Ritz cracker topping. It's an easy way to use up leftovers and is sure to become a family favorite dinner!",
-        "prepTime":"10 minutes",
-        "cookTime": "30 minutes",
-        "additionalTime": null,
-        "totalTime": "40 minutes",
-        "course": "Dinner",
-        "cuisine": "American",
-        "servings": 8,
-        "calories": "390 kcal",
-        "ingredients": [
-            "2 cooked and shredded chicken breasts, about 3 cups",
-            "10.5 ounces canned cream of chicken soup",
-            "1 1/2 cups sour cream",
-            "2 cups cooked white rice",
-            "3.4 ounces crushed Ritz crackers, 1 sleeve",
-            "1/4 cup butter, melted",
-            "2 teaspoons poppy seeds",
-            "1 Tablespoon dried parsley",
-            "1/4 cup grated Parmesan cheese"
-        ],
-        "instructions": [
-            "1. Preheat oven to 350 degrees. Lightly coat a 9×13 baking dish with cooking spray and set aside.",
-            "2. In a medium-sized bowl, mix shredded chicken, cream of chicken soup, sour cream, and cooked rice.",
-            "3. Mix crushed Ritz crackers, melted butter, poppy seeds, dried parsley, and grated Parmesan cheese in a small bowl.",
-            "4. Pour the chicken mixture into the greased pan and spread into an even layer. Top with cracker crumb mixture.",
-            "5. Bake, uncovered, at 350 degrees for 30 minutes or until topping is crispy and the chicken mixture is bubbling."
-        ],
-        "substitutions": [
-            "Use plain Greek yogurt instead of sour cream.",
-            "Add in some softened cream cheese in place of some of the sour cream.",
-            "Add in cooked peas or broccoli to the chicken mixture.",
-            "Omit the rice and serve over cooked egg noodles or mashed potatoes.",
-            "Use leftover turkey, pork, or canned chicken instead of chicken.",
-            "Mix in Worcestershire sauce, garlic powder, lemon juice, or pepper to the chicken mixture.",
-            "Cream of mushroom soup, cream of celery soup, cream of shrimp, greek yogurt for cream of chicken soup",
-            "Ghee (1:1); coconut oil (1:1), olive oil (3/4 of the amount of called for butter), margarine (1:1) for butter" 
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 24,
-        "name": "The Best 3 Ingredient Crock PotPork Chops",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2021/04/crock-pot-pork-chops-1024x1536.jpg",
-        "description": "These 3 Ingredient Crock Pot Pork Chops are incredibly tender, flavorful, and so easy to make. As the name suggests, you'll only need three ingredients to make this delicious dinner!",
-        "prepTime":"10 minutes",
-        "cookTime": "6 hours",
-        "additionalTime": null,
-        "totalTime": "6 hours 10 minutes",
-        "course": "Dinner",
-        "cuisine": "American",
-        "servings": 6,
-        "calories": "402 kcal",
-        "ingredients": [
-            "4 pork chops, preferably bone-in",
-            "Salt and pepper, to taste",
-            "10.75 ounces cream of chicken soup (1 can)",
-            "12 ounces cooked egg noodles or rice"
-        ],
-        "instructions": [
-            "1. Brown pork chops in a greased frying pan over medium heat. (You’re not cooking the chops through, but rather searing each side briefly for extra flavor.)",
-            "2. Sprinkle each pork chop with some salt and pepper and place them in the Crock Pot.",
-            "3. Pour cream of chicken soup over the pork chops and cover with the lid.",
-            "4. Cook on LOW for 6-8 hours until pork is no longer pink.",
-            "5. Serve pork chops and gravy over cooked egg noodles or rice."
-        ],
-        "substitutions": [
-            "Cream of mushroom soup, cream of celery soup, cream of shrimp, greek yogurt for cream of chicken soup",
-            "Use an extra can of soup to make more gravy" 
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 25,
-        "name": "Crock Pot Rosemary Pork Chops",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/02/rosemary-pork-chops-1-1024x1536.jpg",
-        "description": "These Rosemary Pork Chops have all of the flavors of a Sunday dinner without all of the work! A creamy mushroom and rosemary sauce cover tender pork chops and red potatoes in this easy Crock Pot recipe.",
-        "prepTime":"15 minutes",
-        "cookTime": "4 hours",
-        "additionalTime": null,
-        "totalTime": "4 hours 15 minutes",
-        "course": "Dinner",
-        "cuisine": "American",
-        "servings": 6,
-        "calories": "330 kcal",
-        "ingredients": [
-            "6 pork chops",
-            "1 1/2 pounds petite red potatoes, or about 8 medium red potatoes",
-            "2 teaspoons dried rosemary",
-            "1/4 cup dried chopped onions, (onion flakes)",
-            "Salt and pepper, to taste",
-            "10 ounces canned cream of mushroom soup",
-            "1 teaspoon Worcestershire sauce",
-            "4 ounces canned sliced mushrooms, undrained"
-        ],
-        "instructions": [
-            "1. Brown pork chops in a lightly greased frying pan over medium heat, about 2 minutes on each side. (You’re not cooking the meat through, but rather searing each side briefly for extra flavor.)",
-            "2. While the pork chops are browning, wash and cut each red potato in half.",
-            "3. Place the potatoes on the bottom of the slow cooker and then place the pork chops on top of the potatoes.",
-            "4. Sprinkle the pork chops with dried rosemary, dried chopped onion, salt, and pepper.",
-            "5. Mix cream of mushroom soup, Worcestershire sauce, and mushrooms with the juice in a small bowl.",
-            "6. Pour the soup mixture over the pork chops.",
-            "7. Cover and cook on LOW for 4-6 hours, or until meat and potatoes are cooked through."
-        ],
-        "substitutions": [
-            "Adjust cooking times according to your crockpot capabilities",
-            "Skip browning pork chops if in a rush",
-            "Dried minced onion (2 T.) or onion powder (1 T.) in place of onion flakes" 
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-        "id": 26,
-        "name": "Crock Pot Country Style Pork Ribs (3 ingredients)",
-        "image": "https://www.ashcroftfamilytable.com/wp-content/uploads/2022/09/crock-pot-country-style-pork-ribs-1024x1536.jpg",
-        "description": "You'll only 3 ingredients to make these tender Crock Pot Country Style Pork Ribs. They're perfectly saucy and delicious, and couldn't be easier to throw together!",
-        "prepTime":"30 minutes",
-        "cookTime": "8 hours",
-        "additionalTime": null,
-        "totalTime": "8 hours 30 minutes",
-        "course": "Dinner",
-        "cuisine": "American",
-        "servings": 8,
-        "calories": "312 kcal",
-        "ingredients": [
-            "3-4 pounds country style pork ribs, boneless",
-            "salt and pepper, to taste",
-            "1 onion, sliced",
-            "16 ounces barbeque sauce"
-        ],
-        "instructions": [
-            "1. Sprinkle ribs with salt and pepper and place on a foil-lined baking sheet.",
-            "2. Broil ribs in oven on low until browned, turning every 5 minutes.",
-            "3. Put sliced onion in the bottom of the Crock Pot followed by the ribs.",
-            "4. Pour barbecue sauce over the ribs. Cover and cook on low for 6-8 hours or on high for 4-5 hours.",
-            "5. Serve ribs with rice, mashed potatoes, or pasta."
-        ],
-        "substitutions": [
-            "Purchase country style ribs and not large rack of ribs",
-            "You can skip the broiler altogether and just brown the sides in a frying pan, but this will take longer",
-            "Add a little flavor and tenderizer to the meat, you can pour in a can of Coke with the barbeque sauce",
-            "Adjust cooking times according to your crockpot capabilities" cvcv
-        ],
-        "creator": "The Ashcroft Family Table"
-    },
-    {
-      "id": 26,
-      "name": "Crock Pot Country Style Pork Ribs (3 ingredients)",
-      "image": "images/crock-pot-country-style-pork-ribs.webp",
-      "description": "You'll only need 3 ingredients to make these tender Crock Pot Country Style Pork Ribs. They're perfectly saucy and delicious, and couldn't be easier to throw together!",
-      "prepTime": "30 minutes",
-      "cookTime": "8 hours",
-      "additionalTime": null,
-      "totalTime": "8 hours 30 minutes",
-      "course": "Dinner",
-      "cuisine": "American",
-      "servings": 8,
-      "calories": "312 kcal",
-      "ingredients": [
-        "3-4 pounds country style pork ribs, boneless",
-        "Salt and pepper, to taste",
-        "1 onion, sliced",
-        "16 ounces barbecue sauce"
-      ],
-      "instructions": [
-        "1. Sprinkle ribs with salt and pepper and place on a foil-lined baking sheet.",
-        "2. Broil ribs in oven on low until browned, turning every 5 minutes.",
-        "3. Put sliced onion in the bottom of the Crock Pot followed by the ribs.",
-        "4. Pour barbecue sauce over the ribs. Cover and cook on low for 6-8 hours or on high for 4-5 hours.",
-        "5. Serve ribs with rice, mashed potatoes, or pasta."
-      ],
-      "substitutions": [
-        "Use country style ribs instead of a large rack of ribs",
-        "You can skip the broiler altogether and just brown the sides in a frying pan, but this will take longer",
-        "Add a little flavor and tenderizer to the meat by pouring in a can of Coke with the barbecue sauce",
-        "Adjust cooking times according to your Crock Pot capabilities"
-      ],
-      "creator": "The Ashcroft Family Table"
     }
   ]
-}
+} 
