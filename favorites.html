@@ -5,18 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Favorites | Use It or Lose It</title>
   <meta name="description" content="Your favorite recipes saved for quick access." />
-
-  <!-- Global + Recipes CSS -->
+  
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/recipes.css" />
   <link rel="stylesheet" href="css/favorites.css" />
-
-  <!-- JS -->
+  
   <script type="module" src="js/favorites.js" defer></script>
   <script type="module" src="js/navbar.js" defer></script>
 </head>
 <body>
-<header>
+  <header>
   <h1>Use It or Lose It</h1>
   <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
     <span class="hamburger"></span>
@@ -43,33 +41,34 @@
   </section>
 
   <!-- Filter Bar -->
-   <section class="filter-bar">
-  <label class="visually-hidden" for="favSearch">Search favorites</label>
-  <input type="text" id="favSearch" placeholder="Search favorites..." />
+  <section class="filter-bar">
+    <label class="visually-hidden" for="favSearch">Search favorites</label>
+    <input type="text" id="favSearch" placeholder="Search favorites..." />
 
-  <label class="visually-hidden" for="favSort">Sort favorites</label>
-  <select id="favSort">
-    <option value="alpha">Alphabetical (A-Z)</option>
-    <option value="newest">Newest Added</option>
-    <option value="oldest">Oldest Added</option>
-  </select>
+    <label class="visually-hidden" for="favSort">Sort favorites</label>
+    <select id="favSort">
+      <option value="alpha">Alphabetical (A-Z)</option>
+      <option value="newest">Newest Added</option>
+      <option value="oldest">Oldest Added</option>
+    </select>
 
-  <label class="visually-hidden" for="favType">Filter by type</label>
-  <select id="favType">
-    <option value="">All Types</option>
-    <option value="Breakfast">Breakfast</option>
-    <option value="Lunch">Lunch</option>
-    <option value="Dinner">Dinner</option>
-    <option value="Dessert">Dessert</option>
-  </select>
+    <label class="visually-hidden" for="favType">Filter by type</label>
+    <select id="favType">
+      <option value="">All Types</option>
+      <option value="Breakfast">Breakfast</option>
+      <option value="Lunch">Lunch</option>
+      <option value="Dinner">Dinner</option>
+      <option value="Dessert">Dessert</option>
+    </select>
 
-  <button id="clearFavFilters" class="clear-btn">Clear Filters</button>
-</section>
+    <button id="clearFavFilters" class="clear-btn">Clear Filters</button>
+  </section>
 
   <!-- Favorites Grid -->
   <section id="favoritesList" class="homepage-box">
     <h3 class="section-heading">Saved Recipes</h3>
-    <div class="favorites-grid"></div>
+    <div class="favorites-grid">
+    </div>
   </section>
 </main>
 
