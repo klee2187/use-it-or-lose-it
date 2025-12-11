@@ -73,8 +73,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
     recipeHighlightBox.innerHTML = `
       <h3>🍲 Recipe Highlight</h3>
+      <img class="recipe-highlight-image" src="${randomRecipe.image}" alt="${randomRecipe.name}">
       <p><strong>${randomRecipe.name}</strong></p>
-      <p>Type: ${randomRecipe.type}</p>
+      <p>Type: ${randomRecipe.course}</p>
       <a href="recipe-detail.html?id=${randomRecipe.id}">Check out this recipe!</a>
     `;
   } else if (recipeHighlightBox) {
