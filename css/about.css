@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+}
+
+main {
+    margin: 15px;
+}
+
+/* logo */
+img {
+    width: 4rem;
+    margin: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/* body text */
+
+h2, h3 {
+    color: var(--green);
+}
+
+p {
+    margin: .8rem 0 1rem 0;
+}
+
+.mascot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+video {
+    width: 60%;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    border-radius: 15px;
+}
+
+ul {
+    padding-left: 2rem;
+}
+
+.about-container {
+  background-color: var(--white);
+  border: 2px solid var(--light-green);
+  border-radius: 15px;
+  padding: var(--spacing-md);
+  margin: var(--spacing-md) auto;
+  max-width: 900px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+

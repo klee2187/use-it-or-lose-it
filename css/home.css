@@ -85,6 +85,12 @@
 }
 .recipe-highlight a:hover { background-color: #d35400; transform: scale(1.05); }
 
+.recipe-highlight-image {
+  aspect-ratio: 1 / 1;
+  width: 25%;
+  object-fit: cover;
+}
+
 /* Quick Links */
 .quick-links .feature-card-container {
   display: flex;
