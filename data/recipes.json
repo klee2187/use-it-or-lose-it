@@ -789,7 +789,7 @@
     {
       "id": 20,
       "name": "Easy Spam Fried Rice",
-      "image": "images/spam-fried-rice.webp",
+      "image": "images/spam-fried-rice-recipe.webp",
       "description": "This Spam Fried Rice recipe features the delicious canned meat mixed with rice, vegetables, and a salty sauce. It's an easy side dish and a great way to use up leftover rice!",
       "prepTime": "5 minutes",
       "cookTime": "30 minutes",
@@ -1070,7 +1070,7 @@
         "cookTime": "25 minutes",
         "additionalTime": null,
         "totalTime": "25 minutes",
-        "course": "Lunch",
+        "course": "Dinner",
         "cuisine": "Italian",
         "servings": 8,
         "calories": "241 kcal",
