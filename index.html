@@ -7,7 +7,7 @@
   <meta name="description" content="Reduce food waste by tracking inventory, recipes, and tips." />
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/home.css" />
-  
+
 </head>
 <body>
   <header>
@@ -28,39 +28,24 @@
       </ul>
     </nav>
   </header>
-  
-  <!-- Alerts -->
+
   <section id="alertSection" class="alert hidden" role="alert">
     <p id="alertMessage"></p>
     <button id="alertDismissBtn" aria-label="Dismiss alert">✖</button>
   </section>
 
   <main id="main">
-    <!-- Welcome -->
-    <section class="homepage-box centered-container">
-      <h2> Welcome to Use It or Lose It</h2>
-      <p>Track your food, save money, and reduce waste.</p>
+
+    <section class="homepage-hero centered-container">
+      <h1>Stop Food Waste, Save Money.</h1>
+      <p>Your simple, all-in-one tool for tracking inventory, finding recipes, and reducing household waste.</p>
+      <a href="inventory.html" class="button-primary">Start Tracking Now</a>
     </section>
 
-    <!-- Tip of the Day -->
-    <section id="tipContent" class="homepage-box tip-section" role="status" aria-live="polite">
-      <h3>🌿 Tip of the Day</h3>
-      <p>Your personalized tip will appear here.</p>
+    <section id="suggestedRecipes" class="homepage-box">
+      <h3>🍲 Suggested Recipes</h3>
     </section>
-
-    <!-- Did You Know Banner -->
-    <section id="funFactBanner" class="funfact-banner" aria-live="polite">
-      <h3>🧠 Did You Know?</h3>
-      <!-- JS will inject fun fact here -->
-    </section>
-
-    <!-- Recipe Highlight -->
-    <section class="homepage-box recipe-highlight">
-      <h3>📊 Recipe Highlight</h3>
-      <!-- JS will inject highlight recipe here -->
-    </section>
-
-    <!-- Quick Links -->
+    
     <section class="homepage-box quick-links">
       <h3>🔗 Quick Links</h3>
       <div class="feature-card-container">
@@ -71,26 +56,30 @@
       </div>
     </section>
 
-    <!-- Suggested Recipes -->
-    <section id="suggestedRecipes" class="homepage-box">
-      <h3>🍲 Suggested Recipes</h3>
-      <!-- JS will inject suggested recipes here -->
+    <section class="homepage-box recipe-highlight">
+      <h3>📊 Recipe Highlight</h3>
     </section>
-  </main>
 
-  <!-- Back to Top -->
-  <button id="backToTop" class="back-to-top" aria-label="Back to top" aria-hidden="true">↑</button>
+    <section id="tipContent" class="homepage-box tip-section" role="status" aria-live="polite">
+      <h3>🌿 Tip of the Day</h3>
+      <p>Your personalized tip will appear here.</p>
+    </section>
 
-  <!-- Toast Notification -->
-  <div id="toast" class="toast" aria-live="polite"></div>
+    <section id="funFactBanner" class="funfact-banner" aria-live="polite">
+      <h3>🧠 Did You Know?</h3>
+    </section>
+</main>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Use It or Lose It</p>
-    <a href="about.html">About Us</a>
-  </footer>
+<button id="backToTop" class="back-to-top" aria-label="Back to top" aria-hidden="true">↑</button>
 
-  <script type="module" src="js/home.js" defer></script>
-  <script type="module" src="js/navbar.js" defer></script>
+<div id="toast" class="toast" aria-live="polite"></div>
+
+<footer>
+  <p>© 2025 Use It or Lose It</p>
+  <a href="about.html">About Us</a>
+</footer>
+
+<script type="module" src="js/home.js" defer></script>
+<script type="module" src="js/navbar.js" defer></script>
 </body>
 </html>

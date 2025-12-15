@@ -15,6 +15,58 @@
   margin-bottom: var(--spacing-sm);
 }
 
+/* --- 1. Distinct Hero Section --- */
+.homepage-hero {
+  margin: var(--spacing-md) auto;
+  max-width: 900px;
+  text-align: center;
+  
+  /* Give it a strong visual presence */
+  padding: var(--spacing-lg) var(--spacing-md);
+  background-color: var(--white);
+  border: 4px solid var(--green); /* Thicker border */
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2); /* Stronger shadow */
+
+  /* Animation */
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.homepage-hero h1 {
+  font-size: 2.5rem; 
+  color: var(--dark-green);
+  margin-bottom: var(--spacing-sm);
+}
+
+.homepage-hero p {
+  font-size: 1.15rem;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-xl); /* Space above the CTA */
+}
+
+/* Primary CTA Button Style */
+.button-primary {
+  display: inline-block;
+  background-color: var(--accent-orange);
+  color: var(--white);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: 8px;
+  font-size: 1.15rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button-primary:hover {
+  background-color: #d35400; /* Darker orange */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
 /* Hero fade-in */
 .centered-container {
   animation: fadeInUp 0.6s ease forwards;
@@ -91,7 +143,7 @@
   object-fit: cover;
 }
 
-/* Quick Links */
+/* --- Quick Links Refinement --- */
 .quick-links .feature-card-container {
   display: flex;
   justify-content: center;
@@ -101,11 +153,9 @@
 }
 
 .feature-card {
-  background-color: rgba(56, 142, 60, 0.05);
-  border: 3px solid #388e3c;
-  color: #388e3c;
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: 10px;
+  min-width: 180px;
+  padding: var(--spacing-md); 
+  border-radius: 12px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -113,19 +163,57 @@
   transform: translateY(15px);
   animation: fadeInUp 0.6s ease forwards;
   text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
 }
-.feature-card a { color: #388e3c; text-decoration: none; }
-.feature-card:hover {
-  background-color: #388e3c;
-  color: #fffbea;
-  transform: scale(1.05);
-}
-.feature-card:nth-child(1) { animation-delay: 0.1s; }
-.feature-card:nth-child(2) { animation-delay: 0.25s; }
-.feature-card:nth-child(3) { animation-delay: 0.4s; }
-.feature-card:nth-child(4) { animation-delay: 0.55s; }
 
-/* Suggested Recipes Grid */
+/* Custom colors for better distinction */
+.feature-card:nth-child(1) { /* Inventory */
+  background-color: rgba(56, 142, 60, 0.1);
+  border: 3px solid #388e3c;
+  color: #388e3c;
+  animation-delay: 0.1s;
+}
+.feature-card:nth-child(2) { /* Recipes */
+  background-color: rgba(245, 124, 0, 0.1);
+  border: 3px solid #f57c00;
+  color: #f57c00;
+  animation-delay: 0.25s;
+}
+.feature-card:nth-child(3) { /* Budget */
+  background-color: rgba(21, 101, 192, 0.1);
+  border: 3px solid #1565c0;
+  color: #1565c0;
+  animation-delay: 0.4s;
+}
+.feature-card:nth-child(4) { /* Calendar */
+  background-color: rgba(0, 105, 92, 0.1);
+  border: 3px solid #00695c;
+  color: #00695c;
+  animation-delay: 0.55s;
+}
+
+.feature-card a { color: inherit; text-decoration: none; }
+
+/* Hover effects for all cards */
+.feature-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Specific hover background colors */
+.feature-card:nth-child(1):hover { background-color: #388e3c; color: var(--white); }
+.feature-card:nth-child(2):hover { background-color: #f57c00; color: var(--white); }
+.feature-card:nth-child(3):hover { background-color: #1565c0; color: var(--white); }
+.feature-card:nth-child(4):hover { background-color: #00695c; color: var(--white); }
+
+.feature-card:hover a { color: var(--white); }
+
+/* --- Suggested Recipes Grid (Urgency Look) --- */
+#suggestedRecipes h3 {
+    font-size: 1.6rem; /* Make the heading larger than the standard h3 */
+    color: var(--accent-orange); /* Match the card color */
+    margin-bottom: var(--spacing-md);
+}
 #suggestedRecipes .recipe-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -133,12 +221,12 @@
   margin-top: var(--spacing-md);
 }
 #suggestedRecipes .recipe-card {
-  background-color: rgba(245, 124, 0, 0.05);
-  border: 3px solid var(--accent-orange);
+  background-color: rgba(245, 124, 0, 0.08); /* Slightly darker background */
+  border: 4px solid var(--accent-orange); /* Thicker border */
   color: var(--accent-orange);
   border-radius: 12px;
   padding: var(--spacing-md);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15); /* Stronger visual cue */
   transition: transform 0.2s ease;
   min-height: 120px;
   animation: fadeInUp 0.5s ease forwards;
@@ -249,7 +337,7 @@
 /* --- Footer refinement --- */
 footer {
   background-color: rgba(56, 142, 60, 0.05); 
-  border-top: 3px solid #388e3c;          
+  border-top: 3px solid #388e3c;
   color: #388e3c;
   text-align: center;
   padding: var(--spacing-md);

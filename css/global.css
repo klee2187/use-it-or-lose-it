@@ -48,13 +48,13 @@
 
 /* logo */
 img {
-    width: 4rem;
-    margin: 5px;
+  width: 4rem;
+  margin: 5px;
 }
 
 a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 html, body {
@@ -69,11 +69,11 @@ body {
 
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* ensures footer sticks at bottom */
+  min-height: 100vh; 
 }
 
 main {
-  flex: 1; /* pushes footer down */
+  flex: 1
 }
 
 /* Header & Navbar */
@@ -91,8 +91,6 @@ header {
 header h1 {
   font-size: 1.5rem;
 }
-
-
 
 .nav-toggle {
   background: none;
@@ -150,8 +148,8 @@ header h1 {
 }
 
 @keyframes bounce {
-  0%   { transform: scale(0.9); }
-  50%  { transform: scale(1.1); }
+  0% { transform: scale(0.9); }
+  50% { transform: scale(1.1); }
   100% { transform: scale(1); }
 }
 
@@ -234,26 +232,37 @@ header h1 {
   }
 }
 
-/* Alerts */
+/* --- Alerts (Urgency Styling) --- */
 .alert {
-  background-color: transparent;
+  background-color: rgba(255, 112, 67, 0.15); /* Light orange background */
   color: var(--text-dark);
+  border: 2px solid var(--accent-orange);
+  
   padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: 5px;
-  margin: var(--spacing-md);
+  border-radius: 8px;
+  margin: var(--spacing-md) auto;
+  max-width: 900px;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: var(--shadow-lg);
 }
 
 .alert.hidden {
   display: none;
 }
 
+.alert p {
+    margin: 0;
+    color: var(--dark-green);
+    font-weight: bold;
+}
+
 #alertDismissBtn {
   background: none;
   border: none;
-  color: var(--white);
+  color: var(--accent-orange);
   font-size: 1.2rem;
   cursor: pointer;
 }
@@ -261,15 +270,15 @@ header h1 {
 /* Footer */
 footer {
   flex-shrink: 0;
-  min-height: 120px; /* reserves space to avoid CLS */
+  min-height: 120px; 
   text-align: center;
   padding: var(--spacing-md);
   background-color: var(--green);
   color: var(--white);
   margin-top: var(--spacing-lg);
 
-  border-top: 4px solid var(--light-green); /* subtle separation */
-  box-shadow: 0 -2px 6px rgba(0,0,0,0.1);   /* soft shadow above footer */
+  border-top: 4px solid var(--light-green);
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.1); 
   font-size: var(--font-size-md);
 }
 
@@ -337,12 +346,12 @@ footer {
 
 .heart-icon {
   font-size: 1.5rem;
-  color: #ccc; /* grey when not favorited */
+  color: #ccc;
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .fav-btn.active .heart-icon {
-  color: red; /* red when favorited */
+  color: red; 
 }
 
 .fav-btn:hover .heart-icon {
