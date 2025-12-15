@@ -5,82 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Favorites | Use It or Lose It</title>
   <meta name="description" content="Your favorite recipes saved for quick access." />
-  
+
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/recipes.css" />
   <link rel="stylesheet" href="css/favorites.css" />
-  
+
   <script type="module" src="js/favorites.js" defer></script>
   <script type="module" src="js/navbar.js" defer></script>
 </head>
 <body>
   <header>
-  <h1>Use It or Lose It</h1>
-  <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
-    <span class="hamburger"></span>
-  </button>
-  <nav id="nav-menu">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="inventory.html">Inventory</a></li>
-      <li><a href="recipes.html">Recipes</a></li>
-      <li><a href="recipes-all.html">All Recipes</a></li>
-      <li><a href="budget.html">Budget</a></li>
-      <li><a href="calendar.html">Calendar</a></li>
-      <li><a href="profile.html">Profile</a></li>
-      <li><a href="favorites.html" class="active">Favorites</a></li>
-    </ul>
-  </nav>
-</header>
+    <h1><a href="index.html"><img src="images/uioli-logo.webp" alt="ladel and pot logo">Use It or Lose It</h1></a>
+    <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="hamburger"></span>
+    </button>
+    <nav id="nav-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="inventory.html">Inventory</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="recipes-all.html">All Recipes</a></li>
+        <li><a href="budget.html">Budget</a></li>
+        <li><a href="calendar.html">Calendar</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="favorites.html" class="active">Favorites</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main>
-  <!-- Centered Header -->
-  <section class="homepage-box centered-container">
-    <h2 class="section-heading">⭐ Your Favorite Recipes</h2>
-    <p class="section-subtext">Quick access to the recipes you love most.</p>
-  </section>
+  <main>
+    <section class="homepage-box centered-container">
+      <h2 class="section-heading">⭐ Your Favorite Recipes</h2>
+      <p class="section-subtext">Quick access to the recipes you love most.</p>
+    </section>
 
-  <!-- Filter Bar -->
-  <section class="filter-bar">
-    <label class="visually-hidden" for="favSearch">Search favorites</label>
-    <input type="text" id="favSearch" placeholder="Search favorites..." />
+    <section class="filter-bar">
+      <label class="visually-hidden" for="favSearch">Search favorites</label>
+      <input type="text" id="favSearch" placeholder="Search favorites..." />
 
-    <label class="visually-hidden" for="favSort">Sort favorites</label>
-    <select id="favSort">
-      <option value="alpha">Alphabetical (A-Z)</option>
-      <option value="newest">Newest Added</option>
-      <option value="oldest">Oldest Added</option>
-    </select>
+      <label class="visually-hidden" for="favSort">Sort favorites</label>
+      <select id="favSort">
+        <option value="alpha">Alphabetical (A-Z)</option>
+        <option value="newest">Newest Added</option>
+        <option value="oldest">Oldest Added</option>
+      </select>
 
-    <label class="visually-hidden" for="favType">Filter by type</label>
-    <select id="favType">
-      <option value="">All Types</option>
-      <option value="Breakfast">Breakfast</option>
-      <option value="Lunch">Lunch</option>
-      <option value="Dinner">Dinner</option>
-      <option value="Dessert">Dessert</option>
-    </select>
+      <label class="visually-hidden" for="favType">Filter by type</label>
+      <select id="favType">
+        <option value="">All Types</option>
+        <option value="Breakfast">Breakfast</option>
+        <option value="Lunch">Lunch</option>
+        <option value="Dinner">Dinner</option>
+        <option value="Dessert">Dessert</option>
+      </select>
 
-    <button id="clearFavFilters" class="clear-btn">Clear Filters</button>
-  </section>
+      <button id="clearFavFilters" class="clear-btn">Clear Filters</button>
+    </section>
 
-  <!-- Favorites Grid -->
-  <section id="favoritesList" class="homepage-box">
-    <h3 class="section-heading">Saved Recipes</h3>
-    <div class="favorites-grid">
-    </div>
-  </section>
-</main>
+    <section id="favoritesList" class="homepage-box">
+      <h3 class="section-heading">Saved Recipes</h3>
+      <div class="favorites-grid"></div>
+    </section>
+  </main>
 
-<!-- Toast Notification -->
-<div id="toast" class="toast" aria-live="polite"></div>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <button id="backToTop" class="back-to-top" aria-label="Back to top" aria-hidden="true">↑</button>
 
-<!-- Back to Top Button -->
-<button id="backToTop" class="back-to-top" aria-label="Back to top" aria-hidden="true">↑</button>
-
-<footer>
-  <p>&copy; 2025 Use It or Lose It</p>
-  <a href="about.html">About Us</a>
-</footer>
+  <footer>
+    <p>&copy; 2025 Use It or Lose It</p>
+    <a href="about.html">About Us</a>
+  </footer>
 </body>
 </html>

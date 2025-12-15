@@ -19,21 +19,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const recipes = await loadRecipes();
   const favorites = getFavorites();
-
-  // Shuffle recipes
+  
   const shuffled = [...recipes].sort(() => 0.5 - Math.random());
-
-  // Featured recipe
+  
   const featuredRecipe = shuffled[0];
   if (featuredRecipe && featuredSection) {
-    featuredSection.innerHTML = renderCard(featuredRecipe, true, isFavorite(featuredRecipe.id));
+    featuredSection.innerHTML = "";
+    featuredSection.appendChild(renderCard(featuredRecipe, true, isFavorite(featuredRecipe.id)));
   }
-
-  // 3 random curated recipes
+  
   const curated = shuffled.slice(1, 4);
-  gallery.innerHTML = curated.map(r => renderCard(r, false, favorites.includes(r.id))).join("");
-
-  // Heart toggle delegation
+  gallery.innerHTML = "";
+  curated.forEach(r => {
+    gallery.appendChild(renderCard(r, false, favorites.includes(r.id)));
+  });
+  
   document.getElementById("main").addEventListener("click", e => {
     const btn = e.target.closest(".fav-btn");
     if (!btn) return;
@@ -43,71 +43,55 @@ document.addEventListener("DOMContentLoaded", async () => {
     const result = toggleFavorite(id);
     btn.classList.toggle("active", result.active);
     btn.setAttribute("aria-label", result.active ? "Remove from favorites" : "Add to favorites");
+    btn.setAttribute("aria-pressed", result.active ? "true" : "false");
 
     showToast(result.active ? "Added to favorites ❤️" : "Removed from favorites 💔");
   });
 });
-
-function renderCard(recipe, isFeatured, isFav) {
-  const { id, name, image, course, ingredients = [] } = recipe;
-  const heartClass = isFav ? "active" : "";
-
+  
 function renderCard(recipe, isFeatured, isFav) {
   const { id, name, image, course, ingredients = [] } = recipe;
   const sectionClass = isFeatured ? "featured-card" : "recipe-card";
-  const heartClass = isFav ? "active" : "";
 
-  // Build card HTML
-  const cardHTML = `
-    <a href="recipe-detail.html?id=${id}" class="${sectionClass} fade-in">
-      <img src="${image || 'images/placeholder.jpg'}" alt="${name}" loading="lazy" />
-      <div class="info">
-        <h3 class="recipe-title">${name}</h3>
-        <p class="recipe-type"><strong>Type:</strong> ${course || 'Uncategorized'}</p>
-        <p class="ingredients"><strong>Key Ingredients:</strong> ${ingredients.slice(0,5).join(", ")}</p>
-        ${isFeatured ? `<a href="recipe-detail.html?id=${id}" class="view-recipe-btn">View Recipe</a>` : ""}
-        <button class="fav-btn ${heartClass}" data-id="${id}" aria-label="${isFav ? "Remove from favorites" : "Add to favorites"}">
-          <span class="heart-icon">❤️</span>
-        </button>
-      </div>
-    </a>
-  `;
+  const card = document.createElement("a");
+  card.href = `recipe-detail.html?id=${id}`;
+  card.className = `${sectionClass} fade-in`;
 
-  // Temporary wrapper
-  const wrapper = document.createElement("div");
-  wrapper.innerHTML = cardHTML.trim();
-  const card = wrapper.firstChild;
+  const img = document.createElement("img");
+  img.src = image || "images/placeholder.jpg";
+  img.alt = name;
+  img.loading = "lazy";
 
-  // Find the image and remove shimmer once loaded
-  const img = card.querySelector("img");
-  if (img) {
-    img.addEventListener("load", () => {
-      img.style.background = "none";
-      img.style.animation = "none";
-    });
-    img.addEventListener("error", () => {
-      // fallback if image fails
-      img.style.background = "none";
-      img.style.animation = "none";
-      img.src = "images/placeholder.jpg";
-    });
-  }
+  const info = document.createElement("div");
+  info.className = "info";
 
-  return card.outerHTML;
-}
+  const title = document.createElement("h3");
+  title.className = "recipe-title";
+  title.textContent = name;
 
-  // Curated card fallback
-  return `
-    <a href="recipe-detail.html?id=${id}" class="recipe-card fade-in">
-      <img src="${image || 'images/placeholder.jpg'}" alt="${name}" loading="lazy" />
-      <div class="info">
-        <h3 class="recipe-title">${name}</h3>
-        <p class="recipe-type"><strong>Type:</strong> ${course || 'Uncategorized'}</p>
-        <p class="ingredients"><strong>Key Ingredients:</strong> ${ingredients.slice(0,5).join(", ")}</p>
-        <button class="fav-btn ${heartClass}" data-id="${id}" aria-label="${isFav ? "Remove from favorites" : "Add to favorites"}">
-          <span class="heart-icon">❤️</span>
-        </button>
-      </div>
-    </a>
-  `;
+  const type = document.createElement("p");
+  type.className = "recipe-type";
+  type.innerHTML = `<strong>Type:</strong> ${course || "Uncategorized"}`;
+
+  const ing = document.createElement("p");
+  ing.className = "ingredients";
+  ing.innerHTML = `<strong>Key Ingredients:</strong> ${ingredients.slice(0,5).join(", ")}`;
+
+  // Create favorite button
+  const favBtn = document.createElement("button");
+  favBtn.className = `fav-btn ${isFav ? "active" : ""}`;
+  favBtn.dataset.id = id;
+  favBtn.setAttribute("aria-label", isFav ? "Remove from favorites" : "Add to favorites");
+  favBtn.setAttribute("aria-pressed", isFav ? "true" : "false");
+  favBtn.innerHTML = `<span class="heart-icon">♥</span>`;
+
+  info.appendChild(title);
+  info.appendChild(type);
+  info.appendChild(ing);
+  info.appendChild(favBtn);
+
+  card.appendChild(img);
+  card.appendChild(info);
+
+  return card;
 }

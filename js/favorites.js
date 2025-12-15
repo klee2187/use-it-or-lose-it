@@ -21,20 +21,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   const favoriteRecipes = recipes.filter(r => favorites.includes(r.id));
-
-  if (!favoriteRecipes.length) {
-    gallery.innerHTML = '<p>No matching recipes found in favorites.</p>';
-    return;
+    if (!favoriteRecipes.length) {
+      gallery.innerHTML = '<p>No matching recipes found in favorites.</p>';
+      return;
   }
-
-  // Render cards
+  
   gallery.innerHTML = "";
   favoriteRecipes.forEach(r => {
     const card = renderCard(r, true);
     gallery.appendChild(card);
   });
-
-  // Toggle/remove favorites
+  
   gallery.addEventListener("click", e => {
     const btn = e.target.closest(".fav-btn");
     if (!btn) return;
@@ -45,6 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     btn.classList.toggle("active", result.active);
     btn.setAttribute("aria-label", result.active ? "Remove from favorites" : "Add to favorites");
+    btn.setAttribute("aria-pressed", result.active ? "true" : "false");
 
     const card = btn.closest(".recipe-card");
     if (!result.active && card) {
@@ -60,69 +58,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       showToast("Added to favorites ❤️");
     }
   });
-
-  // Filter + Sort logic
-  const searchInput = document.getElementById("favSearch");
-  const typeSelect = document.getElementById("favType");
-  const sortSelect = document.getElementById("favSort");
-  const clearBtn = document.getElementById("clearFavFilters");
-
-  function applyFiltersAndSort() {
-    const searchTerm = searchInput.value.toLowerCase();
-    const typeFilter = typeSelect.value;
-
-    let cards = Array.from(gallery.querySelectorAll(".recipe-card"));
-
-    // Filter
-    cards.forEach(card => {
-      const title = card.querySelector(".recipe-title").textContent.toLowerCase();
-      const type = card.querySelector(".recipe-type").textContent;
-      const matchesSearch = title.includes(searchTerm);
-      const matchesType = !typeFilter || type.includes(typeFilter);
-      card.style.display = (matchesSearch && matchesType) ? "" : "none";
-    });
-
-    // Sort
-    let visibleCards = cards.filter(card => card.style.display !== "none");
-    if (sortSelect.value === "alpha") {
-      visibleCards.sort((a, b) => {
-        const titleA = a.querySelector(".recipe-title").textContent.toLowerCase();
-        const titleB = b.querySelector(".recipe-title").textContent.toLowerCase();
-        return titleA.localeCompare(titleB);
-      });
-    } else if (sortSelect.value === "newest") {
-      visibleCards.sort((a, b) => {
-        return parseInt(b.querySelector(".fav-btn").dataset.id, 10) -
-               parseInt(a.querySelector(".fav-btn").dataset.id, 10);
-      });
-    } else if (sortSelect.value === "oldest") {
-      visibleCards.sort((a, b) => {
-        return parseInt(a.querySelector(".fav-btn").dataset.id, 10) -
-               parseInt(b.querySelector(".fav-btn").dataset.id, 10);
-      });
-    }
-
-    // Re-append sorted cards
-    visibleCards.forEach(card => gallery.appendChild(card));
-  }
-
-  if (searchInput && typeSelect && sortSelect && clearBtn) {
-    searchInput.addEventListener("input", applyFiltersAndSort);
-    typeSelect.addEventListener("change", applyFiltersAndSort);
-    sortSelect.addEventListener("change", applyFiltersAndSort);
-    clearBtn.addEventListener("click", () => {
-      searchInput.value = "";
-      typeSelect.value = "";
-      sortSelect.value = "alpha"; // reset to default
-      applyFiltersAndSort();
-    });
-  }
-});
+  });
 
 function renderCard(recipe, isFav) {
   const { id, name, image, course, ingredients = [] } = recipe;
-
-  // Build card DOM
+  
   const card = document.createElement("a");
   card.href = `recipe-detail.html?id=${id}`;
   card.className = "recipe-card fade-in";
@@ -131,16 +71,7 @@ function renderCard(recipe, isFav) {
   img.src = image || "images/placeholder.jpg";
   img.alt = name;
   img.loading = "lazy";
-
-  // shimmer removal
-  img.addEventListener("load", () => {
-    img.classList.add("loaded");
-  });
-  img.addEventListener("error", () => {
-    img.classList.add("loaded");
-    img.src = "images/placeholder.jpg";
-  });
-
+  
   const info = document.createElement("div");
   info.className = "info";
 
@@ -160,6 +91,7 @@ function renderCard(recipe, isFav) {
   favBtn.className = `fav-btn ${isFav ? "active" : ""}`;
   favBtn.dataset.id = id;
   favBtn.setAttribute("aria-label", isFav ? "Remove from favorites" : "Add to favorites");
+  favBtn.setAttribute("aria-pressed", isFav ? "true" : "false");
   favBtn.innerHTML = `<span class="heart-icon">❤️</span>`;
 
   info.appendChild(title);

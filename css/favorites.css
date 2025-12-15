@@ -146,31 +146,34 @@
   color: var(--dark-green);
 }
 
-/* --- Heart Button --- */
-.favorites-grid .fav-btn {
+/* --- Heart Button (Unified) --- */
+.fav-btn {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.4rem;
-  line-height: 1;
-  color: #ccc;
-  transition: color var(--transition-medium), transform var(--transition-fast);
-  margin-top: var(--spacing-sm);
+  font-size: 1.5rem;
+  color: #ccc; /* default grey */
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
-.favorites-grid .fav-btn.active .heart-icon {
-  color: red;
+.fav-btn.active .heart-icon {
+  color: #e53935; /* polished Material red */
   animation: heartPop 0.4s ease;
 }
 
-.favorites-grid .fav-btn:hover .heart-icon {
+.fav-btn:hover .heart-icon {
   transform: scale(1.2);
+}
+
+.fav-btn:focus {
+  outline: 2px solid var(--accent-orange);
+  outline-offset: 2px;
 }
 
 @keyframes heartPop {
   0%   { transform: scale(1); }
-  40%  { transform: scale(1.4); }
-  60%  { transform: scale(0.9); }
+  40%  { transform: scale(1.3); }
+  60%  { transform: scale(0.95); }
   100% { transform: scale(1); }
 }
 
@@ -230,4 +233,40 @@
 .back-to-top:hover {
   transform: scale(1.1);
   background-color: var(--dark-green);
+}
+
+/* --- Toast Notification --- */
+.toast {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background-color: var(--dark-green);
+  color: var(--white);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1100;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.featured-card {
+  text-decoration: none;
+}
+
+/* Remove underline from View Recipe button */
+.view-recipe-btn {
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Ensure recipe-card links also don’t underline */
+.recipe-card {
+  text-decoration: none;
 }

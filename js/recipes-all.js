@@ -3,7 +3,6 @@ import {
   initAlertDismiss,
   loadRecipes,
   getFavorites,
-  isFavorite,
   toggleFavorite,
   showToast,
   initBackToTop
@@ -24,7 +23,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const render = () => {
     const favs = getFavorites();
-    gallery.innerHTML = filtered.map(r => renderCard(r, favs.includes(r.id))).join("");
+    gallery.innerHTML = "";
+    filtered.forEach(r => {
+      gallery.appendChild(renderCard(r, favs.includes(r.id)));
+    });
   };
 
   const applyFilters = () => {
@@ -61,6 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const result = toggleFavorite(id);
     btn.classList.toggle("active", result.active);
     btn.setAttribute("aria-label", result.active ? "Remove from favorites" : "Add to favorites");
+    btn.setAttribute("aria-pressed", result.active ? "true" : "false");
 
     showToast(result.active ? "Added to favorites ❤️" : "Removed from favorites 💔");
   });
@@ -68,17 +71,45 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 function renderCard(recipe, isFav) {
   const { id, name, image, course, ingredients = [] } = recipe;
-  return `
-    <a href="recipe-detail.html?id=${id}" class="recipe-card fade-in">
-      <img src="${image || 'images/placeholder.jpg'}" alt="${name}" loading="lazy" />
-      <div class="info">
-        <h3>🍴 ${name}</h3>
-        <p>Type: ${course || 'Uncategorized'}</p>
-        <p class="ingredients">Key Ingredients: ${ingredients.slice(0,5).join(", ")}</p>
-        <button class="fav-btn ${isFav ? "active" : ""}" data-id="${id}" aria-label="${isFav ? "Remove from favorites" : "Add to favorites"}">
-          <span class="heart-icon">❤️</span>
-        </button>
-      </div>
-    </a>
-  `;
+
+  const card = document.createElement("a");
+  card.href = `recipe-detail.html?id=${id}`;
+  card.className = "recipe-card fade-in";
+
+  const img = document.createElement("img");
+  img.src = image || "images/placeholder.jpg";
+  img.alt = name;
+  img.loading = "lazy";
+
+  const info = document.createElement("div");
+  info.className = "info";
+
+  const title = document.createElement("h3");
+  title.className = "recipe-title";
+  title.textContent = `🍴 ${name}`;
+
+  const type = document.createElement("p");
+  type.className = "recipe-type";
+  type.innerHTML = `<strong>Type:</strong> ${course || "Uncategorized"}`;
+
+  const ing = document.createElement("p");
+  ing.className = "ingredients";
+  ing.innerHTML = `<strong>Key Ingredients:</strong> ${ingredients.slice(0,5).join(", ")}`;
+
+  const favBtn = document.createElement("button");
+  favBtn.className = `fav-btn ${isFav ? "active" : ""}`;
+  favBtn.dataset.id = id;
+  favBtn.setAttribute("aria-label", isFav ? "Remove from favorites" : "Add to favorites");
+  favBtn.setAttribute("aria-pressed", isFav ? "true" : "false");
+  favBtn.innerHTML = `<span class="heart-icon">♥</span>`;
+
+  info.appendChild(title);
+  info.appendChild(type);
+  info.appendChild(ing);
+  info.appendChild(favBtn);
+
+  card.appendChild(img);
+  card.appendChild(info);
+
+  return card;
 }

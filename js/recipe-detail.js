@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const ingredients = Array.isArray(recipe.ingredients) ? recipe.ingredients : [];
   const instructions = Array.isArray(recipe.instructions) ? recipe.instructions : [];
+  const favActive = isFavorite(recipe.id);
 
   detailSection.innerHTML = `
     <article class="recipe-detail fade-in">
@@ -42,10 +43,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         <span><strong>Servings:</strong> ${recipe.servings || "N/A"}</span>
       </div>
 
-      <button class="fav-btn ${isFavorite(recipe.id) ? "active" : ""}" 
+      <button class="fav-btn ${favActive ? "active" : ""}" 
               data-id="${recipe.id}" 
-              aria-label="${isFavorite(recipe.id) ? "Remove from favorites" : "Add to favorites"}">
-        <span class="heart-icon">❤️</span>
+              aria-label="${favActive ? "Remove from favorites" : "Add to favorites"}"
+              aria-pressed="${favActive ? "true" : "false"}">
+        <span class="heart-icon">♥</span>
       </button>
 
       <h3>Ingredients</h3>
@@ -59,8 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       </ol>
     </article>
   `;
-
-  // Heart toggle
+  
   detailSection.addEventListener("click", e => {
     const btn = e.target.closest(".fav-btn");
     if (!btn) return;
@@ -68,6 +69,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const result = toggleFavorite(recipeId);
     btn.classList.toggle("active", result.active);
     btn.setAttribute("aria-label", result.active ? "Remove from favorites" : "Add to favorites");
+    btn.setAttribute("aria-pressed", result.active ? "true" : "false");
 
     showToast(result.active ? "Added to favorites ❤️" : "Removed from favorites 💔");
   });
