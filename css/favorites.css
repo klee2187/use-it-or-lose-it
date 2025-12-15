@@ -259,14 +259,12 @@
 .featured-card {
   text-decoration: none;
 }
-
-/* Remove underline from View Recipe button */
+  
 .view-recipe-btn {
   text-decoration: none;
   display: inline-block;
 }
-
-/* Ensure recipe-card links also don’t underline */
+  
 .recipe-card {
   text-decoration: none;
 }

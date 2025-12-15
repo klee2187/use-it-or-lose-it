@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   detailSection.addEventListener("click", e => {
     const btn = e.target.closest(".fav-btn");
     if (!btn) return;
+    e.stopPropagation();
 
     const result = toggleFavorite(recipeId);
     btn.classList.toggle("active", result.active);

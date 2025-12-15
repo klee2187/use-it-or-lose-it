@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const btn = e.target.closest(".fav-btn");
     if (!btn) return;
     e.preventDefault();
+    e.stopPropagation();
 
     const id = parseInt(btn.dataset.id, 10);
     const result = toggleFavorite(id);
