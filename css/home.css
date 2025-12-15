@@ -24,13 +24,39 @@
   /* Give it a strong visual presence */
   padding: var(--spacing-lg) var(--spacing-md);
   background-color: var(--white);
-  border: 4px solid var(--green); /* Thicker border */
+  border: 4px solid var(--green); 
   border-radius: 20px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2); /* Stronger shadow */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 
   /* Animation */
   animation: fadeInUp 0.8s ease forwards;
   opacity: 0;
+}
+
+/* --- Mascot & Button Grouping --- */
+.hero-action-group {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+
+/* --- Mascot Styling --- */
+.canny-mascot {
+    width: 200px; 
+    height: auto;
+    
+    margin: 0; 
+    
+    animation: float 3s ease-in-out infinite; 
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
 }
 
 .homepage-hero h1 {
@@ -42,7 +68,7 @@
 .homepage-hero p {
   font-size: 1.15rem;
   color: var(--text-dark);
-  margin-bottom: var(--spacing-xl); /* Space above the CTA */
+  margin-bottom: var(--spacing-md); 
 }
 
 /* Primary CTA Button Style */
@@ -62,7 +88,7 @@
 }
 
 .button-primary:hover {
-  background-color: #d35400; /* Darker orange */
+  background-color: #d35400; 
   transform: translateY(-2px);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
@@ -155,6 +181,7 @@
 .feature-card {
   min-width: 180px;
   padding: var(--spacing-md); 
+  
   border-radius: 12px;
   font-weight: bold;
   cursor: pointer;
@@ -194,7 +221,7 @@
 
 .feature-card a { color: inherit; text-decoration: none; }
 
-/* Hover effects for all cards */
+
 .feature-card:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -208,10 +235,10 @@
 
 .feature-card:hover a { color: var(--white); }
 
-/* --- Suggested Recipes Grid (Urgency Look) --- */
+/* --- Suggested Recipes Grid --- */
 #suggestedRecipes h3 {
-    font-size: 1.6rem; /* Make the heading larger than the standard h3 */
-    color: var(--accent-orange); /* Match the card color */
+    font-size: 1.6rem; 
+    color: var(--accent-orange);
     margin-bottom: var(--spacing-md);
 }
 #suggestedRecipes .recipe-grid {
@@ -221,12 +248,12 @@
   margin-top: var(--spacing-md);
 }
 #suggestedRecipes .recipe-card {
-  background-color: rgba(245, 124, 0, 0.08); /* Slightly darker background */
-  border: 4px solid var(--accent-orange); /* Thicker border */
+  background-color: rgba(245, 124, 0, 0.08); 
+  border: 4px solid var(--accent-orange); 
   color: var(--accent-orange);
   border-radius: 12px;
   padding: var(--spacing-md);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15); /* Stronger visual cue */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15); 
   transition: transform 0.2s ease;
   min-height: 120px;
   animation: fadeInUp 0.5s ease forwards;
@@ -322,8 +349,7 @@
   margin-top: var(--spacing-sm);
   background: #00695c;
   color: #fffbea;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 6px 12px;border-radius: 6px;
   font-weight: bold;
   text-decoration: none;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -348,4 +374,47 @@ footer p {
   margin: 0;
   font-size: 0.9rem;
   font-weight: bold;
+}
+
+/* --- MOBILE OPTIMIZATIONS --- */
+@media (max-width: 768px) {
+    .quick-links .feature-card-container {
+        flex-direction: column;
+        gap: var(--spacing-sm); 
+        align-items: center; 
+    }
+
+    .feature-card {
+        min-width: 90%; 
+        max-width: 400px;
+        padding: var(--spacing-md);
+    }
+    
+    /* Hero Section */
+    .homepage-hero h1 {
+        font-size: 2rem; 
+    }
+    .homepage-hero p {
+        font-size: 1rem;
+    }
+    
+    /* Canny and Button */
+    .hero-action-group {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    /* Mascot Mobile Adjustment */
+    .canny-mascot {
+        width: 100px; 
+    }
+
+    /* Recipe Highlight:*/
+    .recipe-highlight-image {
+        width: 50%;
+        max-width: 150px; 
+        margin: 0 auto var(--spacing-sm); 
+        display: block;
+        border-radius: 8px; 
+    }
 }
