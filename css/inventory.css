@@ -147,7 +147,7 @@
 .inventory-table tr.editing {
   outline: 2px dashed var(--accent-orange);
   outline-offset: -4px;
-  background-color: #fff8e1 !important; /* pale yellow highlight */
+  background-color: #fff8e1 !important; 
 }
 
 /* Action buttons */
@@ -241,5 +241,18 @@
     display: block;
     overflow-x: auto;
     white-space: nowrap;
+  }
+
+  /* Reduce vertical padding in table for tighter rows */
+  .inventory-table th,
+  .inventory-table td {
+    padding: 8px 10px;
+  }
+
+  /* Action buttons wrap if needed */
+  .inventory-table td:last-child {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
   }
 }

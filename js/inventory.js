@@ -1,5 +1,16 @@
 import { initNavbarToggle, checkInventoryAlerts, initAlertDismiss, showAlert } from "./utils.js";
 
+// Global Toast setup (made accessible to all functions)
+const toast = document.getElementById("toast");
+function showToast(message) {
+  if (!toast) return;
+  toast.textContent = message;
+  toast.classList.add("show");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initNavbarToggle();
   initAlertDismiss();
@@ -20,23 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (inventoryBody) {
     inventoryBody.addEventListener("click", handleTableActions);
   }
-  
+
   if (cancelEditBtn) {
     cancelEditBtn.addEventListener("click", cancelEditMode);
   }
-
-  // Toast setup
-  const toast = document.getElementById("toast");
-  function showToast(message) {
-    toast.textContent = message;
-    toast.classList.add("show");
-    setTimeout(() => {
-      toast.classList.remove("show");
-    }, 3000);
-  }
-
+  
   // Show monthly inventory health summary
-  showMonthlySummaryToast(inventory, showToast);
+  showMonthlySummaryToast(inventory);
 });
 
 // RENDER INVENTORY
@@ -58,13 +59,13 @@ function loadInventory() {
     row.classList.add(statusClass);
 
     row.innerHTML = `
-      <td>${item.name}</td>
-      <td>${item.quantity}${item.unit ? " " + item.unit : ""}</td>
-      <td>${formatDate(item.expiration)}</td>
-      <td>
-        <button class="edit-btn action-btn" data-index="${index}">✏️ Edit</button>
-        <button class="delete-btn action-btn" data-index="${index}">❌ Delete</button>
-      </td>
+    <td>${item.name}</td>
+    <td>${item.quantity}${item.unit ? " " + item.unit : ""}</td>
+    <td>${formatDate(item.expiration)}</td>
+    <td>
+    <button class="edit-btn action-btn" data-index="${index}">✏️ Edit</button>
+    <button class="delete-btn action-btn" data-index="${index}">❌ Delete</button>
+    </td>
     `;
     tableBody.appendChild(row);
   });
@@ -88,7 +89,8 @@ function handleAddOrEditItem(e) {
   const expiration = expInput?.value;
 
   if (!name || !quantity || !expiration) {
-    showAlert("Please fill out all required fields.", "warning");
+    // Critical error feedback uses Alert Banner
+    showAlert("🛑 Error: Please fill out the Item Name, Quantity, and Expiration Date.", "critical");
     return;
   }
 
@@ -97,12 +99,13 @@ function handleAddOrEditItem(e) {
   if (editIndexInput.value !== "") {
     const idx = parseInt(editIndexInput.value, 10);
     inventory[idx] = { name, quantity, unit, expiration };
-    showAlert(`${name} updated successfully!`, "safe");
-    showToast(`✏️ ${name} updated`);
+    
+    // Successful transaction uses Toast
+    showToast(`✏️ ${name} updated successfully!`); 
   } else {
     inventory.push({ name, quantity, unit, expiration });
-    showAlert(`${name} ${unit ? `(${quantity} ${unit})` : `(${quantity})`} added to inventory!`, "safe");
-    showToast(`✅ ${name} added`);
+    // Successful transaction uses Toast
+    showToast(`✅ ${name} added to inventory!`);
   }
 
   localStorage.setItem("inventory", JSON.stringify(inventory));
@@ -116,7 +119,7 @@ function handleAddOrEditItem(e) {
 
   loadInventory();
   checkInventoryAlerts(inventory);
-  showMonthlySummaryToast(inventory, showToast);
+  showMonthlySummaryToast(inventory);
 }
 
 // DELETE OR EDIT ACTIONS
@@ -128,13 +131,13 @@ function handleTableActions(e) {
     localStorage.setItem("inventory", JSON.stringify(inventory));
 
     if (removedItem[0]) {
-      showAlert(`${removedItem[0].name} removed.`, "warning");
+      // Successful transaction (deletion) uses Toast
       showToast(`🗑️ ${removedItem[0].name} deleted`);
     }
 
     loadInventory();
     checkInventoryAlerts(inventory);
-    showMonthlySummaryToast(inventory, showToast);
+    showMonthlySummaryToast(inventory);
   }
 
   if (e.target.classList.contains("edit-btn")) {
@@ -158,9 +161,10 @@ function handleTableActions(e) {
     document.querySelectorAll(".inventory-table tr").forEach(tr => tr.classList.remove("editing"));
     e.target.closest("tr").classList.add("editing");
 
-    showAlert(`Editing ${item.name}...`, "info");
-    showToast(`✏️ Editing ${item.name}`);
-  }
+    // State change/mode activation uses Alert Banner
+    showAlert(`✏️ Editing **${item.name}**. Update the form and click 'Update Item'.`, "info");
+    showToast(`✏️ Editing ${item.name}`); // Use toast as secondary/confirmation feedback
+    }
 }
 
 // CANCEL EDIT MODE
@@ -177,8 +181,10 @@ function cancelEditMode() {
 
   document.querySelectorAll(".inventory-table tr").forEach(tr => tr.classList.remove("editing"));
 
-  showAlert("Edit cancelled.", "warning");
+  // State change cancellation uses Toast
   showToast("❌ Edit cancelled");
+  // We remove the Alert Banner by calling showAlert with a hidden status (assuming showAlert handles this)
+  showAlert("", "hidden"); 
 }
 
 // Check Expiration Status
@@ -204,7 +210,7 @@ function formatDate(dateString) {
 }
 
 // Monthly Summary Toast
-function showMonthlySummaryToast(inventory, showToast) {
+function showMonthlySummaryToast(inventory) {
   const today = new Date();
   const currentMonth = today.getMonth();
   const currentYear = today.getFullYear();
