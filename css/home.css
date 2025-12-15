@@ -362,9 +362,9 @@
 
 /* --- Footer refinement --- */
 footer {
-  background-color: rgba(56, 142, 60, 0.05); 
+  background-color: solid rgba(56, 142, 60, 0.05); 
   border-top: 3px solid #388e3c;
-  color: #388e3c;
+  color: var(--white);
   text-align: center;
   padding: var(--spacing-md);
   margin-top: var(--spacing-lg);
