@@ -61,11 +61,18 @@ function renderCard(recipe, isFeatured, isFav) {
   const img = document.createElement("img");
   img.src = image || "images/placeholder.jpg";
   img.alt = name;
-  img.loading = "lazy";
+  img.loading = isFeatured ? "eager" : "lazy"; 
+  if (isFeatured) {
+    img.setAttribute("fetchpriority", "high");
+  }
+  
+  img.width = isFeatured ? 600 : 300;
+  img.height = isFeatured ? 400 : 200;
+
 
   const info = document.createElement("div");
   info.className = "info";
-
+  
   const title = document.createElement("h3");
   title.className = "recipe-title";
   title.textContent = name;

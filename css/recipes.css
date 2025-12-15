@@ -98,6 +98,7 @@
   padding: var(--spacing-lg) var(--spacing-md);
   max-width: 1200px;
   margin: auto;
+  min-height: 450px;
 }
   
 .recipe-card {
