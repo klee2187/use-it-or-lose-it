@@ -1101,6 +1101,80 @@
             "1:1 substitute of basil, italian seasoning, thyme, or marjoram for oregano"
         ],
         "creator": "The Ashcroft Family Table"
+    },
+    {    
+      "id": 28,
+      "name": "Sweet and Sticky Chex Mix",
+      "image": "sweet-chex-mix.webp",
+      "description": "Sticky Chex Mix features two different kinds of cereal and almonds covered in a delicious sugar syrup. It's sweet, crunchy, totally addicting, and the perfect holiday treat!",
+      "prepTime": "10 minutes",
+      "cookTime": "5 minutes",
+      "additionalTime": "30 minutes",
+      "totalTime": "45 minutes",
+      "course": "Snack",
+      "cuisine": "American",
+      "servings": 20,
+      "calories": "354 kcal",
+      "ingredients": [
+          "10 cups Rice Chex Cereal",
+          "5 cups Corn Chex Cereal",
+          "1 ½ cups light corn syrup",
+          "1 ½ cups granulated sugar",
+          "1 cup + 2 Tablespoons margarine*, 2 sticks + 2 Tablespoons",
+          "1 teaspoon vanilla",
+          "½ cup almonds, sliced"
+      ],
+      "instructions": [
+          "1. Combine Rice Chex and Corn Chex in a large bowl and set aside.",
+          "2. Add corn syrup, granulated sugar, and margarine to a medium saucepan and bring to a boil.",
+          "3. Boil for 2 minutes (set a timer).",
+          "4. Remove the syrup from the heat and add vanilla. Pour the syrup over the cereal and stir to make sure everything is coated.",
+          "5. Pour the cereal onto large metal baking sheets. Add sliced almonds and mix everything together.",
+          "6. Allow the Chex mix to cool. Store in airtight containers."
+      ],
+      "substitutions": [
+          "Spray bowl with cooking spray",
+          "Use a wooden spoon sprayed with cooking spray to mix",
+          "Butter for margarine (1:1)",
+          "Try these mix-ins: shredded coconut, pecans, walnuts, cashews, peanuts, golden graham cereal, popcorn, pretzels, chocolate chips, and holiday M&M's"
+      ],
+      "creator": "The Ashcroft Family Table"
+    },
+    {
+      "id": 29,
+      "name": "No Bake Birds Nest Cookies",
+      "image": "nest-cookies.webp",
+      "description": "These No Bake Birds Nest Cookies are a healthier and holiday version of the classic treat. Your friends and family will love munching on these fun Easter nest desserts decorated with candy eggs!",
+      "prepTime": "15 minutes",
+      "cookTime": "5 minutes",
+      "additionalTime": "20 minutes",
+      "totalTime": "35 minutes",
+      "course": "Dessert",
+      "cuisine": "American",
+      "servings": 16,
+      "calories": "285 kcal",
+      "ingredients": [
+          "1 cup creamy peanut butter",
+          "1/2 cup honey",
+          "Pinch salt",
+          "1/2 cup butter, 1 stick",
+          "2 1/2 cups oats, quick or old-fashioned",
+          "2 teaspoons vanilla extract",
+          "4 Tablespoons cocoa powder",
+          "48 coated candy eggs, Cadbury mini eggs are my favorite"
+      ],
+      "instructions": [
+          "Add peanut butter, honey, salt, and butter to a medium saucepan over medium-low heat. Stir well until the butter has melted and the mixture is smooth.",
+          "Add oats, vanilla extract, and cocoa powder to a large mixing bowl. Pour the peanut butter mixture in and mix everything together until combined.",
+          "Using a large spoon, drop tablespoon-size balls on a parchment-lined sheet pan. Spray a rounded handle with non-stick spray and make a well in the center, pressing the edges all around to form a circle.",
+          "Place the cookies in the refrigerator for 20-30 minutes until cool. Add 3 coated candy eggs to each nest before serving."
+      ],
+      "substitutions": [
+          "Use any kind of nut or seed butter",
+          "Make them smaller if desired",
+          "Use whatever oats you have on hand"
+      ],
+      "creator": "The Ashcroft Family Table"
     }
   ]
 } 
