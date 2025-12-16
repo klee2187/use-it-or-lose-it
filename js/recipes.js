@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const featuredRecipe = shuffled[0];
   if (featuredRecipe && featuredSection) {
     featuredSection.innerHTML = "";
-    featuredSection.appendChild(renderCard(featuredRecipe, true, isFavorite(featuredRecipe.id)));
+    featuredSection.appendChild(renderCard(featuredRecipe, true, isFavorite(featuredRecipe.id))); 
   }
   
   const curated = shuffled.slice(1, 4);

@@ -46,12 +46,66 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-.featured-card img {
+.featured-card img, 
+.recipe-card img { 
   width: 100%;
-  max-height: 250px;
   object-fit: cover;
-  aspect-ratio: 3/2;
   display: block;
+}
+
+.featured-placeholder {
+  min-height: 400px;
+  width: 100%;
+  background-color: var(--shimmer-bg, #f0f0f0);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Featured Recipe --- */
+.featured-recipe {
+  max-width: 1200px;
+  margin: var(--spacing-lg) auto;
+  padding: var(--spacing-md);
+}
+
+.featured-recipe-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.featured-card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 3px solid var(--accent-orange);
+}
+
+.featured-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Featured badge */
+.featured-card::before {
+  content: "⭐ Featured";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--accent-orange);
+  color: var(--white);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* --- Info Section --- */
